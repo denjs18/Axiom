@@ -1,0 +1,893 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "biomes": [
+    {
+      "id": "plains",
+      "display_name": "Plains",
+      "temperature": 0.8,
+      "humidity": 0.4,
+      "weight": 10,
+      "category": "plains",
+      "sky_color": "#78A7FF",
+      "fog_color": "#C0D8FF",
+      "water_color": "#3F76E4",
+      "grass_color": "#91BD59",
+      "foliage_color": "#77AB2F",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"oak": 0.1, "bee_nest_chance": 0.05},
+        "flowers": ["dandelion", "poppy", "azure_bluet", "oxeye_daisy", "cornflower"],
+        "grass_density": 0.6,
+        "tall_grass": true
+      },
+      "structures": ["village", "pillager_outpost", "ruined_portal"],
+      "mobs": {
+        "passive": ["cow", "sheep", "pig", "chicken", "horse", "donkey", "cat"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman", "witch"],
+        "neutral": ["bee"]
+      },
+      "generation": {"height_variation": 0.1, "base_height": 0.125}
+    },
+    {
+      "id": "forest",
+      "display_name": "Forest",
+      "temperature": 0.7,
+      "humidity": 0.8,
+      "weight": 8,
+      "category": "forest",
+      "sky_color": "#78A7FF",
+      "fog_color": "#C0D8FF",
+      "water_color": "#3F76E4",
+      "grass_color": "#79C05A",
+      "foliage_color": "#59AE30",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"oak": 10, "birch": 2, "bee_nest_chance": 0.02},
+        "flowers": ["dandelion", "poppy", "lily_of_the_valley"],
+        "grass_density": 0.4,
+        "mushrooms": true
+      },
+      "structures": ["ruined_portal"],
+      "mobs": {
+        "passive": ["cow", "sheep", "pig", "chicken", "fox", "rabbit"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman", "witch"],
+        "neutral": ["wolf", "bee"]
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.1}
+    },
+    {
+      "id": "birch_forest",
+      "display_name": "Birch Forest",
+      "temperature": 0.6,
+      "humidity": 0.6,
+      "weight": 6,
+      "category": "forest",
+      "grass_color": "#79C05A",
+      "foliage_color": "#59AE30",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"birch": 10},
+        "grass_density": 0.3
+      },
+      "mobs": {
+        "passive": ["cow", "sheep", "rabbit", "fox"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.15, "base_height": 0.1}
+    },
+    {
+      "id": "dark_forest",
+      "display_name": "Dark Forest",
+      "temperature": 0.7,
+      "humidity": 0.8,
+      "weight": 5,
+      "category": "forest",
+      "sky_color": "#56A3A3",
+      "grass_color": "#507A32",
+      "foliage_color": "#59AE30",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"dark_oak": 10},
+        "mushrooms": true,
+        "low_light": true
+      },
+      "structures": ["woodland_mansion"],
+      "mobs": {
+        "passive": ["cow", "sheep"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman", "witch", "vindicator", "evoker"],
+        "always_hostile": true
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.1}
+    },
+    {
+      "id": "jungle",
+      "display_name": "Jungle",
+      "temperature": 0.95,
+      "humidity": 0.9,
+      "weight": 5,
+      "category": "jungle",
+      "sky_color": "#78A7FF",
+      "grass_color": "#59C93C",
+      "foliage_color": "#30BB0B",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"jungle": 10, "oak": 2},
+        "bamboo": 0.4,
+        "vines": true,
+        "cocoa": true,
+        "tall_grass": true,
+        "melons": 0.1
+      },
+      "structures": ["jungle_pyramid", "ruined_portal"],
+      "mobs": {
+        "passive": ["ocelot", "parrot", "panda", "chicken"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 0.3, "base_height": 0.1}
+    },
+    {
+      "id": "bamboo_jungle",
+      "display_name": "Bamboo Jungle",
+      "temperature": 0.95,
+      "humidity": 0.9,
+      "weight": 3,
+      "category": "jungle",
+      "grass_color": "#59C93C",
+      "foliage_color": "#30BB0B",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"jungle": 5},
+        "bamboo": 5.0,
+        "vines": true
+      },
+      "mobs": {
+        "passive": ["panda", "parrot", "ocelot", "chicken"],
+        "hostile": ["zombie", "skeleton", "creeper"]
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.1}
+    },
+    {
+      "id": "desert",
+      "display_name": "Desert",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 8,
+      "category": "desert",
+      "sky_color": "#78A7FF",
+      "fog_color": "#C0D8FF",
+      "water_color": "#3F76E4",
+      "grass_color": "#BFB755",
+      "foliage_color": "#AEA42A",
+      "precipitation": "none",
+      "surface": {"top": "sand", "filler": "sand", "depth": 4, "underwater": "sandstone"},
+      "features": {
+        "dead_bushes": 1.0,
+        "cacti": 0.5,
+        "fossils": 0.02
+      },
+      "structures": ["desert_pyramid", "desert_well", "village", "ruined_portal"],
+      "mobs": {
+        "passive": ["rabbit"],
+        "hostile": ["zombie", "skeleton", "husk", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 0.05, "base_height": 0.125}
+    },
+    {
+      "id": "badlands",
+      "display_name": "Badlands",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 3,
+      "category": "mesa",
+      "sky_color": "#78A7FF",
+      "water_color": "#3F76E4",
+      "grass_color": "#90814D",
+      "foliage_color": "#9E814D",
+      "precipitation": "none",
+      "surface": {"top": "red_sand", "filler": "orange_terracotta", "depth": 1},
+      "features": {
+        "terracotta_layers": true,
+        "gold_ore_surface": true,
+        "dead_bushes": 0.5,
+        "cacti": 0.2
+      },
+      "structures": ["mineshaft"],
+      "mobs": {
+        "passive": [],
+        "hostile": ["zombie", "skeleton", "husk", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.4, "base_height": 0.2, "plateau": true}
+    },
+    {
+      "id": "savanna",
+      "display_name": "Savanna",
+      "temperature": 1.2,
+      "humidity": 0.0,
+      "weight": 7,
+      "category": "savanna",
+      "grass_color": "#BFB755",
+      "foliage_color": "#AEA42A",
+      "precipitation": "none",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"acacia": 1.5},
+        "tall_grass": true,
+        "grass_density": 0.4
+      },
+      "structures": ["village", "pillager_outpost"],
+      "mobs": {
+        "passive": ["cow", "sheep", "pig", "chicken", "horse", "llama"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 0.1, "base_height": 0.125}
+    },
+    {
+      "id": "taiga",
+      "display_name": "Taiga",
+      "temperature": 0.25,
+      "humidity": 0.8,
+      "weight": 7,
+      "category": "taiga",
+      "sky_color": "#78A7FF",
+      "grass_color": "#86B783",
+      "foliage_color": "#68A55A",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"spruce": 10},
+        "ferns": true,
+        "sweet_berry": 0.3
+      },
+      "structures": ["village", "ruined_portal"],
+      "mobs": {
+        "passive": ["wolf", "fox", "rabbit", "chicken"],
+        "hostile": ["zombie", "skeleton", "stray", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.1}
+    },
+    {
+      "id": "snowy_taiga",
+      "display_name": "Snowy Taiga",
+      "temperature": -0.5,
+      "humidity": 0.4,
+      "weight": 4,
+      "category": "taiga",
+      "sky_color": "#78A7FF",
+      "grass_color": "#80B497",
+      "foliage_color": "#60A17B",
+      "precipitation": "snow",
+      "surface": {"top": "snow_block", "under_snow": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"spruce": 10},
+        "snow_layer": true
+      },
+      "structures": ["village"],
+      "mobs": {
+        "passive": ["wolf", "fox", "rabbit"],
+        "hostile": ["zombie", "skeleton", "stray", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.1}
+    },
+    {
+      "id": "snowy_plains",
+      "display_name": "Snowy Plains",
+      "temperature": 0.0,
+      "humidity": 0.5,
+      "weight": 5,
+      "category": "icy",
+      "sky_color": "#78A7FF",
+      "grass_color": "#80B497",
+      "foliage_color": "#60A17B",
+      "precipitation": "snow",
+      "surface": {"top": "snow_block", "under_snow": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "snow_layer": true,
+        "ice_spikes_chance": 0.05
+      },
+      "structures": ["village", "igloo"],
+      "mobs": {
+        "passive": ["rabbit", "polar_bear"],
+        "hostile": ["zombie", "skeleton", "stray", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.05, "base_height": 0.125}
+    },
+    {
+      "id": "swamp",
+      "display_name": "Swamp",
+      "temperature": 0.8,
+      "humidity": 0.9,
+      "weight": 5,
+      "category": "swamp",
+      "sky_color": "#78A7FF",
+      "water_color": "#617B64",
+      "water_fog_color": "#232317",
+      "grass_color": "#6A7039",
+      "foliage_color": "#6A7039",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"oak": 2, "swamp_oak": true},
+        "vines": true,
+        "lily_pads": true,
+        "blue_orchid": true,
+        "mushrooms": true,
+        "fossils": 0.01
+      },
+      "structures": ["swamp_hut"],
+      "mobs": {
+        "passive": ["frog", "turtle"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman", "witch", "slime"],
+        "neutral": ["bat"]
+      },
+      "generation": {"height_variation": 0.0, "base_height": -0.2, "flooded": true}
+    },
+    {
+      "id": "mangrove_swamp",
+      "display_name": "Mangrove Swamp",
+      "temperature": 0.8,
+      "humidity": 0.9,
+      "weight": 3,
+      "category": "swamp",
+      "water_color": "#3D7A6B",
+      "grass_color": "#6A7039",
+      "foliage_color": "#6A7039",
+      "precipitation": "rain",
+      "surface": {"top": "mud", "filler": "mud", "depth": 4},
+      "features": {
+        "trees": {"mangrove": 10},
+        "lily_pads": true,
+        "mud": true
+      },
+      "mobs": {
+        "passive": ["frog", "tadpole"],
+        "hostile": ["zombie", "creeper", "spider", "witch"]
+      },
+      "generation": {"height_variation": 0.0, "base_height": -0.2, "flooded": true}
+    },
+    {
+      "id": "meadow",
+      "display_name": "Meadow",
+      "temperature": 0.5,
+      "humidity": 0.8,
+      "weight": 4,
+      "category": "plains",
+      "sky_color": "#78A7FF",
+      "grass_color": "#83BB6D",
+      "foliage_color": "#83BB6D",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"oak": 0.05},
+        "flowers": ["dandelion", "poppy", "allium", "azure_bluet", "oxeye_daisy", "cornflower", "tulip_red", "tulip_orange", "tulip_white", "tulip_pink"],
+        "grass_density": 0.8,
+        "bee_nests": 0.3
+      },
+      "structures": ["village", "pillager_outpost"],
+      "mobs": {
+        "passive": ["cow", "sheep", "rabbit", "bee", "donkey"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.1, "base_height": 0.125}
+    },
+    {
+      "id": "cherry_grove",
+      "display_name": "Cherry Grove",
+      "temperature": 0.5,
+      "humidity": 0.8,
+      "weight": 2,
+      "category": "forest",
+      "sky_color": "#F4B0D1",
+      "grass_color": "#C9C9A4",
+      "foliage_color": "#F0B3C8",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"cherry": 5},
+        "pink_petals": true,
+        "grass_density": 0.5
+      },
+      "mobs": {
+        "passive": ["pig", "rabbit", "bee"],
+        "hostile": ["zombie", "skeleton", "creeper"]
+      },
+      "generation": {"height_variation": 0.15, "base_height": 0.125}
+    },
+    {
+      "id": "ocean",
+      "display_name": "Ocean",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 10,
+      "category": "ocean",
+      "sky_color": "#78A7FF",
+      "water_color": "#3F76E4",
+      "water_fog_color": "#050533",
+      "grass_color": "#79C05A",
+      "precipitation": "rain",
+      "surface": {"top": "gravel", "filler": "gravel", "depth": 4, "floor_depth": -63},
+      "features": {
+        "seagrass": true,
+        "kelp": true,
+        "shipwrecks": 0.03
+      },
+      "structures": ["ocean_monument"],
+      "mobs": {
+        "passive": ["squid", "cod", "salmon"],
+        "hostile": ["zombie", "drowned", "guardian"]
+      },
+      "generation": {"base_height": -1.0, "ocean": true}
+    },
+    {
+      "id": "deep_ocean",
+      "display_name": "Deep Ocean",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 8,
+      "category": "ocean",
+      "water_color": "#3F76E4",
+      "water_fog_color": "#050533",
+      "precipitation": "rain",
+      "surface": {"top": "gravel", "filler": "gravel", "depth": 4},
+      "features": {
+        "seagrass": true,
+        "shipwrecks": 0.05,
+        "ocean_ruins": 0.03
+      },
+      "structures": ["ocean_monument"],
+      "mobs": {
+        "passive": ["squid", "glow_squid", "cod"],
+        "hostile": ["drowned", "guardian", "elder_guardian"]
+      },
+      "generation": {"base_height": -1.8, "ocean": true}
+    },
+    {
+      "id": "warm_ocean",
+      "display_name": "Warm Ocean",
+      "temperature": 0.9,
+      "humidity": 0.5,
+      "weight": 6,
+      "category": "ocean",
+      "water_color": "#43D5EE",
+      "water_fog_color": "#041633",
+      "precipitation": "none",
+      "surface": {"top": "sand", "filler": "sand", "depth": 4},
+      "features": {
+        "coral": true,
+        "seagrass": true,
+        "sea_pickles": true,
+        "warm_ocean_ruins": 0.03
+      },
+      "mobs": {
+        "passive": ["tropical_fish", "pufferfish", "squid"],
+        "hostile": ["drowned"]
+      },
+      "generation": {"base_height": -1.0, "ocean": true}
+    },
+    {
+      "id": "cold_ocean",
+      "display_name": "Cold Ocean",
+      "temperature": 0.2,
+      "humidity": 0.5,
+      "weight": 5,
+      "category": "ocean",
+      "water_color": "#3D57D6",
+      "water_fog_color": "#050533",
+      "precipitation": "rain",
+      "surface": {"top": "gravel", "filler": "gravel", "depth": 4},
+      "features": {
+        "seagrass": true,
+        "kelp": true
+      },
+      "mobs": {
+        "passive": ["squid", "cod", "salmon"],
+        "hostile": ["drowned"]
+      },
+      "generation": {"base_height": -1.0, "ocean": true}
+    },
+    {
+      "id": "frozen_ocean",
+      "display_name": "Frozen Ocean",
+      "temperature": 0.0,
+      "humidity": 0.5,
+      "weight": 4,
+      "category": "ocean",
+      "water_color": "#3938C9",
+      "water_fog_color": "#050533",
+      "precipitation": "snow",
+      "surface": {"top": "gravel", "filler": "gravel", "depth": 4, "surface_ice": true},
+      "features": {
+        "icebergs": true,
+        "blue_ice": true
+      },
+      "mobs": {
+        "passive": ["polar_bear", "rabbit", "squid", "salmon"],
+        "hostile": ["stray", "drowned"]
+      },
+      "generation": {"base_height": -1.0, "ocean": true}
+    },
+    {
+      "id": "beach",
+      "display_name": "Beach",
+      "temperature": 0.8,
+      "humidity": 0.4,
+      "weight": 5,
+      "category": "beach",
+      "precipitation": "rain",
+      "surface": {"top": "sand", "filler": "sand", "depth": 4, "underwater": "sandstone"},
+      "features": {
+        "seagrass": true
+      },
+      "mobs": {
+        "passive": ["turtle"],
+        "hostile": ["zombie", "skeleton", "creeper", "drowned"]
+      },
+      "generation": {"height_variation": 0.02, "base_height": 0.0}
+    },
+    {
+      "id": "mushroom_fields",
+      "display_name": "Mushroom Fields",
+      "temperature": 0.9,
+      "humidity": 1.0,
+      "weight": 1,
+      "category": "mushroom",
+      "sky_color": "#78A7FF",
+      "grass_color": "#55C93F",
+      "foliage_color": "#2BBB15",
+      "precipitation": "rain",
+      "surface": {"top": "mycelium", "filler": "dirt", "depth": 4},
+      "features": {
+        "huge_mushrooms": 1.0,
+        "mushrooms": 1.0
+      },
+      "mobs": {
+        "passive": ["mooshroom"],
+        "hostile": []
+      },
+      "generation": {"base_height": 0.2}
+    },
+    {
+      "id": "windswept_hills",
+      "display_name": "Windswept Hills",
+      "temperature": 0.2,
+      "humidity": 0.3,
+      "weight": 5,
+      "category": "extreme_hills",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4, "high_surface": "stone", "high_depth": 0.8},
+      "features": {
+        "trees": {"spruce": 0.5, "oak": 0.5},
+        "emerald_ore": true
+      },
+      "structures": ["ruined_portal"],
+      "mobs": {
+        "passive": ["llama", "goat", "rabbit"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 1.0, "base_height": 0.45}
+    },
+    {
+      "id": "jagged_peaks",
+      "display_name": "Jagged Peaks",
+      "temperature": -0.7,
+      "humidity": 0.9,
+      "weight": 2,
+      "category": "peaks",
+      "precipitation": "snow",
+      "surface": {"top": "stone", "filler": "stone", "depth": 4, "very_high": "snow_block"},
+      "features": {
+        "snow_layer": true,
+        "powder_snow": true
+      },
+      "mobs": {
+        "passive": ["goat"],
+        "hostile": ["zombie", "skeleton", "stray", "creeper"]
+      },
+      "generation": {"height_variation": 2.0, "base_height": 1.0, "cliffs": true}
+    },
+    {
+      "id": "deep_dark",
+      "display_name": "Deep Dark",
+      "temperature": 0.8,
+      "humidity": 0.4,
+      "weight": 3,
+      "category": "underground",
+      "underground": true,
+      "min_y": -64,
+      "max_y": 0,
+      "sky_color": "#000000",
+      "precipitation": "none",
+      "surface": {"top": "sculk", "filler": "sculk", "depth": 4},
+      "features": {
+        "sculk_growths": true,
+        "sculk_veins": true,
+        "dark": true,
+        "no_light": true
+      },
+      "structures": ["ancient_city"],
+      "mobs": {
+        "passive": [],
+        "hostile": ["warden"],
+        "ambient": []
+      },
+      "generation": {"underground": true, "patch_biome": true}
+    },
+    {
+      "id": "dripstone_caves",
+      "display_name": "Dripstone Caves",
+      "temperature": 0.8,
+      "humidity": 0.4,
+      "weight": 4,
+      "category": "underground",
+      "underground": true,
+      "min_y": -64,
+      "max_y": 64,
+      "precipitation": "none",
+      "surface": {"top": "dripstone_block", "filler": "stone", "depth": 4},
+      "features": {
+        "stalactites": true,
+        "stalagmites": true,
+        "dripstone_clusters": true,
+        "lava_pools": true
+      },
+      "mobs": {
+        "passive": ["bat"],
+        "hostile": ["drowned", "zombie", "skeleton", "spider", "cave_spider"]
+      },
+      "generation": {"underground": true, "patch_biome": true}
+    },
+    {
+      "id": "lush_caves",
+      "display_name": "Lush Caves",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 4,
+      "category": "underground",
+      "underground": true,
+      "min_y": -64,
+      "max_y": 64,
+      "grass_color": "#59C93C",
+      "foliage_color": "#30BB0B",
+      "water_color": "#14A2C5",
+      "precipitation": "none",
+      "surface": {"top": "moss_block", "filler": "stone", "depth": 4},
+      "features": {
+        "spore_blossoms": true,
+        "cave_vines": true,
+        "moss": true,
+        "azalea_trees": true,
+        "clay_pools": true,
+        "big_dripleaf": true
+      },
+      "mobs": {
+        "passive": ["axolotl", "glow_squid", "bat"],
+        "hostile": ["zombie", "skeleton", "spider", "cave_spider"]
+      },
+      "generation": {"underground": true, "patch_biome": true}
+    },
+
+    {
+      "id": "oasis",
+      "display_name": "Oasis",
+      "temperature": 2.0,
+      "humidity": 0.2,
+      "weight": 2,
+      "category": "desert",
+      "custom": true,
+      "grass_color": "#BFB755",
+      "foliage_color": "#59C93C",
+      "water_color": "#3F76E4",
+      "precipitation": "none",
+      "surface": {"top": "sand", "filler": "sand", "depth": 4, "around_water": "grass_block"},
+      "features": {
+        "water_pool": true,
+        "palm_trees": 5.0,
+        "oasis_flowers": 2.0,
+        "reeds": 1.0,
+        "rare_mineral_under_sand": {"item": "axiom:desert_crystal", "depth": [3, 6], "chance": 0.1}
+      },
+      "structures": ["desert_watchtower"],
+      "mobs": {
+        "passive": ["camel", "rabbit", "turtle"],
+        "hostile": ["husk", "skeleton", "creeper"],
+        "rare_passive": ["oasis_gecko"]
+      },
+      "generation": {"height_variation": 0.05, "base_height": 0.125}
+    },
+    {
+      "id": "vertical_jungle",
+      "display_name": "Vertical Jungle",
+      "temperature": 0.95,
+      "humidity": 0.95,
+      "weight": 2,
+      "category": "jungle",
+      "custom": true,
+      "grass_color": "#59C93C",
+      "foliage_color": "#30BB0B",
+      "precipitation": "rain",
+      "surface": {"top": "grass_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"jungle": 15, "tall_jungle": true},
+        "climbable_vines": true,
+        "hanging_temples": 0.2,
+        "bamboo": 1.0,
+        "height_bonus": 100
+      },
+      "structures": ["jungle_pyramid", "hanging_temple"],
+      "mobs": {
+        "passive": ["ocelot", "parrot", "panda"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 3.0, "base_height": 0.1, "cliffs": true, "max_y": 320}
+    },
+    {
+      "id": "boreal_highlands",
+      "display_name": "Boreal Highlands",
+      "temperature": -0.3,
+      "humidity": 0.5,
+      "weight": 2,
+      "category": "taiga",
+      "custom": true,
+      "sky_color": "#C0D0FF",
+      "grass_color": "#80B497",
+      "foliage_color": "#68A55A",
+      "precipitation": "snow",
+      "surface": {"top": "snow_block", "under_snow": "grass_block", "filler": "stone", "depth": 4},
+      "features": {
+        "trees": {"spruce": 3},
+        "ice_crystals": 2.0,
+        "snow_layer": true,
+        "rare_loot": {"item": "axiom:arctic_essence", "chance": 0.01}
+      },
+      "structures": ["ice_fortress"],
+      "mobs": {
+        "passive": ["wolf", "polar_bear", "rabbit"],
+        "hostile": ["skeleton", "stray", "zombie", "creeper"]
+      },
+      "generation": {"height_variation": 0.5, "base_height": 0.3}
+    },
+    {
+      "id": "coral_abyss",
+      "display_name": "Coral Abyss",
+      "temperature": 0.7,
+      "humidity": 0.5,
+      "weight": 2,
+      "category": "ocean",
+      "custom": true,
+      "underwater": true,
+      "min_y": -128,
+      "max_y": -48,
+      "water_color": "#1A3AFF",
+      "water_fog_color": "#0A1A80",
+      "precipitation": "none",
+      "surface": {"top": "gravel", "filler": "stone", "depth": 4},
+      "features": {
+        "bioluminescent_coral": true,
+        "deep_coral_growth": true,
+        "abyss_vents": 0.05
+      },
+      "structures": ["submerged_temple"],
+      "mobs": {
+        "passive": ["axolotl", "tropical_fish", "glow_squid"],
+        "hostile": ["drowned", "guardian"],
+        "rare": ["deep_sea_leviathan"]
+      },
+      "generation": {"base_height": -2.0, "ocean": true, "deep": true}
+    },
+    {
+      "id": "volcanic_rifts",
+      "display_name": "Volcanic Rifts",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 2,
+      "category": "mountain",
+      "custom": true,
+      "sky_color": "#FF6B35",
+      "fog_color": "#8B1A00",
+      "grass_color": "#605020",
+      "precipitation": "none",
+      "surface": {"top": "basalt", "filler": "blackstone", "depth": 4, "surface_lava": true, "surface_obsidian": true},
+      "features": {
+        "lava_rivers": true,
+        "basalt_columns": true,
+        "falling_ash": true,
+        "lava_geysers": 0.05,
+        "obsidian_surface": 0.3
+      },
+      "structures": ["volcanic_ruins"],
+      "mobs": {
+        "passive": ["strider"],
+        "hostile": ["magma_cube", "blaze", "zombie", "skeleton"],
+        "ambient": ["ember_sprite"]
+      },
+      "generation": {"height_variation": 0.5, "base_height": 0.2, "lava_surface": true}
+    },
+    {
+      "id": "petrified_forest",
+      "display_name": "Petrified Forest",
+      "temperature": 0.6,
+      "humidity": 0.2,
+      "weight": 3,
+      "category": "forest",
+      "custom": true,
+      "sky_color": "#9BB8D0",
+      "grass_color": "#8B9B70",
+      "foliage_color": "#7B8B5E",
+      "precipitation": "none",
+      "surface": {"top": "coarse_dirt", "filler": "stone", "depth": 4},
+      "features": {
+        "petrified_trunks": 2.5,
+        "dead_bushes": 0.8,
+        "fossils": 0.03
+      },
+      "structures": ["fossil_site"],
+      "mobs": {
+        "passive": ["rabbit", "fox"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman"]
+      },
+      "generation": {"height_variation": 0.2, "base_height": 0.15}
+    },
+    {
+      "id": "crystal_mesa",
+      "display_name": "Crystal Mesa",
+      "temperature": 1.5,
+      "humidity": 0.05,
+      "weight": 2,
+      "category": "mesa",
+      "custom": true,
+      "sky_color": "#78A7FF",
+      "fog_color": "#E0C8A0",
+      "grass_color": "#C0A870",
+      "precipitation": "none",
+      "surface": {"top": "orange_terracotta", "filler": "stone", "depth": 4, "terracotta_layers": true},
+      "features": {
+        "amethyst_clusters": 4.0,
+        "terracotta_layers": true,
+        "crystal_spires": 0.5,
+        "dead_bushes": 0.3
+      },
+      "structures": ["crystal_shrine"],
+      "mobs": {
+        "passive": ["rabbit"],
+        "hostile": ["zombie", "skeleton", "husk", "creeper", "spider"]
+      },
+      "generation": {"height_variation": 0.35, "base_height": 0.2, "plateau": true}
+    },
+    {
+      "id": "twilight_hollow",
+      "display_name": "Twilight Hollow",
+      "temperature": 0.4,
+      "humidity": 0.5,
+      "weight": 3,
+      "category": "forest",
+      "custom": true,
+      "sky_color": "#3A4A6A",
+      "fog_color": "#2A3A5A",
+      "grass_color": "#4A6A3A",
+      "foliage_color": "#3A5A2A",
+      "water_color": "#2A4A6A",
+      "precipitation": "rain",
+      "surface": {"top": "moss_block", "filler": "dirt", "depth": 4},
+      "features": {
+        "trees": {"dark_oak": 8},
+        "mushrooms": 3.0,
+        "glow_lichen": true,
+        "cave_vines": true,
+        "always_dim": true
+      },
+      "structures": ["hollow_shrine"],
+      "mobs": {
+        "passive": ["bat", "fox"],
+        "hostile": ["zombie", "skeleton", "creeper", "spider", "enderman", "witch"],
+        "always_hostile": true
+      },
+      "generation": {"height_variation": 0.15, "base_height": 0.0, "sunken": true}
+    }
+  ]
+}

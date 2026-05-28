@@ -1,0 +1,1 @@
+{"id": "aether", "display_name": "Aether Dimension", "description": "Sky dimension with floating islands, new mobs, and gravitite ore.", "version": "1.0", "dependencies": [], "script": "res://src/modules/AetherModule.gd", "unlock_condition": "ender_dragon_defeated"}

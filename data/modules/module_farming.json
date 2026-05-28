@@ -1,0 +1,38 @@
+{
+  "id": "farming",
+  "display_name": "Farming Simulator",
+  "description": "100+ crops, advanced livestock, cooking system, and greenhouse automation.",
+  "version": "1.0",
+  "dependencies": [],
+  "script": "res://src/modules/FarmingModule.gd",
+  "crops": [
+    {"id": "tomato", "display_name": "Tomato", "food_value": 4, "saturation": 3.2, "growth_stages": 6, "soil": "farmland"},
+    {"id": "corn", "display_name": "Corn", "food_value": 3, "saturation": 2.4, "growth_stages": 8, "soil": "farmland"},
+    {"id": "onion", "display_name": "Onion", "food_value": 2, "saturation": 2.0, "growth_stages": 6, "soil": "farmland"},
+    {"id": "garlic", "display_name": "Garlic", "food_value": 2, "saturation": 1.8, "growth_stages": 5, "soil": "farmland", "buff": {"effect": "fire_resistance_partial", "duration": 120}},
+    {"id": "pepper", "display_name": "Pepper", "food_value": 3, "saturation": 2.4, "growth_stages": 6, "soil": "farmland"},
+    {"id": "cucumber", "display_name": "Cucumber", "food_value": 2, "saturation": 1.6, "growth_stages": 5, "soil": "farmland"},
+    {"id": "rice", "display_name": "Rice", "food_value": 2, "saturation": 1.2, "growth_stages": 7, "soil": "paddy_farmland", "needs_water": true},
+    {"id": "strawberry", "display_name": "Strawberry", "food_value": 3, "saturation": 2.4, "growth_stages": 4, "soil": "farmland"},
+    {"id": "blueberry", "display_name": "Blueberry", "food_value": 3, "saturation": 2.4, "growth_stages": 4, "soil": "farmland"},
+    {"id": "grape", "display_name": "Grape", "food_value": 2, "saturation": 1.6, "growth_stages": 6, "soil": "farmland", "support_needed": true},
+    {"id": "pineapple", "display_name": "Pineapple", "food_value": 5, "saturation": 4.0, "growth_stages": 8, "soil": "farmland", "requires_biome": "warm"},
+    {"id": "mango", "display_name": "Mango", "food_value": 5, "saturation": 4.8, "growth_stages": 7, "soil": "farmland", "buff": {"effect": "speed", "duration": 120, "amplifier": 2}},
+    {"id": "lavender", "display_name": "Lavender", "food_value": 0, "saturation": 0, "growth_stages": 4, "soil": "farmland", "craft_use": "dye_purple"},
+    {"id": "void_lily", "display_name": "Void Lily", "food_value": 0, "saturation": 0, "growth_stages": 5, "soil": "end_soil", "craft_use": "void_potion_ingredient", "tags": ["end_crop"]}
+  ],
+  "blocks": [
+    {"id": 3100, "name": "cooking_pot", "display_name": "Cooking Pot", "hardness": 2.0, "tool": "pickaxe", "tool_level": 1, "texture": "cooking_pot", "interactive": true, "ui_scene": "res://scenes/ui/cooking_pot_ui.tscn"},
+    {"id": 3101, "name": "dehydrator", "display_name": "Dehydrator", "hardness": 2.5, "tool": "pickaxe", "tool_level": 1, "texture": "dehydrator"},
+    {"id": 3102, "name": "fermentation_barrel", "display_name": "Fermentation Barrel", "hardness": 2.5, "tool": "axe", "tool_level": 0, "texture": "fermentation_barrel"},
+    {"id": 3103, "name": "watering_can_block", "display_name": "Watering Station", "hardness": 2.0, "tool": "pickaxe", "tool_level": 1, "texture": "watering_station"},
+    {"id": 3104, "name": "paddy_farmland", "display_name": "Paddy Farmland", "hardness": 0.6, "tool": "shovel", "tool_level": 0, "texture": "paddy_farmland"}
+  ],
+  "items": [
+    {"id": "wooden_watering_can", "display_name": "Wooden Watering Can", "max_stack": 1, "durability": 40, "texture": "wooden_watering_can", "capacity": 4, "growth_boost": 0.1},
+    {"id": "iron_watering_can", "display_name": "Iron Watering Can", "max_stack": 1, "durability": 120, "texture": "iron_watering_can", "capacity": 8, "growth_boost": 0.2},
+    {"id": "gold_watering_can", "display_name": "Golden Watering Can", "max_stack": 1, "durability": 60, "texture": "gold_watering_can", "capacity": 12, "growth_boost": 0.4},
+    {"id": "fertilizer", "display_name": "Fertilizer", "max_stack": 64, "texture": "fertilizer", "growth_boost": 0.5},
+    {"id": "mulch", "display_name": "Mulch", "max_stack": 64, "texture": "mulch", "growth_boost": 0.15, "duration": 600}
+  ]
+}

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://recipe_book_ui"]
+
+[ext_resource type="Script" path="res://scenes/ui/RecipeBookUI.gd" id="1_recipebook"]
+
+[node name="RecipeBookUI" type="CanvasLayer"]
+script = ExtResource("1_recipebook")

@@ -1,0 +1,17 @@
+[
+  {"id": "kill_zombies",    "type": "kill",    "mob": "zombie",    "count": 8,  "desc": "Éliminer {count} zombies dans la région.",        "rewards": {"emeralds": 6,  "xp": 30, "rep": 12}},
+  {"id": "kill_skeletons",  "type": "kill",    "mob": "skeleton",  "count": 5,  "desc": "Éliminer {count} squelettes.",                    "rewards": {"emeralds": 8,  "xp": 35, "rep": 14}},
+  {"id": "kill_creepers",   "type": "kill",    "mob": "creeper",   "count": 4,  "desc": "Détruire {count} creepers avant qu'ils explosent.","rewards": {"emeralds": 10, "xp": 40, "rep": 16}},
+  {"id": "kill_spiders",    "type": "kill",    "mob": "spider",    "count": 10, "desc": "Tuer {count} araignées.",                         "rewards": {"emeralds": 5,  "xp": 25, "rep": 10}},
+  {"id": "kill_witches",    "type": "kill",    "mob": "witch",     "count": 3,  "desc": "Neutraliser {count} sorcières.",                  "rewards": {"emeralds": 14, "xp": 60, "rep": 22}},
+  {"id": "kill_pillagers",  "type": "kill",    "mob": "pillager",  "count": 6,  "desc": "Repousser {count} pillards.",                     "rewards": {"emeralds": 12, "xp": 50, "rep": 20}},
+  {"id": "bring_wheat",     "type": "bring",   "item": "axiom:wheat",      "count": 24, "desc": "Apporter {count} blé au village.",          "rewards": {"emeralds": 5,  "xp": 20, "rep": 10}},
+  {"id": "bring_iron",      "type": "bring",   "item": "axiom:iron_ingot", "count": 12, "desc": "Fournir {count} lingots de fer.",           "rewards": {"emeralds": 8,  "xp": 30, "rep": 14}},
+  {"id": "bring_coal",      "type": "bring",   "item": "axiom:coal",       "count": 32, "desc": "Apporter {count} charbon.",                 "rewards": {"emeralds": 6,  "xp": 22, "rep": 10}},
+  {"id": "bring_food",      "type": "bring",   "item": "axiom:bread",      "count": 16, "desc": "Nourrir le village : {count} pains.",       "rewards": {"emeralds": 7,  "xp": 28, "rep": 12}},
+  {"id": "bring_wood",      "type": "bring",   "item": "axiom:oak_log",    "count": 32, "desc": "Rapporter {count} bûches de chêne.",        "rewards": {"emeralds": 4,  "xp": 18, "rep": 8}},
+  {"id": "bring_stone",     "type": "bring",   "item": "axiom:cobblestone","count": 48, "desc": "Apporter {count} cobblestone pour les fortifications.", "rewards": {"emeralds": 5, "xp": 20, "rep": 10}},
+  {"id": "explore_dungeon", "type": "explore", "radius": 600, "tag": "dungeon",  "desc": "Explorer le donjon signalé au nord-est.",         "rewards": {"emeralds": 15, "xp": 80, "rep": 25}},
+  {"id": "explore_ruins",   "type": "explore", "radius": 500, "tag": "ruins",    "desc": "Investiguer les ruines proches.",                  "rewards": {"emeralds": 12, "xp": 65, "rep": 20}},
+  {"id": "explore_mine",    "type": "explore", "radius": 450, "tag": "mineshaft","desc": "Descendre dans la mine abandonnée.",              "rewards": {"emeralds": 10, "xp": 55, "rep": 18}}
+]

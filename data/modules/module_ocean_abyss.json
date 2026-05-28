@@ -1,0 +1,1 @@
+{"id": "ocean_abyss", "display_name": "Ocean Abyss Dimension", "description": "Deep underwater dimension with abyssal creatures and hydrothermal structures.", "version": "1.0", "dependencies": [], "script": "res://src/modules/OceanAbyssModule.gd", "unlock_condition": "deep_ocean_portal"}

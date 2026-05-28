@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "recipes": [
+    {"id": "iron_ingot_from_raw", "type": "smelting", "ingredient": "axiom:raw_iron", "result": {"item": "axiom:iron_ingot", "count": 1}, "xp": 0.7, "time": 200, "fuel_types": ["any"]},
+    {"id": "iron_ingot_from_ore", "type": "smelting", "ingredient": "axiom:iron_ore", "result": {"item": "axiom:iron_ingot", "count": 1}, "xp": 0.7, "time": 200, "fuel_types": ["any"]},
+    {"id": "iron_ingot_from_deepslate", "type": "smelting", "ingredient": "axiom:deepslate_iron_ore", "result": {"item": "axiom:iron_ingot", "count": 1}, "xp": 0.7, "time": 200, "fuel_types": ["any"]},
+    {"id": "gold_ingot_from_raw", "type": "smelting", "ingredient": "axiom:raw_gold", "result": {"item": "axiom:gold_ingot", "count": 1}, "xp": 1.0, "time": 200, "fuel_types": ["any"]},
+    {"id": "gold_ingot_from_ore", "type": "smelting", "ingredient": "axiom:gold_ore", "result": {"item": "axiom:gold_ingot", "count": 1}, "xp": 1.0, "time": 200, "fuel_types": ["any"]},
+    {"id": "copper_ingot_from_raw", "type": "smelting", "ingredient": "axiom:raw_copper", "result": {"item": "axiom:copper_ingot", "count": 1}, "xp": 0.7, "time": 200, "fuel_types": ["any"]},
+    {"id": "copper_ingot_from_ore", "type": "smelting", "ingredient": "axiom:copper_ore", "result": {"item": "axiom:copper_ingot", "count": 1}, "xp": 0.7, "time": 200, "fuel_types": ["any"]},
+    {"id": "netherite_scrap", "type": "smelting", "ingredient": "axiom:ancient_debris", "result": {"item": "axiom:netherite_scrap", "count": 1}, "xp": 2.0, "time": 200, "fuel_types": ["any"]},
+    {"id": "stone_from_cobblestone", "type": "smelting", "ingredient": "axiom:cobblestone", "result": {"item": "axiom:stone", "count": 1}, "xp": 0.1, "time": 200},
+    {"id": "smooth_stone", "type": "smelting", "ingredient": "axiom:stone", "result": {"item": "axiom:smooth_stone", "count": 1}, "xp": 0.1, "time": 200},
+    {"id": "glass_from_sand", "type": "smelting", "ingredient": "axiom:sand", "result": {"item": "axiom:glass", "count": 1}, "xp": 0.1, "time": 200},
+    {"id": "brick_from_clay", "type": "smelting", "ingredient": "axiom:clay_ball", "result": {"item": "axiom:brick", "count": 1}, "xp": 0.3, "time": 200},
+    {"id": "nether_brick", "type": "smelting", "ingredient": "axiom:netherrack", "result": {"item": "axiom:nether_brick", "count": 1}, "xp": 0.1, "time": 200},
+    {"id": "charcoal", "type": "smelting", "ingredient": {"tag": "axiom:logs"}, "result": {"item": "axiom:charcoal", "count": 1}, "xp": 0.15, "time": 200},
+    {"id": "cooked_beef", "type": "smelting", "ingredient": "axiom:raw_beef", "result": {"item": "axiom:cooked_beef", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_porkchop", "type": "smelting", "ingredient": "axiom:raw_porkchop", "result": {"item": "axiom:cooked_porkchop", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_chicken", "type": "smelting", "ingredient": "axiom:raw_chicken", "result": {"item": "axiom:cooked_chicken", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_mutton", "type": "smelting", "ingredient": "axiom:raw_mutton", "result": {"item": "axiom:cooked_mutton", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_rabbit", "type": "smelting", "ingredient": "axiom:raw_rabbit", "result": {"item": "axiom:cooked_rabbit", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_cod", "type": "smelting", "ingredient": "axiom:raw_cod", "result": {"item": "axiom:cooked_cod", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "cooked_salmon", "type": "smelting", "ingredient": "axiom:raw_salmon", "result": {"item": "axiom:cooked_salmon", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "baked_potato", "type": "smelting", "ingredient": "axiom:potato", "result": {"item": "axiom:baked_potato", "count": 1}, "xp": 0.35, "time": 200},
+    {"id": "dried_kelp", "type": "smelting", "ingredient": "axiom:kelp", "result": {"item": "axiom:dried_kelp", "count": 1}, "xp": 0.1, "time": 200},
+    {"id": "popcorn", "type": "smelting", "ingredient": "axiom:corn", "result": {"item": "axiom:popcorn", "count": 2}, "xp": 0.1, "time": 100},
+
+    {"id": "iron_ingot_blast", "type": "blasting", "ingredient": "axiom:raw_iron", "result": {"item": "axiom:iron_ingot", "count": 1}, "xp": 0.7, "time": 100},
+    {"id": "gold_ingot_blast", "type": "blasting", "ingredient": "axiom:raw_gold", "result": {"item": "axiom:gold_ingot", "count": 1}, "xp": 1.0, "time": 100},
+    {"id": "copper_ingot_blast", "type": "blasting", "ingredient": "axiom:raw_copper", "result": {"item": "axiom:copper_ingot", "count": 1}, "xp": 0.7, "time": 100},
+    {"id": "netherite_scrap_blast", "type": "blasting", "ingredient": "axiom:ancient_debris", "result": {"item": "axiom:netherite_scrap", "count": 1}, "xp": 2.0, "time": 100},
+
+    {"id": "cooked_beef_smoker", "type": "smoking", "ingredient": "axiom:raw_beef", "result": {"item": "axiom:cooked_beef", "count": 1}, "xp": 0.35, "time": 100},
+    {"id": "cooked_porkchop_smoker", "type": "smoking", "ingredient": "axiom:raw_porkchop", "result": {"item": "axiom:cooked_porkchop", "count": 1}, "xp": 0.35, "time": 100},
+    {"id": "cooked_chicken_smoker", "type": "smoking", "ingredient": "axiom:raw_chicken", "result": {"item": "axiom:cooked_chicken", "count": 1}, "xp": 0.35, "time": 100}
+  ]
+}

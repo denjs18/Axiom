@@ -1,0 +1,208 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "biomes": [
+    {
+      "id": "nether_wastes",
+      "display_name": "Nether Wastes",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 10,
+      "category": "nether",
+      "sky_color": "#330808",
+      "fog_color": "#330808",
+      "water_color": "#FC9201",
+      "water_fog_color": "#FC9201",
+      "precipitation": "none",
+      "surface": {"top": "netherrack", "filler": "netherrack", "depth": 4},
+      "features": {
+        "nether_ore_deposits": true,
+        "lava_lakes": true,
+        "fire_patches": true
+      },
+      "mobs": {
+        "passive": ["strider"],
+        "hostile": ["zombie_piglin", "ghast", "magma_cube", "blaze", "enderman"]
+      }
+    },
+    {
+      "id": "crimson_forest",
+      "display_name": "Crimson Forest",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 6,
+      "category": "nether",
+      "sky_color": "#330808",
+      "fog_color": "#330808",
+      "water_color": "#FC9201",
+      "precipitation": "none",
+      "surface": {"top": "crimson_nylium", "filler": "netherrack", "depth": 4},
+      "features": {
+        "crimson_fungi": 5.0,
+        "crimson_roots": 3.0,
+        "weeping_vines": true,
+        "huge_crimson_fungi": 2.0,
+        "nether_sprouts": 1.0
+      },
+      "mobs": {
+        "passive": ["strider"],
+        "hostile": ["hoglin", "zombie_piglin", "piglin"]
+      }
+    },
+    {
+      "id": "warped_forest",
+      "display_name": "Warped Forest",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 6,
+      "category": "nether",
+      "sky_color": "#330808",
+      "fog_color": "#1B4A4A",
+      "water_color": "#FC9201",
+      "precipitation": "none",
+      "surface": {"top": "warped_nylium", "filler": "netherrack", "depth": 4},
+      "features": {
+        "warped_fungi": 5.0,
+        "warped_roots": 3.0,
+        "twisting_vines": true,
+        "huge_warped_fungi": 2.0,
+        "nether_sprouts": 1.0,
+        "shroomlights": 0.5
+      },
+      "mobs": {
+        "passive": ["enderman"],
+        "hostile": ["enderman"]
+      }
+    },
+    {
+      "id": "soul_sand_valley",
+      "display_name": "Soul Sand Valley",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 5,
+      "category": "nether",
+      "sky_color": "#1B4A4A",
+      "fog_color": "#1B4A4A",
+      "water_color": "#FC9201",
+      "precipitation": "none",
+      "surface": {"top": "soul_sand", "filler": "soul_sand", "depth": 4},
+      "features": {
+        "fossils": true,
+        "fire_soul": true,
+        "bone_spikes": 0.3
+      },
+      "mobs": {
+        "passive": [],
+        "hostile": ["ghast", "skeleton", "enderman"]
+      }
+    },
+    {
+      "id": "basalt_deltas",
+      "display_name": "Basalt Deltas",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 4,
+      "category": "nether",
+      "sky_color": "#6A6A6A",
+      "fog_color": "#6A6A6A",
+      "water_color": "#FC9201",
+      "precipitation": "none",
+      "surface": {"top": "basalt", "filler": "blackstone", "depth": 4},
+      "features": {
+        "basalt_columns": true,
+        "lava_springs": true,
+        "magma_blocks": 0.5,
+        "blackstone_boulders": 0.3
+      },
+      "mobs": {
+        "passive": [],
+        "hostile": ["ghast", "magma_cube"]
+      }
+    },
+
+    {
+      "id": "nether_roof_limbo",
+      "display_name": "Nether Roof Limbo",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 2,
+      "category": "nether",
+      "custom": true,
+      "min_y": 128,
+      "max_y": 256,
+      "sky_color": "#000000",
+      "fog_color": "#1A0022",
+      "precipitation": "none",
+      "surface": {"top": "bedrock", "filler": "bedrock", "depth": 4},
+      "features": {
+        "giant_quartz_crystals": 2.0,
+        "void_ceiling": true,
+        "mysterious_atmosphere": true,
+        "rare_passives": 0.1
+      },
+      "accessible_via": "ceiling_cracks",
+      "mobs": {
+        "passive": ["void_mote"],
+        "hostile": [],
+        "rare": ["quartz_golem"]
+      }
+    },
+    {
+      "id": "volcanic_basin",
+      "display_name": "Volcanic Basin",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 3,
+      "category": "nether",
+      "custom": true,
+      "sky_color": "#CC3300",
+      "fog_color": "#661100",
+      "precipitation": "none",
+      "surface": {"top": "basalt", "filler": "blackstone", "depth": 4, "surface_lava_lake": true},
+      "features": {
+        "lava_lake_giant": true,
+        "basalt_islands": 2.0,
+        "volcanic_geysers": 0.5,
+        "sulfur_deposits": 1.0,
+        "magma_blocks": 2.0
+      },
+      "ores": [
+        {"block": "axiom:sulfur_ore", "count": 16, "min_y": 0, "max_y": 128, "rarity": 5}
+      ],
+      "mobs": {
+        "passive": ["lava_salamander"],
+        "hostile": ["magma_cube", "blaze", "ghast"]
+      }
+    },
+    {
+      "id": "toxic_sulfur_fields",
+      "display_name": "Toxic Sulfur Fields",
+      "temperature": 2.0,
+      "humidity": 0.0,
+      "weight": 2,
+      "category": "nether",
+      "custom": true,
+      "sky_color": "#AAAA00",
+      "fog_color": "#888800",
+      "fog_density": 0.6,
+      "precipitation": "none",
+      "surface": {"top": "soul_soil", "filler": "netherrack", "depth": 4, "sulfur_deposits": true},
+      "features": {
+        "toxic_gas": true,
+        "sulfur_vents": 2.0,
+        "resistant_plants": 1.0,
+        "poison_fog": true
+      },
+      "biome_effects": {
+        "no_armor_poison": {"effect": "poison", "amplifier": 0, "interval": 60}
+      },
+      "ores": [
+        {"block": "axiom:sulfur_ore", "count": 24, "min_y": 0, "max_y": 128, "rarity": 3}
+      ],
+      "mobs": {
+        "passive": ["toxic_resistant_mob"],
+        "hostile": ["wither_skeleton", "magma_cube"]
+      }
+    }
+  ]
+}

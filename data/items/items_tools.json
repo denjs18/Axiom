@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "items": [
+    {"id": "wooden_pickaxe", "display_name": "Wooden Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 0, "durability": 59, "mining_speed": 2.0, "damage": 2, "tier": 0, "texture": "wooden_pickaxe"},
+    {"id": "stone_pickaxe", "display_name": "Stone Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 1, "durability": 131, "mining_speed": 4.0, "damage": 3, "tier": 1, "texture": "stone_pickaxe"},
+    {"id": "iron_pickaxe", "display_name": "Iron Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 2, "durability": 250, "mining_speed": 6.0, "damage": 4, "tier": 2, "texture": "iron_pickaxe"},
+    {"id": "golden_pickaxe", "display_name": "Golden Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 2, "durability": 32, "mining_speed": 12.0, "damage": 2, "tier": 2, "texture": "golden_pickaxe"},
+    {"id": "diamond_pickaxe", "display_name": "Diamond Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 3, "durability": 1561, "mining_speed": 8.0, "damage": 5, "tier": 4, "texture": "diamond_pickaxe"},
+    {"id": "netherite_pickaxe", "display_name": "Netherite Pickaxe", "max_stack": 1, "tool": "pickaxe", "tool_level": 4, "durability": 2031, "mining_speed": 9.0, "damage": 6, "tier": 5, "fireproof": true, "texture": "netherite_pickaxe"},
+
+    {"id": "wooden_axe", "display_name": "Wooden Axe", "max_stack": 1, "tool": "axe", "tool_level": 0, "durability": 59, "mining_speed": 2.0, "damage": 7, "tier": 0, "texture": "wooden_axe"},
+    {"id": "stone_axe", "display_name": "Stone Axe", "max_stack": 1, "tool": "axe", "tool_level": 1, "durability": 131, "mining_speed": 4.0, "damage": 9, "tier": 1, "texture": "stone_axe"},
+    {"id": "iron_axe", "display_name": "Iron Axe", "max_stack": 1, "tool": "axe", "tool_level": 2, "durability": 250, "mining_speed": 6.0, "damage": 9, "tier": 2, "texture": "iron_axe"},
+    {"id": "golden_axe", "display_name": "Golden Axe", "max_stack": 1, "tool": "axe", "tool_level": 2, "durability": 32, "mining_speed": 12.0, "damage": 7, "tier": 2, "texture": "golden_axe"},
+    {"id": "diamond_axe", "display_name": "Diamond Axe", "max_stack": 1, "tool": "axe", "tool_level": 3, "durability": 1561, "mining_speed": 8.0, "damage": 9, "tier": 4, "texture": "diamond_axe"},
+    {"id": "netherite_axe", "display_name": "Netherite Axe", "max_stack": 1, "tool": "axe", "tool_level": 4, "durability": 2031, "mining_speed": 9.0, "damage": 10, "tier": 5, "fireproof": true, "texture": "netherite_axe"},
+
+    {"id": "wooden_shovel", "display_name": "Wooden Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 0, "durability": 59, "mining_speed": 2.0, "damage": 2.5, "tier": 0, "texture": "wooden_shovel"},
+    {"id": "stone_shovel", "display_name": "Stone Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 1, "durability": 131, "mining_speed": 4.0, "damage": 3.5, "tier": 1, "texture": "stone_shovel"},
+    {"id": "iron_shovel", "display_name": "Iron Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 2, "durability": 250, "mining_speed": 6.0, "damage": 4.5, "tier": 2, "texture": "iron_shovel"},
+    {"id": "golden_shovel", "display_name": "Golden Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 2, "durability": 32, "mining_speed": 12.0, "damage": 2.5, "tier": 2, "texture": "golden_shovel"},
+    {"id": "diamond_shovel", "display_name": "Diamond Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 3, "durability": 1561, "mining_speed": 8.0, "damage": 5.5, "tier": 4, "texture": "diamond_shovel"},
+    {"id": "netherite_shovel", "display_name": "Netherite Shovel", "max_stack": 1, "tool": "shovel", "tool_level": 4, "durability": 2031, "mining_speed": 9.0, "damage": 6.5, "tier": 5, "fireproof": true, "texture": "netherite_shovel"},
+
+    {"id": "wooden_hoe", "display_name": "Wooden Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 0, "durability": 59, "mining_speed": 1.0, "damage": 1, "tier": 0, "texture": "wooden_hoe"},
+    {"id": "stone_hoe", "display_name": "Stone Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 1, "durability": 131, "mining_speed": 1.0, "damage": 1, "tier": 1, "texture": "stone_hoe"},
+    {"id": "iron_hoe", "display_name": "Iron Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 2, "durability": 250, "mining_speed": 6.0, "damage": 1, "tier": 2, "texture": "iron_hoe"},
+    {"id": "golden_hoe", "display_name": "Golden Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 2, "durability": 32, "mining_speed": 12.0, "damage": 1, "tier": 2, "texture": "golden_hoe"},
+    {"id": "diamond_hoe", "display_name": "Diamond Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 3, "durability": 1561, "mining_speed": 8.0, "damage": 1, "tier": 4, "texture": "diamond_hoe"},
+    {"id": "netherite_hoe", "display_name": "Netherite Hoe", "max_stack": 1, "tool": "hoe", "tool_level": 4, "durability": 2031, "mining_speed": 9.0, "damage": 1, "tier": 5, "fireproof": true, "texture": "netherite_hoe"},
+
+    {"id": "wooden_sword", "display_name": "Wooden Sword", "max_stack": 1, "tool": "sword", "tool_level": 0, "durability": 59, "damage": 4, "attack_speed": 1.6, "tier": 0, "texture": "wooden_sword"},
+    {"id": "stone_sword", "display_name": "Stone Sword", "max_stack": 1, "tool": "sword", "tool_level": 1, "durability": 131, "damage": 5, "attack_speed": 1.6, "tier": 1, "texture": "stone_sword"},
+    {"id": "iron_sword", "display_name": "Iron Sword", "max_stack": 1, "tool": "sword", "tool_level": 2, "durability": 250, "damage": 6, "attack_speed": 1.6, "tier": 2, "texture": "iron_sword"},
+    {"id": "golden_sword", "display_name": "Golden Sword", "max_stack": 1, "tool": "sword", "tool_level": 2, "durability": 32, "damage": 4, "attack_speed": 1.6, "tier": 2, "texture": "golden_sword"},
+    {"id": "diamond_sword", "display_name": "Diamond Sword", "max_stack": 1, "tool": "sword", "tool_level": 3, "durability": 1561, "damage": 7, "attack_speed": 1.6, "tier": 4, "texture": "diamond_sword"},
+    {"id": "netherite_sword", "display_name": "Netherite Sword", "max_stack": 1, "tool": "sword", "tool_level": 4, "durability": 2031, "damage": 8, "attack_speed": 1.6, "tier": 5, "fireproof": true, "texture": "netherite_sword"},
+
+    {"id": "iron_spear",      "display_name": "Iron Spear",      "max_stack": 1, "tool": "spear", "tool_level": 2, "durability": 250,  "damage": 7,  "attack_speed": 1.25, "reach": 5.5, "tier": 2, "texture": "iron_spear"},
+    {"id": "diamond_spear",   "display_name": "Diamond Spear",   "max_stack": 1, "tool": "spear", "tool_level": 3, "durability": 1561, "damage": 9,  "attack_speed": 1.25, "reach": 5.5, "tier": 4, "texture": "diamond_spear"},
+    {"id": "netherite_spear", "display_name": "Netherite Spear", "max_stack": 1, "tool": "spear", "tool_level": 4, "durability": 2031, "damage": 10, "attack_speed": 1.25, "reach": 5.5, "tier": 5, "fireproof": true, "texture": "netherite_spear"},
+
+    {"id": "iron_dagger",      "display_name": "Iron Dagger",      "max_stack": 1, "tool": "dagger", "tool_level": 2, "durability": 200,  "damage": 4, "attack_speed": 4.5, "backstab_mult": 2.0, "tier": 2, "texture": "iron_dagger"},
+    {"id": "diamond_dagger",   "display_name": "Diamond Dagger",   "max_stack": 1, "tool": "dagger", "tool_level": 3, "durability": 1200, "damage": 5, "attack_speed": 4.5, "backstab_mult": 2.0, "tier": 4, "texture": "diamond_dagger"},
+    {"id": "netherite_dagger", "display_name": "Netherite Dagger", "max_stack": 1, "tool": "dagger", "tool_level": 4, "durability": 2031, "damage": 6, "attack_speed": 4.5, "backstab_mult": 2.0, "tier": 5, "fireproof": true, "texture": "netherite_dagger"},
+
+    {"id": "iron_mace",      "display_name": "Iron Mace",      "max_stack": 1, "tool": "mace", "tool_level": 2, "durability": 300,  "damage": 8,  "attack_speed": 1.1, "stun_duration": 0.5, "armor_pierce": 0.5, "tier": 2, "texture": "iron_mace"},
+    {"id": "diamond_mace",   "display_name": "Diamond Mace",   "max_stack": 1, "tool": "mace", "tool_level": 3, "durability": 1561, "damage": 10, "attack_speed": 1.1, "stun_duration": 0.5, "armor_pierce": 0.5, "tier": 4, "texture": "diamond_mace"},
+    {"id": "netherite_mace", "display_name": "Netherite Mace", "max_stack": 1, "tool": "mace", "tool_level": 4, "durability": 2031, "damage": 12, "attack_speed": 1.1, "stun_duration": 0.5, "armor_pierce": 0.5, "tier": 5, "fireproof": true, "texture": "netherite_mace"},
+
+    {"id": "flint_and_steel", "display_name": "Flint and Steel", "max_stack": 1, "tool": "flint_and_steel", "tool_level": 0, "durability": 64, "texture": "flint_and_steel"},
+    {"id": "shears", "display_name": "Shears", "max_stack": 1, "tool": "shears", "tool_level": 0, "durability": 238, "texture": "shears"},
+    {"id": "fishing_rod", "display_name": "Fishing Rod", "max_stack": 1, "tool": "fishing_rod", "tool_level": 0, "durability": 64, "texture": "fishing_rod"},
+    {"id": "carrot_on_a_stick", "display_name": "Carrot on a Stick", "max_stack": 1, "tool": "carrot_stick", "tool_level": 0, "durability": 25, "texture": "carrot_on_a_stick"},
+    {"id": "warped_fungus_on_a_stick", "display_name": "Warped Fungus on a Stick", "max_stack": 1, "tool": "warped_fungus_stick", "tool_level": 0, "durability": 25, "texture": "warped_fungus_on_a_stick"},
+    {"id": "brush", "display_name": "Brush", "max_stack": 1, "tool": "brush", "tool_level": 0, "durability": 64, "texture": "brush"},
+    {"id": "bow", "display_name": "Bow", "max_stack": 1, "tool": "bow", "tool_level": 0, "durability": 384, "damage_min": 0, "damage_max": 10, "texture": "bow"},
+    {"id": "crossbow", "display_name": "Crossbow", "max_stack": 1, "tool": "crossbow", "tool_level": 0, "durability": 326, "damage_min": 6, "damage_max": 11, "texture": "crossbow"},
+    {"id": "trident", "display_name": "Trident", "max_stack": 1, "tool": "trident", "tool_level": 0, "durability": 250, "damage": 9, "texture": "trident"},
+    {"id": "shield", "display_name": "Shield", "max_stack": 1, "tool": "shield", "tool_level": 0, "durability": 336, "texture": "shield"},
+    {"id": "elytra", "display_name": "Elytra", "max_stack": 1, "tool": "elytra", "tool_level": 0, "durability": 432, "texture": "elytra", "slot": "chest"},
+    {"id": "spyglass", "display_name": "Spyglass", "max_stack": 1, "texture": "spyglass"},
+    {"id": "goat_horn", "display_name": "Goat Horn", "max_stack": 1, "texture": "goat_horn"},
+
+    {"id": "void_crystal_teleporter", "display_name": "Void Crystal Teleporter", "max_stack": 1, "durability": 32, "use_action": "teleport_forward_16", "texture": "void_crystal_teleporter", "tags": ["end_item"]},
+    {"id": "ender_wings", "display_name": "Ender Wings", "max_stack": 1, "durability": 864, "tool": "elytra", "slot": "chest", "flying_speed_multiplier": 1.5, "void_damage_immunity": true, "texture": "ender_wings", "tags": ["end_item"]},
+    {"id": "grapple_wings", "display_name": "Grapple Wings", "max_stack": 1, "durability": 864, "tool": "elytra", "slot": "chest", "grappling_hook": true, "texture": "grapple_wings", "tags": ["end_item"]},
+    {"id": "crawler_wings", "display_name": "Crawler Wings", "max_stack": 1, "durability": 864, "tool": "elytra", "slot": "chest", "wall_climb": true, "texture": "crawler_wings", "tags": ["end_item"]},
+    {"id": "soul_compass", "display_name": "Soul Compass", "max_stack": 1, "texture": "soul_compass", "points_to": "nearest_unexplored_end_ruin", "tags": ["end_item"]},
+    {"id": "rift_key", "display_name": "Rift Key", "max_stack": 16, "texture": "rift_key", "use_action": "open_abyss_portal", "tags": ["end_item"]}
+  ]
+}

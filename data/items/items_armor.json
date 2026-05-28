@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "items": [
+    {"id": "leather_helmet", "display_name": "Leather Cap", "max_stack": 1, "slot": "head", "armor": 1, "durability": 55, "tier": 0, "tintable": true, "texture": "leather_helmet"},
+    {"id": "leather_chestplate", "display_name": "Leather Tunic", "max_stack": 1, "slot": "chest", "armor": 3, "durability": 80, "tier": 0, "tintable": true, "texture": "leather_chestplate"},
+    {"id": "leather_leggings", "display_name": "Leather Pants", "max_stack": 1, "slot": "legs", "armor": 2, "durability": 75, "tier": 0, "tintable": true, "texture": "leather_leggings"},
+    {"id": "leather_boots", "display_name": "Leather Boots", "max_stack": 1, "slot": "feet", "armor": 1, "durability": 65, "tier": 0, "tintable": true, "texture": "leather_boots"},
+
+    {"id": "chainmail_helmet", "display_name": "Chainmail Helmet", "max_stack": 1, "slot": "head", "armor": 2, "durability": 165, "tier": 1, "texture": "chainmail_helmet"},
+    {"id": "chainmail_chestplate", "display_name": "Chainmail Chestplate", "max_stack": 1, "slot": "chest", "armor": 5, "durability": 240, "tier": 1, "texture": "chainmail_chestplate"},
+    {"id": "chainmail_leggings", "display_name": "Chainmail Leggings", "max_stack": 1, "slot": "legs", "armor": 4, "durability": 225, "tier": 1, "texture": "chainmail_leggings"},
+    {"id": "chainmail_boots", "display_name": "Chainmail Boots", "max_stack": 1, "slot": "feet", "armor": 1, "durability": 195, "tier": 1, "texture": "chainmail_boots"},
+
+    {"id": "iron_helmet", "display_name": "Iron Helmet", "max_stack": 1, "slot": "head", "armor": 2, "durability": 165, "tier": 2, "texture": "iron_helmet"},
+    {"id": "iron_chestplate", "display_name": "Iron Chestplate", "max_stack": 1, "slot": "chest", "armor": 6, "durability": 240, "tier": 2, "texture": "iron_chestplate"},
+    {"id": "iron_leggings", "display_name": "Iron Leggings", "max_stack": 1, "slot": "legs", "armor": 5, "durability": 225, "tier": 2, "texture": "iron_leggings"},
+    {"id": "iron_boots", "display_name": "Iron Boots", "max_stack": 1, "slot": "feet", "armor": 2, "durability": 195, "tier": 2, "texture": "iron_boots"},
+
+    {"id": "golden_helmet", "display_name": "Golden Helmet", "max_stack": 1, "slot": "head", "armor": 2, "armor_toughness": 0, "durability": 77, "tier": 2, "texture": "golden_helmet"},
+    {"id": "golden_chestplate", "display_name": "Golden Chestplate", "max_stack": 1, "slot": "chest", "armor": 5, "armor_toughness": 0, "durability": 112, "tier": 2, "texture": "golden_chestplate"},
+    {"id": "golden_leggings", "display_name": "Golden Leggings", "max_stack": 1, "slot": "legs", "armor": 3, "armor_toughness": 0, "durability": 105, "tier": 2, "texture": "golden_leggings"},
+    {"id": "golden_boots", "display_name": "Golden Boots", "max_stack": 1, "slot": "feet", "armor": 1, "armor_toughness": 0, "durability": 91, "tier": 2, "texture": "golden_boots"},
+
+    {"id": "diamond_helmet", "display_name": "Diamond Helmet", "max_stack": 1, "slot": "head", "armor": 3, "armor_toughness": 2, "durability": 363, "tier": 4, "texture": "diamond_helmet"},
+    {"id": "diamond_chestplate", "display_name": "Diamond Chestplate", "max_stack": 1, "slot": "chest", "armor": 8, "armor_toughness": 2, "durability": 528, "tier": 4, "texture": "diamond_chestplate"},
+    {"id": "diamond_leggings", "display_name": "Diamond Leggings", "max_stack": 1, "slot": "legs", "armor": 6, "armor_toughness": 2, "durability": 495, "tier": 4, "texture": "diamond_leggings"},
+    {"id": "diamond_boots", "display_name": "Diamond Boots", "max_stack": 1, "slot": "feet", "armor": 3, "armor_toughness": 2, "durability": 429, "tier": 4, "texture": "diamond_boots"},
+
+    {"id": "netherite_helmet", "display_name": "Netherite Helmet", "max_stack": 1, "slot": "head", "armor": 3, "armor_toughness": 3, "knockback_resistance": 0.1, "durability": 407, "tier": 5, "fireproof": true, "texture": "netherite_helmet"},
+    {"id": "netherite_chestplate", "display_name": "Netherite Chestplate", "max_stack": 1, "slot": "chest", "armor": 8, "armor_toughness": 3, "knockback_resistance": 0.1, "durability": 592, "tier": 5, "fireproof": true, "texture": "netherite_chestplate"},
+    {"id": "netherite_leggings", "display_name": "Netherite Leggings", "max_stack": 1, "slot": "legs", "armor": 6, "armor_toughness": 3, "knockback_resistance": 0.1, "durability": 555, "tier": 5, "fireproof": true, "texture": "netherite_leggings"},
+    {"id": "netherite_boots", "display_name": "Netherite Boots", "max_stack": 1, "slot": "feet", "armor": 3, "armor_toughness": 3, "knockback_resistance": 0.1, "durability": 481, "tier": 5, "fireproof": true, "texture": "netherite_boots"},
+
+    {"id": "turtle_helmet", "display_name": "Turtle Shell", "max_stack": 1, "slot": "head", "armor": 2, "armor_toughness": 0, "durability": 275, "tier": 2, "water_breathing": {"duration": 10}, "texture": "turtle_helmet"},
+
+    {"id": "void_alloy_helmet", "display_name": "Void Alloy Helmet", "max_stack": 1, "slot": "head", "armor": 4, "armor_toughness": 4, "knockback_resistance": 0.15, "durability": 700, "tier": 7, "void_immunity": true, "fireproof": true, "texture": "void_alloy_helmet", "tags": ["end_item", "endgame"]},
+    {"id": "void_alloy_chestplate", "display_name": "Void Alloy Chestplate", "max_stack": 1, "slot": "chest", "armor": 10, "armor_toughness": 4, "knockback_resistance": 0.15, "durability": 1000, "tier": 7, "void_immunity": true, "fireproof": true, "texture": "void_alloy_chestplate", "tags": ["end_item", "endgame"]},
+    {"id": "void_alloy_leggings", "display_name": "Void Alloy Leggings", "max_stack": 1, "slot": "legs", "armor": 8, "armor_toughness": 4, "knockback_resistance": 0.15, "durability": 940, "tier": 7, "void_immunity": true, "fireproof": true, "texture": "void_alloy_leggings", "tags": ["end_item", "endgame"]},
+    {"id": "void_alloy_boots", "display_name": "Void Alloy Boots", "max_stack": 1, "slot": "feet", "armor": 4, "armor_toughness": 4, "knockback_resistance": 0.15, "durability": 800, "tier": 7, "void_immunity": true, "fireproof": true, "texture": "void_alloy_boots", "tags": ["end_item", "endgame"]},
+
+    {"id": "miner_helmet",     "display_name": "Casque du Prospecteur", "max_stack": 1, "slot": "head",  "armor": 1, "durability": 200, "tier": 3, "texture": "miner_helmet",     "tags": ["style_armor", "style_mineur"],  "skill_bonus": {"mining_speed": 0.10}},
+    {"id": "miner_chestplate", "display_name": "Plastron du Mineur",    "max_stack": 1, "slot": "chest", "armor": 2, "durability": 320, "tier": 3, "texture": "miner_chestplate", "tags": ["style_armor", "style_mineur"],  "skill_bonus": {"fortune": 1}},
+    {"id": "miner_leggings",   "display_name": "Jambières de Caverne",  "max_stack": 1, "slot": "legs",  "armor": 2, "durability": 290, "tier": 3, "texture": "miner_leggings",   "tags": ["style_armor", "style_mineur"],  "skill_bonus": {"mining_speed": 0.10}},
+    {"id": "miner_boots",      "display_name": "Bottes Silencieuses",   "max_stack": 1, "slot": "feet",  "armor": 1, "durability": 240, "tier": 3, "texture": "miner_boots",      "tags": ["style_armor", "style_mineur"],  "skill_bonus": {"vein_bonus": 8}},
+
+    {"id": "warrior_helmet",     "display_name": "Heaume de Sang",      "max_stack": 1, "slot": "head",  "armor": 3, "durability": 350, "tier": 3, "texture": "warrior_helmet",     "tags": ["style_armor", "style_guerrier"], "skill_bonus": {"attack_damage": 0.10}},
+    {"id": "warrior_chestplate", "display_name": "Cuirasse de Guerre",  "max_stack": 1, "slot": "chest", "armor": 6, "durability": 500, "tier": 3, "texture": "warrior_chestplate", "tags": ["style_armor", "style_guerrier"], "skill_bonus": {"damage_reduction": 0.05}},
+    {"id": "warrior_leggings",   "display_name": "Cuissardes de Combat","max_stack": 1, "slot": "legs",  "armor": 5, "durability": 460, "tier": 3, "texture": "warrior_leggings",   "tags": ["style_armor", "style_guerrier"], "skill_bonus": {"attack_damage": 0.10}},
+    {"id": "warrior_boots",      "display_name": "Sabatones d'Assaut",  "max_stack": 1, "slot": "feet",  "armor": 2, "durability": 390, "tier": 3, "texture": "warrior_boots",      "tags": ["style_armor", "style_guerrier"], "skill_bonus": {"execute_threshold": 0.05}},
+
+    {"id": "engineer_helmet",     "display_name": "Casque Biomécanique",  "max_stack": 1, "slot": "head",  "armor": 2, "durability": 280, "tier": 3, "texture": "engineer_helmet",     "tags": ["style_armor", "style_ingenieur"], "skill_bonus": {"mining_speed": 0.05}},
+    {"id": "engineer_chestplate", "display_name": "Torso Mécanique",      "max_stack": 1, "slot": "chest", "armor": 4, "durability": 420, "tier": 3, "texture": "engineer_chestplate", "tags": ["style_armor", "style_ingenieur"], "skill_bonus": {"fall_damage_mult": 0.50}},
+    {"id": "engineer_leggings",   "display_name": "Jambes Propulsées",    "max_stack": 1, "slot": "legs",  "armor": 3, "durability": 385, "tier": 3, "texture": "engineer_leggings",   "tags": ["style_armor", "style_ingenieur"], "skill_bonus": {"sprint_speed": 0.20}},
+    {"id": "engineer_boots",      "display_name": "Propulseurs Turbo",    "max_stack": 1, "slot": "feet",  "armor": 1, "durability": 310, "tier": 3, "texture": "engineer_boots",      "tags": ["style_armor", "style_ingenieur"], "skill_bonus": {"jump_mult": 0.30}},
+
+    {"id": "nature_helmet",     "display_name": "Couronne de Lierre",  "max_stack": 1, "slot": "head",  "armor": 1, "durability": 200, "tier": 3, "texture": "nature_helmet",     "tags": ["style_armor", "style_naturel"], "skill_bonus": {"xp_gain": 0.20}},
+    {"id": "nature_chestplate", "display_name": "Robe de Druide",      "max_stack": 1, "slot": "chest", "armor": 2, "durability": 320, "tier": 3, "texture": "nature_chestplate", "tags": ["style_armor", "style_naturel"], "skill_bonus": {"food_regen": 0.50}},
+    {"id": "nature_leggings",   "display_name": "Kilt Elfique",         "max_stack": 1, "slot": "legs",  "armor": 2, "durability": 290, "tier": 3, "texture": "nature_leggings",   "tags": ["style_armor", "style_naturel"], "skill_bonus": {"move_speed": 0.10}},
+    {"id": "nature_boots",      "display_name": "Sandales de Pèlerin", "max_stack": 1, "slot": "feet",  "armor": 1, "durability": 240, "tier": 3, "texture": "nature_boots",      "tags": ["style_armor", "style_naturel"], "skill_bonus": {"xp_gain": 0.10}}
+  ]
+}

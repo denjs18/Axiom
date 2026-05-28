@@ -1,0 +1,210 @@
+{
+  "version": "1.0",
+  "namespace": "axiom",
+  "biomes": [
+    {
+      "id": "end_central",
+      "display_name": "The End (Central)",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 10,
+      "category": "the_end",
+      "layer": 0,
+      "sky_color": "#000000",
+      "fog_color": "#A080A0",
+      "water_color": "#3F76E4",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4},
+      "features": {
+        "obsidian_pillars": true,
+        "end_crystals": true,
+        "void_particles": true
+      },
+      "structures": ["end_portal", "obsidian_platform"],
+      "mobs": {
+        "passive": [],
+        "hostile": ["enderman", "ender_dragon"]
+      }
+    },
+    {
+      "id": "end_highlands",
+      "display_name": "End Highlands",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 8,
+      "category": "the_end",
+      "layer": 1,
+      "sky_color": "#000000",
+      "fog_color": "#8080FF",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4},
+      "features": {
+        "chorus_forest": 3.0,
+        "chorus_vine": 1.0,
+        "void_lily": 0.3,
+        "end_stone_boulders": 0.5,
+        "vertical_islands": true
+      },
+      "structures": ["end_city", "end_ship"],
+      "ores": [
+        {"block": "axiom:ender_shard_ore", "count": 8, "min_y": 0, "max_y": 60, "rarity": 15}
+      ],
+      "mobs": {
+        "passive": [],
+        "hostile": ["enderman", "shulker"]
+      }
+    },
+    {
+      "id": "end_caves",
+      "display_name": "End Caves",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 5,
+      "category": "the_end",
+      "layer": 1,
+      "underground": true,
+      "sky_color": "#000000",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4},
+      "features": {
+        "glow_mold": true,
+        "bioluminescent_walls": true,
+        "cave_formations": true
+      },
+      "structures": ["end_sanctuary"],
+      "ores": [
+        {"block": "axiom:void_crystal_ore", "count": 6, "min_y": -32, "max_y": 40, "rarity": 20},
+        {"block": "axiom:ender_shard_ore", "count": 4, "min_y": -32, "max_y": 40, "rarity": 25}
+      ],
+      "mobs": {
+        "passive": ["cavecrawler"],
+        "hostile": ["endermite"]
+      }
+    },
+    {
+      "id": "end_oasis",
+      "display_name": "End Oasis",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 2,
+      "category": "the_end",
+      "layer": 1,
+      "rare": true,
+      "sky_color": "#200050",
+      "fog_color": "#4B0082",
+      "water_color": "#8000FF",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4, "void_essence_pool": true},
+      "features": {
+        "void_essence_fluid": true,
+        "ether_bloom": 2.0,
+        "void_reed": 1.5,
+        "glowing_vegetation": true
+      },
+      "mobs": {
+        "passive": ["drift_mote"],
+        "hostile": []
+      }
+    },
+    {
+      "id": "end_ruins",
+      "display_name": "End Ruins",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 4,
+      "category": "the_end",
+      "layer": 1,
+      "sky_color": "#1A0030",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4},
+      "features": {
+        "ancient_ruins": true,
+        "broken_bridges": true,
+        "inscriptions": true,
+        "suspended_libraries": 0.5
+      },
+      "structures": ["end_temple", "ender_library", "ancient_sanctuary"],
+      "mobs": {
+        "passive": [],
+        "hostile": ["remnant_enderman", "enderman", "ground_blaze"]
+      }
+    },
+    {
+      "id": "asteroid_fields",
+      "display_name": "Asteroid Fields",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 3,
+      "category": "the_end",
+      "layer": 2,
+      "sky_color": "#000000",
+      "precipitation": "none",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 2},
+      "features": {
+        "small_asteroids": 10.0,
+        "void_winds": true,
+        "elytra_currents": true,
+        "rare_mineral_asteroids": 0.1
+      },
+      "mobs": {
+        "passive": ["asteroid_crawler"],
+        "hostile": ["endermite"]
+      }
+    },
+    {
+      "id": "end_upper_realm",
+      "display_name": "End Upper Realm",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 3,
+      "category": "the_end",
+      "layer": 2,
+      "sky_color": "#0A000A",
+      "fog_color": "#1A002A",
+      "precipitation": "none",
+      "unlock_condition": "dragon_phase2_defeated",
+      "surface": {"top": "end_stone", "filler": "end_stone", "depth": 4},
+      "features": {
+        "massive_islands": true,
+        "end_city_large": 1.0,
+        "chorus_forest_dense": 5.0
+      },
+      "structures": ["end_city_massive", "end_warship"],
+      "ores": [
+        {"block": "axiom:ender_shard_ore", "count": 12, "min_y": 0, "max_y": 80, "rarity": 10}
+      ],
+      "mobs": {
+        "passive": [],
+        "hostile": ["enderman", "shulker", "remnant_enderman"]
+      }
+    },
+    {
+      "id": "void_rifts",
+      "display_name": "Void Rifts",
+      "temperature": 0.5,
+      "humidity": 0.5,
+      "weight": 2,
+      "category": "the_end",
+      "layer": 3,
+      "endgame": true,
+      "sky_color": "#000000",
+      "fog_color": "#000000",
+      "fog_density": 0.9,
+      "precipitation": "none",
+      "surface": {"top": "void_stone", "filler": "void_stone", "depth": 4},
+      "features": {
+        "void_rifts": 3.0,
+        "void_crystals": 1.0,
+        "dark_atmosphere": true
+      },
+      "structures": ["void_citadel"],
+      "ores": [
+        {"block": "axiom:nullite_ore", "count": 4, "min_y": 0, "max_y": 40, "rarity": 50}
+      ],
+      "mobs": {
+        "passive": [],
+        "hostile": ["void_stalker", "enderman"]
+      }
+    }
+  ]
+}

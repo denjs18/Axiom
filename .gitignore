@@ -1,0 +1,27 @@
+# Godot 4 generated files
+.godot/
+*.uid
+
+# Mono / C# build
+.mono/
+data_*/
+mono_crash.*.json
+
+# Export / builds
+builds/
+export/
+*.apk
+*.aab
+*.exe
+*.x86_64
+*.dmg
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temp
+*.tmp
+*.bak
+*~

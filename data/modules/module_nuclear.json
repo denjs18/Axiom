@@ -1,0 +1,26 @@
+{
+  "id": "nuclear",
+  "display_name": "Nuclear Module",
+  "description": "Uranium reactors, radiation, and nuclear weapons (optional).",
+  "version": "1.0",
+  "dependencies": ["electricity"],
+  "script": "res://src/modules/NuclearModule.gd",
+  "blocks": [
+    {"id": 3200, "name": "uranium_ore_deep", "display_name": "Uranium Ore", "hardness": 3.0, "tool": "pickaxe", "tool_level": 2, "light_level": 2, "texture": "uranium_ore"},
+    {"id": 3201, "name": "reactor_core", "display_name": "Reactor Core", "hardness": 6.0, "tool": "pickaxe", "tool_level": 3, "texture": "reactor_core", "multiblock_tag": "reactor"},
+    {"id": 3202, "name": "reactor_wall", "display_name": "Reactor Wall", "hardness": 8.0, "blast_resistance": 600, "tool": "pickaxe", "tool_level": 3, "texture": "reactor_wall"},
+    {"id": 3203, "name": "radiation_zone_marker", "display_name": "Radiation Containment Block", "hardness": 5.0, "tool": "pickaxe", "tool_level": 2, "texture": "radiation_block"},
+    {"id": 3204, "name": "lead_block", "display_name": "Lead Block", "hardness": 5.0, "blast_resistance": 6.0, "tool": "pickaxe", "tool_level": 1, "texture": "lead_block", "radiation_shield": true}
+  ],
+  "items": [
+    {"id": "raw_uranium", "display_name": "Raw Uranium", "max_stack": 64, "texture": "raw_uranium", "tags": ["nuclear_material"]},
+    {"id": "uranium_ingot", "display_name": "Uranium Ingot", "max_stack": 64, "texture": "uranium_ingot", "tags": ["nuclear_material"]},
+    {"id": "uranium_rod", "display_name": "Uranium Fuel Rod", "max_stack": 16, "durability": 2000, "texture": "uranium_rod", "eu_output": 100},
+    {"id": "enriched_rod", "display_name": "Enriched Fuel Rod", "max_stack": 16, "durability": 3000, "texture": "enriched_rod", "eu_output": 500},
+    {"id": "void_enriched_rod", "display_name": "Void-Enriched Rod", "max_stack": 8, "durability": 5000, "texture": "void_enriched_rod", "eu_output": 5000},
+    {"id": "radiation_suit_helmet", "display_name": "Radiation Helmet", "max_stack": 1, "slot": "head", "armor": 2, "durability": 300, "radiation_protection": 0.9, "texture": "radiation_helmet"},
+    {"id": "radiation_suit_chest", "display_name": "Radiation Suit Chestplate", "max_stack": 1, "slot": "chest", "armor": 6, "durability": 400, "radiation_protection": 0.9, "texture": "radiation_chestplate"},
+    {"id": "sulfur", "display_name": "Sulfur", "max_stack": 64, "texture": "sulfur", "tags": ["nuclear_material", "chemical"]},
+    {"id": "lead_ingot", "display_name": "Lead Ingot", "max_stack": 64, "texture": "lead_ingot"}
+  ]
+}

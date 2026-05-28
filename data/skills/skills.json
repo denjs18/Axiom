@@ -1,0 +1,274 @@
+{
+  "skills": [
+    {
+      "id": "mineur_vitesse",
+      "class": "mineur",
+      "tier": 1,
+      "slot": 0,
+      "name": "Frappe Précise",
+      "description": "+30 % vitesse de minage",
+      "implemented": true
+    },
+    {
+      "id": "mineur_vein2",
+      "class": "mineur",
+      "tier": 1,
+      "slot": 1,
+      "name": "Veines Étendues",
+      "description": "Vein Mining : portée doublée (64 blocs)",
+      "implemented": true
+    },
+    {
+      "id": "mineur_fortune",
+      "class": "mineur",
+      "tier": 2,
+      "slot": 0,
+      "name": "Fortune du Prospecteur",
+      "description": "+1 niveau de Fortune sur les minerais",
+      "implemented": true
+    },
+    {
+      "id": "mineur_craft2",
+      "class": "mineur",
+      "tier": 2,
+      "slot": 1,
+      "name": "Extraction Efficace",
+      "description": "Double la production des recettes de pierre",
+      "implemented": false
+    },
+    {
+      "id": "mineur_3x3",
+      "class": "mineur",
+      "tier": 3,
+      "slot": 0,
+      "name": "Minage en Croix",
+      "description": "En sneakant : mine un carré 3×3 d'un coup",
+      "implemented": true
+    },
+    {
+      "id": "mineur_immortel",
+      "class": "mineur",
+      "tier": 4,
+      "slot": 0,
+      "name": "Pioche Immortelle",
+      "description": "La pioche ne se casse plus jamais",
+      "implemented": false
+    },
+    {
+      "id": "guerrier_degats",
+      "class": "guerrier",
+      "tier": 1,
+      "slot": 0,
+      "name": "Frappe Lourde",
+      "description": "+20 % dégâts en mêlée",
+      "implemented": true
+    },
+    {
+      "id": "guerrier_vie",
+      "class": "guerrier",
+      "tier": 1,
+      "slot": 1,
+      "name": "Cœur de Fer",
+      "description": "+4 points de vie maximum",
+      "implemented": true
+    },
+    {
+      "id": "guerrier_furie",
+      "class": "guerrier",
+      "tier": 2,
+      "slot": 0,
+      "name": "Furie du Chasseur",
+      "description": "+20 % dégâts pendant 5 s après un kill",
+      "implemented": true
+    },
+    {
+      "id": "guerrier_resistance",
+      "class": "guerrier",
+      "tier": 2,
+      "slot": 1,
+      "name": "Peau d'Acier",
+      "description": "-10 % dégâts reçus",
+      "implemented": true
+    },
+    {
+      "id": "guerrier_executeur",
+      "class": "guerrier",
+      "tier": 3,
+      "slot": 0,
+      "name": "Exécuteur",
+      "description": "×2 dégâts sur ennemis sous 25 % de vie",
+      "implemented": true
+    },
+    {
+      "id": "guerrier_seigneur",
+      "class": "guerrier",
+      "tier": 4,
+      "slot": 0,
+      "name": "Seigneur de Guerre",
+      "description": "+30 % dégâts et -10 % dégâts reçus supplémentaires",
+      "implemented": true
+    },
+    {
+      "id": "ingenieur_durabilite",
+      "class": "ingenieur",
+      "tier": 1,
+      "slot": 0,
+      "name": "Matériaux Renforcés",
+      "description": "Outils durent 50 % plus longtemps",
+      "implemented": false
+    },
+    {
+      "id": "ingenieur_construction",
+      "class": "ingenieur",
+      "tier": 1,
+      "slot": 1,
+      "name": "Mains Agiles",
+      "description": "Pose les blocs 30 % plus vite",
+      "implemented": false
+    },
+    {
+      "id": "ingenieur_redstone",
+      "class": "ingenieur",
+      "tier": 2,
+      "slot": 0,
+      "name": "Ingénierie Redstone",
+      "description": "+20 % portée des signaux redstone",
+      "implemented": false
+    },
+    {
+      "id": "ingenieur_machines",
+      "class": "ingenieur",
+      "tier": 2,
+      "slot": 1,
+      "name": "Optimisation Mécanique",
+      "description": "Machines 20 % plus rapides",
+      "implemented": false
+    },
+    {
+      "id": "ingenieur_sprint",
+      "class": "ingenieur",
+      "tier": 3,
+      "slot": 0,
+      "name": "Moteur Turbo",
+      "description": "+30 % vitesse de sprint",
+      "implemented": true
+    },
+    {
+      "id": "ingenieur_exosquelette",
+      "class": "ingenieur",
+      "tier": 4,
+      "slot": 0,
+      "name": "Exosquelette",
+      "description": "Saut ×1.5, pas de dégâts de chute, sprint encore +30 %",
+      "implemented": true
+    },
+    {
+      "id": "mage_xp",
+      "class": "mage",
+      "tier": 1,
+      "slot": 0,
+      "name": "Soif de Savoir",
+      "description": "+30 % d'expérience gagnée",
+      "implemented": true
+    },
+    {
+      "id": "mage_potions",
+      "class": "mage",
+      "tier": 1,
+      "slot": 1,
+      "name": "Herboriste",
+      "description": "Potions durent 50 % plus longtemps",
+      "implemented": false
+    },
+    {
+      "id": "mage_enchant",
+      "class": "mage",
+      "tier": 2,
+      "slot": 0,
+      "name": "Maîtrise des Runes",
+      "description": "-25 % coût en XP des enchantements",
+      "implemented": false
+    },
+    {
+      "id": "mage_brassage",
+      "class": "mage",
+      "tier": 2,
+      "slot": 1,
+      "name": "Alchimiste",
+      "description": "Brassage de potions 25 % plus efficace",
+      "implemented": false
+    },
+    {
+      "id": "mage_canalisation",
+      "class": "mage",
+      "tier": 3,
+      "slot": 0,
+      "name": "Canalisation",
+      "description": "Lance un projectile magique (clic droit, CD 10 s)",
+      "implemented": false
+    },
+    {
+      "id": "mage_grand",
+      "class": "mage",
+      "tier": 4,
+      "slot": 0,
+      "name": "Grand Mage",
+      "description": "Tous les bonus de Mage sont doublés",
+      "implemented": false
+    },
+    {
+      "id": "fermier_cultures",
+      "class": "fermier",
+      "tier": 1,
+      "slot": 0,
+      "name": "Pousse Rapide",
+      "description": "Les cultures poussent 2× plus vite",
+      "implemented": false
+    },
+    {
+      "id": "fermier_apprivoisement",
+      "class": "fermier",
+      "tier": 1,
+      "slot": 1,
+      "name": "Bêtes Dociles",
+      "description": "Les animaux passifs ne fuient plus",
+      "implemented": false
+    },
+    {
+      "id": "fermier_recolte",
+      "class": "fermier",
+      "tier": 2,
+      "slot": 0,
+      "name": "Récolte Abondante",
+      "description": "+1 item par récolte",
+      "implemented": false
+    },
+    {
+      "id": "fermier_regen",
+      "class": "fermier",
+      "tier": 2,
+      "slot": 1,
+      "name": "Symbiose",
+      "description": "Régénération naturelle 1.5× plus rapide",
+      "implemented": true
+    },
+    {
+      "id": "fermier_domestication",
+      "class": "fermier",
+      "tier": 3,
+      "slot": 0,
+      "name": "Maître des Bêtes",
+      "description": "×2 chances d'apprivoiser les animaux",
+      "implemented": false
+    },
+    {
+      "id": "fermier_benediction",
+      "class": "fermier",
+      "tier": 4,
+      "slot": 0,
+      "name": "Bénédiction de la Terre",
+      "description": "Tous les effets de nourriture sont doublés",
+      "implemented": false
+    }
+  ]
+}

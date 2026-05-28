@@ -1,0 +1,1 @@
+{"id": "economy", "display_name": "Economy & Markets", "description": "Player markets, factions, and currency system.", "version": "1.0", "dependencies": [], "script": "res://src/modules/EconomyModule.gd"}

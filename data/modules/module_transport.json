@@ -1,0 +1,1 @@
+{"id": "transport", "display_name": "Advanced Transport", "description": "Trains, aircraft, and fast travel systems.", "version": "1.0", "dependencies": [], "script": "res://src/modules/TransportModule.gd"}

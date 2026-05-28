@@ -1,0 +1,34 @@
+{
+  "id": "electricity",
+  "display_name": "Electricity Module",
+  "description": "Adds generators, cables, and electric machines for automated processing.",
+  "version": "1.0",
+  "dependencies": [],
+  "script": "res://src/modules/ElectricityModule.gd",
+  "blocks": [
+    {"id": 3000, "name": "solar_panel", "display_name": "Solar Panel", "hardness": 3.0, "tool": "pickaxe", "tool_level": 1, "texture": "solar_panel", "entity": "res://src/modules/electricity/SolarPanelEntity.gd"},
+    {"id": 3001, "name": "wind_turbine_base", "display_name": "Wind Turbine", "hardness": 4.0, "tool": "pickaxe", "tool_level": 1, "texture": "wind_turbine", "entity": "res://src/modules/electricity/WindTurbineEntity.gd"},
+    {"id": 3002, "name": "lava_generator", "display_name": "Lava Generator", "hardness": 4.0, "tool": "pickaxe", "tool_level": 1, "texture": "lava_generator", "entity": "res://src/modules/electricity/LavaGeneratorEntity.gd"},
+    {"id": 3003, "name": "copper_wire", "display_name": "Copper Wire", "hardness": 0.5, "tool": "pickaxe", "tool_level": 1, "texture": "copper_wire", "range": 32},
+    {"id": 3004, "name": "iron_wire", "display_name": "Iron Wire", "hardness": 1.0, "tool": "pickaxe", "tool_level": 1, "texture": "iron_wire", "range": 64},
+    {"id": 3005, "name": "gold_wire", "display_name": "Gold Wire", "hardness": 1.0, "tool": "pickaxe", "tool_level": 1, "texture": "gold_wire", "range": 128, "energy_loss": 0.05},
+    {"id": 3006, "name": "electric_furnace", "display_name": "Electric Furnace", "hardness": 4.0, "tool": "pickaxe", "tool_level": 1, "texture": "electric_furnace", "speed_multiplier": 5, "eu_per_tick": 20},
+    {"id": 3007, "name": "electric_crusher", "display_name": "Electric Crusher", "hardness": 4.0, "tool": "pickaxe", "tool_level": 1, "texture": "electric_crusher", "output_multiplier": 2, "eu_per_tick": 40},
+    {"id": 3008, "name": "small_battery", "display_name": "Small Battery", "hardness": 3.0, "tool": "pickaxe", "tool_level": 1, "texture": "small_battery", "capacity": 10000},
+    {"id": 3009, "name": "large_battery", "display_name": "Large Battery", "hardness": 3.0, "tool": "pickaxe", "tool_level": 2, "texture": "large_battery", "capacity": 100000},
+    {"id": 3010, "name": "electric_sorter", "display_name": "Electric Sorter", "hardness": 3.5, "tool": "pickaxe", "tool_level": 1, "texture": "electric_sorter", "eu_per_tick": 5},
+    {"id": 3011, "name": "electric_pump", "display_name": "Electric Pump", "hardness": 3.5, "tool": "pickaxe", "tool_level": 1, "texture": "electric_pump", "eu_per_tick": 15}
+  ],
+  "items": [
+    {"id": "copper_circuit", "display_name": "Copper Circuit", "max_stack": 64, "texture": "copper_circuit"},
+    {"id": "iron_circuit", "display_name": "Iron Circuit", "max_stack": 64, "texture": "iron_circuit"},
+    {"id": "gold_circuit", "display_name": "Gold Circuit", "max_stack": 64, "texture": "gold_circuit"},
+    {"id": "energy_crystal", "display_name": "Energy Crystal", "max_stack": 64, "texture": "energy_crystal"}
+  ],
+  "recipes": [
+    {"id": "copper_circuit", "type": "shaped", "pattern": ["RRR", "CCC", "RRR"], "keys": {"R": "axiom:redstone", "C": "axiom:copper_ingot"}, "result": {"item": "axiom:copper_circuit", "count": 2}},
+    {"id": "solar_panel", "type": "shaped", "pattern": ["GGG", "CCC", "III"], "keys": {"G": "axiom:glass", "C": "axiom:copper_circuit", "I": "axiom:iron_ingot"}, "result": {"item": "axiom:solar_panel", "count": 1}},
+    {"id": "copper_wire", "type": "shaped", "pattern": ["CCC"], "keys": {"C": "axiom:copper_ingot"}, "result": {"item": "axiom:copper_wire", "count": 6}},
+    {"id": "electric_furnace", "type": "shaped", "pattern": ["III", "IFI", "ICI"], "keys": {"I": "axiom:iron_ingot", "F": "axiom:furnace", "C": "axiom:copper_circuit"}, "result": {"item": "axiom:electric_furnace", "count": 1}}
+  ]
+}

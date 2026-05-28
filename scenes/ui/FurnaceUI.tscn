@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://furnace_ui_scene"]
+
+[ext_resource type="Script" path="res://scenes/ui/FurnaceUI.gd" id="1"]
+
+[node name="FurnaceUI" type="CanvasLayer"]
+script = ExtResource("1")
