@@ -1,18 +1,19 @@
 ## BlockTextureAtlas.gd
-## Autoload singleton. Procedurally generates a 256×256 pixel-art block texture atlas
-## (16 columns × 16 rows, each tile 16×16 px). Called once at startup.
+## Autoload singleton. Builds a square block-texture atlas at startup.
+## Each tile is loaded from the imported Minecraft PNGs in
+## res://assets/textures/blocks/ (matched by texture name). Any texture name
+## without a PNG falls back to the procedural pixel-art generator below, so the
+## game never shows a blank tile.
 extends Node
 
-const COLS := 16
-const ROWS := 16
-const T    := 16      # tile size in pixels
-const W    := COLS * T  # atlas width  = 256
-const H_   := ROWS * T  # atlas height = 256
+const T := 16  # tile size in pixels (vanilla Minecraft texture size)
+const BLOCKS_TEX_DIR := "res://assets/textures/blocks/"
 
 var texture:      ImageTexture
-var tile_uv_size: float = 1.0 / float(COLS)  # 0.0625 per tile
+var tile_uv_size: float = 0.0625  # = 1 / grid_cols, set in _build()
+var _grid_cols:   int   = 16      # atlas is _grid_cols × _grid_cols tiles
 
-# tex_name → Vector2(col/COLS, row/ROWS) atlas UV top-left
+# tex_name → Vector2 atlas UV top-left
 var _uv: Dictionary = {}
 
 # Atlas layout: [col, row, "texture_name"]
@@ -91,6 +92,10 @@ func _ready() -> void:
 
 
 func get_face_uv(tex_name: String) -> Vector2:
+	# Prefer the exact texture name (real imported PNG); fall back to an alias,
+	# then to the "missing" tile.
+	if _uv.has(tex_name):
+		return _uv[tex_name]
 	var key: String = _ALIASES[tex_name] if _ALIASES.has(tex_name) else tex_name
 	if _uv.has(key):
 		return _uv[key]
@@ -100,22 +105,92 @@ func get_face_uv(tex_name: String) -> Vector2:
 
 
 func _build() -> void:
-	var atlas := Image.create(W, H_, false, Image.FORMAT_RGBA8)
+	var names := _collect_texture_names()
+	var count: int = names.size()
+	var cols: int = max(1, int(ceil(sqrt(float(count)))))
+	_grid_cols = cols
+	tile_uv_size = 1.0 / float(cols)
+
+	var atlas := Image.create(cols * T, cols * T, false, Image.FORMAT_RGBA8)
 	var rng   := RandomNumberGenerator.new()
+	var real_count := 0
 
-	for entry in _LAYOUT:
-		var col: int    = entry[0]
-		var row: int    = entry[1]
-		var name: String = entry[2]
-
-		rng.seed = hash(name) & 0x7FFFFFFF
-		var tile := Image.create(T, T, false, Image.FORMAT_RGBA8)
-		_draw_texture(tile, rng, name)
+	for i in count:
+		var name: String = names[i]
+		var col: int = i % cols
+		var row: int = i / cols
+		var loaded := _load_tile(name)
+		var tile: Image
+		if loaded != null:
+			tile = loaded
+			real_count += 1
+		else:
+			# Procedural fallback for any texture without an imported PNG.
+			rng.seed = hash(name) & 0x7FFFFFFF
+			tile = Image.create(T, T, false, Image.FORMAT_RGBA8)
+			_draw_texture(tile, rng, name)
 		atlas.blit_rect(tile, Rect2i(0, 0, T, T), Vector2i(col * T, row * T))
-		_uv[name] = Vector2(float(col) / COLS, float(row) / ROWS)
+		_uv[name] = Vector2(float(col) / float(cols), float(row) / float(cols))
 
 	texture = ImageTexture.create_from_image(atlas)
-	print("[BlockTextureAtlas] Atlas built (%d×%d, %d textures)." % [W, H_, _LAYOUT.size()])
+	print("[BlockTextureAtlas] Atlas built (%d×%d, %d tiles, %d from imported PNGs)." % [
+		cols * T, cols * T, count, real_count])
+
+
+## Gather every texture name referenced by registered blocks (plus the
+## procedural layout names and alias targets) so each gets its own atlas tile.
+func _collect_texture_names() -> Array:
+	var name_set: Dictionary = {}
+	for bid in BlockRegistry.get_all_block_ids():
+		var b = BlockRegistry.get_block(bid)
+		if b == null:
+			continue
+		var t = b.texture
+		if t is String:
+			name_set[t] = true
+		elif t is Dictionary:
+			for v in t.values():
+				name_set[str(v)] = true
+	# Keep procedural fallbacks and alias targets available as tiles too.
+	for entry in _LAYOUT:
+		name_set[entry[2]] = true
+	for k in _ALIASES:
+		name_set[_ALIASES[k]] = true
+	name_set["missing"] = true
+	return name_set.keys()
+
+
+## Load an imported block PNG as a 16×16 RGBA tile, or null if none exists.
+func _load_tile(tex_name: String) -> Image:
+	var path := BLOCKS_TEX_DIR + tex_name + ".png"
+	if not ResourceLoader.exists(path):
+		return null
+	var tex := load(path) as Texture2D
+	if tex == null:
+		return null
+	var img := tex.get_image()
+	if img == null:
+		return null
+	return _normalize_tile(img)
+
+
+## Convert any source image to a 16×16 RGBA8 tile. Animated strips (taller than
+## wide, e.g. water/lava) are cropped to their first frame.
+func _normalize_tile(src: Image) -> Image:
+	var img := src.duplicate()
+	if img.get_format() != Image.FORMAT_RGBA8:
+		img.convert(Image.FORMAT_RGBA8)
+	var w := img.get_width()
+	var h := img.get_height()
+	if w <= 0 or h <= 0:
+		return null
+	if h > w:
+		var frame := Image.create(w, w, false, Image.FORMAT_RGBA8)
+		frame.blit_rect(img, Rect2i(0, 0, w, w), Vector2i.ZERO)
+		img = frame
+	if img.get_width() != T or img.get_height() != T:
+		img.resize(T, T, Image.INTERPOLATE_NEAREST)
+	return img
 
 
 # ── Main dispatch ──────────────────────────────────────────────────────────────
