@@ -86,6 +86,8 @@ func _ready() -> void:
 
 func _load_all_items() -> void:
 	for path in DATA_PATHS:
+		if ContentFlags.is_file_disabled(path):
+			continue  # non-vanilla file skipped while in vanilla mode
 		if FileAccess.file_exists(path):
 			_load_item_file(path)
 
@@ -102,6 +104,8 @@ func _load_item_file(path: String) -> void:
 	var ns: String = data.get("namespace", "axiom")
 	for item_data in data.get("items", []):
 		if item_data is Dictionary:
+			if ContentFlags.is_item_disabled(item_data):
+				continue  # non-vanilla item set aside while in vanilla mode
 			_register_item(ItemDef.new(item_data, ns))
 
 

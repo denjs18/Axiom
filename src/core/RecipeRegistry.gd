@@ -148,6 +148,8 @@ class ShapelessRecipe extends RecipeDef:
 
 func _ready() -> void:
 	for path in DATA_PATHS:
+		if ContentFlags.is_file_disabled(path):
+			continue  # non-vanilla file skipped while in vanilla mode
 		if FileAccess.file_exists(path):
 			_load_recipe_file(path)
 	print("[RecipeRegistry] Loaded %d shaped, %d shapeless, %d smelting recipes." % [
@@ -168,6 +170,11 @@ func _load_recipe_file(path: String) -> void:
 
 
 func _register_recipe(data: Dictionary) -> void:
+	# In vanilla mode, drop any recipe whose result item was set aside. This
+	# automatically removes recipes for custom weapons, class/style armor,
+	# End/Nether additions, etc. without listing them one by one.
+	if ContentFlags.VANILLA_ONLY and _result_item_missing(data):
+		return
 	var rtype: String = data.get("type", "shaped")
 	match rtype:
 		"shaped":
@@ -184,6 +191,17 @@ func _register_recipe(data: Dictionary) -> void:
 			_blasting[str(data.get("ingredient", ""))] = RecipeDef.new(data)
 		"smoking":
 			_smoking[str(data.get("ingredient", ""))] = RecipeDef.new(data)
+
+
+## True if this recipe produces an item that is not currently registered
+## (e.g. a non-vanilla result that was set aside). Recipes with no resolvable
+## result are kept (returns false) so we never drop valid recipes by mistake.
+func _result_item_missing(data: Dictionary) -> bool:
+	var r: Dictionary = data.get("result", {})
+	var rid: String = str(r.get("item", r.get("id", "")))
+	if rid == "":
+		return false
+	return ItemRegistry.get_item(rid) == null
 
 
 # --- Public API ---

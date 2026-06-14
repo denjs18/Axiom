@@ -146,6 +146,8 @@ func _build_flag_table() -> void:
 
 func _load_all_blocks() -> void:
 	for path in DATA_PATHS:
+		if ContentFlags.is_file_disabled(path):
+			continue  # non-vanilla file skipped while in vanilla mode
 		_load_block_file(path)
 
 
@@ -170,10 +172,13 @@ func _load_block_file(path: String) -> void:
 	var block_ns: String = data.get("namespace", "axiom")
 	var id_offset: int = data.get("id_offset", 0)
 	var blocks_array: Array = data.get("blocks", [])
+	var file_name := path.get_file()
 
 	for block_data in blocks_array:
 		if not block_data is Dictionary:
 			continue
+		if ContentFlags.is_block_disabled(block_data, file_name):
+			continue  # non-vanilla block set aside while in vanilla mode
 		var block := BlockDef.new(block_data, block_ns)
 		if id_offset > 0:
 			block.id += id_offset
