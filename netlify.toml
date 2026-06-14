@@ -1,0 +1,28 @@
+# Netlify configuration for building and hosting the Godot web export.
+# On each push, Netlify runs build.sh which downloads Godot, exports the
+# project to HTML5/WebAssembly, and publishes the result.
+
+[build]
+  command = "bash build.sh"
+  publish = "build/web"
+
+[build.environment]
+  # Must match the Godot version this project was made with (see project.godot
+  # -> config/features). Change here if you upgrade Godot.
+  GODOT_VERSION = "4.6"
+  GODOT_RELEASE = "stable"
+
+# Cross-origin isolation headers are REQUIRED because the web export uses
+# threads (SharedArrayBuffer). Without these, the game will fail to start.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+    Cross-Origin-Resource-Policy = "same-origin"
+
+# Make sure WebAssembly is served with the correct MIME type.
+[[headers]]
+  for = "/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
