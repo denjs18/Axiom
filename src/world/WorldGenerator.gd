@@ -8,6 +8,11 @@ const SEA_LEVEL := 63
 
 var _seed: int = 0
 var _dimension: String = "overworld"
+var generation_type: String = ""   # "" = normal terrain, "flat" = superflat
+
+# Superflat layout (above the spawn-rejection floor at y=60).
+const FLAT_BEDROCK_Y := 60
+const FLAT_GRASS_Y   := 63   # dirt fills 61–62, grass on top
 
 var _continental: FastNoiseLite
 var _erosion: FastNoiseLite
@@ -52,11 +57,52 @@ func _make_noise(type: int, s: int, freq: float, octaves: int) -> FastNoiseLite:
 
 
 func generate_chunk(chunk: Chunk, _world_seed: int) -> void:
+	if generation_type == "flat":
+		_gen_flat(chunk)
+		return
 	match _dimension:
 		"overworld": _gen_overworld(chunk)
 		"nether":    _gen_nether(chunk)
 		"the_end":   _gen_end(chunk)
 		_:           _gen_overworld(chunk)
+
+
+# ─── SUPERFLAT (creative testing) ─────────────────────────────────────────────
+
+var _flat_ids_cached := false
+var _flat_bedrock := 0
+var _flat_dirt := 0
+var _flat_grass := 0
+
+func _cache_flat_ids() -> void:
+	if _flat_ids_cached:
+		return
+	_flat_ids_cached = true
+	var bedrock := BlockRegistry.get_block_by_name("bedrock")
+	var dirt := BlockRegistry.get_block_by_name("dirt")
+	var grass := BlockRegistry.get_block_by_name("grass_block")
+	_flat_bedrock = bedrock.id if bedrock else 0
+	_flat_dirt = dirt.id if dirt else 0
+	_flat_grass = grass.id if grass else 0
+
+func _gen_flat(chunk: Chunk) -> void:
+	_cache_flat_ids()
+	var wy0 := chunk.chunk_pos.y * CHUNK_SIZE
+	for ly in CHUNK_SIZE:
+		var wy := wy0 + ly
+		var bid := 0
+		if wy == FLAT_BEDROCK_Y:
+			bid = _flat_bedrock
+		elif wy > FLAT_BEDROCK_Y and wy < FLAT_GRASS_Y:
+			bid = _flat_dirt
+		elif wy == FLAT_GRASS_Y:
+			bid = _flat_grass
+		if bid == 0:
+			continue  # air
+		for lx in CHUNK_SIZE:
+			for lz in CHUNK_SIZE:
+				chunk.set_block_fast(lx, ly, lz, bid)
+	chunk.rebuild_heightmap()
 
 
 # ─── OVERWORLD ───────────────────────────────────────────────────────────────

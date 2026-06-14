@@ -18,6 +18,8 @@ extends Control
 @onready var btn_cancel_load: Button = $LoadWorldPanel/VBox/BtnCancelLoad
 
 var _module_checkboxes: Dictionary = {}
+var _creative_check: CheckBox = null
+var _flat_check: CheckBox = null
 
 
 func _ready() -> void:
@@ -39,6 +41,26 @@ func _ready() -> void:
 		load_world_panel.hide()
 	_populate_modules()
 	_populate_world_list()
+	_add_world_option_checks()
+
+
+## Adds "Creative" and "Flat world" toggles to the new-world panel (built in
+## code so no scene edit is needed). Inserted just above the Start button.
+func _add_world_option_checks() -> void:
+	if btn_start == null:
+		return
+	var vbox := btn_start.get_parent()
+	if vbox == null:
+		return
+	_creative_check = CheckBox.new()
+	_creative_check.text = "Mode Créatif (vol, casse instantanée, blocs illimités)"
+	_flat_check = CheckBox.new()
+	_flat_check.text = "Monde plat (superflat — idéal pour tester)"
+	vbox.add_child(_creative_check)
+	vbox.add_child(_flat_check)
+	# Place the two checks right before the Start button.
+	vbox.move_child(_creative_check, btn_start.get_index())
+	vbox.move_child(_flat_check, btn_start.get_index())
 
 
 func _on_new_world_pressed() -> void:
@@ -95,7 +117,9 @@ func _on_start_new_world() -> void:
 	for mod_id in _module_checkboxes:
 		if _module_checkboxes[mod_id].button_pressed:
 			active_mods.append(mod_id)
-	GameManager.start_new_world(wname, wseed, active_mods)
+	var creative := _creative_check != null and _creative_check.button_pressed
+	var gen_type := "flat" if (_flat_check != null and _flat_check.button_pressed) else ""
+	GameManager.start_new_world(wname, wseed, active_mods, creative, gen_type)
 
 
 func _on_load_selected_world() -> void:

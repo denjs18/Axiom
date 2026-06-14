@@ -40,6 +40,7 @@ func _ready() -> void:
 	# Init world generation
 	world_generator = WorldGenerator.new()
 	world_generator.initialize(wseed, dim)
+	world_generator.generation_type = GameManager.generation_type
 	chunk_manager.initialize(wname, wseed, dim)
 	chunk_manager._world_generator = world_generator
 
@@ -60,6 +61,9 @@ func _ready() -> void:
 	# Connect player
 	player._chunk_manager = chunk_manager
 	player._block_entity_manager = block_entity_manager
+	player.creative = GameManager.creative_mode
+	if GameManager.creative_mode:
+		player.is_flying = true
 
 	# LOD manager — runs alongside ChunkManager for distant terrain
 	lod_manager = LodManager.new()
@@ -90,6 +94,12 @@ func _ready() -> void:
 	# Inventory UI — must exist before player spawns so EventBus.inventory_opened is connected
 	var inv_ui := preload("res://scenes/ui/InventoryUI.tscn").instantiate()
 	add_child(inv_ui)
+
+	# Creative item palette (press G) — only in creative worlds
+	if GameManager.creative_mode:
+		var creative_ui: Node = load("res://scenes/ui/CreativeInventoryUI.gd").new()
+		creative_ui.name = "CreativeInventoryUI"
+		add_child(creative_ui)
 
 	# Recipe catalog — primary crafting interface (opens on crafting_table interact or C key)
 	var catalog_ui: Node = load("res://scenes/ui/RecipeCatalogUI.gd").new()

@@ -31,6 +31,7 @@ var selected_hotbar_slot: int = 0
 var is_on_ground: bool = false
 var is_swimming: bool = false
 var is_flying: bool = false         # Creative fly
+var creative: bool = false          # Creative mode: instant break, no damage, infinite blocks
 var is_gliding: bool = false        # Elytra
 var is_sneaking: bool = false
 var is_sprinting: bool = false
@@ -88,6 +89,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_chunk_manager = get_node_or_null("../ChunkManager")
 	inventory = get_node_or_null("Inventory")
+
+	creative = GameManager.creative_mode
+	if creative:
+		is_flying = true   # start airborne so you don't fall before chunks load
 
 	# RPG Skill tree (must be before _give_dev_items)
 	skill_tree = SkillTree.new()
@@ -319,6 +324,8 @@ var _place_cooldown: float = 0.0
 
 
 func _compute_break_time(block: BlockRegistry.BlockDef, held_item: ItemRegistry.ItemDef) -> float:
+	if creative:
+		return 0.05  # instant break in creative
 	if block.hardness == 0.0:
 		return 0.05  # instant break (dirt-layer blocks, leaves, etc.)
 	# No preferred tool → hand speed, no penalty
@@ -434,8 +441,9 @@ func _place_block(bpos: Vector3i) -> void:
 	if _block_entity_manager != null:
 		_block_entity_manager.create_entity(bpos, block_id)
 	EventBus.block_placed.emit(bpos, block_id, {})
-	# Consume item
-	_consume_held_item(1)
+	# Consume item (infinite blocks in creative)
+	if not creative:
+		_consume_held_item(1)
 
 
 func _handle_hotbar_scroll() -> void:
@@ -645,6 +653,8 @@ func _check_underwater() -> void:
 
 
 func _tick_hunger(delta: float) -> void:
+	if creative:
+		return  # no hunger/starvation in creative
 	if is_sprinting:
 		_hunger_tick += delta * 0.1  # Sprint drains hunger faster
 	else:
@@ -712,6 +722,8 @@ func _tick_lava_damage(delta: float) -> void:
 # --- Public API ---
 
 func take_damage(amount: float, source: String = "generic") -> void:
+	if creative:
+		return  # invulnerable in creative
 	if _damage_cooldown > 0.0:
 		return
 	var effective := maxf(0.0, amount - armor_value * 0.04)

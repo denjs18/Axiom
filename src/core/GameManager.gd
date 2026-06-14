@@ -17,6 +17,10 @@ var is_multiplayer: bool = false
 var is_server: bool = false
 var world_seed: int = 0
 
+# World options chosen at creation
+var creative_mode: bool = false       # fly, instant break, no damage, infinite blocks
+var generation_type: String = ""      # "" = normal terrain, "flat" = superflat
+
 # References set when world is loaded
 var world_node: Node = null
 var local_player: Node = null
@@ -68,9 +72,11 @@ func _handle_game_over() -> void:
 	pass
 
 
-func start_new_world(world_name: String, wseed: int = 0, modules: Array = []) -> void:
+func start_new_world(world_name: String, wseed: int = 0, modules: Array = [], creative: bool = false, gen_type: String = "") -> void:
 	current_world_name = world_name
 	self.world_seed = wseed if wseed != 0 else randi()
+	creative_mode = creative
+	generation_type = gen_type
 	change_state(GameState.LOADING)
 	ModuleManager.set_active_modules(modules)
 	_load_world_scene()

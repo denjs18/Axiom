@@ -145,6 +145,11 @@ func get_item_count() -> int:
 	return _items_by_id.size()
 
 
+## All registered item ids ("axiom:..."). Used by the creative inventory.
+func get_all_item_ids() -> Array:
+	return _items_by_id.keys()
+
+
 func is_block_item(item_id: String) -> bool:
 	var item := get_item(item_id)
 	return item != null and item.raw.get("is_block", false)
