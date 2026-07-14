@@ -19,6 +19,9 @@ var is_loaded: bool = false
 var is_all_air: bool = true   # set false by rebuild_heightmap when any block found
 
 var heightmap: PackedInt32Array  # max non-air local Y per XZ column
+# World-space Y of the terrain surface per XZ column (set by the generator).
+# Drives sky-light: cells above the surface get full sky light.
+var world_surface: PackedInt32Array
 
 
 func _init(cx: int, cy: int, cz: int, dim: String = "overworld") -> void:
@@ -36,6 +39,9 @@ func _init(cx: int, cy: int, cz: int, dim: String = "overworld") -> void:
 	heightmap = PackedInt32Array()
 	heightmap.resize(SIZE_SQ)
 	heightmap.fill(-1)
+	world_surface = PackedInt32Array()
+	world_surface.resize(SIZE_SQ)
+	world_surface.fill(-99999)   # default: everything above → full sky light
 
 
 static func local_to_index(lx: int, ly: int, lz: int) -> int:
@@ -160,8 +166,15 @@ func _in_bounds(lx: int, ly: int, lz: int) -> bool:
 	return lx >= 0 and lx < SIZE and ly >= 0 and ly < SIZE and lz >= 0 and lz < SIZE
 
 
+const SAVE_VERSION := 2
+# Version marker stored as -(1000000 + version): far outside the legal chunk
+# coordinate range (±16383), so legacy files (that start with chunk_pos.x)
+# can never be confused with versioned ones.
+const _VERSION_BASE := 1000000
+
 func serialize() -> PackedByteArray:
 	var buf := StreamPeerBuffer.new()
+	buf.put_32(-(_VERSION_BASE + SAVE_VERSION))
 	buf.put_32(chunk_pos.x)
 	buf.put_32(chunk_pos.y)
 	buf.put_32(chunk_pos.z)
@@ -171,6 +184,8 @@ func serialize() -> PackedByteArray:
 	buf.put_32(rle.size())
 	buf.put_data(rle)
 	buf.put_data(light_data)
+	for i in SIZE_SQ:
+		buf.put_32(world_surface[i])
 	var meta_keys := metadata.keys()
 	buf.put_32(meta_keys.size())
 	for key in meta_keys:
@@ -182,7 +197,14 @@ func serialize() -> PackedByteArray:
 static func deserialize(data: PackedByteArray) -> Chunk:
 	var buf := StreamPeerBuffer.new()
 	buf.data_array = data
-	var cx: int = buf.get_32()
+	var version := 1
+	var first: int = buf.get_32()
+	var cx: int
+	if first <= -_VERSION_BASE:
+		version = -first - _VERSION_BASE
+		cx = buf.get_32()
+	else:
+		cx = first
 	var cy: int = buf.get_32()
 	var cz: int = buf.get_32()
 	var dim: String = buf.get_string()
@@ -192,6 +214,9 @@ static func deserialize(data: PackedByteArray) -> Chunk:
 	var rle_size: int = buf.get_32()
 	chunk.blocks = chunk._rle_decode(buf.get_data(rle_size)[1])
 	chunk.light_data = buf.get_data(SIZE_CB)[1]
+	if version >= 2:
+		for i in SIZE_SQ:
+			chunk.world_surface[i] = buf.get_32()
 	var meta_count: int = buf.get_32()
 	for _i in meta_count:
 		var key: int = buf.get_32()

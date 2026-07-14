@@ -2,455 +2,6377 @@
   "version": "1.0",
   "namespace": "axiom",
   "recipes": [
-    {"id": "crafting_table", "type": "shaped", "pattern": ["##", "##"], "keys": {"#": "axiom:oak_planks"}, "result": {"item": "axiom:crafting_table", "count": 1}},
-    {"id": "stick", "type": "shaped", "pattern": ["#", "#"], "keys": {"#": {"tag": "axiom:planks"}}, "result": {"item": "axiom:stick", "count": 4}},
-    {"id": "chest", "type": "shaped", "pattern": ["###", "# #", "###"], "keys": {"#": {"tag": "axiom:planks"}}, "result": {"item": "axiom:chest", "count": 1}},
-    {"id": "furnace", "type": "shaped", "pattern": ["###", "# #", "###"], "keys": {"#": "axiom:cobblestone"}, "result": {"item": "axiom:furnace", "count": 1}},
-    {"id": "blast_furnace", "type": "shaped", "pattern": ["III", "IFI", "CCC"], "keys": {"I": "axiom:iron_ingot", "F": "axiom:furnace", "C": "axiom:smooth_stone"}, "result": {"item": "axiom:blast_furnace", "count": 1}},
-    {"id": "smoker", "type": "shaped", "pattern": [" W ", "WFW", " W "], "keys": {"W": {"tag": "axiom:logs"}, "F": "axiom:furnace"}, "result": {"item": "axiom:smoker", "count": 1}},
-    {"id": "anvil", "type": "shaped", "pattern": ["BBB", " I ", "III"], "keys": {"B": "axiom:iron_block", "I": "axiom:iron_ingot"}, "result": {"item": "axiom:anvil", "count": 1}},
-    {"id": "enchanting_table", "type": "shaped", "pattern": [" B ", "DID", "III"], "keys": {"B": "axiom:book", "D": "axiom:diamond", "I": "axiom:obsidian"}, "result": {"item": "axiom:enchanting_table", "count": 1}},
-    {"id": "brewing_stand", "type": "shaped", "pattern": [" B ", "III"], "keys": {"B": "axiom:blaze_rod", "I": "axiom:cobblestone"}, "result": {"item": "axiom:brewing_stand", "count": 1}},
-    {"id": "bookshelf", "type": "shaped", "pattern": ["PPP", "BBB", "PPP"], "keys": {"P": {"tag": "axiom:planks"}, "B": "axiom:book"}, "result": {"item": "axiom:bookshelf", "count": 1}},
-    {"id": "tnt", "type": "shaped", "pattern": ["SGS", "GSG", "SGS"], "keys": {"S": "axiom:sand", "G": "axiom:gunpowder"}, "result": {"item": "axiom:tnt", "count": 1}},
-    {"id": "hopper", "type": "shaped", "pattern": ["I I", "ICI", " I "], "keys": {"I": "axiom:iron_ingot", "C": "axiom:chest"}, "result": {"item": "axiom:hopper", "count": 1}},
-    {"id": "dropper", "type": "shaped", "pattern": ["CCC", "C C", "CRC"], "keys": {"C": "axiom:cobblestone", "R": "axiom:redstone"}, "result": {"item": "axiom:dropper", "count": 1}},
-    {"id": "dispenser", "type": "shaped", "pattern": ["CCC", "CBC", "CRC"], "keys": {"C": "axiom:cobblestone", "B": "axiom:bow", "R": "axiom:redstone"}, "result": {"item": "axiom:dispenser", "count": 1}},
-    {"id": "piston", "type": "shaped", "pattern": ["PPP", "ICI", "IRI"], "keys": {"P": {"tag": "axiom:planks"}, "I": "axiom:cobblestone", "C": "axiom:iron_ingot", "R": "axiom:redstone"}, "result": {"item": "axiom:piston", "count": 1}},
-    {"id": "sticky_piston", "type": "shaped", "pattern": ["S", "P"], "keys": {"S": "axiom:slimeball", "P": "axiom:piston"}, "result": {"item": "axiom:sticky_piston", "count": 1}},
-    {"id": "observer", "type": "shaped", "pattern": ["CCC", "RRQ", "CCC"], "keys": {"C": "axiom:cobblestone", "R": "axiom:redstone", "Q": "axiom:quartz"}, "result": {"item": "axiom:observer", "count": 1}},
-    {"id": "comparator", "type": "shaped", "pattern": [" T ", "TQT", "SSS"], "keys": {"T": "axiom:redstone_torch", "Q": "axiom:quartz", "S": "axiom:stone"}, "result": {"item": "axiom:comparator", "count": 1}},
-    {"id": "repeater", "type": "shaped", "pattern": ["TIT", "SSS"], "keys": {"T": "axiom:redstone_torch", "I": "axiom:redstone", "S": "axiom:stone"}, "result": {"item": "axiom:repeater", "count": 1}},
-    {"id": "redstone_lamp", "type": "shaped", "pattern": [" R ", "RGR", " R "], "keys": {"R": "axiom:redstone", "G": "axiom:glowstone"}, "result": {"item": "axiom:redstone_lamp", "count": 1}},
-    {"id": "composter", "type": "shaped", "pattern": ["P P", "P P", "PPP"], "keys": {"P": {"tag": "axiom:wooden_slabs"}}, "result": {"item": "axiom:composter", "count": 1}},
-    {"id": "cauldron", "type": "shaped", "pattern": ["I I", "I I", "III"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:cauldron", "count": 1}},
-    {"id": "smithing_table", "type": "shaped", "pattern": ["II", "PP", "PP"], "keys": {"I": "axiom:iron_ingot", "P": {"tag": "axiom:planks"}}, "result": {"item": "axiom:smithing_table", "count": 1}},
-    {"id": "grindstone", "type": "shaped", "pattern": ["SPS", " I "], "keys": {"S": "axiom:stick", "P": {"tag": "axiom:wooden_slabs"}, "I": "axiom:stone"}, "result": {"item": "axiom:grindstone", "count": 1}},
-    {"id": "stonecutter", "type": "shaped", "pattern": ["III", "SIS"], "keys": {"I": "axiom:stone", "S": "axiom:iron_ingot"}, "result": {"item": "axiom:stonecutter", "count": 1}},
-    {"id": "loom", "type": "shaped", "pattern": ["SS", "PP"], "keys": {"S": "axiom:string", "P": {"tag": "axiom:planks"}}, "result": {"item": "axiom:loom", "count": 1}},
-    {"id": "cartography_table", "type": "shaped", "pattern": ["PP", "WW"], "keys": {"P": "axiom:paper", "W": {"tag": "axiom:planks"}}, "result": {"item": "axiom:cartography_table", "count": 1}},
-    {"id": "lectern", "type": "shaped", "pattern": ["SSS", " B ", " S "], "keys": {"S": {"tag": "axiom:wooden_slabs"}, "B": "axiom:bookshelf"}, "result": {"item": "axiom:lectern", "count": 1}},
-    {"id": "barrel", "type": "shaped", "pattern": ["PSP", "P P", "PSP"], "keys": {"P": {"tag": "axiom:planks"}, "S": {"tag": "axiom:wooden_slabs"}}, "result": {"item": "axiom:barrel", "count": 1}},
-    {"id": "beacon", "type": "shaped", "pattern": ["GGG", "GSG", "OOO"], "keys": {"G": "axiom:glass", "S": "axiom:nether_star", "O": "axiom:obsidian"}, "result": {"item": "axiom:beacon", "count": 1}},
-    {"id": "lodestone", "type": "shaped", "pattern": ["CCC", "CNS", "CCC"], "keys": {"C": "axiom:chiseled_stone_bricks", "N": "axiom:netherite_ingot"}, "result": {"item": "axiom:lodestone", "count": 1}},
-    {"id": "respawn_anchor", "type": "shaped", "pattern": ["GGG", "CCC", "GGG"], "keys": {"G": "axiom:crying_obsidian", "C": "axiom:glowstone"}, "result": {"item": "axiom:respawn_anchor", "count": 1}},
-    {"id": "note_block", "type": "shaped", "pattern": ["PPP", "PRP", "PPP"], "keys": {"P": {"tag": "axiom:planks"}, "R": "axiom:redstone"}, "result": {"item": "axiom:note_block", "count": 1}},
-    {"id": "jukebox", "type": "shaped", "pattern": ["PPP", "PDG", "PPP"], "keys": {"P": {"tag": "axiom:planks"}, "D": "axiom:diamond"}, "result": {"item": "axiom:jukebox", "count": 1}},
-    {"id": "ender_chest", "type": "shaped", "pattern": ["OOO", "OEO", "OOO"], "keys": {"O": "axiom:obsidian", "E": "axiom:eye_of_ender"}, "result": {"item": "axiom:ender_chest", "count": 1}},
-
-    {"id": "redstone_torch", "type": "shaped", "pattern": ["R", "S"], "keys": {"R": "axiom:redstone", "S": "axiom:stick"}, "result": {"item": "axiom:redstone_torch", "count": 1}},
-    {"id": "lever", "type": "shaped", "pattern": ["S", "C"], "keys": {"S": "axiom:stick", "C": "axiom:cobblestone"}, "result": {"item": "axiom:lever", "count": 1}},
-    {"id": "stone_button", "type": "shapeless", "ingredients": ["axiom:stone"], "result": {"item": "axiom:stone_button", "count": 1}},
-    {"id": "stone_pressure_plate", "type": "shaped", "pattern": ["SS"], "keys": {"S": "axiom:stone"}, "result": {"item": "axiom:stone_pressure_plate", "count": 1}},
-    {"id": "heavy_weighted_pressure_plate", "type": "shaped", "pattern": ["II"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:heavy_weighted_pressure_plate", "count": 1}},
-    {"id": "light_weighted_pressure_plate", "type": "shaped", "pattern": ["GG"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:light_weighted_pressure_plate", "count": 1}},
-    {"id": "daylight_sensor", "type": "shaped", "pattern": ["GGG", "QQQ", "SSS"], "keys": {"G": "axiom:glass", "Q": "axiom:quartz", "S": {"tag": "axiom:wooden_slabs"}}, "result": {"item": "axiom:daylight_sensor", "count": 1}},
-    {"id": "tripwire_hook", "type": "shaped", "pattern": ["I", "S", "P"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick", "P": {"tag": "axiom:planks"}}, "result": {"item": "axiom:tripwire_hook", "count": 2}},
-    {"id": "target", "type": "shaped", "pattern": [" R ", "RHR", " R "], "keys": {"R": "axiom:redstone", "H": "axiom:hay_bale"}, "result": {"item": "axiom:target", "count": 1}},
-
-    {"id": "rail", "type": "shaped", "pattern": ["I I", "ISI", "I I"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:rail", "count": 16}},
-    {"id": "powered_rail", "type": "shaped", "pattern": ["G G", "GSG", "GRG"], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick", "R": "axiom:redstone"}, "result": {"item": "axiom:powered_rail", "count": 6}},
-    {"id": "detector_rail", "type": "shaped", "pattern": ["I I", "IPI", "IRI"], "keys": {"I": "axiom:iron_ingot", "P": "axiom:stone_pressure_plate", "R": "axiom:redstone"}, "result": {"item": "axiom:detector_rail", "count": 6}},
-    {"id": "activator_rail", "type": "shaped", "pattern": ["ISI", "ITI", "ISI"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick", "T": "axiom:redstone_torch"}, "result": {"item": "axiom:activator_rail", "count": 6}},
-    {"id": "minecart", "type": "shaped", "pattern": ["I I", "III"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:minecart", "count": 1}},
-    {"id": "chest_minecart", "type": "shapeless", "ingredients": ["axiom:minecart", "axiom:chest"], "result": {"item": "axiom:chest_minecart", "count": 1}},
-    {"id": "hopper_minecart", "type": "shapeless", "ingredients": ["axiom:minecart", "axiom:hopper"], "result": {"item": "axiom:hopper_minecart", "count": 1}},
-    {"id": "tnt_minecart", "type": "shapeless", "ingredients": ["axiom:minecart", "axiom:tnt"], "result": {"item": "axiom:tnt_minecart", "count": 1}},
-    {"id": "furnace_minecart", "type": "shapeless", "ingredients": ["axiom:minecart", "axiom:furnace"], "result": {"item": "axiom:furnace_minecart", "count": 1}},
-
-    {"id": "ladder", "type": "shaped", "pattern": ["S S", "SSS", "S S"], "keys": {"S": "axiom:stick"}, "result": {"item": "axiom:ladder", "count": 3}},
-    {"id": "scaffolding", "type": "shaped", "pattern": ["BSB", "BBB", "BBB"], "keys": {"B": "axiom:bamboo", "S": "axiom:string"}, "result": {"item": "axiom:scaffolding", "count": 6}},
-
-    {"id": "glass_pane", "type": "shaped", "pattern": ["GGG", "GGG"], "keys": {"G": "axiom:glass"}, "result": {"item": "axiom:glass_pane", "count": 16}},
-    {"id": "glass_bottle", "type": "shaped", "pattern": ["G G", " G "], "keys": {"G": "axiom:glass"}, "result": {"item": "axiom:glass_bottle", "count": 3}},
-    {"id": "iron_bars", "type": "shaped", "pattern": ["III", "III"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_bars", "count": 16}},
-    {"id": "iron_door", "type": "shaped", "pattern": ["II", "II", "II"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_door", "count": 3}},
-    {"id": "iron_trapdoor", "type": "shaped", "pattern": ["II", "II"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_trapdoor", "count": 1}},
-
-    {"id": "painting", "type": "shaped", "pattern": ["SSS", "SWS", "SSS"], "keys": {"S": "axiom:stick", "W": "axiom:white_wool"}, "result": {"item": "axiom:painting", "count": 1}},
-    {"id": "item_frame", "type": "shaped", "pattern": ["SSS", "SLS", "SSS"], "keys": {"S": "axiom:stick", "L": "axiom:leather"}, "result": {"item": "axiom:item_frame", "count": 1}},
-    {"id": "armor_stand", "type": "shaped", "pattern": ["SSS", " S ", "SBS"], "keys": {"S": "axiom:stick", "B": "axiom:smooth_stone_slab"}, "result": {"item": "axiom:armor_stand", "count": 1}},
-    {"id": "flower_pot", "type": "shaped", "pattern": ["B B", " B "], "keys": {"B": "axiom:brick"}, "result": {"item": "axiom:flower_pot", "count": 1}},
-    {"id": "map", "type": "shaped", "pattern": ["PPP", "PCP", "PPP"], "keys": {"P": "axiom:paper", "C": "axiom:compass"}, "result": {"item": "axiom:map", "count": 1}},
-    {"id": "empty_map", "type": "shaped", "pattern": ["PPP", "PPP", "PPP"], "keys": {"P": "axiom:paper"}, "result": {"item": "axiom:empty_map", "count": 1}},
-    {"id": "white_banner", "type": "shaped", "pattern": ["WWW", "WWW", " S "], "keys": {"W": "axiom:white_wool", "S": "axiom:stick"}, "result": {"item": "axiom:white_banner", "count": 1}},
-    {"id": "sea_lantern", "type": "shaped", "pattern": ["SCS", "CSC", "SCS"], "keys": {"S": "axiom:prismarine_shard", "C": "axiom:prismarine_crystals"}, "result": {"item": "axiom:sea_lantern", "count": 1}},
-    {"id": "prismarine", "type": "shaped", "pattern": ["SS", "SS"], "keys": {"S": "axiom:prismarine_shard"}, "result": {"item": "axiom:prismarine", "count": 1}},
-    {"id": "prismarine_bricks", "type": "shaped", "pattern": ["SSS", "SSS", "SSS"], "keys": {"S": "axiom:prismarine_crystals"}, "result": {"item": "axiom:prismarine_bricks", "count": 1}},
-    {"id": "dark_prismarine", "type": "shaped", "pattern": ["SSS", "SIS", "SSS"], "keys": {"S": "axiom:prismarine_shard", "I": "axiom:ink_sac"}, "result": {"item": "axiom:dark_prismarine", "count": 1}},
-    {"id": "nether_brick_fence", "type": "shaped", "pattern": ["NIN", "NIN"], "keys": {"N": "axiom:nether_bricks", "I": "axiom:nether_brick"}, "result": {"item": "axiom:nether_brick_fence", "count": 6}},
-
-    {"id": "bowl", "type": "shaped", "pattern": ["P P", " P "], "keys": {"P": {"tag": "axiom:planks"}}, "result": {"item": "axiom:bowl", "count": 4}},
-    {"id": "white_wool", "type": "shapeless", "ingredients": ["axiom:string", "axiom:string", "axiom:string", "axiom:string"], "result": {"item": "axiom:white_wool", "count": 1}},
-    {"id": "white_carpet", "type": "shaped", "pattern": ["WW"], "keys": {"W": "axiom:white_wool"}, "result": {"item": "axiom:white_carpet", "count": 3}},
-    {"id": "white_bed", "type": "shaped", "pattern": ["WWW", "PPP"], "keys": {"W": "axiom:white_wool", "P": {"tag": "axiom:planks"}}, "result": {"item": "axiom:white_bed", "count": 1}},
-
-    {"id": "iron_nugget_from_ingot", "type": "shapeless", "ingredients": ["axiom:iron_ingot"], "result": {"item": "axiom:iron_nugget", "count": 9}},
-    {"id": "gold_nugget_from_ingot", "type": "shapeless", "ingredients": ["axiom:gold_ingot"], "result": {"item": "axiom:gold_nugget", "count": 9}},
-    {"id": "iron_ingot_from_nuggets", "type": "shaped", "pattern": ["NNN", "NNN", "NNN"], "keys": {"N": "axiom:iron_nugget"}, "result": {"item": "axiom:iron_ingot", "count": 1}},
-    {"id": "gold_ingot_from_nuggets", "type": "shaped", "pattern": ["NNN", "NNN", "NNN"], "keys": {"N": "axiom:gold_nugget"}, "result": {"item": "axiom:gold_ingot", "count": 1}},
-    {"id": "netherite_ingot", "type": "shapeless", "ingredients": ["axiom:netherite_scrap", "axiom:netherite_scrap", "axiom:netherite_scrap", "axiom:netherite_scrap", "axiom:gold_ingot", "axiom:gold_ingot", "axiom:gold_ingot", "axiom:gold_ingot"], "result": {"item": "axiom:netherite_ingot", "count": 1}},
-    {"id": "copper_block", "type": "shaped", "pattern": ["CCC", "CCC", "CCC"], "keys": {"C": "axiom:copper_ingot"}, "result": {"item": "axiom:copper_block", "count": 1}},
-    {"id": "copper_ingots_from_block", "type": "shapeless", "ingredients": ["axiom:copper_block"], "result": {"item": "axiom:copper_ingot", "count": 9}},
-    {"id": "quartz_block", "type": "shaped", "pattern": ["QQ", "QQ"], "keys": {"Q": "axiom:quartz"}, "result": {"item": "axiom:quartz_block", "count": 1}},
-    {"id": "quartz_pillar", "type": "shaped", "pattern": ["Q", "Q"], "keys": {"Q": "axiom:quartz_block"}, "result": {"item": "axiom:quartz_pillar", "count": 2}},
-    {"id": "quartz_bricks", "type": "shaped", "pattern": ["QQ", "QQ"], "keys": {"Q": "axiom:quartz_block"}, "result": {"item": "axiom:quartz_bricks", "count": 4}},
-    {"id": "quartz_slab", "type": "shaped", "pattern": ["QQQ"], "keys": {"Q": "axiom:quartz_block"}, "result": {"item": "axiom:quartz_slab", "count": 6}},
-    {"id": "quartz_stairs", "type": "shaped", "pattern": ["Q  ", "QQ ", "QQQ"], "keys": {"Q": "axiom:quartz_block"}, "result": {"item": "axiom:quartz_stairs", "count": 4}},
-
-    {"id": "stone_bricks", "type": "shaped", "pattern": ["SS", "SS"], "keys": {"S": "axiom:stone"}, "result": {"item": "axiom:stone_bricks", "count": 4}},
-    {"id": "stone_brick_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:stone_bricks"}, "result": {"item": "axiom:stone_brick_slab", "count": 6}},
-    {"id": "stone_brick_stairs", "type": "shaped", "pattern": ["S  ", "SS ", "SSS"], "keys": {"S": "axiom:stone_bricks"}, "result": {"item": "axiom:stone_brick_stairs", "count": 4}},
-    {"id": "stone_brick_wall", "type": "shaped", "pattern": ["SSS", "SSS"], "keys": {"S": "axiom:stone_bricks"}, "result": {"item": "axiom:stone_brick_wall", "count": 6}},
-    {"id": "chiseled_stone_bricks", "type": "shaped", "pattern": ["S", "S"], "keys": {"S": "axiom:stone_brick_slab"}, "result": {"item": "axiom:chiseled_stone_bricks", "count": 1}},
-    {"id": "mossy_stone_bricks", "type": "shapeless", "ingredients": ["axiom:stone_bricks", "axiom:vine"], "result": {"item": "axiom:mossy_stone_bricks", "count": 1}},
-    {"id": "mossy_cobblestone", "type": "shapeless", "ingredients": ["axiom:cobblestone", "axiom:vine"], "result": {"item": "axiom:mossy_cobblestone", "count": 1}},
-    {"id": "stone_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:stone"}, "result": {"item": "axiom:stone_slab", "count": 6}},
-    {"id": "stone_stairs", "type": "shaped", "pattern": ["S  ", "SS ", "SSS"], "keys": {"S": "axiom:stone"}, "result": {"item": "axiom:stone_stairs", "count": 4}},
-    {"id": "cobblestone_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:cobblestone"}, "result": {"item": "axiom:cobblestone_slab", "count": 6}},
-    {"id": "cobblestone_stairs", "type": "shaped", "pattern": ["S  ", "SS ", "SSS"], "keys": {"S": "axiom:cobblestone"}, "result": {"item": "axiom:cobblestone_stairs", "count": 4}},
-    {"id": "cobblestone_wall", "type": "shaped", "pattern": ["SSS", "SSS"], "keys": {"S": "axiom:cobblestone"}, "result": {"item": "axiom:cobblestone_wall", "count": 6}},
-    {"id": "mossy_cobblestone_wall", "type": "shaped", "pattern": ["SSS", "SSS"], "keys": {"S": "axiom:mossy_cobblestone"}, "result": {"item": "axiom:mossy_cobblestone_wall", "count": 6}},
-    {"id": "polished_granite", "type": "shaped", "pattern": ["GG", "GG"], "keys": {"G": "axiom:granite"}, "result": {"item": "axiom:polished_granite", "count": 4}},
-    {"id": "polished_granite_slab", "type": "shaped", "pattern": ["GGG"], "keys": {"G": "axiom:polished_granite"}, "result": {"item": "axiom:polished_granite_slab", "count": 6}},
-    {"id": "polished_granite_stairs", "type": "shaped", "pattern": ["G  ", "GG ", "GGG"], "keys": {"G": "axiom:polished_granite"}, "result": {"item": "axiom:polished_granite_stairs", "count": 4}},
-    {"id": "granite_slab", "type": "shaped", "pattern": ["GGG"], "keys": {"G": "axiom:granite"}, "result": {"item": "axiom:granite_slab", "count": 6}},
-    {"id": "granite_stairs", "type": "shaped", "pattern": ["G  ", "GG ", "GGG"], "keys": {"G": "axiom:granite"}, "result": {"item": "axiom:granite_stairs", "count": 4}},
-    {"id": "granite_wall", "type": "shaped", "pattern": ["GGG", "GGG"], "keys": {"G": "axiom:granite"}, "result": {"item": "axiom:granite_wall", "count": 6}},
-    {"id": "polished_diorite", "type": "shaped", "pattern": ["DD", "DD"], "keys": {"D": "axiom:diorite"}, "result": {"item": "axiom:polished_diorite", "count": 4}},
-    {"id": "polished_diorite_slab", "type": "shaped", "pattern": ["DDD"], "keys": {"D": "axiom:polished_diorite"}, "result": {"item": "axiom:polished_diorite_slab", "count": 6}},
-    {"id": "polished_diorite_stairs", "type": "shaped", "pattern": ["D  ", "DD ", "DDD"], "keys": {"D": "axiom:polished_diorite"}, "result": {"item": "axiom:polished_diorite_stairs", "count": 4}},
-    {"id": "diorite_slab", "type": "shaped", "pattern": ["DDD"], "keys": {"D": "axiom:diorite"}, "result": {"item": "axiom:diorite_slab", "count": 6}},
-    {"id": "diorite_stairs", "type": "shaped", "pattern": ["D  ", "DD ", "DDD"], "keys": {"D": "axiom:diorite"}, "result": {"item": "axiom:diorite_stairs", "count": 4}},
-    {"id": "diorite_wall", "type": "shaped", "pattern": ["DDD", "DDD"], "keys": {"D": "axiom:diorite"}, "result": {"item": "axiom:diorite_wall", "count": 6}},
-    {"id": "polished_andesite", "type": "shaped", "pattern": ["AA", "AA"], "keys": {"A": "axiom:andesite"}, "result": {"item": "axiom:polished_andesite", "count": 4}},
-    {"id": "polished_andesite_slab", "type": "shaped", "pattern": ["AAA"], "keys": {"A": "axiom:polished_andesite"}, "result": {"item": "axiom:polished_andesite_slab", "count": 6}},
-    {"id": "polished_andesite_stairs", "type": "shaped", "pattern": ["A  ", "AA ", "AAA"], "keys": {"A": "axiom:polished_andesite"}, "result": {"item": "axiom:polished_andesite_stairs", "count": 4}},
-    {"id": "andesite_slab", "type": "shaped", "pattern": ["AAA"], "keys": {"A": "axiom:andesite"}, "result": {"item": "axiom:andesite_slab", "count": 6}},
-    {"id": "andesite_stairs", "type": "shaped", "pattern": ["A  ", "AA ", "AAA"], "keys": {"A": "axiom:andesite"}, "result": {"item": "axiom:andesite_stairs", "count": 4}},
-    {"id": "andesite_wall", "type": "shaped", "pattern": ["AAA", "AAA"], "keys": {"A": "axiom:andesite"}, "result": {"item": "axiom:andesite_wall", "count": 6}},
-    {"id": "sandstone", "type": "shaped", "pattern": ["SS", "SS"], "keys": {"S": "axiom:sand"}, "result": {"item": "axiom:sandstone", "count": 1}},
-    {"id": "sandstone_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:sandstone"}, "result": {"item": "axiom:sandstone_slab", "count": 6}},
-    {"id": "sandstone_stairs", "type": "shaped", "pattern": ["S  ", "SS ", "SSS"], "keys": {"S": "axiom:sandstone"}, "result": {"item": "axiom:sandstone_stairs", "count": 4}},
-    {"id": "sandstone_wall", "type": "shaped", "pattern": ["SSS", "SSS"], "keys": {"S": "axiom:sandstone"}, "result": {"item": "axiom:sandstone_wall", "count": 6}},
-    {"id": "chiseled_sandstone", "type": "shaped", "pattern": ["S", "S"], "keys": {"S": "axiom:sandstone_slab"}, "result": {"item": "axiom:chiseled_sandstone", "count": 1}},
-    {"id": "cut_sandstone", "type": "shaped", "pattern": ["SS", "SS"], "keys": {"S": "axiom:sandstone"}, "result": {"item": "axiom:cut_sandstone", "count": 4}},
-    {"id": "cut_sandstone_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:cut_sandstone"}, "result": {"item": "axiom:cut_sandstone_slab", "count": 6}},
-    {"id": "red_sandstone", "type": "shaped", "pattern": ["SS", "SS"], "keys": {"S": "axiom:red_sand"}, "result": {"item": "axiom:red_sandstone", "count": 1}},
-    {"id": "red_sandstone_slab", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:red_sandstone"}, "result": {"item": "axiom:red_sandstone_slab", "count": 6}},
-    {"id": "red_sandstone_stairs", "type": "shaped", "pattern": ["S  ", "SS ", "SSS"], "keys": {"S": "axiom:red_sandstone"}, "result": {"item": "axiom:red_sandstone_stairs", "count": 4}},
-    {"id": "chiseled_red_sandstone", "type": "shaped", "pattern": ["S", "S"], "keys": {"S": "axiom:red_sandstone_slab"}, "result": {"item": "axiom:chiseled_red_sandstone", "count": 1}},
-    {"id": "deepslate_bricks", "type": "shaped", "pattern": ["DD", "DD"], "keys": {"D": "axiom:cobbled_deepslate"}, "result": {"item": "axiom:deepslate_bricks", "count": 4}},
-    {"id": "deepslate_brick_slab", "type": "shaped", "pattern": ["DDD"], "keys": {"D": "axiom:deepslate_bricks"}, "result": {"item": "axiom:deepslate_brick_slab", "count": 6}},
-    {"id": "deepslate_brick_stairs", "type": "shaped", "pattern": ["D  ", "DD ", "DDD"], "keys": {"D": "axiom:deepslate_bricks"}, "result": {"item": "axiom:deepslate_brick_stairs", "count": 4}},
-    {"id": "deepslate_brick_wall", "type": "shaped", "pattern": ["DDD", "DDD"], "keys": {"D": "axiom:deepslate_bricks"}, "result": {"item": "axiom:deepslate_brick_wall", "count": 6}},
-    {"id": "cobbled_deepslate_slab", "type": "shaped", "pattern": ["DDD"], "keys": {"D": "axiom:cobbled_deepslate"}, "result": {"item": "axiom:cobbled_deepslate_slab", "count": 6}},
-    {"id": "cobbled_deepslate_stairs", "type": "shaped", "pattern": ["D  ", "DD ", "DDD"], "keys": {"D": "axiom:cobbled_deepslate"}, "result": {"item": "axiom:cobbled_deepslate_stairs", "count": 4}},
-    {"id": "cobbled_deepslate_wall", "type": "shaped", "pattern": ["DDD", "DDD"], "keys": {"D": "axiom:cobbled_deepslate"}, "result": {"item": "axiom:cobbled_deepslate_wall", "count": 6}},
-    {"id": "blackstone_slab", "type": "shaped", "pattern": ["BBB"], "keys": {"B": "axiom:blackstone"}, "result": {"item": "axiom:blackstone_slab", "count": 6}},
-    {"id": "blackstone_stairs", "type": "shaped", "pattern": ["B  ", "BB ", "BBB"], "keys": {"B": "axiom:blackstone"}, "result": {"item": "axiom:blackstone_stairs", "count": 4}},
-    {"id": "blackstone_wall", "type": "shaped", "pattern": ["BBB", "BBB"], "keys": {"B": "axiom:blackstone"}, "result": {"item": "axiom:blackstone_wall", "count": 6}},
-    {"id": "polished_blackstone", "type": "shaped", "pattern": ["BB", "BB"], "keys": {"B": "axiom:blackstone"}, "result": {"item": "axiom:polished_blackstone", "count": 4}},
-    {"id": "polished_blackstone_bricks", "type": "shaped", "pattern": ["BB", "BB"], "keys": {"B": "axiom:polished_blackstone"}, "result": {"item": "axiom:polished_blackstone_bricks", "count": 4}},
-    {"id": "chiseled_polished_blackstone", "type": "shaped", "pattern": ["B", "B"], "keys": {"B": "axiom:polished_blackstone_slab"}, "result": {"item": "axiom:chiseled_polished_blackstone", "count": 1}},
-    {"id": "polished_blackstone_slab", "type": "shaped", "pattern": ["BBB"], "keys": {"B": "axiom:polished_blackstone"}, "result": {"item": "axiom:polished_blackstone_slab", "count": 6}},
-    {"id": "polished_blackstone_stairs", "type": "shaped", "pattern": ["B  ", "BB ", "BBB"], "keys": {"B": "axiom:polished_blackstone"}, "result": {"item": "axiom:polished_blackstone_stairs", "count": 4}},
-    {"id": "nether_bricks_block", "type": "shaped", "pattern": ["NN", "NN"], "keys": {"N": "axiom:nether_brick"}, "result": {"item": "axiom:nether_bricks", "count": 1}},
-    {"id": "nether_brick_slab", "type": "shaped", "pattern": ["NNN"], "keys": {"N": "axiom:nether_bricks"}, "result": {"item": "axiom:nether_brick_slab", "count": 6}},
-    {"id": "nether_brick_stairs", "type": "shaped", "pattern": ["N  ", "NN ", "NNN"], "keys": {"N": "axiom:nether_bricks"}, "result": {"item": "axiom:nether_brick_stairs", "count": 4}},
-    {"id": "nether_brick_wall", "type": "shaped", "pattern": ["NNN", "NNN"], "keys": {"N": "axiom:nether_bricks"}, "result": {"item": "axiom:nether_brick_wall", "count": 6}},
-    {"id": "end_stone_bricks", "type": "shaped", "pattern": ["EE", "EE"], "keys": {"E": "axiom:end_stone"}, "result": {"item": "axiom:end_stone_bricks", "count": 4}},
-    {"id": "end_stone_brick_slab", "type": "shaped", "pattern": ["EEE"], "keys": {"E": "axiom:end_stone_bricks"}, "result": {"item": "axiom:end_stone_brick_slab", "count": 6}},
-    {"id": "end_stone_brick_stairs", "type": "shaped", "pattern": ["E  ", "EE ", "EEE"], "keys": {"E": "axiom:end_stone_bricks"}, "result": {"item": "axiom:end_stone_brick_stairs", "count": 4}},
-    {"id": "end_stone_brick_wall", "type": "shaped", "pattern": ["EEE", "EEE"], "keys": {"E": "axiom:end_stone_bricks"}, "result": {"item": "axiom:end_stone_brick_wall", "count": 6}},
-
-    {"id": "oak_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_slab", "count": 6}},
-    {"id": "oak_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_stairs", "count": 4}},
-    {"id": "oak_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_door", "count": 3}},
-    {"id": "oak_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_trapdoor", "count": 2}},
-    {"id": "oak_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:oak_planks", "S": "axiom:stick"}, "result": {"item": "axiom:oak_fence", "count": 3}},
-    {"id": "oak_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_fence_gate", "count": 1}},
-    {"id": "oak_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_pressure_plate", "count": 1}},
-    {"id": "oak_button", "type": "shapeless", "ingredients": ["axiom:oak_planks"], "result": {"item": "axiom:oak_button", "count": 1}},
-    {"id": "oak_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:oak_planks", "S": "axiom:stick"}, "result": {"item": "axiom:oak_sign", "count": 3}},
-    {"id": "oak_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:oak_planks"}, "result": {"item": "axiom:oak_boat", "count": 1}},
-
-    {"id": "spruce_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_slab", "count": 6}},
-    {"id": "spruce_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_stairs", "count": 4}},
-    {"id": "spruce_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_door", "count": 3}},
-    {"id": "spruce_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_trapdoor", "count": 2}},
-    {"id": "spruce_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:spruce_planks", "S": "axiom:stick"}, "result": {"item": "axiom:spruce_fence", "count": 3}},
-    {"id": "spruce_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_fence_gate", "count": 1}},
-    {"id": "spruce_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_pressure_plate", "count": 1}},
-    {"id": "spruce_button", "type": "shapeless", "ingredients": ["axiom:spruce_planks"], "result": {"item": "axiom:spruce_button", "count": 1}},
-    {"id": "spruce_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:spruce_planks", "S": "axiom:stick"}, "result": {"item": "axiom:spruce_sign", "count": 3}},
-    {"id": "spruce_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:spruce_planks"}, "result": {"item": "axiom:spruce_boat", "count": 1}},
-
-    {"id": "birch_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_slab", "count": 6}},
-    {"id": "birch_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_stairs", "count": 4}},
-    {"id": "birch_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_door", "count": 3}},
-    {"id": "birch_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_trapdoor", "count": 2}},
-    {"id": "birch_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:birch_planks", "S": "axiom:stick"}, "result": {"item": "axiom:birch_fence", "count": 3}},
-    {"id": "birch_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_fence_gate", "count": 1}},
-    {"id": "birch_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_pressure_plate", "count": 1}},
-    {"id": "birch_button", "type": "shapeless", "ingredients": ["axiom:birch_planks"], "result": {"item": "axiom:birch_button", "count": 1}},
-    {"id": "birch_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:birch_planks", "S": "axiom:stick"}, "result": {"item": "axiom:birch_sign", "count": 3}},
-    {"id": "birch_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:birch_planks"}, "result": {"item": "axiom:birch_boat", "count": 1}},
-
-    {"id": "jungle_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_slab", "count": 6}},
-    {"id": "jungle_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_stairs", "count": 4}},
-    {"id": "jungle_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_door", "count": 3}},
-    {"id": "jungle_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_trapdoor", "count": 2}},
-    {"id": "jungle_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:jungle_planks", "S": "axiom:stick"}, "result": {"item": "axiom:jungle_fence", "count": 3}},
-    {"id": "jungle_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_fence_gate", "count": 1}},
-    {"id": "jungle_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_pressure_plate", "count": 1}},
-    {"id": "jungle_button", "type": "shapeless", "ingredients": ["axiom:jungle_planks"], "result": {"item": "axiom:jungle_button", "count": 1}},
-    {"id": "jungle_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:jungle_planks", "S": "axiom:stick"}, "result": {"item": "axiom:jungle_sign", "count": 3}},
-    {"id": "jungle_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:jungle_planks"}, "result": {"item": "axiom:jungle_boat", "count": 1}},
-
-    {"id": "acacia_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_slab", "count": 6}},
-    {"id": "acacia_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_stairs", "count": 4}},
-    {"id": "acacia_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_door", "count": 3}},
-    {"id": "acacia_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_trapdoor", "count": 2}},
-    {"id": "acacia_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:acacia_planks", "S": "axiom:stick"}, "result": {"item": "axiom:acacia_fence", "count": 3}},
-    {"id": "acacia_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_fence_gate", "count": 1}},
-    {"id": "acacia_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_pressure_plate", "count": 1}},
-    {"id": "acacia_button", "type": "shapeless", "ingredients": ["axiom:acacia_planks"], "result": {"item": "axiom:acacia_button", "count": 1}},
-    {"id": "acacia_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:acacia_planks", "S": "axiom:stick"}, "result": {"item": "axiom:acacia_sign", "count": 3}},
-    {"id": "acacia_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:acacia_planks"}, "result": {"item": "axiom:acacia_boat", "count": 1}},
-
-    {"id": "dark_oak_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_slab", "count": 6}},
-    {"id": "dark_oak_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_stairs", "count": 4}},
-    {"id": "dark_oak_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_door", "count": 3}},
-    {"id": "dark_oak_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_trapdoor", "count": 2}},
-    {"id": "dark_oak_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:dark_oak_planks", "S": "axiom:stick"}, "result": {"item": "axiom:dark_oak_fence", "count": 3}},
-    {"id": "dark_oak_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_fence_gate", "count": 1}},
-    {"id": "dark_oak_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_pressure_plate", "count": 1}},
-    {"id": "dark_oak_button", "type": "shapeless", "ingredients": ["axiom:dark_oak_planks"], "result": {"item": "axiom:dark_oak_button", "count": 1}},
-    {"id": "dark_oak_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:dark_oak_planks", "S": "axiom:stick"}, "result": {"item": "axiom:dark_oak_sign", "count": 3}},
-    {"id": "dark_oak_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:dark_oak_planks"}, "result": {"item": "axiom:dark_oak_boat", "count": 1}},
-
-    {"id": "mangrove_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_slab", "count": 6}},
-    {"id": "mangrove_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_stairs", "count": 4}},
-    {"id": "mangrove_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_door", "count": 3}},
-    {"id": "mangrove_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_trapdoor", "count": 2}},
-    {"id": "mangrove_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:mangrove_planks", "S": "axiom:stick"}, "result": {"item": "axiom:mangrove_fence", "count": 3}},
-    {"id": "mangrove_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_fence_gate", "count": 1}},
-    {"id": "mangrove_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_pressure_plate", "count": 1}},
-    {"id": "mangrove_button", "type": "shapeless", "ingredients": ["axiom:mangrove_planks"], "result": {"item": "axiom:mangrove_button", "count": 1}},
-    {"id": "mangrove_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:mangrove_planks", "S": "axiom:stick"}, "result": {"item": "axiom:mangrove_sign", "count": 3}},
-    {"id": "mangrove_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:mangrove_planks"}, "result": {"item": "axiom:mangrove_boat", "count": 1}},
-
-    {"id": "cherry_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_slab", "count": 6}},
-    {"id": "cherry_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_stairs", "count": 4}},
-    {"id": "cherry_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_door", "count": 3}},
-    {"id": "cherry_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_trapdoor", "count": 2}},
-    {"id": "cherry_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:cherry_planks", "S": "axiom:stick"}, "result": {"item": "axiom:cherry_fence", "count": 3}},
-    {"id": "cherry_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_fence_gate", "count": 1}},
-    {"id": "cherry_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_pressure_plate", "count": 1}},
-    {"id": "cherry_button", "type": "shapeless", "ingredients": ["axiom:cherry_planks"], "result": {"item": "axiom:cherry_button", "count": 1}},
-    {"id": "cherry_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:cherry_planks", "S": "axiom:stick"}, "result": {"item": "axiom:cherry_sign", "count": 3}},
-    {"id": "cherry_boat", "type": "shaped", "pattern": ["P P", "PPP"], "keys": {"P": "axiom:cherry_planks"}, "result": {"item": "axiom:cherry_boat", "count": 1}},
-
-    {"id": "crimson_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_slab", "count": 6}},
-    {"id": "crimson_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_stairs", "count": 4}},
-    {"id": "crimson_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_door", "count": 3}},
-    {"id": "crimson_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_trapdoor", "count": 2}},
-    {"id": "crimson_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:crimson_planks", "S": "axiom:stick"}, "result": {"item": "axiom:crimson_fence", "count": 3}},
-    {"id": "crimson_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_fence_gate", "count": 1}},
-    {"id": "crimson_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:crimson_planks"}, "result": {"item": "axiom:crimson_pressure_plate", "count": 1}},
-    {"id": "crimson_button", "type": "shapeless", "ingredients": ["axiom:crimson_planks"], "result": {"item": "axiom:crimson_button", "count": 1}},
-    {"id": "crimson_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:crimson_planks", "S": "axiom:stick"}, "result": {"item": "axiom:crimson_sign", "count": 3}},
-
-    {"id": "warped_slab", "type": "shaped", "pattern": ["PPP"], "keys": {"P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_slab", "count": 6}},
-    {"id": "warped_stairs", "type": "shaped", "pattern": ["P  ", "PP ", "PPP"], "keys": {"P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_stairs", "count": 4}},
-    {"id": "warped_door", "type": "shaped", "pattern": ["PP", "PP", "PP"], "keys": {"P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_door", "count": 3}},
-    {"id": "warped_trapdoor", "type": "shaped", "pattern": ["PPP", "PPP"], "keys": {"P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_trapdoor", "count": 2}},
-    {"id": "warped_fence", "type": "shaped", "pattern": ["PSP", "PSP"], "keys": {"P": "axiom:warped_planks", "S": "axiom:stick"}, "result": {"item": "axiom:warped_fence", "count": 3}},
-    {"id": "warped_fence_gate", "type": "shaped", "pattern": ["SPS", "SPS"], "keys": {"S": "axiom:stick", "P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_fence_gate", "count": 1}},
-    {"id": "warped_pressure_plate", "type": "shaped", "pattern": ["PP"], "keys": {"P": "axiom:warped_planks"}, "result": {"item": "axiom:warped_pressure_plate", "count": 1}},
-    {"id": "warped_button", "type": "shapeless", "ingredients": ["axiom:warped_planks"], "result": {"item": "axiom:warped_button", "count": 1}},
-    {"id": "warped_sign", "type": "shaped", "pattern": ["PPP", "PPP", " S "], "keys": {"P": "axiom:warped_planks", "S": "axiom:stick"}, "result": {"item": "axiom:warped_sign", "count": 3}},
-
-    {"id": "wooden_pickaxe", "type": "shaped", "pattern": ["PPP", " S ", " S "], "keys": {"P": {"tag": "axiom:planks"}, "S": "axiom:stick"}, "result": {"item": "axiom:wooden_pickaxe", "count": 1}},
-    {"id": "stone_pickaxe", "type": "shaped", "pattern": ["CCC", " S ", " S "], "keys": {"C": {"tag": "axiom:stone_crafting"}, "S": "axiom:stick"}, "result": {"item": "axiom:stone_pickaxe", "count": 1}},
-    {"id": "iron_pickaxe", "type": "shaped", "pattern": ["III", " S ", " S "], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:iron_pickaxe", "count": 1}},
-    {"id": "golden_pickaxe", "type": "shaped", "pattern": ["GGG", " S ", " S "], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:golden_pickaxe", "count": 1}},
-    {"id": "diamond_pickaxe", "type": "shaped", "pattern": ["DDD", " S ", " S "], "keys": {"D": "axiom:diamond", "S": "axiom:stick"}, "result": {"item": "axiom:diamond_pickaxe", "count": 1}},
-    {"id": "wooden_axe", "type": "shaped", "pattern": ["PP", "PS", " S"], "keys": {"P": {"tag": "axiom:planks"}, "S": "axiom:stick"}, "result": {"item": "axiom:wooden_axe", "count": 1}},
-    {"id": "stone_axe", "type": "shaped", "pattern": ["CC", "CS", " S"], "keys": {"C": {"tag": "axiom:stone_crafting"}, "S": "axiom:stick"}, "result": {"item": "axiom:stone_axe", "count": 1}},
-    {"id": "iron_axe", "type": "shaped", "pattern": ["II", "IS", " S"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:iron_axe", "count": 1}},
-    {"id": "golden_axe", "type": "shaped", "pattern": ["GG", "GS", " S"], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:golden_axe", "count": 1}},
-    {"id": "diamond_axe", "type": "shaped", "pattern": ["DD", "DS", " S"], "keys": {"D": "axiom:diamond", "S": "axiom:stick"}, "result": {"item": "axiom:diamond_axe", "count": 1}},
-    {"id": "wooden_shovel", "type": "shaped", "pattern": ["P", "S", "S"], "keys": {"P": {"tag": "axiom:planks"}, "S": "axiom:stick"}, "result": {"item": "axiom:wooden_shovel", "count": 1}},
-    {"id": "stone_shovel", "type": "shaped", "pattern": ["C", "S", "S"], "keys": {"C": {"tag": "axiom:stone_crafting"}, "S": "axiom:stick"}, "result": {"item": "axiom:stone_shovel", "count": 1}},
-    {"id": "iron_shovel", "type": "shaped", "pattern": ["I", "S", "S"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:iron_shovel", "count": 1}},
-    {"id": "golden_shovel", "type": "shaped", "pattern": ["G", "S", "S"], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:golden_shovel", "count": 1}},
-    {"id": "diamond_shovel", "type": "shaped", "pattern": ["D", "S", "S"], "keys": {"D": "axiom:diamond", "S": "axiom:stick"}, "result": {"item": "axiom:diamond_shovel", "count": 1}},
-    {"id": "wooden_sword", "type": "shaped", "pattern": ["P", "P", "S"], "keys": {"P": {"tag": "axiom:planks"}, "S": "axiom:stick"}, "result": {"item": "axiom:wooden_sword", "count": 1}},
-    {"id": "stone_sword", "type": "shaped", "pattern": ["C", "C", "S"], "keys": {"C": {"tag": "axiom:stone_crafting"}, "S": "axiom:stick"}, "result": {"item": "axiom:stone_sword", "count": 1}},
-    {"id": "iron_sword", "type": "shaped", "pattern": ["I", "I", "S"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:iron_sword", "count": 1}},
-    {"id": "golden_sword", "type": "shaped", "pattern": ["G", "G", "S"], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:golden_sword", "count": 1}},
-    {"id": "diamond_sword", "type": "shaped", "pattern": ["D", "D", "S"], "keys": {"D": "axiom:diamond", "S": "axiom:stick"}, "result": {"item": "axiom:diamond_sword", "count": 1}},
-    {"id": "wooden_hoe", "type": "shaped", "pattern": ["PP", " S", " S"], "keys": {"P": {"tag": "axiom:planks"}, "S": "axiom:stick"}, "result": {"item": "axiom:wooden_hoe", "count": 1}},
-    {"id": "stone_hoe", "type": "shaped", "pattern": ["CC", " S", " S"], "keys": {"C": {"tag": "axiom:stone_crafting"}, "S": "axiom:stick"}, "result": {"item": "axiom:stone_hoe", "count": 1}},
-    {"id": "iron_hoe", "type": "shaped", "pattern": ["II", " S", " S"], "keys": {"I": "axiom:iron_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:iron_hoe", "count": 1}},
-    {"id": "golden_hoe", "type": "shaped", "pattern": ["GG", " S", " S"], "keys": {"G": "axiom:gold_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:golden_hoe", "count": 1}},
-    {"id": "diamond_hoe", "type": "shaped", "pattern": ["DD", " S", " S"], "keys": {"D": "axiom:diamond", "S": "axiom:stick"}, "result": {"item": "axiom:diamond_hoe", "count": 1}},
-
-    {"id": "leather_helmet", "type": "shaped", "pattern": ["LLL", "L L"], "keys": {"L": "axiom:leather"}, "result": {"item": "axiom:leather_helmet", "count": 1}},
-    {"id": "leather_chestplate", "type": "shaped", "pattern": ["L L", "LLL", "LLL"], "keys": {"L": "axiom:leather"}, "result": {"item": "axiom:leather_chestplate", "count": 1}},
-    {"id": "leather_leggings", "type": "shaped", "pattern": ["LLL", "L L", "L L"], "keys": {"L": "axiom:leather"}, "result": {"item": "axiom:leather_leggings", "count": 1}},
-    {"id": "leather_boots", "type": "shaped", "pattern": ["L L", "L L"], "keys": {"L": "axiom:leather"}, "result": {"item": "axiom:leather_boots", "count": 1}},
-    {"id": "iron_helmet", "type": "shaped", "pattern": ["III", "I I"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_helmet", "count": 1}},
-    {"id": "iron_chestplate", "type": "shaped", "pattern": ["I I", "III", "III"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_chestplate", "count": 1}},
-    {"id": "iron_leggings", "type": "shaped", "pattern": ["III", "I I", "I I"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_leggings", "count": 1}},
-    {"id": "iron_boots", "type": "shaped", "pattern": ["I I", "I I"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_boots", "count": 1}},
-    {"id": "golden_helmet", "type": "shaped", "pattern": ["GGG", "G G"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:golden_helmet", "count": 1}},
-    {"id": "golden_chestplate", "type": "shaped", "pattern": ["G G", "GGG", "GGG"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:golden_chestplate", "count": 1}},
-    {"id": "golden_leggings", "type": "shaped", "pattern": ["GGG", "G G", "G G"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:golden_leggings", "count": 1}},
-    {"id": "golden_boots", "type": "shaped", "pattern": ["G G", "G G"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:golden_boots", "count": 1}},
-    {"id": "diamond_helmet", "type": "shaped", "pattern": ["DDD", "D D"], "keys": {"D": "axiom:diamond"}, "result": {"item": "axiom:diamond_helmet", "count": 1}},
-    {"id": "diamond_chestplate", "type": "shaped", "pattern": ["D D", "DDD", "DDD"], "keys": {"D": "axiom:diamond"}, "result": {"item": "axiom:diamond_chestplate", "count": 1}},
-    {"id": "diamond_leggings", "type": "shaped", "pattern": ["DDD", "D D", "D D"], "keys": {"D": "axiom:diamond"}, "result": {"item": "axiom:diamond_leggings", "count": 1}},
-    {"id": "diamond_boots", "type": "shaped", "pattern": ["D D", "D D"], "keys": {"D": "axiom:diamond"}, "result": {"item": "axiom:diamond_boots", "count": 1}},
-    {"id": "turtle_helmet", "type": "shaped", "pattern": ["SSS", "S S"], "keys": {"S": "axiom:scute"}, "result": {"item": "axiom:turtle_helmet", "count": 1}},
-
-    {"id": "bow", "type": "shaped", "pattern": [" AS", "A S", " AS"], "keys": {"A": "axiom:stick", "S": "axiom:string"}, "result": {"item": "axiom:bow", "count": 1}},
-    {"id": "arrow", "type": "shaped", "pattern": ["F", "S", "T"], "keys": {"F": "axiom:flint", "S": "axiom:stick", "T": "axiom:feather"}, "result": {"item": "axiom:arrow", "count": 4}},
-    {"id": "crossbow", "type": "shaped", "pattern": ["SIS", "THT", " S "], "keys": {"S": "axiom:stick", "I": "axiom:iron_ingot", "T": "axiom:string", "H": "axiom:tripwire_hook"}, "result": {"item": "axiom:crossbow", "count": 1}},
-    {"id": "shield", "type": "shaped", "pattern": ["PIP", "PPP", " P "], "keys": {"P": {"tag": "axiom:planks"}, "I": "axiom:iron_ingot"}, "result": {"item": "axiom:shield", "count": 1}},
-    {"id": "flint_and_steel", "type": "shaped", "pattern": ["I ", " F"], "keys": {"I": "axiom:iron_ingot", "F": "axiom:flint"}, "result": {"item": "axiom:flint_and_steel", "count": 1}},
-    {"id": "fishing_rod", "type": "shaped", "pattern": ["  A", " AS", "A S"], "keys": {"A": "axiom:stick", "S": "axiom:string"}, "result": {"item": "axiom:fishing_rod", "count": 1}},
-    {"id": "shears", "type": "shaped", "pattern": [" I", "I "], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:shears", "count": 1}},
-    {"id": "bucket", "type": "shaped", "pattern": ["I I", " I "], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:bucket", "count": 1}},
-    {"id": "trident_repair", "type": "shapeless", "ingredients": ["axiom:trident", "axiom:trident"], "result": {"item": "axiom:trident", "count": 1}},
-
-    {"id": "paper", "type": "shaped", "pattern": ["SSS"], "keys": {"S": "axiom:sugar_cane"}, "result": {"item": "axiom:paper", "count": 3}},
-    {"id": "book", "type": "shaped", "pattern": ["PP", "PL"], "keys": {"P": "axiom:paper", "L": "axiom:leather"}, "result": {"item": "axiom:book", "count": 1}},
-    {"id": "book_and_quill", "type": "shapeless", "ingredients": ["axiom:book", "axiom:ink_sac", "axiom:feather"], "result": {"item": "axiom:book_and_quill", "count": 1}},
-    {"id": "clock", "type": "shaped", "pattern": [" G ", "GRG", " G "], "keys": {"G": "axiom:gold_ingot", "R": "axiom:redstone"}, "result": {"item": "axiom:clock", "count": 1}},
-    {"id": "compass", "type": "shaped", "pattern": [" I ", "IRI", " I "], "keys": {"I": "axiom:iron_ingot", "R": "axiom:redstone"}, "result": {"item": "axiom:compass", "count": 1}},
-    {"id": "spyglass", "type": "shaped", "pattern": ["A", "C", "C"], "keys": {"A": "axiom:amethyst_shard", "C": "axiom:copper_ingot"}, "result": {"item": "axiom:spyglass", "count": 1}},
-    {"id": "lead", "type": "shaped", "pattern": ["SS ", "SO ", " S "], "keys": {"S": "axiom:string", "O": "axiom:slimeball"}, "result": {"item": "axiom:lead", "count": 2}},
-    {"id": "name_tag", "type": "shapeless", "ingredients": ["axiom:string", "axiom:paper"], "result": {"item": "axiom:name_tag", "count": 1}},
-    {"id": "saddle", "type": "shaped", "pattern": ["LLL", "LIL", " I "], "keys": {"L": "axiom:leather", "I": "axiom:iron_ingot"}, "result": {"item": "axiom:saddle", "count": 1}},
-    {"id": "recovery_compass", "type": "shaped", "pattern": ["EEE", "ECE", "EEE"], "keys": {"E": "axiom:echo_shard", "C": "axiom:compass"}, "result": {"item": "axiom:recovery_compass", "count": 1}},
-    {"id": "bundle", "type": "shaped", "pattern": ["SRS", "S S", "SSS"], "keys": {"S": "axiom:string", "R": "axiom:leather"}, "result": {"item": "axiom:bundle", "count": 1}},
-
-    {"id": "iron_ingot_block", "type": "shaped", "pattern": ["III", "III", "III"], "keys": {"I": "axiom:iron_ingot"}, "result": {"item": "axiom:iron_block", "count": 1}},
-    {"id": "gold_ingot_block", "type": "shaped", "pattern": ["GGG", "GGG", "GGG"], "keys": {"G": "axiom:gold_ingot"}, "result": {"item": "axiom:gold_block", "count": 1}},
-    {"id": "diamond_block", "type": "shaped", "pattern": ["DDD", "DDD", "DDD"], "keys": {"D": "axiom:diamond"}, "result": {"item": "axiom:diamond_block", "count": 1}},
-    {"id": "emerald_block", "type": "shaped", "pattern": ["EEE", "EEE", "EEE"], "keys": {"E": "axiom:emerald"}, "result": {"item": "axiom:emerald_block", "count": 1}},
-    {"id": "coal_block", "type": "shaped", "pattern": ["CCC", "CCC", "CCC"], "keys": {"C": "axiom:coal"}, "result": {"item": "axiom:coal_block", "count": 1}},
-    {"id": "lapis_block", "type": "shaped", "pattern": ["LLL", "LLL", "LLL"], "keys": {"L": "axiom:lapis_lazuli"}, "result": {"item": "axiom:lapis_block", "count": 1}},
-    {"id": "redstone_block", "type": "shaped", "pattern": ["RRR", "RRR", "RRR"], "keys": {"R": "axiom:redstone"}, "result": {"item": "axiom:redstone_block", "count": 1}},
-    {"id": "slime_block", "type": "shaped", "pattern": ["SSS", "SSS", "SSS"], "keys": {"S": "axiom:slimeball"}, "result": {"item": "axiom:slime_block", "count": 1}},
-    {"id": "hay_bale", "type": "shaped", "pattern": ["WWW", "WWW", "WWW"], "keys": {"W": "axiom:wheat"}, "result": {"item": "axiom:hay_bale", "count": 1}},
-    {"id": "bone_block", "type": "shaped", "pattern": ["BBB", "BBB", "BBB"], "keys": {"B": "axiom:bone_meal"}, "result": {"item": "axiom:bone_block", "count": 1}},
-
-    {"id": "iron_ingots_from_block", "type": "shapeless", "ingredients": ["axiom:iron_block"], "result": {"item": "axiom:iron_ingot", "count": 9}},
-    {"id": "gold_ingots_from_block", "type": "shapeless", "ingredients": ["axiom:gold_block"], "result": {"item": "axiom:gold_ingot", "count": 9}},
-    {"id": "diamonds_from_block", "type": "shapeless", "ingredients": ["axiom:diamond_block"], "result": {"item": "axiom:diamond", "count": 9}},
-    {"id": "emeralds_from_block", "type": "shapeless", "ingredients": ["axiom:emerald_block"], "result": {"item": "axiom:emerald", "count": 9}},
-    {"id": "coals_from_block", "type": "shapeless", "ingredients": ["axiom:coal_block"], "result": {"item": "axiom:coal", "count": 9}},
-
-    {"id": "oak_planks", "type": "shapeless", "ingredients": ["axiom:oak_log"], "result": {"item": "axiom:oak_planks", "count": 4}},
-    {"id": "spruce_planks", "type": "shapeless", "ingredients": ["axiom:spruce_log"], "result": {"item": "axiom:spruce_planks", "count": 4}},
-    {"id": "birch_planks", "type": "shapeless", "ingredients": ["axiom:birch_log"], "result": {"item": "axiom:birch_planks", "count": 4}},
-    {"id": "jungle_planks", "type": "shapeless", "ingredients": ["axiom:jungle_log"], "result": {"item": "axiom:jungle_planks", "count": 4}},
-    {"id": "acacia_planks", "type": "shapeless", "ingredients": ["axiom:acacia_log"], "result": {"item": "axiom:acacia_planks", "count": 4}},
-    {"id": "dark_oak_planks", "type": "shapeless", "ingredients": ["axiom:dark_oak_log"], "result": {"item": "axiom:dark_oak_planks", "count": 4}},
-    {"id": "mangrove_planks", "type": "shapeless", "ingredients": ["axiom:mangrove_log"], "result": {"item": "axiom:mangrove_planks", "count": 4}},
-    {"id": "cherry_planks", "type": "shapeless", "ingredients": ["axiom:cherry_log"], "result": {"item": "axiom:cherry_planks", "count": 4}},
-    {"id": "pale_oak_planks", "type": "shapeless", "ingredients": ["axiom:pale_oak_log"], "result": {"item": "axiom:pale_oak_planks", "count": 4}},
-    {"id": "crimson_planks", "type": "shapeless", "ingredients": ["axiom:crimson_stem"], "result": {"item": "axiom:crimson_planks", "count": 4}},
-    {"id": "warped_planks", "type": "shapeless", "ingredients": ["axiom:warped_stem"], "result": {"item": "axiom:warped_planks", "count": 4}},
-
-    {"id": "torch", "type": "shaped", "pattern": ["C", "S"], "keys": {"C": "axiom:coal", "S": "axiom:stick"}, "result": {"item": "axiom:torch", "count": 4}},
-    {"id": "torch_charcoal", "type": "shaped", "pattern": ["C", "S"], "keys": {"C": "axiom:charcoal", "S": "axiom:stick"}, "result": {"item": "axiom:torch", "count": 4}},
-    {"id": "soul_torch", "type": "shaped", "pattern": ["C", "S", "U"], "keys": {"C": "axiom:coal", "S": "axiom:stick", "U": {"tag": "axiom:soul_fire_base_blocks"}}, "result": {"item": "axiom:soul_torch", "count": 4}},
-    {"id": "lantern", "type": "shaped", "pattern": ["III", "ITI", "III"], "keys": {"I": "axiom:iron_nugget", "T": "axiom:torch"}, "result": {"item": "axiom:lantern", "count": 1}},
-    {"id": "soul_lantern", "type": "shaped", "pattern": ["III", "ITI", "III"], "keys": {"I": "axiom:iron_nugget", "T": "axiom:soul_torch"}, "result": {"item": "axiom:soul_lantern", "count": 1}},
-    {"id": "chain", "type": "shaped", "pattern": ["I", "N", "I"], "keys": {"I": "axiom:iron_ingot", "N": "axiom:iron_nugget"}, "result": {"item": "axiom:chain", "count": 1}},
-
-    {"id": "bread", "type": "shaped", "pattern": ["WWW"], "keys": {"W": "axiom:wheat"}, "result": {"item": "axiom:bread", "count": 1}},
-    {"id": "golden_apple", "type": "shaped", "pattern": ["GGG", "GAG", "GGG"], "keys": {"G": "axiom:gold_ingot", "A": "axiom:apple"}, "result": {"item": "axiom:golden_apple", "count": 1}},
-    {"id": "sugar", "type": "shapeless", "ingredients": ["axiom:sugar_cane"], "result": {"item": "axiom:sugar", "count": 1}},
-    {"id": "cake", "type": "shaped", "pattern": ["MMM", "SES", "WWW"], "keys": {"M": "axiom:milk_bucket", "S": "axiom:sugar", "E": "axiom:egg", "W": "axiom:wheat"}, "result": {"item": "axiom:cake", "count": 1}},
-    {"id": "cookie", "type": "shaped", "pattern": ["WCW"], "keys": {"W": "axiom:wheat", "C": "axiom:cocoa_beans"}, "result": {"item": "axiom:cookie", "count": 8}},
-    {"id": "pumpkin_pie", "type": "shaped", "pattern": ["PSE"], "keys": {"P": "axiom:pumpkin", "S": "axiom:sugar", "E": "axiom:egg"}, "result": {"item": "axiom:pumpkin_pie", "count": 1}},
-    {"id": "mushroom_stew", "type": "shapeless", "ingredients": ["axiom:red_mushroom", "axiom:brown_mushroom", "axiom:bowl"], "result": {"item": "axiom:mushroom_stew", "count": 1}},
-    {"id": "rabbit_stew", "type": "shaped", "pattern": [" M ", "CPC", " B "], "keys": {"M": "axiom:cooked_rabbit", "C": "axiom:carrot", "P": "axiom:baked_potato", "B": "axiom:bowl"}, "result": {"item": "axiom:rabbit_stew", "count": 1}},
-    {"id": "beetroot_soup", "type": "shaped", "pattern": ["BBB", "BBB", " B "], "keys": {"B": "axiom:beetroot"}, "result": {"item": "axiom:beetroot_soup", "count": 1}},
-    {"id": "honey_bottle", "type": "shapeless", "ingredients": ["axiom:honey_block"], "result": {"item": "axiom:honey_bottle", "count": 4}},
-    {"id": "honey_block", "type": "shaped", "pattern": ["HH", "HH"], "keys": {"H": "axiom:honey_bottle"}, "result": {"item": "axiom:honey_block", "count": 1}},
-    {"id": "honeycomb_block", "type": "shaped", "pattern": ["HH", "HH"], "keys": {"H": "axiom:honeycomb"}, "result": {"item": "axiom:honeycomb_block", "count": 1}},
-    {"id": "golden_carrot", "type": "shaped", "pattern": ["NNN", "NCN", "NNN"], "keys": {"N": "axiom:gold_nugget", "C": "axiom:carrot"}, "result": {"item": "axiom:golden_carrot", "count": 1}},
-    {"id": "glistering_melon", "type": "shaped", "pattern": ["NNN", "NMN", "NNN"], "keys": {"N": "axiom:gold_nugget", "M": "axiom:melon_slice"}, "result": {"item": "axiom:glistering_melon_slice", "count": 1}},
-
-    {"id": "blaze_powder", "type": "shapeless", "ingredients": ["axiom:blaze_rod"], "result": {"item": "axiom:blaze_powder", "count": 2}},
-    {"id": "magma_cream", "type": "shapeless", "ingredients": ["axiom:blaze_powder", "axiom:slimeball"], "result": {"item": "axiom:magma_cream", "count": 1}},
-    {"id": "fermented_spider_eye", "type": "shapeless", "ingredients": ["axiom:spider_eye", "axiom:brown_mushroom", "axiom:sugar"], "result": {"item": "axiom:fermented_spider_eye", "count": 1}},
-    {"id": "eye_of_ender", "type": "shapeless", "ingredients": ["axiom:ender_pearl", "axiom:blaze_powder"], "result": {"item": "axiom:eye_of_ender", "count": 1}},
-    {"id": "fire_charge", "type": "shapeless", "ingredients": ["axiom:gunpowder", "axiom:blaze_powder", "axiom:coal"], "result": {"item": "axiom:fire_charge", "count": 3}},
-    {"id": "firework_star", "type": "shapeless", "ingredients": ["axiom:gunpowder"], "result": {"item": "axiom:firework_star", "count": 1}},
-    {"id": "firework_rocket", "type": "shaped", "pattern": ["GP", "P "], "keys": {"G": "axiom:gunpowder", "P": "axiom:paper"}, "result": {"item": "axiom:firework_rocket", "count": 3}},
-    {"id": "bone_meal", "type": "shapeless", "ingredients": ["axiom:bone"], "result": {"item": "axiom:bone_meal", "count": 3}},
-    {"id": "string_to_wool", "type": "shapeless", "ingredients": ["axiom:string", "axiom:string", "axiom:string", "axiom:string"], "result": {"item": "axiom:white_wool", "count": 1}},
-    {"id": "amethyst_block", "type": "shaped", "pattern": ["AA", "AA"], "keys": {"A": "axiom:amethyst_shard"}, "result": {"item": "axiom:amethyst_block", "count": 1}},
-    {"id": "tinted_glass", "type": "shaped", "pattern": [" A ", "AGA", " A "], "keys": {"A": "axiom:amethyst_shard", "G": "axiom:glass"}, "result": {"item": "axiom:tinted_glass", "count": 2}},
-    {"id": "calcite", "type": "shapeless", "ingredients": ["axiom:calcite"], "result": {"item": "axiom:calcite", "count": 1}},
-    {"id": "packed_mud", "type": "shaped", "pattern": ["MM", "MM"], "keys": {"M": "axiom:mud"}, "result": {"item": "axiom:packed_mud", "count": 1}},
-    {"id": "mud_bricks", "type": "shaped", "pattern": ["MM", "MM"], "keys": {"M": "axiom:packed_mud"}, "result": {"item": "axiom:mud_bricks", "count": 4}},
-    {"id": "chiseled_nether_bricks", "type": "shaped", "pattern": ["N", "N"], "keys": {"N": "axiom:nether_brick_slab"}, "result": {"item": "axiom:chiseled_nether_bricks", "count": 1}},
-    {"id": "cracked_nether_bricks", "type": "shapeless", "ingredients": ["axiom:nether_bricks"], "result": {"item": "axiom:cracked_nether_bricks", "count": 1}},
-    {"id": "lodestone_compass", "type": "shapeless", "ingredients": ["axiom:compass", "axiom:lodestone"], "result": {"item": "axiom:lodestone_compass", "count": 1}},
-
-    {"id": "void_crystal_teleporter", "type": "shaped", "pattern": [" V ", "VEV", " V "], "keys": {"V": "axiom:void_crystal_shard", "E": "axiom:ender_pearl"}, "result": {"item": "axiom:void_crystal_teleporter", "count": 1}, "tags": ["end_recipe"]},
-    {"id": "ender_wings", "type": "shaped", "pattern": ["ESE", "E E", "ESE"], "keys": {"E": "axiom:ender_shard", "S": "axiom:elytra"}, "result": {"item": "axiom:ender_wings", "count": 1}, "tags": ["end_recipe"]},
-
-    {"id": "miner_helmet",     "type": "shaped", "pattern": ["EIE", "E E"],          "keys": {"E": "axiom:emerald", "I": "axiom:iron_ingot"},                                                  "result": {"item": "axiom:miner_helmet",     "count": 1}, "tags": ["style_armor"]},
-    {"id": "miner_chestplate", "type": "shaped", "pattern": ["E E", "EIE", "EIE"],   "keys": {"E": "axiom:emerald", "I": "axiom:iron_ingot"},                                                  "result": {"item": "axiom:miner_chestplate", "count": 1}, "tags": ["style_armor"]},
-    {"id": "miner_leggings",   "type": "shaped", "pattern": ["EIE", "E E", "E E"],   "keys": {"E": "axiom:emerald", "I": "axiom:iron_ingot"},                                                  "result": {"item": "axiom:miner_leggings",   "count": 1}, "tags": ["style_armor"]},
-    {"id": "miner_boots",      "type": "shaped", "pattern": ["E E", "E E"],          "keys": {"E": "axiom:emerald"},                                                                            "result": {"item": "axiom:miner_boots",      "count": 1}, "tags": ["style_armor"]},
-
-    {"id": "warrior_helmet",     "type": "shaped", "pattern": ["IFI", "I I"],          "keys": {"I": "axiom:iron_ingot", "F": "axiom:corrupted_fang"},                                          "result": {"item": "axiom:warrior_helmet",     "count": 1}, "tags": ["style_armor"]},
-    {"id": "warrior_chestplate", "type": "shaped", "pattern": ["I I", "IFI", "IFI"],   "keys": {"I": "axiom:iron_ingot", "F": "axiom:corrupted_fang"},                                          "result": {"item": "axiom:warrior_chestplate", "count": 1}, "tags": ["style_armor"]},
-    {"id": "warrior_leggings",   "type": "shaped", "pattern": ["GFG", "I I", "I I"],   "keys": {"I": "axiom:iron_ingot", "F": "axiom:corrupted_fang", "G": "axiom:predator_claw"},             "result": {"item": "axiom:warrior_leggings",   "count": 1}, "tags": ["style_armor"]},
-    {"id": "warrior_boots",      "type": "shaped", "pattern": ["I I", "IGI"],          "keys": {"I": "axiom:iron_ingot", "G": "axiom:predator_claw"},                                           "result": {"item": "axiom:warrior_boots",      "count": 1}, "tags": ["style_armor"]},
-
-    {"id": "engineer_helmet",     "type": "shaped", "pattern": ["ICI", "I I"],          "keys": {"I": "axiom:iron_ingot", "C": "axiom:copper_ingot"},                                            "result": {"item": "axiom:engineer_helmet",     "count": 1}, "tags": ["style_armor"]},
-    {"id": "engineer_chestplate", "type": "shaped", "pattern": ["I I", "ICI", "IRI"],   "keys": {"I": "axiom:iron_ingot", "C": "axiom:copper_ingot", "R": "axiom:redstone"},                    "result": {"item": "axiom:engineer_chestplate", "count": 1}, "tags": ["style_armor"]},
-    {"id": "engineer_leggings",   "type": "shaped", "pattern": ["ICI", "I I", "IRI"],   "keys": {"I": "axiom:iron_ingot", "C": "axiom:copper_ingot", "R": "axiom:redstone"},                    "result": {"item": "axiom:engineer_leggings",   "count": 1}, "tags": ["style_armor"]},
-    {"id": "engineer_boots",      "type": "shaped", "pattern": ["I I", "IRI"],          "keys": {"I": "axiom:iron_ingot", "R": "axiom:redstone"},                                               "result": {"item": "axiom:engineer_boots",      "count": 1}, "tags": ["style_armor"]},
-
-    {"id": "nature_helmet",     "type": "shaped", "pattern": ["LAL", "L L"],          "keys": {"L": "axiom:leather", "A": "axiom:arcane_feather"},                                              "result": {"item": "axiom:nature_helmet",     "count": 1}, "tags": ["style_armor"]},
-    {"id": "nature_chestplate", "type": "shaped", "pattern": ["L L", "LAL", "LBL"],   "keys": {"L": "axiom:leather", "A": "axiom:arcane_feather", "B": "axiom:bone"},                          "result": {"item": "axiom:nature_chestplate", "count": 1}, "tags": ["style_armor"]},
-    {"id": "nature_leggings",   "type": "shaped", "pattern": ["LBL", "L L", "L L"],   "keys": {"L": "axiom:leather", "B": "axiom:bone"},                                                       "result": {"item": "axiom:nature_leggings",   "count": 1}, "tags": ["style_armor"]},
-    {"id": "nature_boots",      "type": "shaped", "pattern": ["L L", "LAL"],          "keys": {"L": "axiom:leather", "A": "axiom:arcane_feather"},                                              "result": {"item": "axiom:nature_boots",      "count": 1}, "tags": ["style_armor"]},
-
-    {"id": "iron_spear",      "type": "shaped", "pattern": ["  I", " I ", "S  "], "keys": {"I": "axiom:iron_ingot",      "S": "axiom:stick"}, "result": {"item": "axiom:iron_spear",      "count": 1}, "tags": ["weapon"]},
-    {"id": "diamond_spear",   "type": "shaped", "pattern": ["  D", " D ", "S  "], "keys": {"D": "axiom:diamond",         "S": "axiom:stick"}, "result": {"item": "axiom:diamond_spear",   "count": 1}, "tags": ["weapon"]},
-    {"id": "netherite_spear", "type": "shaped", "pattern": ["  N", " N ", "S  "], "keys": {"N": "axiom:netherite_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:netherite_spear", "count": 1}, "tags": ["weapon"]},
-
-    {"id": "iron_dagger",      "type": "shaped", "pattern": ["I", "S"], "keys": {"I": "axiom:iron_ingot",      "S": "axiom:stick"}, "result": {"item": "axiom:iron_dagger",      "count": 1}, "tags": ["weapon"]},
-    {"id": "diamond_dagger",   "type": "shaped", "pattern": ["D", "S"], "keys": {"D": "axiom:diamond",         "S": "axiom:stick"}, "result": {"item": "axiom:diamond_dagger",   "count": 1}, "tags": ["weapon"]},
-    {"id": "netherite_dagger", "type": "shaped", "pattern": ["N", "S"], "keys": {"N": "axiom:netherite_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:netherite_dagger", "count": 1}, "tags": ["weapon"]},
-
-    {"id": "iron_mace",      "type": "shaped", "pattern": ["III", "ISI", " S "], "keys": {"I": "axiom:iron_ingot",      "S": "axiom:stick"}, "result": {"item": "axiom:iron_mace",      "count": 1}, "tags": ["weapon"]},
-    {"id": "diamond_mace",   "type": "shaped", "pattern": ["DDD", "DSD", " S "], "keys": {"D": "axiom:diamond",         "S": "axiom:stick"}, "result": {"item": "axiom:diamond_mace",   "count": 1}, "tags": ["weapon"]},
-    {"id": "netherite_mace", "type": "shaped", "pattern": ["NNN", "NSN", " S "], "keys": {"N": "axiom:netherite_ingot", "S": "axiom:stick"}, "result": {"item": "axiom:netherite_mace", "count": 1}, "tags": ["weapon"]},
-
-    {"id": "portable_workbench", "type": "shaped",
-     "pattern": ["IPI", "PDP", "IPI"],
-     "keys": {"I": "axiom:iron_ingot", "P": "axiom:oak_planks", "D": "axiom:diamond"},
-     "result": {"item": "axiom:portable_workbench", "count": 1},
-     "tags": ["utility"]},
-
-    {"id": "architect_map", "type": "shapeless",
-     "ingredients": ["axiom:soul_fragment_i", "axiom:soul_fragment_ii", "axiom:soul_fragment_iii", "axiom:soul_fragment_iv"],
-     "result": {"item": "axiom:architect_map", "count": 1},
-     "tags": ["lore", "quest"]}
+    {
+      "id": "crafting_table",
+      "type": "shaped",
+      "pattern": [
+        "##",
+        "##"
+      ],
+      "keys": {
+        "#": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:crafting_table",
+        "count": 1
+      }
+    },
+    {
+      "id": "stick",
+      "type": "shaped",
+      "pattern": [
+        "#",
+        "#"
+      ],
+      "keys": {
+        "#": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:stick",
+        "count": 4
+      }
+    },
+    {
+      "id": "chest",
+      "type": "shaped",
+      "pattern": [
+        "###",
+        "# #",
+        "###"
+      ],
+      "keys": {
+        "#": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:chest",
+        "count": 1
+      }
+    },
+    {
+      "id": "furnace",
+      "type": "shaped",
+      "pattern": [
+        "###",
+        "# #",
+        "###"
+      ],
+      "keys": {
+        "#": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:furnace",
+        "count": 1
+      }
+    },
+    {
+      "id": "blast_furnace",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "IFI",
+        "CCC"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "F": "axiom:furnace",
+        "C": "axiom:smooth_stone"
+      },
+      "result": {
+        "item": "axiom:blast_furnace",
+        "count": 1
+      }
+    },
+    {
+      "id": "smoker",
+      "type": "shaped",
+      "pattern": [
+        " W ",
+        "WFW",
+        " W "
+      ],
+      "keys": {
+        "W": {
+          "tag": "axiom:logs"
+        },
+        "F": "axiom:furnace"
+      },
+      "result": {
+        "item": "axiom:smoker",
+        "count": 1
+      }
+    },
+    {
+      "id": "anvil",
+      "type": "shaped",
+      "pattern": [
+        "BBB",
+        " I ",
+        "III"
+      ],
+      "keys": {
+        "B": "axiom:iron_block",
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:anvil",
+        "count": 1
+      }
+    },
+    {
+      "id": "enchanting_table",
+      "type": "shaped",
+      "pattern": [
+        " B ",
+        "DID",
+        "III"
+      ],
+      "keys": {
+        "B": "axiom:book",
+        "D": "axiom:diamond",
+        "I": "axiom:obsidian"
+      },
+      "result": {
+        "item": "axiom:enchanting_table",
+        "count": 1
+      }
+    },
+    {
+      "id": "brewing_stand",
+      "type": "shaped",
+      "pattern": [
+        " B ",
+        "III"
+      ],
+      "keys": {
+        "B": "axiom:blaze_rod",
+        "I": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:brewing_stand",
+        "count": 1
+      }
+    },
+    {
+      "id": "bookshelf",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "BBB",
+        "PPP"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "B": "axiom:book"
+      },
+      "result": {
+        "item": "axiom:bookshelf",
+        "count": 1
+      }
+    },
+    {
+      "id": "tnt",
+      "type": "shaped",
+      "pattern": [
+        "SGS",
+        "GSG",
+        "SGS"
+      ],
+      "keys": {
+        "S": "axiom:sand",
+        "G": "axiom:gunpowder"
+      },
+      "result": {
+        "item": "axiom:tnt",
+        "count": 1
+      }
+    },
+    {
+      "id": "hopper",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "ICI",
+        " I "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "C": "axiom:chest"
+      },
+      "result": {
+        "item": "axiom:hopper",
+        "count": 1
+      }
+    },
+    {
+      "id": "dropper",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "C C",
+        "CRC"
+      ],
+      "keys": {
+        "C": "axiom:cobblestone",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:dropper",
+        "count": 1
+      }
+    },
+    {
+      "id": "dispenser",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "CBC",
+        "CRC"
+      ],
+      "keys": {
+        "C": "axiom:cobblestone",
+        "B": "axiom:bow",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:dispenser",
+        "count": 1
+      }
+    },
+    {
+      "id": "piston",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "ICI",
+        "IRI"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "I": "axiom:cobblestone",
+        "C": "axiom:iron_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:piston",
+        "count": 1
+      }
+    },
+    {
+      "id": "sticky_piston",
+      "type": "shaped",
+      "pattern": [
+        "S",
+        "P"
+      ],
+      "keys": {
+        "S": "axiom:slimeball",
+        "P": "axiom:piston"
+      },
+      "result": {
+        "item": "axiom:sticky_piston",
+        "count": 1
+      }
+    },
+    {
+      "id": "observer",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "RRQ",
+        "CCC"
+      ],
+      "keys": {
+        "C": "axiom:cobblestone",
+        "R": "axiom:redstone",
+        "Q": "axiom:quartz"
+      },
+      "result": {
+        "item": "axiom:observer",
+        "count": 1
+      }
+    },
+    {
+      "id": "comparator",
+      "type": "shaped",
+      "pattern": [
+        " T ",
+        "TQT",
+        "SSS"
+      ],
+      "keys": {
+        "T": "axiom:redstone_torch",
+        "Q": "axiom:quartz",
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:comparator",
+        "count": 1
+      }
+    },
+    {
+      "id": "repeater",
+      "type": "shaped",
+      "pattern": [
+        "TIT",
+        "SSS"
+      ],
+      "keys": {
+        "T": "axiom:redstone_torch",
+        "I": "axiom:redstone",
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:repeater",
+        "count": 1
+      }
+    },
+    {
+      "id": "redstone_lamp",
+      "type": "shaped",
+      "pattern": [
+        " R ",
+        "RGR",
+        " R "
+      ],
+      "keys": {
+        "R": "axiom:redstone",
+        "G": "axiom:glowstone"
+      },
+      "result": {
+        "item": "axiom:redstone_lamp",
+        "count": 1
+      }
+    },
+    {
+      "id": "composter",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:wooden_slabs"
+        }
+      },
+      "result": {
+        "item": "axiom:composter",
+        "count": 1
+      }
+    },
+    {
+      "id": "cauldron",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "I I",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:cauldron",
+        "count": 1
+      }
+    },
+    {
+      "id": "smithing_table",
+      "type": "shaped",
+      "pattern": [
+        "II",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "P": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:smithing_table",
+        "count": 1
+      }
+    },
+    {
+      "id": "grindstone",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        " I "
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": {
+          "tag": "axiom:wooden_slabs"
+        },
+        "I": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:grindstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "stonecutter",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "SIS"
+      ],
+      "keys": {
+        "I": "axiom:stone",
+        "S": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:stonecutter",
+        "count": 1
+      }
+    },
+    {
+      "id": "loom",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "PP"
+      ],
+      "keys": {
+        "S": "axiom:string",
+        "P": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:loom",
+        "count": 1
+      }
+    },
+    {
+      "id": "cartography_table",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "WW"
+      ],
+      "keys": {
+        "P": "axiom:paper",
+        "W": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:cartography_table",
+        "count": 1
+      }
+    },
+    {
+      "id": "lectern",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        " B ",
+        " S "
+      ],
+      "keys": {
+        "S": {
+          "tag": "axiom:wooden_slabs"
+        },
+        "B": "axiom:bookshelf"
+      },
+      "result": {
+        "item": "axiom:lectern",
+        "count": 1
+      }
+    },
+    {
+      "id": "barrel",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "P P",
+        "PSP"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": {
+          "tag": "axiom:wooden_slabs"
+        }
+      },
+      "result": {
+        "item": "axiom:barrel",
+        "count": 1
+      }
+    },
+    {
+      "id": "beacon",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "GSG",
+        "OOO"
+      ],
+      "keys": {
+        "G": "axiom:glass",
+        "S": "axiom:nether_star",
+        "O": "axiom:obsidian"
+      },
+      "result": {
+        "item": "axiom:beacon",
+        "count": 1
+      }
+    },
+    {
+      "id": "lodestone",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "CNS",
+        "CCC"
+      ],
+      "keys": {
+        "C": "axiom:chiseled_stone_bricks",
+        "N": "axiom:netherite_ingot"
+      },
+      "result": {
+        "item": "axiom:lodestone",
+        "count": 1
+      }
+    },
+    {
+      "id": "respawn_anchor",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "CCC",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:crying_obsidian",
+        "C": "axiom:glowstone"
+      },
+      "result": {
+        "item": "axiom:respawn_anchor",
+        "count": 1
+      }
+    },
+    {
+      "id": "note_block",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PRP",
+        "PPP"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:note_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "jukebox",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PDG",
+        "PPP"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:jukebox",
+        "count": 1
+      }
+    },
+    {
+      "id": "ender_chest",
+      "type": "shaped",
+      "pattern": [
+        "OOO",
+        "OEO",
+        "OOO"
+      ],
+      "keys": {
+        "O": "axiom:obsidian",
+        "E": "axiom:eye_of_ender"
+      },
+      "result": {
+        "item": "axiom:ender_chest",
+        "count": 1
+      }
+    },
+    {
+      "id": "redstone_torch",
+      "type": "shaped",
+      "pattern": [
+        "R",
+        "S"
+      ],
+      "keys": {
+        "R": "axiom:redstone",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:redstone_torch",
+        "count": 1
+      }
+    },
+    {
+      "id": "lever",
+      "type": "shaped",
+      "pattern": [
+        "S",
+        "C"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "C": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:lever",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:stone"
+      ],
+      "result": {
+        "item": "axiom:stone_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:stone_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "heavy_weighted_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "II"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:heavy_weighted_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "light_weighted_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "GG"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:light_weighted_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "daylight_sensor",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "QQQ",
+        "SSS"
+      ],
+      "keys": {
+        "G": "axiom:glass",
+        "Q": "axiom:quartz",
+        "S": {
+          "tag": "axiom:wooden_slabs"
+        }
+      },
+      "result": {
+        "item": "axiom:daylight_sensor",
+        "count": 1
+      }
+    },
+    {
+      "id": "tripwire_hook",
+      "type": "shaped",
+      "pattern": [
+        "I",
+        "S",
+        "P"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick",
+        "P": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:tripwire_hook",
+        "count": 2
+      }
+    },
+    {
+      "id": "target",
+      "type": "shaped",
+      "pattern": [
+        " R ",
+        "RHR",
+        " R "
+      ],
+      "keys": {
+        "R": "axiom:redstone",
+        "H": "axiom:hay_bale"
+      },
+      "result": {
+        "item": "axiom:target",
+        "count": 1
+      }
+    },
+    {
+      "id": "rail",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "ISI",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:rail",
+        "count": 16
+      }
+    },
+    {
+      "id": "powered_rail",
+      "type": "shaped",
+      "pattern": [
+        "G G",
+        "GSG",
+        "GRG"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:powered_rail",
+        "count": 6
+      }
+    },
+    {
+      "id": "detector_rail",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "IPI",
+        "IRI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "P": "axiom:stone_pressure_plate",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:detector_rail",
+        "count": 6
+      }
+    },
+    {
+      "id": "activator_rail",
+      "type": "shaped",
+      "pattern": [
+        "ISI",
+        "ITI",
+        "ISI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick",
+        "T": "axiom:redstone_torch"
+      },
+      "result": {
+        "item": "axiom:activator_rail",
+        "count": 6
+      }
+    },
+    {
+      "id": "minecart",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:minecart",
+        "count": 1
+      }
+    },
+    {
+      "id": "chest_minecart",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:minecart",
+        "axiom:chest"
+      ],
+      "result": {
+        "item": "axiom:chest_minecart",
+        "count": 1
+      }
+    },
+    {
+      "id": "hopper_minecart",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:minecart",
+        "axiom:hopper"
+      ],
+      "result": {
+        "item": "axiom:hopper_minecart",
+        "count": 1
+      }
+    },
+    {
+      "id": "tnt_minecart",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:minecart",
+        "axiom:tnt"
+      ],
+      "result": {
+        "item": "axiom:tnt_minecart",
+        "count": 1
+      }
+    },
+    {
+      "id": "furnace_minecart",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:minecart",
+        "axiom:furnace"
+      ],
+      "result": {
+        "item": "axiom:furnace_minecart",
+        "count": 1
+      }
+    },
+    {
+      "id": "ladder",
+      "type": "shaped",
+      "pattern": [
+        "S S",
+        "SSS",
+        "S S"
+      ],
+      "keys": {
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:ladder",
+        "count": 3
+      }
+    },
+    {
+      "id": "scaffolding",
+      "type": "shaped",
+      "pattern": [
+        "BSB",
+        "BBB",
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:bamboo",
+        "S": "axiom:string"
+      },
+      "result": {
+        "item": "axiom:scaffolding",
+        "count": 6
+      }
+    },
+    {
+      "id": "glass_pane",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:glass"
+      },
+      "result": {
+        "item": "axiom:glass_pane",
+        "count": 16
+      }
+    },
+    {
+      "id": "glass_bottle",
+      "type": "shaped",
+      "pattern": [
+        "G G",
+        " G "
+      ],
+      "keys": {
+        "G": "axiom:glass"
+      },
+      "result": {
+        "item": "axiom:glass_bottle",
+        "count": 3
+      }
+    },
+    {
+      "id": "iron_bars",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_bars",
+        "count": 16
+      }
+    },
+    {
+      "id": "iron_door",
+      "type": "shaped",
+      "pattern": [
+        "II",
+        "II",
+        "II"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "iron_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "II",
+        "II"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_trapdoor",
+        "count": 1
+      }
+    },
+    {
+      "id": "painting",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SWS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "W": "axiom:white_wool"
+      },
+      "result": {
+        "item": "axiom:painting",
+        "count": 1
+      }
+    },
+    {
+      "id": "item_frame",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SLS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:item_frame",
+        "count": 1
+      }
+    },
+    {
+      "id": "armor_stand",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        " S ",
+        "SBS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "B": "axiom:smooth_stone_slab"
+      },
+      "result": {
+        "item": "axiom:armor_stand",
+        "count": 1
+      }
+    },
+    {
+      "id": "flower_pot",
+      "type": "shaped",
+      "pattern": [
+        "B B",
+        " B "
+      ],
+      "keys": {
+        "B": "axiom:brick"
+      },
+      "result": {
+        "item": "axiom:flower_pot",
+        "count": 1
+      }
+    },
+    {
+      "id": "map",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PCP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:paper",
+        "C": "axiom:compass"
+      },
+      "result": {
+        "item": "axiom:map",
+        "count": 1
+      }
+    },
+    {
+      "id": "empty_map",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:paper"
+      },
+      "result": {
+        "item": "axiom:empty_map",
+        "count": 1
+      }
+    },
+    {
+      "id": "white_banner",
+      "type": "shaped",
+      "pattern": [
+        "WWW",
+        "WWW",
+        " S "
+      ],
+      "keys": {
+        "W": "axiom:white_wool",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:white_banner",
+        "count": 1
+      }
+    },
+    {
+      "id": "sea_lantern",
+      "type": "shaped",
+      "pattern": [
+        "SCS",
+        "CSC",
+        "SCS"
+      ],
+      "keys": {
+        "S": "axiom:prismarine_shard",
+        "C": "axiom:prismarine_crystals"
+      },
+      "result": {
+        "item": "axiom:sea_lantern",
+        "count": 1
+      }
+    },
+    {
+      "id": "prismarine",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:prismarine_shard"
+      },
+      "result": {
+        "item": "axiom:prismarine",
+        "count": 1
+      }
+    },
+    {
+      "id": "prismarine_bricks",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:prismarine_crystals"
+      },
+      "result": {
+        "item": "axiom:prismarine_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "dark_prismarine",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SIS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:prismarine_shard",
+        "I": "axiom:ink_sac"
+      },
+      "result": {
+        "item": "axiom:dark_prismarine",
+        "count": 1
+      }
+    },
+    {
+      "id": "nether_brick_fence",
+      "type": "shaped",
+      "pattern": [
+        "NIN",
+        "NIN"
+      ],
+      "keys": {
+        "N": "axiom:nether_bricks",
+        "I": "axiom:nether_brick"
+      },
+      "result": {
+        "item": "axiom:nether_brick_fence",
+        "count": 6
+      }
+    },
+    {
+      "id": "bowl",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        " P "
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:bowl",
+        "count": 4
+      }
+    },
+    {
+      "id": "white_wool",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:string",
+        "axiom:string",
+        "axiom:string",
+        "axiom:string"
+      ],
+      "result": {
+        "item": "axiom:white_wool",
+        "count": 1
+      }
+    },
+    {
+      "id": "white_carpet",
+      "type": "shaped",
+      "pattern": [
+        "WW"
+      ],
+      "keys": {
+        "W": "axiom:white_wool"
+      },
+      "result": {
+        "item": "axiom:white_carpet",
+        "count": 3
+      }
+    },
+    {
+      "id": "white_bed",
+      "type": "shaped",
+      "pattern": [
+        "WWW",
+        "PPP"
+      ],
+      "keys": {
+        "W": "axiom:white_wool",
+        "P": {
+          "tag": "axiom:planks"
+        }
+      },
+      "result": {
+        "item": "axiom:white_bed",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_nugget_from_ingot",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:iron_ingot"
+      ],
+      "result": {
+        "item": "axiom:iron_nugget",
+        "count": 9
+      }
+    },
+    {
+      "id": "gold_nugget_from_ingot",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:gold_ingot"
+      ],
+      "result": {
+        "item": "axiom:gold_nugget",
+        "count": 9
+      }
+    },
+    {
+      "id": "iron_ingot_from_nuggets",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NNN",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:iron_nugget"
+      },
+      "result": {
+        "item": "axiom:iron_ingot",
+        "count": 1
+      }
+    },
+    {
+      "id": "gold_ingot_from_nuggets",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NNN",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:gold_nugget"
+      },
+      "result": {
+        "item": "axiom:gold_ingot",
+        "count": 1
+      }
+    },
+    {
+      "id": "netherite_ingot",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:netherite_scrap",
+        "axiom:netherite_scrap",
+        "axiom:netherite_scrap",
+        "axiom:netherite_scrap",
+        "axiom:gold_ingot",
+        "axiom:gold_ingot",
+        "axiom:gold_ingot",
+        "axiom:gold_ingot"
+      ],
+      "result": {
+        "item": "axiom:netherite_ingot",
+        "count": 1
+      }
+    },
+    {
+      "id": "copper_block",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "CCC",
+        "CCC"
+      ],
+      "keys": {
+        "C": "axiom:copper_ingot"
+      },
+      "result": {
+        "item": "axiom:copper_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "copper_ingots_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:copper_block"
+      ],
+      "result": {
+        "item": "axiom:copper_ingot",
+        "count": 9
+      }
+    },
+    {
+      "id": "quartz_block",
+      "type": "shaped",
+      "pattern": [
+        "QQ",
+        "QQ"
+      ],
+      "keys": {
+        "Q": "axiom:quartz"
+      },
+      "result": {
+        "item": "axiom:quartz_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "quartz_pillar",
+      "type": "shaped",
+      "pattern": [
+        "Q",
+        "Q"
+      ],
+      "keys": {
+        "Q": "axiom:quartz_block"
+      },
+      "result": {
+        "item": "axiom:quartz_pillar",
+        "count": 2
+      }
+    },
+    {
+      "id": "quartz_bricks",
+      "type": "shaped",
+      "pattern": [
+        "QQ",
+        "QQ"
+      ],
+      "keys": {
+        "Q": "axiom:quartz_block"
+      },
+      "result": {
+        "item": "axiom:quartz_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "quartz_slab",
+      "type": "shaped",
+      "pattern": [
+        "QQQ"
+      ],
+      "keys": {
+        "Q": "axiom:quartz_block"
+      },
+      "result": {
+        "item": "axiom:quartz_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "quartz_stairs",
+      "type": "shaped",
+      "pattern": [
+        "Q  ",
+        "QQ ",
+        "QQQ"
+      ],
+      "keys": {
+        "Q": "axiom:quartz_block"
+      },
+      "result": {
+        "item": "axiom:quartz_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "stone_bricks",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:stone_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "stone_brick_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stone_bricks"
+      },
+      "result": {
+        "item": "axiom:stone_brick_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "stone_brick_stairs",
+      "type": "shaped",
+      "pattern": [
+        "S  ",
+        "SS ",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stone_bricks"
+      },
+      "result": {
+        "item": "axiom:stone_brick_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "stone_brick_wall",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stone_bricks"
+      },
+      "result": {
+        "item": "axiom:stone_brick_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "chiseled_stone_bricks",
+      "type": "shaped",
+      "pattern": [
+        "S",
+        "S"
+      ],
+      "keys": {
+        "S": "axiom:stone_brick_slab"
+      },
+      "result": {
+        "item": "axiom:chiseled_stone_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "mossy_stone_bricks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:stone_bricks",
+        "axiom:vine"
+      ],
+      "result": {
+        "item": "axiom:mossy_stone_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "mossy_cobblestone",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:cobblestone",
+        "axiom:vine"
+      ],
+      "result": {
+        "item": "axiom:mossy_cobblestone",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:stone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "stone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "S  ",
+        "SS ",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:stone"
+      },
+      "result": {
+        "item": "axiom:stone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "cobblestone_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:cobblestone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "cobblestone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "S  ",
+        "SS ",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:cobblestone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "cobblestone_wall",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:cobblestone"
+      },
+      "result": {
+        "item": "axiom:cobblestone_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "mossy_cobblestone_wall",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:mossy_cobblestone"
+      },
+      "result": {
+        "item": "axiom:mossy_cobblestone_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_granite",
+      "type": "shaped",
+      "pattern": [
+        "GG",
+        "GG"
+      ],
+      "keys": {
+        "G": "axiom:granite"
+      },
+      "result": {
+        "item": "axiom:polished_granite",
+        "count": 4
+      }
+    },
+    {
+      "id": "polished_granite_slab",
+      "type": "shaped",
+      "pattern": [
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:polished_granite"
+      },
+      "result": {
+        "item": "axiom:polished_granite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_granite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "G  ",
+        "GG ",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:polished_granite"
+      },
+      "result": {
+        "item": "axiom:polished_granite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "granite_slab",
+      "type": "shaped",
+      "pattern": [
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:granite"
+      },
+      "result": {
+        "item": "axiom:granite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "granite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "G  ",
+        "GG ",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:granite"
+      },
+      "result": {
+        "item": "axiom:granite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "granite_wall",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:granite"
+      },
+      "result": {
+        "item": "axiom:granite_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_diorite",
+      "type": "shaped",
+      "pattern": [
+        "DD",
+        "DD"
+      ],
+      "keys": {
+        "D": "axiom:diorite"
+      },
+      "result": {
+        "item": "axiom:polished_diorite",
+        "count": 4
+      }
+    },
+    {
+      "id": "polished_diorite_slab",
+      "type": "shaped",
+      "pattern": [
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:polished_diorite"
+      },
+      "result": {
+        "item": "axiom:polished_diorite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_diorite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "D  ",
+        "DD ",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:polished_diorite"
+      },
+      "result": {
+        "item": "axiom:polished_diorite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "diorite_slab",
+      "type": "shaped",
+      "pattern": [
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:diorite"
+      },
+      "result": {
+        "item": "axiom:diorite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "diorite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "D  ",
+        "DD ",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:diorite"
+      },
+      "result": {
+        "item": "axiom:diorite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "diorite_wall",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:diorite"
+      },
+      "result": {
+        "item": "axiom:diorite_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_andesite",
+      "type": "shaped",
+      "pattern": [
+        "AA",
+        "AA"
+      ],
+      "keys": {
+        "A": "axiom:andesite"
+      },
+      "result": {
+        "item": "axiom:polished_andesite",
+        "count": 4
+      }
+    },
+    {
+      "id": "polished_andesite_slab",
+      "type": "shaped",
+      "pattern": [
+        "AAA"
+      ],
+      "keys": {
+        "A": "axiom:polished_andesite"
+      },
+      "result": {
+        "item": "axiom:polished_andesite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_andesite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "A  ",
+        "AA ",
+        "AAA"
+      ],
+      "keys": {
+        "A": "axiom:polished_andesite"
+      },
+      "result": {
+        "item": "axiom:polished_andesite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "andesite_slab",
+      "type": "shaped",
+      "pattern": [
+        "AAA"
+      ],
+      "keys": {
+        "A": "axiom:andesite"
+      },
+      "result": {
+        "item": "axiom:andesite_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "andesite_stairs",
+      "type": "shaped",
+      "pattern": [
+        "A  ",
+        "AA ",
+        "AAA"
+      ],
+      "keys": {
+        "A": "axiom:andesite"
+      },
+      "result": {
+        "item": "axiom:andesite_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "andesite_wall",
+      "type": "shaped",
+      "pattern": [
+        "AAA",
+        "AAA"
+      ],
+      "keys": {
+        "A": "axiom:andesite"
+      },
+      "result": {
+        "item": "axiom:andesite_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "sandstone",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:sand"
+      },
+      "result": {
+        "item": "axiom:sandstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "sandstone_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:sandstone"
+      },
+      "result": {
+        "item": "axiom:sandstone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "sandstone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "S  ",
+        "SS ",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:sandstone"
+      },
+      "result": {
+        "item": "axiom:sandstone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "sandstone_wall",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:sandstone"
+      },
+      "result": {
+        "item": "axiom:sandstone_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "chiseled_sandstone",
+      "type": "shaped",
+      "pattern": [
+        "S",
+        "S"
+      ],
+      "keys": {
+        "S": "axiom:sandstone_slab"
+      },
+      "result": {
+        "item": "axiom:chiseled_sandstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "cut_sandstone",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:sandstone"
+      },
+      "result": {
+        "item": "axiom:cut_sandstone",
+        "count": 4
+      }
+    },
+    {
+      "id": "cut_sandstone_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:cut_sandstone"
+      },
+      "result": {
+        "item": "axiom:cut_sandstone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "red_sandstone",
+      "type": "shaped",
+      "pattern": [
+        "SS",
+        "SS"
+      ],
+      "keys": {
+        "S": "axiom:red_sand"
+      },
+      "result": {
+        "item": "axiom:red_sandstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "red_sandstone_slab",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:red_sandstone"
+      },
+      "result": {
+        "item": "axiom:red_sandstone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "red_sandstone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "S  ",
+        "SS ",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:red_sandstone"
+      },
+      "result": {
+        "item": "axiom:red_sandstone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "chiseled_red_sandstone",
+      "type": "shaped",
+      "pattern": [
+        "S",
+        "S"
+      ],
+      "keys": {
+        "S": "axiom:red_sandstone_slab"
+      },
+      "result": {
+        "item": "axiom:chiseled_red_sandstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "deepslate_bricks",
+      "type": "shaped",
+      "pattern": [
+        "DD",
+        "DD"
+      ],
+      "keys": {
+        "D": "axiom:cobbled_deepslate"
+      },
+      "result": {
+        "item": "axiom:deepslate_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "deepslate_brick_slab",
+      "type": "shaped",
+      "pattern": [
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:deepslate_bricks"
+      },
+      "result": {
+        "item": "axiom:deepslate_brick_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "deepslate_brick_stairs",
+      "type": "shaped",
+      "pattern": [
+        "D  ",
+        "DD ",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:deepslate_bricks"
+      },
+      "result": {
+        "item": "axiom:deepslate_brick_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "deepslate_brick_wall",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:deepslate_bricks"
+      },
+      "result": {
+        "item": "axiom:deepslate_brick_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "cobbled_deepslate_slab",
+      "type": "shaped",
+      "pattern": [
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:cobbled_deepslate"
+      },
+      "result": {
+        "item": "axiom:cobbled_deepslate_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "cobbled_deepslate_stairs",
+      "type": "shaped",
+      "pattern": [
+        "D  ",
+        "DD ",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:cobbled_deepslate"
+      },
+      "result": {
+        "item": "axiom:cobbled_deepslate_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "cobbled_deepslate_wall",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:cobbled_deepslate"
+      },
+      "result": {
+        "item": "axiom:cobbled_deepslate_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "blackstone_slab",
+      "type": "shaped",
+      "pattern": [
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:blackstone"
+      },
+      "result": {
+        "item": "axiom:blackstone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "blackstone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "B  ",
+        "BB ",
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:blackstone"
+      },
+      "result": {
+        "item": "axiom:blackstone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "blackstone_wall",
+      "type": "shaped",
+      "pattern": [
+        "BBB",
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:blackstone"
+      },
+      "result": {
+        "item": "axiom:blackstone_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_blackstone",
+      "type": "shaped",
+      "pattern": [
+        "BB",
+        "BB"
+      ],
+      "keys": {
+        "B": "axiom:blackstone"
+      },
+      "result": {
+        "item": "axiom:polished_blackstone",
+        "count": 4
+      }
+    },
+    {
+      "id": "polished_blackstone_bricks",
+      "type": "shaped",
+      "pattern": [
+        "BB",
+        "BB"
+      ],
+      "keys": {
+        "B": "axiom:polished_blackstone"
+      },
+      "result": {
+        "item": "axiom:polished_blackstone_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "chiseled_polished_blackstone",
+      "type": "shaped",
+      "pattern": [
+        "B",
+        "B"
+      ],
+      "keys": {
+        "B": "axiom:polished_blackstone_slab"
+      },
+      "result": {
+        "item": "axiom:chiseled_polished_blackstone",
+        "count": 1
+      }
+    },
+    {
+      "id": "polished_blackstone_slab",
+      "type": "shaped",
+      "pattern": [
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:polished_blackstone"
+      },
+      "result": {
+        "item": "axiom:polished_blackstone_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "polished_blackstone_stairs",
+      "type": "shaped",
+      "pattern": [
+        "B  ",
+        "BB ",
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:polished_blackstone"
+      },
+      "result": {
+        "item": "axiom:polished_blackstone_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "nether_bricks_block",
+      "type": "shaped",
+      "pattern": [
+        "NN",
+        "NN"
+      ],
+      "keys": {
+        "N": "axiom:nether_brick"
+      },
+      "result": {
+        "item": "axiom:nether_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "nether_brick_slab",
+      "type": "shaped",
+      "pattern": [
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:nether_bricks"
+      },
+      "result": {
+        "item": "axiom:nether_brick_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "nether_brick_stairs",
+      "type": "shaped",
+      "pattern": [
+        "N  ",
+        "NN ",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:nether_bricks"
+      },
+      "result": {
+        "item": "axiom:nether_brick_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "nether_brick_wall",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:nether_bricks"
+      },
+      "result": {
+        "item": "axiom:nether_brick_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "end_stone_bricks",
+      "type": "shaped",
+      "pattern": [
+        "EE",
+        "EE"
+      ],
+      "keys": {
+        "E": "axiom:end_stone"
+      },
+      "result": {
+        "item": "axiom:end_stone_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "end_stone_brick_slab",
+      "type": "shaped",
+      "pattern": [
+        "EEE"
+      ],
+      "keys": {
+        "E": "axiom:end_stone_bricks"
+      },
+      "result": {
+        "item": "axiom:end_stone_brick_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "end_stone_brick_stairs",
+      "type": "shaped",
+      "pattern": [
+        "E  ",
+        "EE ",
+        "EEE"
+      ],
+      "keys": {
+        "E": "axiom:end_stone_bricks"
+      },
+      "result": {
+        "item": "axiom:end_stone_brick_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "end_stone_brick_wall",
+      "type": "shaped",
+      "pattern": [
+        "EEE",
+        "EEE"
+      ],
+      "keys": {
+        "E": "axiom:end_stone_bricks"
+      },
+      "result": {
+        "item": "axiom:end_stone_brick_wall",
+        "count": 6
+      }
+    },
+    {
+      "id": "oak_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "oak_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "oak_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "oak_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "oak_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:oak_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "oak_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "oak_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "oak_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:oak_planks"
+      ],
+      "result": {
+        "item": "axiom:oak_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "oak_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:oak_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:oak_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "oak_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:oak_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "spruce_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "spruce_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "spruce_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "spruce_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "spruce_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:spruce_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "spruce_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "spruce_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "spruce_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:spruce_planks"
+      ],
+      "result": {
+        "item": "axiom:spruce_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "spruce_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:spruce_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "spruce_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:spruce_planks"
+      },
+      "result": {
+        "item": "axiom:spruce_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "birch_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "birch_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "birch_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "birch_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "birch_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:birch_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "birch_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "birch_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "birch_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:birch_planks"
+      ],
+      "result": {
+        "item": "axiom:birch_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "birch_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:birch_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:birch_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "birch_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:birch_planks"
+      },
+      "result": {
+        "item": "axiom:birch_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "jungle_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "jungle_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "jungle_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "jungle_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "jungle_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:jungle_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "jungle_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "jungle_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "jungle_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:jungle_planks"
+      ],
+      "result": {
+        "item": "axiom:jungle_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "jungle_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:jungle_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "jungle_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:jungle_planks"
+      },
+      "result": {
+        "item": "axiom:jungle_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "acacia_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "acacia_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "acacia_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "acacia_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "acacia_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:acacia_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "acacia_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "acacia_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "acacia_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:acacia_planks"
+      ],
+      "result": {
+        "item": "axiom:acacia_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "acacia_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:acacia_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "acacia_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:acacia_planks"
+      },
+      "result": {
+        "item": "axiom:acacia_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "dark_oak_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "dark_oak_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "dark_oak_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "dark_oak_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "dark_oak_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:dark_oak_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "dark_oak_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "dark_oak_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "dark_oak_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:dark_oak_planks"
+      ],
+      "result": {
+        "item": "axiom:dark_oak_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "dark_oak_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:dark_oak_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "dark_oak_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:dark_oak_planks"
+      },
+      "result": {
+        "item": "axiom:dark_oak_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "mangrove_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "mangrove_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "mangrove_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "mangrove_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "mangrove_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:mangrove_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "mangrove_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "mangrove_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "mangrove_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:mangrove_planks"
+      ],
+      "result": {
+        "item": "axiom:mangrove_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "mangrove_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:mangrove_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "mangrove_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:mangrove_planks"
+      },
+      "result": {
+        "item": "axiom:mangrove_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "cherry_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "cherry_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "cherry_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "cherry_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "cherry_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:cherry_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "cherry_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "cherry_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "cherry_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:cherry_planks"
+      ],
+      "result": {
+        "item": "axiom:cherry_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "cherry_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:cherry_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "cherry_boat",
+      "type": "shaped",
+      "pattern": [
+        "P P",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:cherry_planks"
+      },
+      "result": {
+        "item": "axiom:cherry_boat",
+        "count": 1
+      }
+    },
+    {
+      "id": "crimson_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "crimson_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "crimson_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "crimson_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "crimson_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:crimson_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "crimson_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "crimson_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks"
+      },
+      "result": {
+        "item": "axiom:crimson_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "crimson_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:crimson_planks"
+      ],
+      "result": {
+        "item": "axiom:crimson_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "crimson_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:crimson_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:crimson_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "warped_slab",
+      "type": "shaped",
+      "pattern": [
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_slab",
+        "count": 6
+      }
+    },
+    {
+      "id": "warped_stairs",
+      "type": "shaped",
+      "pattern": [
+        "P  ",
+        "PP ",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_stairs",
+        "count": 4
+      }
+    },
+    {
+      "id": "warped_door",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PP",
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_door",
+        "count": 3
+      }
+    },
+    {
+      "id": "warped_trapdoor",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_trapdoor",
+        "count": 2
+      }
+    },
+    {
+      "id": "warped_fence",
+      "type": "shaped",
+      "pattern": [
+        "PSP",
+        "PSP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:warped_fence",
+        "count": 3
+      }
+    },
+    {
+      "id": "warped_fence_gate",
+      "type": "shaped",
+      "pattern": [
+        "SPS",
+        "SPS"
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_fence_gate",
+        "count": 1
+      }
+    },
+    {
+      "id": "warped_pressure_plate",
+      "type": "shaped",
+      "pattern": [
+        "PP"
+      ],
+      "keys": {
+        "P": "axiom:warped_planks"
+      },
+      "result": {
+        "item": "axiom:warped_pressure_plate",
+        "count": 1
+      }
+    },
+    {
+      "id": "warped_button",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:warped_planks"
+      ],
+      "result": {
+        "item": "axiom:warped_button",
+        "count": 1
+      }
+    },
+    {
+      "id": "warped_sign",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        "PPP",
+        " S "
+      ],
+      "keys": {
+        "P": "axiom:warped_planks",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:warped_sign",
+        "count": 3
+      }
+    },
+    {
+      "id": "wooden_pickaxe",
+      "type": "shaped",
+      "pattern": [
+        "PPP",
+        " S ",
+        " S "
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:wooden_pickaxe",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_pickaxe",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        " S ",
+        " S "
+      ],
+      "keys": {
+        "C": {
+          "tag": "axiom:stone_crafting"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:stone_pickaxe",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_pickaxe",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        " S ",
+        " S "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_pickaxe",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_pickaxe",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        " S ",
+        " S "
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:golden_pickaxe",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_pickaxe",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        " S ",
+        " S "
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_pickaxe",
+        "count": 1
+      }
+    },
+    {
+      "id": "wooden_axe",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PS",
+        " S"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:wooden_axe",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_axe",
+      "type": "shaped",
+      "pattern": [
+        "CC",
+        "CS",
+        " S"
+      ],
+      "keys": {
+        "C": {
+          "tag": "axiom:stone_crafting"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:stone_axe",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_axe",
+      "type": "shaped",
+      "pattern": [
+        "II",
+        "IS",
+        " S"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_axe",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_axe",
+      "type": "shaped",
+      "pattern": [
+        "GG",
+        "GS",
+        " S"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:golden_axe",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_axe",
+      "type": "shaped",
+      "pattern": [
+        "DD",
+        "DS",
+        " S"
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_axe",
+        "count": 1
+      }
+    },
+    {
+      "id": "wooden_shovel",
+      "type": "shaped",
+      "pattern": [
+        "P",
+        "S",
+        "S"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:wooden_shovel",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_shovel",
+      "type": "shaped",
+      "pattern": [
+        "C",
+        "S",
+        "S"
+      ],
+      "keys": {
+        "C": {
+          "tag": "axiom:stone_crafting"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:stone_shovel",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_shovel",
+      "type": "shaped",
+      "pattern": [
+        "I",
+        "S",
+        "S"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_shovel",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_shovel",
+      "type": "shaped",
+      "pattern": [
+        "G",
+        "S",
+        "S"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:golden_shovel",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_shovel",
+      "type": "shaped",
+      "pattern": [
+        "D",
+        "S",
+        "S"
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_shovel",
+        "count": 1
+      }
+    },
+    {
+      "id": "wooden_sword",
+      "type": "shaped",
+      "pattern": [
+        "P",
+        "P",
+        "S"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:wooden_sword",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_sword",
+      "type": "shaped",
+      "pattern": [
+        "C",
+        "C",
+        "S"
+      ],
+      "keys": {
+        "C": {
+          "tag": "axiom:stone_crafting"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:stone_sword",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_sword",
+      "type": "shaped",
+      "pattern": [
+        "I",
+        "I",
+        "S"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_sword",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_sword",
+      "type": "shaped",
+      "pattern": [
+        "G",
+        "G",
+        "S"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:golden_sword",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_sword",
+      "type": "shaped",
+      "pattern": [
+        "D",
+        "D",
+        "S"
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_sword",
+        "count": 1
+      }
+    },
+    {
+      "id": "wooden_hoe",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        " S",
+        " S"
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:wooden_hoe",
+        "count": 1
+      }
+    },
+    {
+      "id": "stone_hoe",
+      "type": "shaped",
+      "pattern": [
+        "CC",
+        " S",
+        " S"
+      ],
+      "keys": {
+        "C": {
+          "tag": "axiom:stone_crafting"
+        },
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:stone_hoe",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_hoe",
+      "type": "shaped",
+      "pattern": [
+        "II",
+        " S",
+        " S"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_hoe",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_hoe",
+      "type": "shaped",
+      "pattern": [
+        "GG",
+        " S",
+        " S"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:golden_hoe",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_hoe",
+      "type": "shaped",
+      "pattern": [
+        "DD",
+        " S",
+        " S"
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_hoe",
+        "count": 1
+      }
+    },
+    {
+      "id": "leather_helmet",
+      "type": "shaped",
+      "pattern": [
+        "LLL",
+        "L L"
+      ],
+      "keys": {
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:leather_helmet",
+        "count": 1
+      }
+    },
+    {
+      "id": "leather_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "L L",
+        "LLL",
+        "LLL"
+      ],
+      "keys": {
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:leather_chestplate",
+        "count": 1
+      }
+    },
+    {
+      "id": "leather_leggings",
+      "type": "shaped",
+      "pattern": [
+        "LLL",
+        "L L",
+        "L L"
+      ],
+      "keys": {
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:leather_leggings",
+        "count": 1
+      }
+    },
+    {
+      "id": "leather_boots",
+      "type": "shaped",
+      "pattern": [
+        "L L",
+        "L L"
+      ],
+      "keys": {
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:leather_boots",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_helmet",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_helmet",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "III",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_chestplate",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_leggings",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "I I",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_leggings",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_boots",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_boots",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_helmet",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "G G"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:golden_helmet",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "G G",
+        "GGG",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:golden_chestplate",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_leggings",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "G G",
+        "G G"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:golden_leggings",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_boots",
+      "type": "shaped",
+      "pattern": [
+        "G G",
+        "G G"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:golden_boots",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_helmet",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "D D"
+      ],
+      "keys": {
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:diamond_helmet",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "D D",
+        "DDD",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:diamond_chestplate",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_leggings",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "D D",
+        "D D"
+      ],
+      "keys": {
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:diamond_leggings",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_boots",
+      "type": "shaped",
+      "pattern": [
+        "D D",
+        "D D"
+      ],
+      "keys": {
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:diamond_boots",
+        "count": 1
+      }
+    },
+    {
+      "id": "turtle_helmet",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "S S"
+      ],
+      "keys": {
+        "S": "axiom:scute"
+      },
+      "result": {
+        "item": "axiom:turtle_helmet",
+        "count": 1
+      }
+    },
+    {
+      "id": "bow",
+      "type": "shaped",
+      "pattern": [
+        " AS",
+        "A S",
+        " AS"
+      ],
+      "keys": {
+        "A": "axiom:stick",
+        "S": "axiom:string"
+      },
+      "result": {
+        "item": "axiom:bow",
+        "count": 1
+      }
+    },
+    {
+      "id": "arrow",
+      "type": "shaped",
+      "pattern": [
+        "F",
+        "S",
+        "T"
+      ],
+      "keys": {
+        "F": "axiom:flint",
+        "S": "axiom:stick",
+        "T": "axiom:feather"
+      },
+      "result": {
+        "item": "axiom:arrow",
+        "count": 4
+      }
+    },
+    {
+      "id": "crossbow",
+      "type": "shaped",
+      "pattern": [
+        "SIS",
+        "THT",
+        " S "
+      ],
+      "keys": {
+        "S": "axiom:stick",
+        "I": "axiom:iron_ingot",
+        "T": "axiom:string",
+        "H": "axiom:tripwire_hook"
+      },
+      "result": {
+        "item": "axiom:crossbow",
+        "count": 1
+      }
+    },
+    {
+      "id": "shield",
+      "type": "shaped",
+      "pattern": [
+        "PIP",
+        "PPP",
+        " P "
+      ],
+      "keys": {
+        "P": {
+          "tag": "axiom:planks"
+        },
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:shield",
+        "count": 1
+      }
+    },
+    {
+      "id": "flint_and_steel",
+      "type": "shaped",
+      "pattern": [
+        "I ",
+        " F"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "F": "axiom:flint"
+      },
+      "result": {
+        "item": "axiom:flint_and_steel",
+        "count": 1
+      }
+    },
+    {
+      "id": "fishing_rod",
+      "type": "shaped",
+      "pattern": [
+        "  A",
+        " AS",
+        "A S"
+      ],
+      "keys": {
+        "A": "axiom:stick",
+        "S": "axiom:string"
+      },
+      "result": {
+        "item": "axiom:fishing_rod",
+        "count": 1
+      }
+    },
+    {
+      "id": "shears",
+      "type": "shaped",
+      "pattern": [
+        " I",
+        "I "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:shears",
+        "count": 1
+      }
+    },
+    {
+      "id": "bucket",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        " I "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:bucket",
+        "count": 1
+      }
+    },
+    {
+      "id": "trident_repair",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:trident",
+        "axiom:trident"
+      ],
+      "result": {
+        "item": "axiom:trident",
+        "count": 1
+      }
+    },
+    {
+      "id": "paper",
+      "type": "shaped",
+      "pattern": [
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:sugar_cane"
+      },
+      "result": {
+        "item": "axiom:paper",
+        "count": 3
+      }
+    },
+    {
+      "id": "book",
+      "type": "shaped",
+      "pattern": [
+        "PP",
+        "PL"
+      ],
+      "keys": {
+        "P": "axiom:paper",
+        "L": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:book",
+        "count": 1
+      }
+    },
+    {
+      "id": "book_and_quill",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:book",
+        "axiom:ink_sac",
+        "axiom:feather"
+      ],
+      "result": {
+        "item": "axiom:book_and_quill",
+        "count": 1
+      }
+    },
+    {
+      "id": "clock",
+      "type": "shaped",
+      "pattern": [
+        " G ",
+        "GRG",
+        " G "
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:clock",
+        "count": 1
+      }
+    },
+    {
+      "id": "compass",
+      "type": "shaped",
+      "pattern": [
+        " I ",
+        "IRI",
+        " I "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:compass",
+        "count": 1
+      }
+    },
+    {
+      "id": "spyglass",
+      "type": "shaped",
+      "pattern": [
+        "A",
+        "C",
+        "C"
+      ],
+      "keys": {
+        "A": "axiom:amethyst_shard",
+        "C": "axiom:copper_ingot"
+      },
+      "result": {
+        "item": "axiom:spyglass",
+        "count": 1
+      }
+    },
+    {
+      "id": "lead",
+      "type": "shaped",
+      "pattern": [
+        "SS ",
+        "SO ",
+        " S "
+      ],
+      "keys": {
+        "S": "axiom:string",
+        "O": "axiom:slimeball"
+      },
+      "result": {
+        "item": "axiom:lead",
+        "count": 2
+      }
+    },
+    {
+      "id": "name_tag",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:string",
+        "axiom:paper"
+      ],
+      "result": {
+        "item": "axiom:name_tag",
+        "count": 1
+      }
+    },
+    {
+      "id": "saddle",
+      "type": "shaped",
+      "pattern": [
+        "LLL",
+        "LIL",
+        " I "
+      ],
+      "keys": {
+        "L": "axiom:leather",
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:saddle",
+        "count": 1
+      }
+    },
+    {
+      "id": "recovery_compass",
+      "type": "shaped",
+      "pattern": [
+        "EEE",
+        "ECE",
+        "EEE"
+      ],
+      "keys": {
+        "E": "axiom:echo_shard",
+        "C": "axiom:compass"
+      },
+      "result": {
+        "item": "axiom:recovery_compass",
+        "count": 1
+      }
+    },
+    {
+      "id": "bundle",
+      "type": "shaped",
+      "pattern": [
+        "SRS",
+        "S S",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:string",
+        "R": "axiom:leather"
+      },
+      "result": {
+        "item": "axiom:bundle",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_ingot_block",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "III",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:iron_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "gold_ingot_block",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "GGG",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot"
+      },
+      "result": {
+        "item": "axiom:gold_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "diamond_block",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "DDD",
+        "DDD"
+      ],
+      "keys": {
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:diamond_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "emerald_block",
+      "type": "shaped",
+      "pattern": [
+        "EEE",
+        "EEE",
+        "EEE"
+      ],
+      "keys": {
+        "E": "axiom:emerald"
+      },
+      "result": {
+        "item": "axiom:emerald_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "coal_block",
+      "type": "shaped",
+      "pattern": [
+        "CCC",
+        "CCC",
+        "CCC"
+      ],
+      "keys": {
+        "C": "axiom:coal"
+      },
+      "result": {
+        "item": "axiom:coal_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "lapis_block",
+      "type": "shaped",
+      "pattern": [
+        "LLL",
+        "LLL",
+        "LLL"
+      ],
+      "keys": {
+        "L": "axiom:lapis_lazuli"
+      },
+      "result": {
+        "item": "axiom:lapis_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "redstone_block",
+      "type": "shaped",
+      "pattern": [
+        "RRR",
+        "RRR",
+        "RRR"
+      ],
+      "keys": {
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:redstone_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "slime_block",
+      "type": "shaped",
+      "pattern": [
+        "SSS",
+        "SSS",
+        "SSS"
+      ],
+      "keys": {
+        "S": "axiom:slimeball"
+      },
+      "result": {
+        "item": "axiom:slime_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "hay_bale",
+      "type": "shaped",
+      "pattern": [
+        "WWW",
+        "WWW",
+        "WWW"
+      ],
+      "keys": {
+        "W": "axiom:wheat"
+      },
+      "result": {
+        "item": "axiom:hay_bale",
+        "count": 1
+      }
+    },
+    {
+      "id": "bone_block",
+      "type": "shaped",
+      "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+      ],
+      "keys": {
+        "B": "axiom:bone_meal"
+      },
+      "result": {
+        "item": "axiom:bone_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "iron_ingots_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:iron_block"
+      ],
+      "result": {
+        "item": "axiom:iron_ingot",
+        "count": 9
+      }
+    },
+    {
+      "id": "gold_ingots_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:gold_block"
+      ],
+      "result": {
+        "item": "axiom:gold_ingot",
+        "count": 9
+      }
+    },
+    {
+      "id": "diamonds_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:diamond_block"
+      ],
+      "result": {
+        "item": "axiom:diamond",
+        "count": 9
+      }
+    },
+    {
+      "id": "emeralds_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:emerald_block"
+      ],
+      "result": {
+        "item": "axiom:emerald",
+        "count": 9
+      }
+    },
+    {
+      "id": "coals_from_block",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:coal_block"
+      ],
+      "result": {
+        "item": "axiom:coal",
+        "count": 9
+      }
+    },
+    {
+      "id": "oak_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:oak_log"
+      ],
+      "result": {
+        "item": "axiom:oak_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "spruce_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:spruce_log"
+      ],
+      "result": {
+        "item": "axiom:spruce_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "birch_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:birch_log"
+      ],
+      "result": {
+        "item": "axiom:birch_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "jungle_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:jungle_log"
+      ],
+      "result": {
+        "item": "axiom:jungle_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "acacia_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:acacia_log"
+      ],
+      "result": {
+        "item": "axiom:acacia_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "dark_oak_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:dark_oak_log"
+      ],
+      "result": {
+        "item": "axiom:dark_oak_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "mangrove_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:mangrove_log"
+      ],
+      "result": {
+        "item": "axiom:mangrove_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "cherry_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:cherry_log"
+      ],
+      "result": {
+        "item": "axiom:cherry_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "pale_oak_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:pale_oak_log"
+      ],
+      "result": {
+        "item": "axiom:pale_oak_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "crimson_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:crimson_stem"
+      ],
+      "result": {
+        "item": "axiom:crimson_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "warped_planks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:warped_stem"
+      ],
+      "result": {
+        "item": "axiom:warped_planks",
+        "count": 4
+      }
+    },
+    {
+      "id": "torch",
+      "type": "shaped",
+      "pattern": [
+        "C",
+        "S"
+      ],
+      "keys": {
+        "C": "axiom:coal",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:torch",
+        "count": 4
+      }
+    },
+    {
+      "id": "torch_charcoal",
+      "type": "shaped",
+      "pattern": [
+        "C",
+        "S"
+      ],
+      "keys": {
+        "C": "axiom:charcoal",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:torch",
+        "count": 4
+      }
+    },
+    {
+      "id": "soul_torch",
+      "type": "shaped",
+      "pattern": [
+        "C",
+        "S",
+        "U"
+      ],
+      "keys": {
+        "C": "axiom:coal",
+        "S": "axiom:stick",
+        "U": {
+          "tag": "axiom:soul_fire_base_blocks"
+        }
+      },
+      "result": {
+        "item": "axiom:soul_torch",
+        "count": 4
+      }
+    },
+    {
+      "id": "lantern",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "ITI",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_nugget",
+        "T": "axiom:torch"
+      },
+      "result": {
+        "item": "axiom:lantern",
+        "count": 1
+      }
+    },
+    {
+      "id": "soul_lantern",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "ITI",
+        "III"
+      ],
+      "keys": {
+        "I": "axiom:iron_nugget",
+        "T": "axiom:soul_torch"
+      },
+      "result": {
+        "item": "axiom:soul_lantern",
+        "count": 1
+      }
+    },
+    {
+      "id": "chain",
+      "type": "shaped",
+      "pattern": [
+        "I",
+        "N",
+        "I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "N": "axiom:iron_nugget"
+      },
+      "result": {
+        "item": "axiom:chain",
+        "count": 1
+      }
+    },
+    {
+      "id": "bread",
+      "type": "shaped",
+      "pattern": [
+        "WWW"
+      ],
+      "keys": {
+        "W": "axiom:wheat"
+      },
+      "result": {
+        "item": "axiom:bread",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_apple",
+      "type": "shaped",
+      "pattern": [
+        "GGG",
+        "GAG",
+        "GGG"
+      ],
+      "keys": {
+        "G": "axiom:gold_ingot",
+        "A": "axiom:apple"
+      },
+      "result": {
+        "item": "axiom:golden_apple",
+        "count": 1
+      }
+    },
+    {
+      "id": "sugar",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:sugar_cane"
+      ],
+      "result": {
+        "item": "axiom:sugar",
+        "count": 1
+      }
+    },
+    {
+      "id": "cake",
+      "type": "shaped",
+      "pattern": [
+        "MMM",
+        "SES",
+        "WWW"
+      ],
+      "keys": {
+        "M": "axiom:milk_bucket",
+        "S": "axiom:sugar",
+        "E": "axiom:egg",
+        "W": "axiom:wheat"
+      },
+      "result": {
+        "item": "axiom:cake",
+        "count": 1
+      }
+    },
+    {
+      "id": "cookie",
+      "type": "shaped",
+      "pattern": [
+        "WCW"
+      ],
+      "keys": {
+        "W": "axiom:wheat",
+        "C": "axiom:cocoa_beans"
+      },
+      "result": {
+        "item": "axiom:cookie",
+        "count": 8
+      }
+    },
+    {
+      "id": "pumpkin_pie",
+      "type": "shaped",
+      "pattern": [
+        "PSE"
+      ],
+      "keys": {
+        "P": "axiom:pumpkin",
+        "S": "axiom:sugar",
+        "E": "axiom:egg"
+      },
+      "result": {
+        "item": "axiom:pumpkin_pie",
+        "count": 1
+      }
+    },
+    {
+      "id": "mushroom_stew",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:red_mushroom",
+        "axiom:brown_mushroom",
+        "axiom:bowl"
+      ],
+      "result": {
+        "item": "axiom:mushroom_stew",
+        "count": 1
+      }
+    },
+    {
+      "id": "rabbit_stew",
+      "type": "shaped",
+      "pattern": [
+        " M ",
+        "CPC",
+        " B "
+      ],
+      "keys": {
+        "M": "axiom:cooked_rabbit",
+        "C": "axiom:carrot",
+        "P": "axiom:baked_potato",
+        "B": "axiom:bowl"
+      },
+      "result": {
+        "item": "axiom:rabbit_stew",
+        "count": 1
+      }
+    },
+    {
+      "id": "beetroot_soup",
+      "type": "shaped",
+      "pattern": [
+        "BBB",
+        "BBB",
+        " B "
+      ],
+      "keys": {
+        "B": "axiom:beetroot"
+      },
+      "result": {
+        "item": "axiom:beetroot_soup",
+        "count": 1
+      }
+    },
+    {
+      "id": "honey_bottle",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:honey_block"
+      ],
+      "result": {
+        "item": "axiom:honey_bottle",
+        "count": 4
+      }
+    },
+    {
+      "id": "honey_block",
+      "type": "shaped",
+      "pattern": [
+        "HH",
+        "HH"
+      ],
+      "keys": {
+        "H": "axiom:honey_bottle"
+      },
+      "result": {
+        "item": "axiom:honey_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "honeycomb_block",
+      "type": "shaped",
+      "pattern": [
+        "HH",
+        "HH"
+      ],
+      "keys": {
+        "H": "axiom:honeycomb"
+      },
+      "result": {
+        "item": "axiom:honeycomb_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "golden_carrot",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NCN",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:gold_nugget",
+        "C": "axiom:carrot"
+      },
+      "result": {
+        "item": "axiom:golden_carrot",
+        "count": 1
+      }
+    },
+    {
+      "id": "glistering_melon",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NMN",
+        "NNN"
+      ],
+      "keys": {
+        "N": "axiom:gold_nugget",
+        "M": "axiom:melon_slice"
+      },
+      "result": {
+        "item": "axiom:glistering_melon_slice",
+        "count": 1
+      }
+    },
+    {
+      "id": "blaze_powder",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:blaze_rod"
+      ],
+      "result": {
+        "item": "axiom:blaze_powder",
+        "count": 2
+      }
+    },
+    {
+      "id": "magma_cream",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:blaze_powder",
+        "axiom:slimeball"
+      ],
+      "result": {
+        "item": "axiom:magma_cream",
+        "count": 1
+      }
+    },
+    {
+      "id": "fermented_spider_eye",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:spider_eye",
+        "axiom:brown_mushroom",
+        "axiom:sugar"
+      ],
+      "result": {
+        "item": "axiom:fermented_spider_eye",
+        "count": 1
+      }
+    },
+    {
+      "id": "eye_of_ender",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:ender_pearl",
+        "axiom:blaze_powder"
+      ],
+      "result": {
+        "item": "axiom:eye_of_ender",
+        "count": 1
+      }
+    },
+    {
+      "id": "fire_charge",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:gunpowder",
+        "axiom:blaze_powder",
+        "axiom:coal"
+      ],
+      "result": {
+        "item": "axiom:fire_charge",
+        "count": 3
+      }
+    },
+    {
+      "id": "firework_star",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:gunpowder"
+      ],
+      "result": {
+        "item": "axiom:firework_star",
+        "count": 1
+      }
+    },
+    {
+      "id": "firework_rocket",
+      "type": "shaped",
+      "pattern": [
+        "GP",
+        "P "
+      ],
+      "keys": {
+        "G": "axiom:gunpowder",
+        "P": "axiom:paper"
+      },
+      "result": {
+        "item": "axiom:firework_rocket",
+        "count": 3
+      }
+    },
+    {
+      "id": "bone_meal",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:bone"
+      ],
+      "result": {
+        "item": "axiom:bone_meal",
+        "count": 3
+      }
+    },
+    {
+      "id": "string_to_wool",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:string",
+        "axiom:string",
+        "axiom:string",
+        "axiom:string"
+      ],
+      "result": {
+        "item": "axiom:white_wool",
+        "count": 1
+      }
+    },
+    {
+      "id": "amethyst_block",
+      "type": "shaped",
+      "pattern": [
+        "AA",
+        "AA"
+      ],
+      "keys": {
+        "A": "axiom:amethyst_shard"
+      },
+      "result": {
+        "item": "axiom:amethyst_block",
+        "count": 1
+      }
+    },
+    {
+      "id": "tinted_glass",
+      "type": "shaped",
+      "pattern": [
+        " A ",
+        "AGA",
+        " A "
+      ],
+      "keys": {
+        "A": "axiom:amethyst_shard",
+        "G": "axiom:glass"
+      },
+      "result": {
+        "item": "axiom:tinted_glass",
+        "count": 2
+      }
+    },
+    {
+      "id": "calcite",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:calcite"
+      ],
+      "result": {
+        "item": "axiom:calcite",
+        "count": 1
+      }
+    },
+    {
+      "id": "packed_mud",
+      "type": "shaped",
+      "pattern": [
+        "MM",
+        "MM"
+      ],
+      "keys": {
+        "M": "axiom:mud"
+      },
+      "result": {
+        "item": "axiom:packed_mud",
+        "count": 1
+      }
+    },
+    {
+      "id": "mud_bricks",
+      "type": "shaped",
+      "pattern": [
+        "MM",
+        "MM"
+      ],
+      "keys": {
+        "M": "axiom:packed_mud"
+      },
+      "result": {
+        "item": "axiom:mud_bricks",
+        "count": 4
+      }
+    },
+    {
+      "id": "chiseled_nether_bricks",
+      "type": "shaped",
+      "pattern": [
+        "N",
+        "N"
+      ],
+      "keys": {
+        "N": "axiom:nether_brick_slab"
+      },
+      "result": {
+        "item": "axiom:chiseled_nether_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "cracked_nether_bricks",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:nether_bricks"
+      ],
+      "result": {
+        "item": "axiom:cracked_nether_bricks",
+        "count": 1
+      }
+    },
+    {
+      "id": "lodestone_compass",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:compass",
+        "axiom:lodestone"
+      ],
+      "result": {
+        "item": "axiom:lodestone_compass",
+        "count": 1
+      }
+    },
+    {
+      "id": "void_crystal_teleporter",
+      "type": "shaped",
+      "pattern": [
+        " V ",
+        "VEV",
+        " V "
+      ],
+      "keys": {
+        "V": "axiom:void_crystal_shard",
+        "E": "axiom:ender_pearl"
+      },
+      "result": {
+        "item": "axiom:void_crystal_teleporter",
+        "count": 1
+      },
+      "tags": [
+        "end_recipe"
+      ]
+    },
+    {
+      "id": "ender_wings",
+      "type": "shaped",
+      "pattern": [
+        "ESE",
+        "E E",
+        "ESE"
+      ],
+      "keys": {
+        "E": "axiom:ender_shard",
+        "S": "axiom:elytra"
+      },
+      "result": {
+        "item": "axiom:ender_wings",
+        "count": 1
+      },
+      "tags": [
+        "end_recipe"
+      ]
+    },
+    {
+      "id": "miner_helmet",
+      "type": "shaped",
+      "pattern": [
+        "EIE",
+        "E E"
+      ],
+      "keys": {
+        "E": "axiom:emerald",
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:miner_helmet",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "miner_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "E E",
+        "EIE",
+        "EIE"
+      ],
+      "keys": {
+        "E": "axiom:emerald",
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:miner_chestplate",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "miner_leggings",
+      "type": "shaped",
+      "pattern": [
+        "EIE",
+        "E E",
+        "E E"
+      ],
+      "keys": {
+        "E": "axiom:emerald",
+        "I": "axiom:iron_ingot"
+      },
+      "result": {
+        "item": "axiom:miner_leggings",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "miner_boots",
+      "type": "shaped",
+      "pattern": [
+        "E E",
+        "E E"
+      ],
+      "keys": {
+        "E": "axiom:emerald"
+      },
+      "result": {
+        "item": "axiom:miner_boots",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "warrior_helmet",
+      "type": "shaped",
+      "pattern": [
+        "IFI",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "F": "axiom:corrupted_fang"
+      },
+      "result": {
+        "item": "axiom:warrior_helmet",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "warrior_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "IFI",
+        "IFI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "F": "axiom:corrupted_fang"
+      },
+      "result": {
+        "item": "axiom:warrior_chestplate",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "warrior_leggings",
+      "type": "shaped",
+      "pattern": [
+        "GFG",
+        "I I",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "F": "axiom:corrupted_fang",
+        "G": "axiom:predator_claw"
+      },
+      "result": {
+        "item": "axiom:warrior_leggings",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "warrior_boots",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "IGI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "G": "axiom:predator_claw"
+      },
+      "result": {
+        "item": "axiom:warrior_boots",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "engineer_helmet",
+      "type": "shaped",
+      "pattern": [
+        "ICI",
+        "I I"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "C": "axiom:copper_ingot"
+      },
+      "result": {
+        "item": "axiom:engineer_helmet",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "engineer_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "ICI",
+        "IRI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "C": "axiom:copper_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:engineer_chestplate",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "engineer_leggings",
+      "type": "shaped",
+      "pattern": [
+        "ICI",
+        "I I",
+        "IRI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "C": "axiom:copper_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:engineer_leggings",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "engineer_boots",
+      "type": "shaped",
+      "pattern": [
+        "I I",
+        "IRI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "R": "axiom:redstone"
+      },
+      "result": {
+        "item": "axiom:engineer_boots",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "nature_helmet",
+      "type": "shaped",
+      "pattern": [
+        "LAL",
+        "L L"
+      ],
+      "keys": {
+        "L": "axiom:leather",
+        "A": "axiom:arcane_feather"
+      },
+      "result": {
+        "item": "axiom:nature_helmet",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "nature_chestplate",
+      "type": "shaped",
+      "pattern": [
+        "L L",
+        "LAL",
+        "LBL"
+      ],
+      "keys": {
+        "L": "axiom:leather",
+        "A": "axiom:arcane_feather",
+        "B": "axiom:bone"
+      },
+      "result": {
+        "item": "axiom:nature_chestplate",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "nature_leggings",
+      "type": "shaped",
+      "pattern": [
+        "LBL",
+        "L L",
+        "L L"
+      ],
+      "keys": {
+        "L": "axiom:leather",
+        "B": "axiom:bone"
+      },
+      "result": {
+        "item": "axiom:nature_leggings",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "nature_boots",
+      "type": "shaped",
+      "pattern": [
+        "L L",
+        "LAL"
+      ],
+      "keys": {
+        "L": "axiom:leather",
+        "A": "axiom:arcane_feather"
+      },
+      "result": {
+        "item": "axiom:nature_boots",
+        "count": 1
+      },
+      "tags": [
+        "style_armor"
+      ]
+    },
+    {
+      "id": "iron_spear",
+      "type": "shaped",
+      "pattern": [
+        "  I",
+        " I ",
+        "S  "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_spear",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "diamond_spear",
+      "type": "shaped",
+      "pattern": [
+        "  D",
+        " D ",
+        "S  "
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_spear",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "netherite_spear",
+      "type": "shaped",
+      "pattern": [
+        "  N",
+        " N ",
+        "S  "
+      ],
+      "keys": {
+        "N": "axiom:netherite_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:netherite_spear",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "iron_dagger",
+      "type": "shaped",
+      "pattern": [
+        "I",
+        "S"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_dagger",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "diamond_dagger",
+      "type": "shaped",
+      "pattern": [
+        "D",
+        "S"
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_dagger",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "netherite_dagger",
+      "type": "shaped",
+      "pattern": [
+        "N",
+        "S"
+      ],
+      "keys": {
+        "N": "axiom:netherite_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:netherite_dagger",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "iron_mace",
+      "type": "shaped",
+      "pattern": [
+        "III",
+        "ISI",
+        " S "
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:iron_mace",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "diamond_mace",
+      "type": "shaped",
+      "pattern": [
+        "DDD",
+        "DSD",
+        " S "
+      ],
+      "keys": {
+        "D": "axiom:diamond",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:diamond_mace",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "netherite_mace",
+      "type": "shaped",
+      "pattern": [
+        "NNN",
+        "NSN",
+        " S "
+      ],
+      "keys": {
+        "N": "axiom:netherite_ingot",
+        "S": "axiom:stick"
+      },
+      "result": {
+        "item": "axiom:netherite_mace",
+        "count": 1
+      },
+      "tags": [
+        "weapon"
+      ]
+    },
+    {
+      "id": "portable_workbench",
+      "type": "shaped",
+      "pattern": [
+        "IPI",
+        "PDP",
+        "IPI"
+      ],
+      "keys": {
+        "I": "axiom:iron_ingot",
+        "P": "axiom:oak_planks",
+        "D": "axiom:diamond"
+      },
+      "result": {
+        "item": "axiom:portable_workbench",
+        "count": 1
+      },
+      "tags": [
+        "utility"
+      ]
+    },
+    {
+      "id": "architect_map",
+      "type": "shapeless",
+      "ingredients": [
+        "axiom:soul_fragment_i",
+        "axiom:soul_fragment_ii",
+        "axiom:soul_fragment_iii",
+        "axiom:soul_fragment_iv"
+      ],
+      "result": {
+        "item": "axiom:architect_map",
+        "count": 1
+      },
+      "tags": [
+        "lore",
+        "quest"
+      ]
+    },
+    {
+      "id": "bed",
+      "type": "shaped",
+      "pattern": [
+        "WWW",
+        "PPP"
+      ],
+      "keys": {
+        "W": "axiom:wool",
+        "P": "axiom:oak_planks"
+      },
+      "result": {
+        "item": "axiom:bed",
+        "count": 1
+      }
+    }
   ]
 }

@@ -2,186 +2,4308 @@
   "version": "1.0",
   "namespace": "axiom",
   "blocks": [
-    {"id": 0, "name": "air", "display_name": "Air", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [], "texture": "air"},
-
-    {"id": 1, "name": "stone", "display_name": "Stone", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:cobblestone", "count": 1}], "texture": "stone", "variants": ["stone", "stone_slab", "stone_stairs", "stone_bricks", "stone_brick_slab", "stone_brick_stairs", "stone_brick_wall", "chiseled_stone_bricks", "cracked_stone_bricks", "mossy_stone_bricks", "mossy_stone_brick_slab", "mossy_stone_brick_stairs", "mossy_stone_brick_wall"]},
-    {"id": 2, "name": "grass_block", "display_name": "Grass Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.6, "blast_resistance": 0.6, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:dirt", "count": 1}], "texture": {"top": "grass_block_top", "bottom": "dirt", "side": "grass_block_side"}, "tags": ["dirt_like"]},
-    {"id": 3, "name": "dirt", "display_name": "Dirt", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:dirt", "count": 1}], "texture": "dirt", "tags": ["dirt_like"]},
-    {"id": 4, "name": "coarse_dirt", "display_name": "Coarse Dirt", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:coarse_dirt", "count": 1}], "texture": "coarse_dirt", "tags": ["dirt_like"]},
-    {"id": 5, "name": "rooted_dirt", "display_name": "Rooted Dirt", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:rooted_dirt", "count": 1}, {"item": "axiom:hanging_roots", "count": 1}], "texture": "rooted_dirt", "tags": ["dirt_like"]},
-    {"id": 6, "name": "cobblestone", "display_name": "Cobblestone", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:cobblestone", "count": 1}], "texture": "cobblestone", "variants": ["cobblestone", "cobblestone_slab", "cobblestone_stairs", "cobblestone_wall", "mossy_cobblestone", "mossy_cobblestone_slab", "mossy_cobblestone_stairs", "mossy_cobblestone_wall"]},
-    {"id": 7, "name": "gravel", "display_name": "Gravel", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.6, "blast_resistance": 0.6, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:flint", "count": 1, "chance": 0.1}, {"item": "axiom:gravel", "count": 1, "chance": 0.9}], "texture": "gravel", "gravity": true},
-    {"id": 8, "name": "sand", "display_name": "Sand", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:sand", "count": 1}], "texture": "sand", "gravity": true},
-    {"id": 9, "name": "red_sand", "display_name": "Red Sand", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:red_sand", "count": 1}], "texture": "red_sand", "gravity": true},
-
-    {"id": 10, "name": "oak_log", "display_name": "Oak Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:oak_log", "count": 1}], "texture": {"top": "oak_log_top", "side": "oak_log"}, "tags": ["log", "wood"]},
-    {"id": 11, "name": "oak_planks", "display_name": "Oak Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:oak_planks", "count": 1}], "texture": "oak_planks", "tags": ["planks", "wood"]},
-    {"id": 12, "name": "oak_leaves", "display_name": "Oak Leaves", "solid": true, "transparent": true, "light_level": 0, "hardness": 0.2, "blast_resistance": 0.2, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:oak_sapling", "count": 1, "chance": 0.05}, {"item": "axiom:apple", "count": 1, "chance": 0.02}, {"item": "axiom:stick", "count": 1, "chance": 0.02}], "texture": "oak_leaves", "tags": ["leaves"]},
-    {"id": 13, "name": "spruce_log", "display_name": "Spruce Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:spruce_log", "count": 1}], "texture": {"top": "spruce_log_top", "side": "spruce_log"}, "tags": ["log", "wood"]},
-    {"id": 14, "name": "spruce_planks", "display_name": "Spruce Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:spruce_planks", "count": 1}], "texture": "spruce_planks", "tags": ["planks", "wood"]},
-    {"id": 15, "name": "birch_log", "display_name": "Birch Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:birch_log", "count": 1}], "texture": {"top": "birch_log_top", "side": "birch_log"}, "tags": ["log", "wood"]},
-    {"id": 16, "name": "birch_planks", "display_name": "Birch Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:birch_planks", "count": 1}], "texture": "birch_planks", "tags": ["planks", "wood"]},
-    {"id": 17, "name": "jungle_log", "display_name": "Jungle Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:jungle_log", "count": 1}], "texture": {"top": "jungle_log_top", "side": "jungle_log"}, "tags": ["log", "wood"]},
-    {"id": 18, "name": "jungle_planks", "display_name": "Jungle Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:jungle_planks", "count": 1}], "texture": "jungle_planks", "tags": ["planks", "wood"]},
-    {"id": 19, "name": "acacia_log", "display_name": "Acacia Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:acacia_log", "count": 1}], "texture": {"top": "acacia_log_top", "side": "acacia_log"}, "tags": ["log", "wood"]},
-    {"id": 20, "name": "acacia_planks", "display_name": "Acacia Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:acacia_planks", "count": 1}], "texture": "acacia_planks", "tags": ["planks", "wood"]},
-    {"id": 21, "name": "dark_oak_log", "display_name": "Dark Oak Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:dark_oak_log", "count": 1}], "texture": {"top": "dark_oak_log_top", "side": "dark_oak_log"}, "tags": ["log", "wood"]},
-    {"id": 22, "name": "dark_oak_planks", "display_name": "Dark Oak Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:dark_oak_planks", "count": 1}], "texture": "dark_oak_planks", "tags": ["planks", "wood"]},
-    {"id": 23, "name": "mangrove_log", "display_name": "Mangrove Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:mangrove_log", "count": 1}], "texture": {"top": "mangrove_log_top", "side": "mangrove_log"}, "tags": ["log", "wood"]},
-    {"id": 24, "name": "mangrove_planks", "display_name": "Mangrove Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:mangrove_planks", "count": 1}], "texture": "mangrove_planks", "tags": ["planks", "wood"]},
-    {"id": 25, "name": "cherry_log", "display_name": "Cherry Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:cherry_log", "count": 1}], "texture": {"top": "cherry_log_top", "side": "cherry_log"}, "tags": ["log", "wood"]},
-    {"id": 26, "name": "cherry_planks", "display_name": "Cherry Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:cherry_planks", "count": 1}], "texture": "cherry_planks", "tags": ["planks", "wood"]},
-    {"id": 27, "name": "pale_oak_log", "display_name": "Pale Oak Log", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:pale_oak_log", "count": 1}], "texture": {"top": "pale_oak_log_top", "side": "pale_oak_log"}, "tags": ["log", "wood"]},
-    {"id": 28, "name": "pale_oak_planks", "display_name": "Pale Oak Planks", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:pale_oak_planks", "count": 1}], "texture": "pale_oak_planks", "tags": ["planks", "wood"]},
-
-    {"id": 30, "name": "coal_ore", "display_name": "Coal Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:coal", "count": 1, "fortune": true, "fortune_multiplier": 1}], "texture": "coal_ore"},
-    {"id": 31, "name": "deepslate_coal_ore", "display_name": "Deepslate Coal Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:coal", "count": 1, "fortune": true}], "texture": "deepslate_coal_ore"},
-    {"id": 32, "name": "iron_ore", "display_name": "Iron Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:raw_iron", "count": 1}], "texture": "iron_ore"},
-    {"id": 33, "name": "deepslate_iron_ore", "display_name": "Deepslate Iron Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:raw_iron", "count": 1}], "texture": "deepslate_iron_ore"},
-    {"id": 34, "name": "copper_ore", "display_name": "Copper Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:raw_copper", "count": [2, 5], "fortune": true}], "texture": "copper_ore"},
-    {"id": 35, "name": "deepslate_copper_ore", "display_name": "Deepslate Copper Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:raw_copper", "count": [2, 5], "fortune": true}], "texture": "deepslate_copper_ore"},
-    {"id": 36, "name": "gold_ore", "display_name": "Gold Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:raw_gold", "count": 1}], "texture": "gold_ore"},
-    {"id": 37, "name": "deepslate_gold_ore", "display_name": "Deepslate Gold Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:raw_gold", "count": 1}], "texture": "deepslate_gold_ore"},
-    {"id": 38, "name": "lapis_ore", "display_name": "Lapis Lazuli Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:lapis_lazuli", "count": [4, 9], "fortune": true}], "texture": "lapis_ore"},
-    {"id": 39, "name": "deepslate_lapis_ore", "display_name": "Deepslate Lapis Lazuli Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:lapis_lazuli", "count": [4, 9], "fortune": true}], "texture": "deepslate_lapis_ore"},
-    {"id": 40, "name": "redstone_ore", "display_name": "Redstone Ore", "solid": true, "transparent": false, "light_level": 9, "light_when_active": true, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:redstone", "count": [4, 5], "fortune": true}], "texture": "redstone_ore"},
-    {"id": 41, "name": "deepslate_redstone_ore", "display_name": "Deepslate Redstone Ore", "solid": true, "transparent": false, "light_level": 9, "light_when_active": true, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:redstone", "count": [4, 5], "fortune": true}], "texture": "deepslate_redstone_ore"},
-    {"id": 42, "name": "diamond_ore", "display_name": "Diamond Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:diamond", "count": 1, "fortune": true}], "texture": "diamond_ore"},
-    {"id": 43, "name": "deepslate_diamond_ore", "display_name": "Deepslate Diamond Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:diamond", "count": 1, "fortune": true}], "texture": "deepslate_diamond_ore"},
-    {"id": 44, "name": "emerald_ore", "display_name": "Emerald Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:emerald", "count": 1, "fortune": true}], "texture": "emerald_ore"},
-    {"id": 45, "name": "deepslate_emerald_ore", "display_name": "Deepslate Emerald Ore", "solid": true, "transparent": false, "light_level": 0, "hardness": 4.5, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:emerald", "count": 1, "fortune": true}], "texture": "deepslate_emerald_ore"},
-
-    {"id": 50, "name": "deepslate", "display_name": "Deepslate", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:cobbled_deepslate", "count": 1}], "texture": {"top": "deepslate_top", "side": "deepslate"}, "variants": ["deepslate", "cobbled_deepslate", "cobbled_deepslate_slab", "cobbled_deepslate_stairs", "cobbled_deepslate_wall", "polished_deepslate", "polished_deepslate_slab", "polished_deepslate_stairs", "polished_deepslate_wall", "deepslate_bricks", "deepslate_brick_slab", "deepslate_brick_stairs", "deepslate_brick_wall", "deepslate_tiles", "deepslate_tile_slab", "deepslate_tile_stairs", "deepslate_tile_wall", "chiseled_deepslate", "cracked_deepslate_bricks", "cracked_deepslate_tiles"]},
-    {"id": 51, "name": "tuff", "display_name": "Tuff", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:tuff", "count": 1}], "texture": "tuff", "variants": ["tuff", "tuff_slab", "tuff_stairs", "tuff_wall", "polished_tuff", "polished_tuff_slab", "polished_tuff_stairs", "polished_tuff_wall", "tuff_bricks", "tuff_brick_slab", "tuff_brick_stairs", "tuff_brick_wall", "chiseled_tuff", "chiseled_tuff_bricks"]},
-    {"id": 52, "name": "calcite", "display_name": "Calcite", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.75, "blast_resistance": 0.75, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:calcite", "count": 1}], "texture": "calcite"},
-    {"id": 53, "name": "andesite", "display_name": "Andesite", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:andesite", "count": 1}], "texture": "andesite", "variants": ["andesite", "andesite_slab", "andesite_stairs", "andesite_wall", "polished_andesite", "polished_andesite_slab", "polished_andesite_stairs"]},
-    {"id": 54, "name": "diorite", "display_name": "Diorite", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:diorite", "count": 1}], "texture": "diorite", "variants": ["diorite", "diorite_slab", "diorite_stairs", "diorite_wall", "polished_diorite", "polished_diorite_slab", "polished_diorite_stairs"]},
-    {"id": 55, "name": "granite", "display_name": "Granite", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:granite", "count": 1}], "texture": "granite", "variants": ["granite", "granite_slab", "granite_stairs", "granite_wall", "polished_granite", "polished_granite_slab", "polished_granite_stairs"]},
-
-    {"id": 60, "name": "crafting_table", "display_name": "Crafting Table", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:crafting_table", "count": 1}], "texture": {"top": "crafting_table_top", "front": "crafting_table_front", "side": "crafting_table_side", "bottom": "oak_planks"}, "interactive": true, "ui_scene": "res://scenes/ui/crafting_table_ui.tscn"},
-    {"id": 61, "name": "furnace", "display_name": "Furnace", "solid": true, "transparent": false, "light_level": 0, "light_when_active": 13, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:furnace", "count": 1}], "texture": {"top": "furnace_top", "front": "furnace_front", "front_active": "furnace_front_on", "side": "furnace_side"}, "interactive": true, "has_inventory": true, "ui_scene": "res://scenes/ui/furnace_ui.tscn", "entity": "res://src/blocks/entities/FurnaceEntity.gd"},
-    {"id": 62, "name": "blast_furnace", "display_name": "Blast Furnace", "solid": true, "transparent": false, "light_level": 0, "light_when_active": 13, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:blast_furnace", "count": 1}], "texture": {"top": "blast_furnace_top", "front": "blast_furnace_front", "front_active": "blast_furnace_front_on", "side": "blast_furnace_side"}, "interactive": true, "has_inventory": true, "ui_scene": "res://scenes/ui/blast_furnace_ui.tscn"},
-    {"id": 63, "name": "smoker", "display_name": "Smoker", "solid": true, "transparent": false, "light_level": 0, "light_when_active": 13, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:smoker", "count": 1}], "texture": {"top": "smoker_top", "front": "smoker_front", "front_active": "smoker_front_on", "side": "smoker_side"}, "interactive": true, "has_inventory": true, "ui_scene": "res://scenes/ui/smoker_ui.tscn"},
-    {"id": 64, "name": "chest", "display_name": "Chest", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:chest", "count": 1}], "texture": "chest", "interactive": true, "has_inventory": true, "inventory_size": 27, "ui_scene": "res://scenes/ui/chest_ui.tscn", "entity": "res://src/blocks/entities/ChestEntity.gd"},
-    {"id": 65, "name": "trapped_chest", "display_name": "Trapped Chest", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:trapped_chest", "count": 1}], "texture": "trapped_chest", "interactive": true, "has_inventory": true, "inventory_size": 27, "emits_redstone": true},
-    {"id": 66, "name": "ender_chest", "display_name": "Ender Chest", "solid": true, "transparent": false, "light_level": 7, "hardness": 22.5, "blast_resistance": 600, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:obsidian", "count": 8, "requires_silk_touch": false}, {"item": "axiom:ender_chest", "count": 1, "requires_silk_touch": true}], "texture": "ender_chest", "interactive": true, "ui_scene": "res://scenes/ui/ender_chest_ui.tscn"},
-    {"id": 67, "name": "barrel", "display_name": "Barrel", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:barrel", "count": 1}], "texture": {"top": "barrel_top", "top_open": "barrel_top_open", "side": "barrel_side", "bottom": "barrel_bottom"}, "interactive": true, "has_inventory": true, "inventory_size": 27},
-    {"id": 68, "name": "hopper", "display_name": "Hopper", "solid": false, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 4.8, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:hopper", "count": 1}], "texture": "hopper", "has_inventory": true, "inventory_size": 5, "entity": "res://src/blocks/entities/HopperEntity.gd"},
-    {"id": 69, "name": "dropper", "display_name": "Dropper", "solid": true, "transparent": false, "light_level": 0, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:dropper", "count": 1}], "texture": {"top": "dropper_top", "front": "dropper_front", "side": "furnace_side"}, "has_inventory": true, "inventory_size": 9},
-    {"id": 70, "name": "dispenser", "display_name": "Dispenser", "solid": true, "transparent": false, "light_level": 0, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:dispenser", "count": 1}], "texture": {"top": "dispenser_top", "front": "dispenser_front", "side": "furnace_side"}, "has_inventory": true, "inventory_size": 9},
-
-    {"id": 80, "name": "glass", "display_name": "Glass", "solid": true, "transparent": true, "light_level": 0, "hardness": 0.3, "blast_resistance": 0.3, "tool": "none", "tool_level": 0, "drops": [], "texture": "glass", "tags": ["glass"]},
-    {"id": 81, "name": "glass_pane", "display_name": "Glass Pane", "solid": true, "transparent": true, "light_level": 0, "hardness": 0.3, "blast_resistance": 0.3, "tool": "none", "tool_level": 0, "drops": [], "texture": "glass", "shape": "pane"},
-    {"id": 82, "name": "iron_bars", "display_name": "Iron Bars", "solid": true, "transparent": true, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:iron_bars", "count": 1}], "texture": "iron_bars", "shape": "pane"},
-
-    {"id": 90, "name": "water", "display_name": "Water", "solid": false, "transparent": true, "light_level": 0, "hardness": 100, "blast_resistance": 100, "tool": "bucket", "drops": [], "texture": "water", "fluid": true, "fluid_id": "axiom:water", "tags": ["fluid", "water"]},
-    {"id": 91, "name": "lava", "display_name": "Lava", "solid": false, "transparent": true, "light_level": 15, "hardness": 100, "blast_resistance": 100, "tool": "bucket", "drops": [], "texture": "lava", "fluid": true, "fluid_id": "axiom:lava", "tags": ["fluid", "lava"]},
-
-    {"id": 100, "name": "bedrock", "display_name": "Bedrock", "solid": true, "transparent": false, "light_level": 0, "hardness": -1, "blast_resistance": 3600000, "tool": "none", "tool_level": 0, "drops": [], "texture": "bedrock"},
-    {"id": 101, "name": "obsidian", "display_name": "Obsidian", "solid": true, "transparent": false, "light_level": 0, "hardness": 50, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 3, "drops": [{"item": "axiom:obsidian", "count": 1}], "texture": "obsidian"},
-    {"id": 102, "name": "crying_obsidian", "display_name": "Crying Obsidian", "solid": true, "transparent": false, "light_level": 10, "hardness": 50, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 3, "drops": [{"item": "axiom:crying_obsidian", "count": 1}], "texture": "crying_obsidian"},
-
-    {"id": 110, "name": "glowstone", "display_name": "Glowstone", "solid": true, "transparent": false, "light_level": 15, "hardness": 0.3, "blast_resistance": 0.3, "tool": "none", "drops": [{"item": "axiom:glowstone_dust", "count": [2, 4], "fortune": true}], "texture": "glowstone"},
-    {"id": 111, "name": "sea_lantern", "display_name": "Sea Lantern", "solid": true, "transparent": false, "light_level": 15, "hardness": 0.3, "blast_resistance": 0.3, "tool": "none", "drops": [{"item": "axiom:prismarine_crystals", "count": [2, 3], "fortune": true}, {"item": "axiom:sea_lantern", "count": 1, "requires_silk_touch": true}], "texture": "sea_lantern"},
-    {"id": 112, "name": "redstone_lamp", "display_name": "Redstone Lamp", "solid": true, "transparent": false, "light_level": 0, "light_when_active": 15, "hardness": 0.3, "blast_resistance": 0.3, "tool": "none", "drops": [{"item": "axiom:redstone_lamp", "count": 1}], "texture": {"off": "redstone_lamp", "on": "redstone_lamp_on"}, "redstone_powered": true},
-    {"id": 113, "name": "lantern", "display_name": "Lantern", "solid": false, "transparent": true, "light_level": 15, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:lantern", "count": 1}], "texture": "lantern", "shape": "lantern"},
-    {"id": 114, "name": "soul_lantern", "display_name": "Soul Lantern", "solid": false, "transparent": true, "light_level": 10, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:soul_lantern", "count": 1}], "texture": "soul_lantern", "shape": "lantern"},
-    {"id": 115, "name": "shroomlight", "display_name": "Shroomlight", "solid": true, "transparent": false, "light_level": 15, "hardness": 1, "blast_resistance": 1, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:shroomlight", "count": 1}], "texture": "shroomlight"},
-
-    {"id": 120, "name": "tnt", "display_name": "TNT", "solid": true, "transparent": false, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:tnt", "count": 1}], "texture": {"top": "tnt_top", "bottom": "tnt_bottom", "side": "tnt_side"}, "interactive": true, "flammable": true, "entity": "res://src/blocks/entities/TNTEntity.gd"},
-    {"id": 121, "name": "enchanting_table", "display_name": "Enchanting Table", "solid": true, "transparent": false, "light_level": 7, "hardness": 5, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:enchanting_table", "count": 1}], "texture": {"top": "enchanting_table_top", "bottom": "enchanting_table_bottom", "side": "enchanting_table_side"}, "interactive": true, "ui_scene": "res://scenes/ui/enchanting_table_ui.tscn"},
-    {"id": 122, "name": "anvil", "display_name": "Anvil", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:anvil", "count": 1}], "texture": "anvil", "interactive": true, "gravity": true, "ui_scene": "res://scenes/ui/anvil_ui.tscn"},
-    {"id": 123, "name": "brewing_stand", "display_name": "Brewing Stand", "solid": false, "transparent": true, "light_level": 1, "hardness": 0.5, "blast_resistance": 0.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:brewing_stand", "count": 1}], "texture": {"base": "brewing_stand_base", "stand": "brewing_stand"}, "interactive": true, "has_inventory": true, "ui_scene": "res://scenes/ui/brewing_stand_ui.tscn"},
-    {"id": 124, "name": "bookshelf", "display_name": "Bookshelf", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 1.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:book", "count": 3}], "texture": {"side": "bookshelf", "top": "oak_planks"}, "enchanting_power": 1.0},
-    {"id": 125, "name": "note_block", "display_name": "Note Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:note_block", "count": 1}], "texture": "note_block", "interactive": true},
-    {"id": 126, "name": "jukebox", "display_name": "Jukebox", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 6, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:jukebox", "count": 1}], "texture": {"top": "jukebox_top", "side": "jukebox_side"}, "interactive": true, "has_inventory": true, "inventory_size": 1},
-    {"id": 127, "name": "composter", "display_name": "Composter", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.6, "blast_resistance": 0.6, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:composter", "count": 1}], "texture": {"top": "composter_top", "side": "composter_side", "bottom": "composter_bottom"}, "interactive": true},
-    {"id": 128, "name": "cauldron", "display_name": "Cauldron", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 2, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:cauldron", "count": 1}], "texture": "cauldron", "interactive": true, "has_fluid": true},
-    {"id": 129, "name": "smithing_table", "display_name": "Smithing Table", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:smithing_table", "count": 1}], "texture": {"top": "smithing_table_top", "front": "smithing_table_front", "side": "smithing_table_side", "bottom": "smithing_table_bottom"}, "interactive": true, "ui_scene": "res://scenes/ui/smithing_table_ui.tscn"},
-    {"id": 130, "name": "grindstone", "display_name": "Grindstone", "solid": true, "transparent": false, "light_level": 0, "hardness": 2, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:grindstone", "count": 1}], "texture": "grindstone", "interactive": true, "ui_scene": "res://scenes/ui/grindstone_ui.tscn"},
-    {"id": 131, "name": "stonecutter", "display_name": "Stonecutter", "solid": true, "transparent": false, "light_level": 0, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:stonecutter", "count": 1}], "texture": {"top": "stonecutter_top", "side": "stonecutter_side", "bottom": "stone"}, "interactive": true, "ui_scene": "res://scenes/ui/stonecutter_ui.tscn"},
-    {"id": 132, "name": "loom", "display_name": "Loom", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:loom", "count": 1}], "texture": {"top": "loom_top", "front": "loom_front", "side": "loom_side", "bottom": "loom_bottom"}, "interactive": true, "ui_scene": "res://scenes/ui/loom_ui.tscn"},
-    {"id": 133, "name": "cartography_table", "display_name": "Cartography Table", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:cartography_table", "count": 1}], "texture": {"top": "cartography_table_top", "front": "cartography_table_front", "side": "cartography_table_side", "bottom": "dark_oak_planks"}, "interactive": true, "ui_scene": "res://scenes/ui/cartography_table_ui.tscn"},
-    {"id": 134, "name": "lectern", "display_name": "Lectern", "solid": true, "transparent": false, "light_level": 0, "hardness": 2.5, "blast_resistance": 2.5, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:lectern", "count": 1}], "texture": {"top": "lectern_top", "front": "lectern_front", "side": "lectern_sides", "bottom": "lectern_base"}, "interactive": true},
-    {"id": 135, "name": "bell", "display_name": "Bell", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:bell", "count": 1}], "texture": "bell", "interactive": true},
-    {"id": 136, "name": "lodestone", "display_name": "Lodestone", "solid": true, "transparent": false, "light_level": 0, "hardness": 3.5, "blast_resistance": 3.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:lodestone", "count": 1}], "texture": {"top": "lodestone_top", "side": "lodestone_side"}},
-    {"id": 137, "name": "respawn_anchor", "display_name": "Respawn Anchor", "solid": true, "transparent": false, "light_level": 0, "hardness": 50, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 3, "drops": [{"item": "axiom:respawn_anchor", "count": 1}], "texture": {"top": "respawn_anchor_top", "top_charged": "respawn_anchor_top_off", "side": "respawn_anchor_side"}, "interactive": true},
-
-    {"id": 150, "name": "redstone_block", "display_name": "Block of Redstone", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:redstone_block", "count": 1}], "texture": "redstone_block", "redstone_power": 15},
-    {"id": 151, "name": "piston", "display_name": "Piston", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 1.5, "tool": "any", "drops": [{"item": "axiom:piston", "count": 1}], "texture": {"top": "piston_top", "front": "piston_top", "side": "piston_side", "bottom": "piston_bottom"}, "entity": "res://src/blocks/entities/PistonEntity.gd"},
-    {"id": 152, "name": "sticky_piston", "display_name": "Sticky Piston", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 1.5, "tool": "any", "drops": [{"item": "axiom:sticky_piston", "count": 1}], "texture": {"top": "piston_top_sticky", "front": "piston_top_sticky", "side": "piston_side", "bottom": "piston_bottom"}, "entity": "res://src/blocks/entities/PistonEntity.gd"},
-    {"id": 153, "name": "observer", "display_name": "Observer", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:observer", "count": 1}], "texture": {"front": "observer_front", "back": "observer_back", "side": "observer_side", "top": "observer_top"}},
-    {"id": 154, "name": "comparator", "display_name": "Redstone Comparator", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:comparator", "count": 1}], "texture": "comparator", "shape": "flat"},
-    {"id": 155, "name": "repeater", "display_name": "Redstone Repeater", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:repeater", "count": 1}], "texture": "repeater", "shape": "flat"},
-    {"id": 156, "name": "target", "display_name": "Target", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:target", "count": 1}], "texture": {"top": "target_top", "side": "target_side"}},
-
-    {"id": 160, "name": "white_wool", "display_name": "White Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:white_wool", "count": 1}], "texture": "white_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 161, "name": "orange_wool", "display_name": "Orange Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:orange_wool", "count": 1}], "texture": "orange_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 162, "name": "magenta_wool", "display_name": "Magenta Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:magenta_wool", "count": 1}], "texture": "magenta_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 163, "name": "light_blue_wool", "display_name": "Light Blue Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:light_blue_wool", "count": 1}], "texture": "light_blue_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 164, "name": "yellow_wool", "display_name": "Yellow Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:yellow_wool", "count": 1}], "texture": "yellow_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 165, "name": "lime_wool", "display_name": "Lime Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:lime_wool", "count": 1}], "texture": "lime_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 166, "name": "pink_wool", "display_name": "Pink Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:pink_wool", "count": 1}], "texture": "pink_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 167, "name": "gray_wool", "display_name": "Gray Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:gray_wool", "count": 1}], "texture": "gray_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 168, "name": "light_gray_wool", "display_name": "Light Gray Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:light_gray_wool", "count": 1}], "texture": "light_gray_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 169, "name": "cyan_wool", "display_name": "Cyan Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:cyan_wool", "count": 1}], "texture": "cyan_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 170, "name": "purple_wool", "display_name": "Purple Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:purple_wool", "count": 1}], "texture": "purple_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 171, "name": "blue_wool", "display_name": "Blue Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:blue_wool", "count": 1}], "texture": "blue_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 172, "name": "brown_wool", "display_name": "Brown Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:brown_wool", "count": 1}], "texture": "brown_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 173, "name": "green_wool", "display_name": "Green Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:green_wool", "count": 1}], "texture": "green_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 174, "name": "red_wool", "display_name": "Red Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:red_wool", "count": 1}], "texture": "red_wool", "flammable": true, "tags": ["wool"]},
-    {"id": 175, "name": "black_wool", "display_name": "Black Wool", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.8, "blast_resistance": 0.8, "tool": "shears", "tool_level": 0, "drops": [{"item": "axiom:black_wool", "count": 1}], "texture": "black_wool", "flammable": true, "tags": ["wool"]},
-
-    {"id": 190, "name": "pumpkin", "display_name": "Pumpkin", "solid": true, "transparent": false, "light_level": 0, "hardness": 1, "blast_resistance": 1, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:pumpkin", "count": 1}], "texture": {"top": "pumpkin_top", "front": "pumpkin_face", "side": "pumpkin_side"}, "interactive": true},
-    {"id": 191, "name": "carved_pumpkin", "display_name": "Carved Pumpkin", "solid": true, "transparent": false, "light_level": 0, "hardness": 1, "blast_resistance": 1, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:carved_pumpkin", "count": 1}], "texture": {"top": "pumpkin_top", "front": "pumpkin_face_off", "side": "pumpkin_side"}},
-    {"id": 192, "name": "jack_o_lantern", "display_name": "Jack o'Lantern", "solid": true, "transparent": false, "light_level": 15, "hardness": 1, "blast_resistance": 1, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:jack_o_lantern", "count": 1}], "texture": {"top": "pumpkin_top", "front": "pumpkin_face_on", "side": "pumpkin_side"}},
-    {"id": 193, "name": "melon", "display_name": "Melon", "solid": true, "transparent": false, "light_level": 0, "hardness": 1, "blast_resistance": 1, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:melon_slice", "count": [3, 7], "fortune": true}], "texture": {"top": "melon_top", "side": "melon_side"}},
-    {"id": 194, "name": "hay_block", "display_name": "Hay Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:wheat", "count": 9}], "texture": {"top": "hay_block_top", "side": "hay_block_side"}},
-    {"id": 195, "name": "mud", "display_name": "Mud", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:mud", "count": 1}], "texture": "mud", "tags": ["mud"]},
-    {"id": 196, "name": "moss_block", "display_name": "Moss Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.1, "blast_resistance": 0.1, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:moss_block", "count": 1}], "texture": "moss_block"},
-    {"id": 197, "name": "mycelium", "display_name": "Mycelium", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.6, "blast_resistance": 0.6, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:dirt", "count": 1}], "texture": {"top": "mycelium_top", "side": "mycelium_side"}, "tags": ["dirt_like"]},
-    {"id": 198, "name": "podzol", "display_name": "Podzol", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.5, "blast_resistance": 0.5, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:dirt", "count": 1}], "texture": {"top": "podzol_top", "side": "podzol_side"}, "tags": ["dirt_like"]},
-
-    {"id": 200, "name": "wheat_crop", "display_name": "Wheat", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:wheat", "count": 1, "min_age": 7}, {"item": "axiom:wheat_seeds", "count": [1, 3], "fortune": true}], "texture": "wheat_stage7", "shape": "cross", "growth_stages": 8, "needs_farmland": true, "tags": ["crop"]},
-    {"id": 201, "name": "carrot_crop", "display_name": "Carrots", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:carrot", "count": [1, 4], "fortune": true, "min_age": 7}], "texture": "carrots_stage3", "shape": "cross", "growth_stages": 8, "needs_farmland": true, "tags": ["crop"]},
-    {"id": 202, "name": "potato_crop", "display_name": "Potatoes", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:potato", "count": [1, 4], "fortune": true, "min_age": 7}, {"item": "axiom:poisonous_potato", "count": 1, "chance": 0.02, "min_age": 7}], "texture": "potatoes_stage3", "shape": "cross", "growth_stages": 8, "needs_farmland": true, "tags": ["crop"]},
-    {"id": 203, "name": "beetroot_crop", "display_name": "Beetroots", "solid": false, "transparent": true, "light_level": 0, "hardness": 0, "blast_resistance": 0, "tool": "none", "drops": [{"item": "axiom:beetroot", "count": 1, "min_age": 3}, {"item": "axiom:beetroot_seeds", "count": [0, 3], "fortune": true}], "texture": "beetroots_stage3", "shape": "cross", "growth_stages": 4, "needs_farmland": true, "tags": ["crop"]},
-    {"id": 204, "name": "farmland", "display_name": "Farmland", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.6, "blast_resistance": 0.6, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:dirt", "count": 1}], "texture": {"top": "farmland", "top_moist": "farmland_moist", "side": "dirt"}, "tags": ["farmland"]},
-
-    {"id": 210, "name": "sculk", "display_name": "Sculk", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.2, "blast_resistance": 0.2, "tool": "hoe", "tool_level": 0, "drops": [], "texture": "sculk", "tags": ["sculk"], "xp_drop": [1, 1]},
-    {"id": 211, "name": "sculk_catalyst", "display_name": "Sculk Catalyst", "solid": true, "transparent": false, "light_level": 6, "hardness": 3, "blast_resistance": 3, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:sculk_catalyst", "count": 1, "requires_silk_touch": true}], "texture": {"top": "sculk_catalyst_top", "top_bloom": "sculk_catalyst_top_bloom", "side": "sculk_catalyst_side"}, "tags": ["sculk"], "xp_drop": [5, 5]},
-    {"id": 212, "name": "sculk_shrieker", "display_name": "Sculk Shrieker", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:sculk_shrieker", "count": 1, "requires_silk_touch": true}], "texture": {"top": "sculk_shrieker_top", "side": "sculk_shrieker_side", "bottom": "sculk_shrieker_bottom"}, "tags": ["sculk"], "xp_drop": [5, 5]},
-    {"id": 213, "name": "sculk_sensor", "display_name": "Sculk Sensor", "solid": true, "transparent": false, "light_level": 1, "hardness": 1.5, "blast_resistance": 1.5, "tool": "hoe", "tool_level": 0, "drops": [{"item": "axiom:sculk_sensor", "count": 1, "requires_silk_touch": true}], "texture": "sculk_sensor", "tags": ["sculk"], "xp_drop": [5, 5]},
-
-    {"id": 220, "name": "amethyst_block", "display_name": "Block of Amethyst", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 1.5, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:amethyst_block", "count": 1}], "texture": "amethyst_block"},
-    {"id": 221, "name": "budding_amethyst", "display_name": "Budding Amethyst", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 1.5, "tool": "pickaxe", "tool_level": 1, "drops": [], "texture": "budding_amethyst"},
-    {"id": 222, "name": "amethyst_cluster", "display_name": "Amethyst Cluster", "solid": false, "transparent": true, "light_level": 5, "hardness": 1.5, "blast_resistance": 1.5, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:amethyst_shard", "count": 4, "fortune": true}, {"item": "axiom:amethyst_cluster", "count": 1, "requires_silk_touch": true}], "texture": "amethyst_cluster", "shape": "cluster"},
-
-    {"id": 230, "name": "iron_block", "display_name": "Block of Iron", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:iron_block", "count": 1}], "texture": "iron_block"},
-    {"id": 231, "name": "gold_block", "display_name": "Block of Gold", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:gold_block", "count": 1}], "texture": "gold_block"},
-    {"id": 232, "name": "copper_block", "display_name": "Block of Copper", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:copper_block", "count": 1}], "texture": "copper_block"},
-    {"id": 233, "name": "diamond_block", "display_name": "Block of Diamond", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:diamond_block", "count": 1}], "texture": "diamond_block"},
-    {"id": 234, "name": "emerald_block", "display_name": "Block of Emerald", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 2, "drops": [{"item": "axiom:emerald_block", "count": 1}], "texture": "emerald_block"},
-    {"id": 235, "name": "netherite_block", "display_name": "Block of Netherite", "solid": true, "transparent": false, "light_level": 0, "hardness": 50, "blast_resistance": 1200, "tool": "pickaxe", "tool_level": 4, "drops": [{"item": "axiom:netherite_block", "count": 1}], "texture": "netherite_block"},
-    {"id": 236, "name": "lapis_block", "display_name": "Lapis Lazuli Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 3, "blast_resistance": 3, "tool": "pickaxe", "tool_level": 1, "drops": [{"item": "axiom:lapis_block", "count": 1}], "texture": "lapis_block"},
-    {"id": 237, "name": "coal_block", "display_name": "Block of Coal", "solid": true, "transparent": false, "light_level": 0, "hardness": 5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:coal_block", "count": 1}], "texture": "coal_block", "flammable": true},
-
-    {"id": 240, "name": "basalt", "display_name": "Basalt", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.25, "blast_resistance": 4.2, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:basalt", "count": 1}], "texture": {"top": "basalt_top", "side": "basalt_side"}},
-    {"id": 241, "name": "snow_block", "display_name": "Snow Block", "solid": true, "transparent": false, "light_level": 0, "hardness": 0.2, "blast_resistance": 0.2, "tool": "shovel", "tool_level": 0, "drops": [{"item": "axiom:snowball", "count": 4}], "texture": "snow_block"},
-    {"id": 242, "name": "orange_terracotta", "display_name": "Orange Terracotta", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.25, "blast_resistance": 4.2, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:orange_terracotta", "count": 1}], "texture": "orange_terracotta"},
-    {"id": 243, "name": "blackstone", "display_name": "Blackstone", "solid": true, "transparent": false, "light_level": 0, "hardness": 1.5, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:blackstone", "count": 1}], "texture": "blackstone"},
-    {"id": 244, "name": "magma_block", "display_name": "Magma Block", "solid": true, "transparent": false, "light_level": 3, "hardness": 0.5, "blast_resistance": 0.5, "tool": "pickaxe", "tool_level": 0, "drops": [{"item": "axiom:magma_cream", "count": [2, 4]}], "texture": "magma_block", "tags": ["magma"]},
-
-    {"id": 250, "name": "skill_altar_mineur",    "display_name": "Autel du Mineur",      "solid": true, "transparent": false, "light_level": 7, "hardness": 3.0, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "emerald_block",  "interactive": true, "tags": ["skill_altar", "class_mineur"]},
-    {"id": 251, "name": "skill_altar_guerrier",  "display_name": "Autel du Guerrier",    "solid": true, "transparent": false, "light_level": 7, "hardness": 3.0, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "redstone_block", "interactive": true, "tags": ["skill_altar", "class_guerrier"]},
-    {"id": 252, "name": "skill_altar_ingenieur", "display_name": "Autel de l'Ingenieur", "solid": true, "transparent": false, "light_level": 7, "hardness": 3.0, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "copper_block",   "interactive": true, "tags": ["skill_altar", "class_ingenieur"]},
-    {"id": 253, "name": "skill_altar_mage",      "display_name": "Autel du Mage",        "solid": true, "transparent": false, "light_level": 7, "hardness": 3.0, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "lapis_block",    "interactive": true, "tags": ["skill_altar", "class_mage"]},
-    {"id": 254, "name": "skill_altar_fermier",   "display_name": "Autel du Fermier",     "solid": true, "transparent": false, "light_level": 7, "hardness": 3.0, "blast_resistance": 6, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "hay_bale",       "interactive": true, "tags": ["skill_altar", "class_fermier"]},
-
-    {"id": 255, "name": "archives_core",  "display_name": "Cœur des Archives",  "solid": true, "transparent": false, "light_level": 12, "hardness": -1, "blast_resistance": 3600, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "beacon",          "interactive": true, "tags": ["archives", "unbreakable"]},
-    {"id": 256, "name": "lore_tablet",    "display_name": "Tablette de Lore",   "solid": true, "transparent": false, "light_level": 4,  "hardness": 3.5, "blast_resistance": 6,    "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "chiseled_stone_bricks", "interactive": true, "tags": ["archives", "lore"]},
-    {"id": 257, "name": "nexus_portal",   "display_name": "Portail du Nexus",   "solid": true, "transparent": true,  "light_level": 15, "hardness": -1, "blast_resistance": 3600, "tool": "pickaxe", "tool_level": 0, "drops": [], "texture": "end_portal",      "interactive": true, "tags": ["archives", "portal", "unbreakable"]},
-
-    {"id": 258, "name": "quest_board", "display_name": "Panneau d'Affichage ⚑", "solid": true, "transparent": false, "light_level": 4, "hardness": 2.5, "blast_resistance": 3, "tool": "axe", "tool_level": 0, "drops": [{"item": "axiom:oak_planks", "count": 4}], "texture": "crafting_table", "interactive": true, "tags": ["village", "quest"]}
+    {
+      "id": 0,
+      "name": "air",
+      "display_name": "Air",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [],
+      "texture": "air"
+    },
+    {
+      "id": 1,
+      "name": "stone",
+      "display_name": "Stone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cobblestone",
+          "count": 1
+        }
+      ],
+      "texture": "stone",
+      "variants": [
+        "stone",
+        "stone_slab",
+        "stone_stairs",
+        "stone_bricks",
+        "stone_brick_slab",
+        "stone_brick_stairs",
+        "stone_brick_wall",
+        "chiseled_stone_bricks",
+        "cracked_stone_bricks",
+        "mossy_stone_bricks",
+        "mossy_stone_brick_slab",
+        "mossy_stone_brick_stairs",
+        "mossy_stone_brick_wall"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "grass_block",
+      "display_name": "Grass Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.6,
+      "blast_resistance": 0.6,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dirt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "grass_block_top",
+        "bottom": "dirt",
+        "side": "grass_block_side"
+      },
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "dirt",
+      "display_name": "Dirt",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dirt",
+          "count": 1
+        }
+      ],
+      "texture": "dirt",
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "coarse_dirt",
+      "display_name": "Coarse Dirt",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:coarse_dirt",
+          "count": 1
+        }
+      ],
+      "texture": "coarse_dirt",
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "rooted_dirt",
+      "display_name": "Rooted Dirt",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:rooted_dirt",
+          "count": 1
+        },
+        {
+          "item": "axiom:hanging_roots",
+          "count": 1
+        }
+      ],
+      "texture": "rooted_dirt",
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "cobblestone",
+      "display_name": "Cobblestone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cobblestone",
+          "count": 1
+        }
+      ],
+      "texture": "cobblestone",
+      "variants": [
+        "cobblestone",
+        "cobblestone_slab",
+        "cobblestone_stairs",
+        "cobblestone_wall",
+        "mossy_cobblestone",
+        "mossy_cobblestone_slab",
+        "mossy_cobblestone_stairs",
+        "mossy_cobblestone_wall"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "gravel",
+      "display_name": "Gravel",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.6,
+      "blast_resistance": 0.6,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:flint",
+          "count": 1,
+          "chance": 0.1
+        },
+        {
+          "item": "axiom:gravel",
+          "count": 1,
+          "chance": 0.9
+        }
+      ],
+      "texture": "gravel",
+      "gravity": true
+    },
+    {
+      "id": 8,
+      "name": "sand",
+      "display_name": "Sand",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:sand",
+          "count": 1
+        }
+      ],
+      "texture": "sand",
+      "gravity": true
+    },
+    {
+      "id": 9,
+      "name": "red_sand",
+      "display_name": "Red Sand",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:red_sand",
+          "count": 1
+        }
+      ],
+      "texture": "red_sand",
+      "gravity": true
+    },
+    {
+      "id": 10,
+      "name": "oak_log",
+      "display_name": "Oak Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:oak_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "oak_log_top",
+        "side": "oak_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "oak_planks",
+      "display_name": "Oak Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:oak_planks",
+          "count": 1
+        }
+      ],
+      "texture": "oak_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "oak_leaves",
+      "display_name": "Oak Leaves",
+      "solid": true,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0.2,
+      "blast_resistance": 0.2,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:oak_sapling",
+          "count": 1,
+          "chance": 0.05
+        },
+        {
+          "item": "axiom:apple",
+          "count": 1,
+          "chance": 0.02
+        },
+        {
+          "item": "axiom:stick",
+          "count": 1,
+          "chance": 0.02
+        }
+      ],
+      "texture": "oak_leaves",
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "spruce_log",
+      "display_name": "Spruce Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:spruce_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "spruce_log_top",
+        "side": "spruce_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "spruce_planks",
+      "display_name": "Spruce Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:spruce_planks",
+          "count": 1
+        }
+      ],
+      "texture": "spruce_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "birch_log",
+      "display_name": "Birch Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:birch_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "birch_log_top",
+        "side": "birch_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "birch_planks",
+      "display_name": "Birch Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:birch_planks",
+          "count": 1
+        }
+      ],
+      "texture": "birch_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "jungle_log",
+      "display_name": "Jungle Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:jungle_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "jungle_log_top",
+        "side": "jungle_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "jungle_planks",
+      "display_name": "Jungle Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:jungle_planks",
+          "count": 1
+        }
+      ],
+      "texture": "jungle_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "acacia_log",
+      "display_name": "Acacia Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:acacia_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "acacia_log_top",
+        "side": "acacia_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "acacia_planks",
+      "display_name": "Acacia Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:acacia_planks",
+          "count": 1
+        }
+      ],
+      "texture": "acacia_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "dark_oak_log",
+      "display_name": "Dark Oak Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dark_oak_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "dark_oak_log_top",
+        "side": "dark_oak_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "dark_oak_planks",
+      "display_name": "Dark Oak Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dark_oak_planks",
+          "count": 1
+        }
+      ],
+      "texture": "dark_oak_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "mangrove_log",
+      "display_name": "Mangrove Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:mangrove_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "mangrove_log_top",
+        "side": "mangrove_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "mangrove_planks",
+      "display_name": "Mangrove Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:mangrove_planks",
+          "count": 1
+        }
+      ],
+      "texture": "mangrove_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "cherry_log",
+      "display_name": "Cherry Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cherry_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "cherry_log_top",
+        "side": "cherry_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "cherry_planks",
+      "display_name": "Cherry Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cherry_planks",
+          "count": 1
+        }
+      ],
+      "texture": "cherry_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "pale_oak_log",
+      "display_name": "Pale Oak Log",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:pale_oak_log",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "pale_oak_log_top",
+        "side": "pale_oak_log"
+      },
+      "tags": [
+        "log",
+        "wood"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "pale_oak_planks",
+      "display_name": "Pale Oak Planks",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:pale_oak_planks",
+          "count": 1
+        }
+      ],
+      "texture": "pale_oak_planks",
+      "tags": [
+        "planks",
+        "wood"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "coal_ore",
+      "display_name": "Coal Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:coal",
+          "count": 1,
+          "fortune": true,
+          "fortune_multiplier": 1
+        }
+      ],
+      "texture": "coal_ore"
+    },
+    {
+      "id": 31,
+      "name": "deepslate_coal_ore",
+      "display_name": "Deepslate Coal Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:coal",
+          "count": 1,
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_coal_ore"
+    },
+    {
+      "id": 32,
+      "name": "iron_ore",
+      "display_name": "Iron Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:raw_iron",
+          "count": 1
+        }
+      ],
+      "texture": "iron_ore"
+    },
+    {
+      "id": 33,
+      "name": "deepslate_iron_ore",
+      "display_name": "Deepslate Iron Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:raw_iron",
+          "count": 1
+        }
+      ],
+      "texture": "deepslate_iron_ore"
+    },
+    {
+      "id": 34,
+      "name": "copper_ore",
+      "display_name": "Copper Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:raw_copper",
+          "count": [
+            2,
+            5
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "copper_ore"
+    },
+    {
+      "id": 35,
+      "name": "deepslate_copper_ore",
+      "display_name": "Deepslate Copper Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:raw_copper",
+          "count": [
+            2,
+            5
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_copper_ore"
+    },
+    {
+      "id": 36,
+      "name": "gold_ore",
+      "display_name": "Gold Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:raw_gold",
+          "count": 1
+        }
+      ],
+      "texture": "gold_ore"
+    },
+    {
+      "id": 37,
+      "name": "deepslate_gold_ore",
+      "display_name": "Deepslate Gold Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:raw_gold",
+          "count": 1
+        }
+      ],
+      "texture": "deepslate_gold_ore"
+    },
+    {
+      "id": 38,
+      "name": "lapis_ore",
+      "display_name": "Lapis Lazuli Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:lapis_lazuli",
+          "count": [
+            4,
+            9
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "lapis_ore"
+    },
+    {
+      "id": 39,
+      "name": "deepslate_lapis_ore",
+      "display_name": "Deepslate Lapis Lazuli Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:lapis_lazuli",
+          "count": [
+            4,
+            9
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_lapis_ore"
+    },
+    {
+      "id": 40,
+      "name": "redstone_ore",
+      "display_name": "Redstone Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 9,
+      "light_when_active": true,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:redstone",
+          "count": [
+            4,
+            5
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "redstone_ore"
+    },
+    {
+      "id": 41,
+      "name": "deepslate_redstone_ore",
+      "display_name": "Deepslate Redstone Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 9,
+      "light_when_active": true,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:redstone",
+          "count": [
+            4,
+            5
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_redstone_ore"
+    },
+    {
+      "id": 42,
+      "name": "diamond_ore",
+      "display_name": "Diamond Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:diamond",
+          "count": 1,
+          "fortune": true
+        }
+      ],
+      "texture": "diamond_ore"
+    },
+    {
+      "id": 43,
+      "name": "deepslate_diamond_ore",
+      "display_name": "Deepslate Diamond Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:diamond",
+          "count": 1,
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_diamond_ore"
+    },
+    {
+      "id": 44,
+      "name": "emerald_ore",
+      "display_name": "Emerald Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:emerald",
+          "count": 1,
+          "fortune": true
+        }
+      ],
+      "texture": "emerald_ore"
+    },
+    {
+      "id": 45,
+      "name": "deepslate_emerald_ore",
+      "display_name": "Deepslate Emerald Ore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 4.5,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:emerald",
+          "count": 1,
+          "fortune": true
+        }
+      ],
+      "texture": "deepslate_emerald_ore"
+    },
+    {
+      "id": 46,
+      "name": "torch",
+      "display_name": "Torche",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "torch",
+      "light_level": 14,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:torch",
+          "count": 1
+        }
+      ],
+      "texture": "torch",
+      "tags": [
+        "torch"
+      ]
+    },
+    {
+      "id": 47,
+      "name": "spruce_leaves",
+      "display_name": "Feuilles de sapin",
+      "texture": "spruce_leaves",
+      "drops": [
+        {
+          "item": "axiom:spruce_sapling",
+          "count": 1,
+          "chance": 0.06
+        },
+        {
+          "item": "axiom:stick",
+          "count": 1,
+          "chance": 0.02
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 48,
+      "name": "birch_leaves",
+      "display_name": "Feuilles de bouleau",
+      "texture": "birch_leaves",
+      "drops": [
+        {
+          "item": "axiom:birch_sapling",
+          "count": 1,
+          "chance": 0.06
+        },
+        {
+          "item": "axiom:stick",
+          "count": 1,
+          "chance": 0.02
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 49,
+      "name": "jungle_leaves",
+      "display_name": "Feuilles de jungle",
+      "texture": "jungle_leaves",
+      "drops": [
+        {
+          "item": "axiom:jungle_sapling",
+          "count": 1,
+          "chance": 0.035
+        },
+        {
+          "item": "axiom:stick",
+          "count": 1,
+          "chance": 0.02
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 50,
+      "name": "deepslate",
+      "display_name": "Deepslate",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cobbled_deepslate",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "deepslate_top",
+        "side": "deepslate"
+      },
+      "variants": [
+        "deepslate",
+        "cobbled_deepslate",
+        "cobbled_deepslate_slab",
+        "cobbled_deepslate_stairs",
+        "cobbled_deepslate_wall",
+        "polished_deepslate",
+        "polished_deepslate_slab",
+        "polished_deepslate_stairs",
+        "polished_deepslate_wall",
+        "deepslate_bricks",
+        "deepslate_brick_slab",
+        "deepslate_brick_stairs",
+        "deepslate_brick_wall",
+        "deepslate_tiles",
+        "deepslate_tile_slab",
+        "deepslate_tile_stairs",
+        "deepslate_tile_wall",
+        "chiseled_deepslate",
+        "cracked_deepslate_bricks",
+        "cracked_deepslate_tiles"
+      ]
+    },
+    {
+      "id": 51,
+      "name": "tuff",
+      "display_name": "Tuff",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:tuff",
+          "count": 1
+        }
+      ],
+      "texture": "tuff",
+      "variants": [
+        "tuff",
+        "tuff_slab",
+        "tuff_stairs",
+        "tuff_wall",
+        "polished_tuff",
+        "polished_tuff_slab",
+        "polished_tuff_stairs",
+        "polished_tuff_wall",
+        "tuff_bricks",
+        "tuff_brick_slab",
+        "tuff_brick_stairs",
+        "tuff_brick_wall",
+        "chiseled_tuff",
+        "chiseled_tuff_bricks"
+      ]
+    },
+    {
+      "id": 52,
+      "name": "calcite",
+      "display_name": "Calcite",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.75,
+      "blast_resistance": 0.75,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:calcite",
+          "count": 1
+        }
+      ],
+      "texture": "calcite"
+    },
+    {
+      "id": 53,
+      "name": "andesite",
+      "display_name": "Andesite",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:andesite",
+          "count": 1
+        }
+      ],
+      "texture": "andesite",
+      "variants": [
+        "andesite",
+        "andesite_slab",
+        "andesite_stairs",
+        "andesite_wall",
+        "polished_andesite",
+        "polished_andesite_slab",
+        "polished_andesite_stairs"
+      ]
+    },
+    {
+      "id": 54,
+      "name": "diorite",
+      "display_name": "Diorite",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:diorite",
+          "count": 1
+        }
+      ],
+      "texture": "diorite",
+      "variants": [
+        "diorite",
+        "diorite_slab",
+        "diorite_stairs",
+        "diorite_wall",
+        "polished_diorite",
+        "polished_diorite_slab",
+        "polished_diorite_stairs"
+      ]
+    },
+    {
+      "id": 55,
+      "name": "granite",
+      "display_name": "Granite",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:granite",
+          "count": 1
+        }
+      ],
+      "texture": "granite",
+      "variants": [
+        "granite",
+        "granite_slab",
+        "granite_stairs",
+        "granite_wall",
+        "polished_granite",
+        "polished_granite_slab",
+        "polished_granite_stairs"
+      ]
+    },
+    {
+      "id": 56,
+      "name": "acacia_leaves",
+      "display_name": "Feuilles d'acacia",
+      "texture": "acacia_leaves",
+      "drops": [
+        {
+          "item": "axiom:acacia_sapling",
+          "count": 1,
+          "chance": 0.06
+        },
+        {
+          "item": "axiom:stick",
+          "count": 1,
+          "chance": 0.02
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 57,
+      "name": "dark_oak_leaves",
+      "display_name": "Feuilles de chêne noir",
+      "texture": "dark_oak_leaves",
+      "drops": [
+        {
+          "item": "axiom:dark_oak_sapling",
+          "count": 1,
+          "chance": 0.06
+        },
+        {
+          "item": "axiom:apple",
+          "count": 1,
+          "chance": 0.006
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 58,
+      "name": "cherry_leaves",
+      "display_name": "Feuilles de cerisier",
+      "texture": "cherry_leaves",
+      "drops": [
+        {
+          "item": "axiom:cherry_sapling",
+          "count": 1,
+          "chance": 0.06
+        }
+      ],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 59,
+      "name": "mangrove_leaves",
+      "display_name": "Feuilles de palétuvier",
+      "texture": "mangrove_leaves",
+      "drops": [],
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.2,
+      "tool": "shears",
+      "tool_level": 0,
+      "flammable": true,
+      "tags": [
+        "leaves"
+      ]
+    },
+    {
+      "id": 60,
+      "name": "crafting_table",
+      "display_name": "Crafting Table",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:crafting_table",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "crafting_table_top",
+        "front": "crafting_table_front",
+        "side": "crafting_table_side",
+        "bottom": "oak_planks"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/crafting_table_ui.tscn"
+    },
+    {
+      "id": 61,
+      "name": "furnace",
+      "display_name": "Furnace",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "light_when_active": 13,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:furnace",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "furnace_top",
+        "front": "furnace_front",
+        "front_active": "furnace_front_on",
+        "side": "furnace_side"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "ui_scene": "res://scenes/ui/furnace_ui.tscn",
+      "entity": "res://src/blocks/entities/FurnaceEntity.gd"
+    },
+    {
+      "id": 62,
+      "name": "blast_furnace",
+      "display_name": "Blast Furnace",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "light_when_active": 13,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:blast_furnace",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "blast_furnace_top",
+        "front": "blast_furnace_front",
+        "front_active": "blast_furnace_front_on",
+        "side": "blast_furnace_side"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "ui_scene": "res://scenes/ui/blast_furnace_ui.tscn"
+    },
+    {
+      "id": 63,
+      "name": "smoker",
+      "display_name": "Smoker",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "light_when_active": 13,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:smoker",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "smoker_top",
+        "front": "smoker_front",
+        "front_active": "smoker_front_on",
+        "side": "smoker_side"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "ui_scene": "res://scenes/ui/smoker_ui.tscn"
+    },
+    {
+      "id": 64,
+      "name": "chest",
+      "display_name": "Chest",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:chest",
+          "count": 1
+        }
+      ],
+      "texture": "chest",
+      "interactive": true,
+      "has_inventory": true,
+      "inventory_size": 27,
+      "ui_scene": "res://scenes/ui/chest_ui.tscn",
+      "entity": "res://src/blocks/entities/ChestEntity.gd"
+    },
+    {
+      "id": 65,
+      "name": "trapped_chest",
+      "display_name": "Trapped Chest",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:trapped_chest",
+          "count": 1
+        }
+      ],
+      "texture": "trapped_chest",
+      "interactive": true,
+      "has_inventory": true,
+      "inventory_size": 27,
+      "emits_redstone": true
+    },
+    {
+      "id": 66,
+      "name": "ender_chest",
+      "display_name": "Ender Chest",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 22.5,
+      "blast_resistance": 600,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:obsidian",
+          "count": 8,
+          "requires_silk_touch": false
+        },
+        {
+          "item": "axiom:ender_chest",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": "ender_chest",
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/ender_chest_ui.tscn"
+    },
+    {
+      "id": 67,
+      "name": "barrel",
+      "display_name": "Barrel",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:barrel",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "barrel_top",
+        "top_open": "barrel_top_open",
+        "side": "barrel_side",
+        "bottom": "barrel_bottom"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "inventory_size": 27
+    },
+    {
+      "id": 68,
+      "name": "hopper",
+      "display_name": "Hopper",
+      "solid": false,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 4.8,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:hopper",
+          "count": 1
+        }
+      ],
+      "texture": "hopper",
+      "has_inventory": true,
+      "inventory_size": 5,
+      "entity": "res://src/blocks/entities/HopperEntity.gd"
+    },
+    {
+      "id": 69,
+      "name": "dropper",
+      "display_name": "Dropper",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dropper",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "dropper_top",
+        "front": "dropper_front",
+        "side": "furnace_side"
+      },
+      "has_inventory": true,
+      "inventory_size": 9
+    },
+    {
+      "id": 70,
+      "name": "dispenser",
+      "display_name": "Dispenser",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dispenser",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "dispenser_top",
+        "front": "dispenser_front",
+        "side": "furnace_side"
+      },
+      "has_inventory": true,
+      "inventory_size": 9
+    },
+    {
+      "id": 71,
+      "name": "poppy",
+      "display_name": "Coquelicot",
+      "texture": "poppy",
+      "drops": [
+        {
+          "item": "axiom:poppy",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "flower"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 72,
+      "name": "dandelion",
+      "display_name": "Pissenlit",
+      "texture": "dandelion",
+      "drops": [
+        {
+          "item": "axiom:dandelion",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "flower"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 73,
+      "name": "blue_orchid",
+      "display_name": "Orchidée bleue",
+      "texture": "blue_orchid",
+      "drops": [
+        {
+          "item": "axiom:blue_orchid",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "flower"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 74,
+      "name": "short_grass",
+      "display_name": "Herbes hautes",
+      "texture": "short_grass",
+      "drops": [
+        {
+          "item": "axiom:wheat_seeds",
+          "count": 1,
+          "chance": 0.125
+        }
+      ],
+      "tags": [
+        "plant"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 75,
+      "name": "fern",
+      "display_name": "Fougère",
+      "texture": "fern",
+      "drops": [
+        {
+          "item": "axiom:wheat_seeds",
+          "count": 1,
+          "chance": 0.125
+        }
+      ],
+      "tags": [
+        "plant"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 76,
+      "name": "dead_bush",
+      "display_name": "Buisson mort",
+      "texture": "dead_bush",
+      "drops": [
+        {
+          "item": "axiom:stick",
+          "count": [
+            0,
+            2
+          ]
+        }
+      ],
+      "tags": [
+        "plant"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 77,
+      "name": "oak_sapling",
+      "display_name": "Pousse de chêne",
+      "texture": "oak_sapling",
+      "drops": [
+        {
+          "item": "axiom:oak_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "oak",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 78,
+      "name": "spruce_sapling",
+      "display_name": "Pousse de sapin",
+      "texture": "spruce_sapling",
+      "drops": [
+        {
+          "item": "axiom:spruce_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "spruce",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 79,
+      "name": "birch_sapling",
+      "display_name": "Pousse de bouleau",
+      "texture": "birch_sapling",
+      "drops": [
+        {
+          "item": "axiom:birch_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "birch",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 80,
+      "name": "glass",
+      "display_name": "Glass",
+      "solid": true,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0.3,
+      "blast_resistance": 0.3,
+      "tool": "none",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "glass",
+      "tags": [
+        "glass"
+      ]
+    },
+    {
+      "id": 81,
+      "name": "glass_pane",
+      "display_name": "Glass Pane",
+      "solid": true,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0.3,
+      "blast_resistance": 0.3,
+      "tool": "none",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "glass",
+      "shape": "pane"
+    },
+    {
+      "id": 82,
+      "name": "iron_bars",
+      "display_name": "Iron Bars",
+      "solid": true,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:iron_bars",
+          "count": 1
+        }
+      ],
+      "texture": "iron_bars",
+      "shape": "pane"
+    },
+    {
+      "id": 83,
+      "name": "jungle_sapling",
+      "display_name": "Pousse de jungle",
+      "texture": "jungle_sapling",
+      "drops": [
+        {
+          "item": "axiom:jungle_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "jungle",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 84,
+      "name": "acacia_sapling",
+      "display_name": "Pousse d'acacia",
+      "texture": "acacia_sapling",
+      "drops": [
+        {
+          "item": "axiom:acacia_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "acacia",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 85,
+      "name": "dark_oak_sapling",
+      "display_name": "Pousse de chêne noir",
+      "texture": "dark_oak_sapling",
+      "drops": [
+        {
+          "item": "axiom:dark_oak_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "dark_oak",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 86,
+      "name": "cherry_sapling",
+      "display_name": "Pousse de cerisier",
+      "texture": "cherry_sapling",
+      "drops": [
+        {
+          "item": "axiom:cherry_sapling",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "sapling"
+      ],
+      "sapling_species": "cherry",
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 87,
+      "name": "red_mushroom",
+      "display_name": "Champignon rouge",
+      "texture": "red_mushroom",
+      "drops": [
+        {
+          "item": "axiom:red_mushroom",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "mushroom"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 88,
+      "name": "brown_mushroom",
+      "display_name": "Champignon brun",
+      "texture": "brown_mushroom",
+      "drops": [
+        {
+          "item": "axiom:brown_mushroom",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "mushroom"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 89,
+      "name": "sugar_cane",
+      "display_name": "Canne à sucre",
+      "texture": "sugar_cane",
+      "drops": [
+        {
+          "item": "axiom:sugar_cane",
+          "count": 1
+        }
+      ],
+      "tags": [
+        "plant",
+        "cane"
+      ],
+      "solid": false,
+      "transparent": true,
+      "hardness": 0.0,
+      "shape": "cross",
+      "tool": "none"
+    },
+    {
+      "id": 90,
+      "name": "water",
+      "display_name": "Water",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 100,
+      "blast_resistance": 100,
+      "tool": "bucket",
+      "drops": [],
+      "texture": "water",
+      "fluid": true,
+      "fluid_id": "axiom:water",
+      "tags": [
+        "fluid",
+        "water"
+      ]
+    },
+    {
+      "id": 91,
+      "name": "lava",
+      "display_name": "Lava",
+      "solid": false,
+      "transparent": true,
+      "light_level": 15,
+      "hardness": 100,
+      "blast_resistance": 100,
+      "tool": "bucket",
+      "drops": [],
+      "texture": "lava",
+      "fluid": true,
+      "fluid_id": "axiom:lava",
+      "tags": [
+        "fluid",
+        "lava"
+      ]
+    },
+    {
+      "id": 92,
+      "name": "bed",
+      "display_name": "Lit",
+      "solid": true,
+      "transparent": true,
+      "hardness": 0.3,
+      "shape": "bed",
+      "tool": "none",
+      "interactive": true,
+      "drops": [
+        {
+          "item": "axiom:bed",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "bed_top",
+        "side": "bed_side"
+      },
+      "tags": [
+        "bed"
+      ]
+    },
+    {
+      "id": 93,
+      "name": "nether_portal",
+      "display_name": "Portail du Nether",
+      "solid": false,
+      "transparent": true,
+      "hardness": -1,
+      "light_level": 11,
+      "tool": "none",
+      "drops": [],
+      "texture": "nether_portal",
+      "tags": [
+        "portal",
+        "unbreakable"
+      ]
+    },
+    {
+      "id": 94,
+      "name": "end_portal",
+      "display_name": "Portail de l'End",
+      "solid": false,
+      "transparent": true,
+      "hardness": -1,
+      "light_level": 15,
+      "tool": "none",
+      "drops": [],
+      "texture": "end_portal_block",
+      "tags": [
+        "portal",
+        "unbreakable"
+      ]
+    },
+    {
+      "id": 95,
+      "name": "end_portal_frame",
+      "display_name": "Cadre de portail de l'End",
+      "solid": true,
+      "transparent": false,
+      "hardness": -1,
+      "light_level": 4,
+      "tool": "none",
+      "drops": [],
+      "texture": {
+        "top": "end_portal_frame_top",
+        "side": "end_portal_frame_side",
+        "bottom": "end_stone"
+      },
+      "tags": [
+        "unbreakable"
+      ]
+    },
+    {
+      "id": 100,
+      "name": "bedrock",
+      "display_name": "Bedrock",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": -1,
+      "blast_resistance": 3600000,
+      "tool": "none",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "bedrock"
+    },
+    {
+      "id": 101,
+      "name": "obsidian",
+      "display_name": "Obsidian",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 50,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 3,
+      "drops": [
+        {
+          "item": "axiom:obsidian",
+          "count": 1
+        }
+      ],
+      "texture": "obsidian"
+    },
+    {
+      "id": 102,
+      "name": "crying_obsidian",
+      "display_name": "Crying Obsidian",
+      "solid": true,
+      "transparent": false,
+      "light_level": 10,
+      "hardness": 50,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 3,
+      "drops": [
+        {
+          "item": "axiom:crying_obsidian",
+          "count": 1
+        }
+      ],
+      "texture": "crying_obsidian"
+    },
+    {
+      "id": 110,
+      "name": "glowstone",
+      "display_name": "Glowstone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 15,
+      "hardness": 0.3,
+      "blast_resistance": 0.3,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:glowstone_dust",
+          "count": [
+            2,
+            4
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "glowstone"
+    },
+    {
+      "id": 111,
+      "name": "sea_lantern",
+      "display_name": "Sea Lantern",
+      "solid": true,
+      "transparent": false,
+      "light_level": 15,
+      "hardness": 0.3,
+      "blast_resistance": 0.3,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:prismarine_crystals",
+          "count": [
+            2,
+            3
+          ],
+          "fortune": true
+        },
+        {
+          "item": "axiom:sea_lantern",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": "sea_lantern"
+    },
+    {
+      "id": 112,
+      "name": "redstone_lamp",
+      "display_name": "Redstone Lamp",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "light_when_active": 15,
+      "hardness": 0.3,
+      "blast_resistance": 0.3,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:redstone_lamp",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "off": "redstone_lamp",
+        "on": "redstone_lamp_on"
+      },
+      "redstone_powered": true
+    },
+    {
+      "id": 113,
+      "name": "lantern",
+      "display_name": "Lantern",
+      "solid": false,
+      "transparent": true,
+      "light_level": 15,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:lantern",
+          "count": 1
+        }
+      ],
+      "texture": "lantern",
+      "shape": "lantern"
+    },
+    {
+      "id": 114,
+      "name": "soul_lantern",
+      "display_name": "Soul Lantern",
+      "solid": false,
+      "transparent": true,
+      "light_level": 10,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:soul_lantern",
+          "count": 1
+        }
+      ],
+      "texture": "soul_lantern",
+      "shape": "lantern"
+    },
+    {
+      "id": 115,
+      "name": "shroomlight",
+      "display_name": "Shroomlight",
+      "solid": true,
+      "transparent": false,
+      "light_level": 15,
+      "hardness": 1,
+      "blast_resistance": 1,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:shroomlight",
+          "count": 1
+        }
+      ],
+      "texture": "shroomlight"
+    },
+    {
+      "id": 120,
+      "name": "tnt",
+      "display_name": "TNT",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:tnt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "tnt_top",
+        "bottom": "tnt_bottom",
+        "side": "tnt_side"
+      },
+      "interactive": true,
+      "flammable": true,
+      "entity": "res://src/blocks/entities/TNTEntity.gd"
+    },
+    {
+      "id": 121,
+      "name": "enchanting_table",
+      "display_name": "Enchanting Table",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 5,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:enchanting_table",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "enchanting_table_top",
+        "bottom": "enchanting_table_bottom",
+        "side": "enchanting_table_side"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/enchanting_table_ui.tscn"
+    },
+    {
+      "id": 122,
+      "name": "anvil",
+      "display_name": "Anvil",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:anvil",
+          "count": 1
+        }
+      ],
+      "texture": "anvil",
+      "interactive": true,
+      "gravity": true,
+      "ui_scene": "res://scenes/ui/anvil_ui.tscn"
+    },
+    {
+      "id": 123,
+      "name": "brewing_stand",
+      "display_name": "Brewing Stand",
+      "solid": false,
+      "transparent": true,
+      "light_level": 1,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:brewing_stand",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "base": "brewing_stand_base",
+        "stand": "brewing_stand"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "ui_scene": "res://scenes/ui/brewing_stand_ui.tscn"
+    },
+    {
+      "id": 124,
+      "name": "bookshelf",
+      "display_name": "Bookshelf",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:book",
+          "count": 3
+        }
+      ],
+      "texture": {
+        "side": "bookshelf",
+        "top": "oak_planks"
+      },
+      "enchanting_power": 1.0
+    },
+    {
+      "id": 125,
+      "name": "note_block",
+      "display_name": "Note Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:note_block",
+          "count": 1
+        }
+      ],
+      "texture": "note_block",
+      "interactive": true
+    },
+    {
+      "id": 126,
+      "name": "jukebox",
+      "display_name": "Jukebox",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 6,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:jukebox",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "jukebox_top",
+        "side": "jukebox_side"
+      },
+      "interactive": true,
+      "has_inventory": true,
+      "inventory_size": 1
+    },
+    {
+      "id": 127,
+      "name": "composter",
+      "display_name": "Composter",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.6,
+      "blast_resistance": 0.6,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:composter",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "composter_top",
+        "side": "composter_side",
+        "bottom": "composter_bottom"
+      },
+      "interactive": true
+    },
+    {
+      "id": 128,
+      "name": "cauldron",
+      "display_name": "Cauldron",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 2,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cauldron",
+          "count": 1
+        }
+      ],
+      "texture": "cauldron",
+      "interactive": true,
+      "has_fluid": true
+    },
+    {
+      "id": 129,
+      "name": "smithing_table",
+      "display_name": "Smithing Table",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:smithing_table",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "smithing_table_top",
+        "front": "smithing_table_front",
+        "side": "smithing_table_side",
+        "bottom": "smithing_table_bottom"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/smithing_table_ui.tscn"
+    },
+    {
+      "id": 130,
+      "name": "grindstone",
+      "display_name": "Grindstone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:grindstone",
+          "count": 1
+        }
+      ],
+      "texture": "grindstone",
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/grindstone_ui.tscn"
+    },
+    {
+      "id": 131,
+      "name": "stonecutter",
+      "display_name": "Stonecutter",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:stonecutter",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "stonecutter_top",
+        "side": "stonecutter_side",
+        "bottom": "stone"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/stonecutter_ui.tscn"
+    },
+    {
+      "id": 132,
+      "name": "loom",
+      "display_name": "Loom",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:loom",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "loom_top",
+        "front": "loom_front",
+        "side": "loom_side",
+        "bottom": "loom_bottom"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/loom_ui.tscn"
+    },
+    {
+      "id": 133,
+      "name": "cartography_table",
+      "display_name": "Cartography Table",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cartography_table",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "cartography_table_top",
+        "front": "cartography_table_front",
+        "side": "cartography_table_side",
+        "bottom": "dark_oak_planks"
+      },
+      "interactive": true,
+      "ui_scene": "res://scenes/ui/cartography_table_ui.tscn"
+    },
+    {
+      "id": 134,
+      "name": "lectern",
+      "display_name": "Lectern",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 2.5,
+      "blast_resistance": 2.5,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:lectern",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "lectern_top",
+        "front": "lectern_front",
+        "side": "lectern_sides",
+        "bottom": "lectern_base"
+      },
+      "interactive": true
+    },
+    {
+      "id": 135,
+      "name": "bell",
+      "display_name": "Bell",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:bell",
+          "count": 1
+        }
+      ],
+      "texture": "bell",
+      "interactive": true
+    },
+    {
+      "id": 136,
+      "name": "lodestone",
+      "display_name": "Lodestone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3.5,
+      "blast_resistance": 3.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:lodestone",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "lodestone_top",
+        "side": "lodestone_side"
+      }
+    },
+    {
+      "id": 137,
+      "name": "respawn_anchor",
+      "display_name": "Respawn Anchor",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 50,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 3,
+      "drops": [
+        {
+          "item": "axiom:respawn_anchor",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "respawn_anchor_top",
+        "top_charged": "respawn_anchor_top_off",
+        "side": "respawn_anchor_side"
+      },
+      "interactive": true
+    },
+    {
+      "id": 150,
+      "name": "redstone_block",
+      "display_name": "Block of Redstone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:redstone_block",
+          "count": 1
+        }
+      ],
+      "texture": "redstone_block",
+      "redstone_power": 15
+    },
+    {
+      "id": 151,
+      "name": "piston",
+      "display_name": "Piston",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "any",
+      "drops": [
+        {
+          "item": "axiom:piston",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "piston_top",
+        "front": "piston_top",
+        "side": "piston_side",
+        "bottom": "piston_bottom"
+      },
+      "entity": "res://src/blocks/entities/PistonEntity.gd"
+    },
+    {
+      "id": 152,
+      "name": "sticky_piston",
+      "display_name": "Sticky Piston",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "any",
+      "drops": [
+        {
+          "item": "axiom:sticky_piston",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "piston_top_sticky",
+        "front": "piston_top_sticky",
+        "side": "piston_side",
+        "bottom": "piston_bottom"
+      },
+      "entity": "res://src/blocks/entities/PistonEntity.gd"
+    },
+    {
+      "id": 153,
+      "name": "observer",
+      "display_name": "Observer",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:observer",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "front": "observer_front",
+        "back": "observer_back",
+        "side": "observer_side",
+        "top": "observer_top"
+      }
+    },
+    {
+      "id": 154,
+      "name": "comparator",
+      "display_name": "Redstone Comparator",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:comparator",
+          "count": 1
+        }
+      ],
+      "texture": "comparator",
+      "shape": "flat"
+    },
+    {
+      "id": 155,
+      "name": "repeater",
+      "display_name": "Redstone Repeater",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:repeater",
+          "count": 1
+        }
+      ],
+      "texture": "repeater",
+      "shape": "flat"
+    },
+    {
+      "id": 156,
+      "name": "target",
+      "display_name": "Target",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:target",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "target_top",
+        "side": "target_side"
+      }
+    },
+    {
+      "id": 160,
+      "name": "white_wool",
+      "display_name": "White Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:white_wool",
+          "count": 1
+        }
+      ],
+      "texture": "white_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 161,
+      "name": "orange_wool",
+      "display_name": "Orange Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:orange_wool",
+          "count": 1
+        }
+      ],
+      "texture": "orange_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 162,
+      "name": "magenta_wool",
+      "display_name": "Magenta Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:magenta_wool",
+          "count": 1
+        }
+      ],
+      "texture": "magenta_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 163,
+      "name": "light_blue_wool",
+      "display_name": "Light Blue Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:light_blue_wool",
+          "count": 1
+        }
+      ],
+      "texture": "light_blue_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 164,
+      "name": "yellow_wool",
+      "display_name": "Yellow Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:yellow_wool",
+          "count": 1
+        }
+      ],
+      "texture": "yellow_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 165,
+      "name": "lime_wool",
+      "display_name": "Lime Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:lime_wool",
+          "count": 1
+        }
+      ],
+      "texture": "lime_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 166,
+      "name": "pink_wool",
+      "display_name": "Pink Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:pink_wool",
+          "count": 1
+        }
+      ],
+      "texture": "pink_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 167,
+      "name": "gray_wool",
+      "display_name": "Gray Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:gray_wool",
+          "count": 1
+        }
+      ],
+      "texture": "gray_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 168,
+      "name": "light_gray_wool",
+      "display_name": "Light Gray Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:light_gray_wool",
+          "count": 1
+        }
+      ],
+      "texture": "light_gray_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 169,
+      "name": "cyan_wool",
+      "display_name": "Cyan Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:cyan_wool",
+          "count": 1
+        }
+      ],
+      "texture": "cyan_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 170,
+      "name": "purple_wool",
+      "display_name": "Purple Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:purple_wool",
+          "count": 1
+        }
+      ],
+      "texture": "purple_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 171,
+      "name": "blue_wool",
+      "display_name": "Blue Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:blue_wool",
+          "count": 1
+        }
+      ],
+      "texture": "blue_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 172,
+      "name": "brown_wool",
+      "display_name": "Brown Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:brown_wool",
+          "count": 1
+        }
+      ],
+      "texture": "brown_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 173,
+      "name": "green_wool",
+      "display_name": "Green Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:green_wool",
+          "count": 1
+        }
+      ],
+      "texture": "green_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 174,
+      "name": "red_wool",
+      "display_name": "Red Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:red_wool",
+          "count": 1
+        }
+      ],
+      "texture": "red_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 175,
+      "name": "black_wool",
+      "display_name": "Black Wool",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.8,
+      "blast_resistance": 0.8,
+      "tool": "shears",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:black_wool",
+          "count": 1
+        }
+      ],
+      "texture": "black_wool",
+      "flammable": true,
+      "tags": [
+        "wool"
+      ]
+    },
+    {
+      "id": 190,
+      "name": "pumpkin",
+      "display_name": "Pumpkin",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1,
+      "blast_resistance": 1,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:pumpkin",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "pumpkin_top",
+        "front": "pumpkin_face",
+        "side": "pumpkin_side"
+      },
+      "interactive": true
+    },
+    {
+      "id": 191,
+      "name": "carved_pumpkin",
+      "display_name": "Carved Pumpkin",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1,
+      "blast_resistance": 1,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:carved_pumpkin",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "pumpkin_top",
+        "front": "pumpkin_face_off",
+        "side": "pumpkin_side"
+      }
+    },
+    {
+      "id": 192,
+      "name": "jack_o_lantern",
+      "display_name": "Jack o'Lantern",
+      "solid": true,
+      "transparent": false,
+      "light_level": 15,
+      "hardness": 1,
+      "blast_resistance": 1,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:jack_o_lantern",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "pumpkin_top",
+        "front": "pumpkin_face_on",
+        "side": "pumpkin_side"
+      }
+    },
+    {
+      "id": 193,
+      "name": "melon",
+      "display_name": "Melon",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1,
+      "blast_resistance": 1,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:melon_slice",
+          "count": [
+            3,
+            7
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": {
+        "top": "melon_top",
+        "side": "melon_side"
+      }
+    },
+    {
+      "id": 194,
+      "name": "hay_block",
+      "display_name": "Hay Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:wheat",
+          "count": 9
+        }
+      ],
+      "texture": {
+        "top": "hay_block_top",
+        "side": "hay_block_side"
+      }
+    },
+    {
+      "id": 195,
+      "name": "mud",
+      "display_name": "Mud",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:mud",
+          "count": 1
+        }
+      ],
+      "texture": "mud",
+      "tags": [
+        "mud"
+      ]
+    },
+    {
+      "id": 196,
+      "name": "moss_block",
+      "display_name": "Moss Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.1,
+      "blast_resistance": 0.1,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:moss_block",
+          "count": 1
+        }
+      ],
+      "texture": "moss_block"
+    },
+    {
+      "id": 197,
+      "name": "mycelium",
+      "display_name": "Mycelium",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.6,
+      "blast_resistance": 0.6,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dirt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "mycelium_top",
+        "side": "mycelium_side"
+      },
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 198,
+      "name": "podzol",
+      "display_name": "Podzol",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dirt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "podzol_top",
+        "side": "podzol_side"
+      },
+      "tags": [
+        "dirt_like"
+      ]
+    },
+    {
+      "id": 200,
+      "name": "wheat_crop",
+      "display_name": "Wheat",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:wheat",
+          "count": 1,
+          "min_age": 7
+        },
+        {
+          "item": "axiom:wheat_seeds",
+          "count": [
+            1,
+            3
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "wheat_stage7",
+      "shape": "cross",
+      "growth_stages": 8,
+      "needs_farmland": true,
+      "tags": [
+        "crop"
+      ]
+    },
+    {
+      "id": 201,
+      "name": "carrot_crop",
+      "display_name": "Carrots",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:carrot",
+          "count": [
+            1,
+            4
+          ],
+          "fortune": true,
+          "min_age": 7
+        }
+      ],
+      "texture": "carrots_stage3",
+      "shape": "cross",
+      "growth_stages": 8,
+      "needs_farmland": true,
+      "tags": [
+        "crop"
+      ]
+    },
+    {
+      "id": 202,
+      "name": "potato_crop",
+      "display_name": "Potatoes",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:potato",
+          "count": [
+            1,
+            4
+          ],
+          "fortune": true,
+          "min_age": 7
+        },
+        {
+          "item": "axiom:poisonous_potato",
+          "count": 1,
+          "chance": 0.02,
+          "min_age": 7
+        }
+      ],
+      "texture": "potatoes_stage3",
+      "shape": "cross",
+      "growth_stages": 8,
+      "needs_farmland": true,
+      "tags": [
+        "crop"
+      ]
+    },
+    {
+      "id": 203,
+      "name": "beetroot_crop",
+      "display_name": "Beetroots",
+      "solid": false,
+      "transparent": true,
+      "light_level": 0,
+      "hardness": 0,
+      "blast_resistance": 0,
+      "tool": "none",
+      "drops": [
+        {
+          "item": "axiom:beetroot",
+          "count": 1,
+          "min_age": 3
+        },
+        {
+          "item": "axiom:beetroot_seeds",
+          "count": [
+            0,
+            3
+          ],
+          "fortune": true
+        }
+      ],
+      "texture": "beetroots_stage3",
+      "shape": "cross",
+      "growth_stages": 4,
+      "needs_farmland": true,
+      "tags": [
+        "crop"
+      ]
+    },
+    {
+      "id": 204,
+      "name": "farmland",
+      "display_name": "Farmland",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.6,
+      "blast_resistance": 0.6,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:dirt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "farmland",
+        "top_moist": "farmland_moist",
+        "side": "dirt"
+      },
+      "tags": [
+        "farmland"
+      ]
+    },
+    {
+      "id": 210,
+      "name": "sculk",
+      "display_name": "Sculk",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.2,
+      "blast_resistance": 0.2,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "sculk",
+      "tags": [
+        "sculk"
+      ],
+      "xp_drop": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": 211,
+      "name": "sculk_catalyst",
+      "display_name": "Sculk Catalyst",
+      "solid": true,
+      "transparent": false,
+      "light_level": 6,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:sculk_catalyst",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": {
+        "top": "sculk_catalyst_top",
+        "top_bloom": "sculk_catalyst_top_bloom",
+        "side": "sculk_catalyst_side"
+      },
+      "tags": [
+        "sculk"
+      ],
+      "xp_drop": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": 212,
+      "name": "sculk_shrieker",
+      "display_name": "Sculk Shrieker",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:sculk_shrieker",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": {
+        "top": "sculk_shrieker_top",
+        "side": "sculk_shrieker_side",
+        "bottom": "sculk_shrieker_bottom"
+      },
+      "tags": [
+        "sculk"
+      ],
+      "xp_drop": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": 213,
+      "name": "sculk_sensor",
+      "display_name": "Sculk Sensor",
+      "solid": true,
+      "transparent": false,
+      "light_level": 1,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "hoe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:sculk_sensor",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": "sculk_sensor",
+      "tags": [
+        "sculk"
+      ],
+      "xp_drop": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": 220,
+      "name": "amethyst_block",
+      "display_name": "Block of Amethyst",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:amethyst_block",
+          "count": 1
+        }
+      ],
+      "texture": "amethyst_block"
+    },
+    {
+      "id": 221,
+      "name": "budding_amethyst",
+      "display_name": "Budding Amethyst",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [],
+      "texture": "budding_amethyst"
+    },
+    {
+      "id": 222,
+      "name": "amethyst_cluster",
+      "display_name": "Amethyst Cluster",
+      "solid": false,
+      "transparent": true,
+      "light_level": 5,
+      "hardness": 1.5,
+      "blast_resistance": 1.5,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:amethyst_shard",
+          "count": 4,
+          "fortune": true
+        },
+        {
+          "item": "axiom:amethyst_cluster",
+          "count": 1,
+          "requires_silk_touch": true
+        }
+      ],
+      "texture": "amethyst_cluster",
+      "shape": "cluster"
+    },
+    {
+      "id": 230,
+      "name": "iron_block",
+      "display_name": "Block of Iron",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:iron_block",
+          "count": 1
+        }
+      ],
+      "texture": "iron_block"
+    },
+    {
+      "id": 231,
+      "name": "gold_block",
+      "display_name": "Block of Gold",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:gold_block",
+          "count": 1
+        }
+      ],
+      "texture": "gold_block"
+    },
+    {
+      "id": 232,
+      "name": "copper_block",
+      "display_name": "Block of Copper",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:copper_block",
+          "count": 1
+        }
+      ],
+      "texture": "copper_block"
+    },
+    {
+      "id": 233,
+      "name": "diamond_block",
+      "display_name": "Block of Diamond",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:diamond_block",
+          "count": 1
+        }
+      ],
+      "texture": "diamond_block"
+    },
+    {
+      "id": 234,
+      "name": "emerald_block",
+      "display_name": "Block of Emerald",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 2,
+      "drops": [
+        {
+          "item": "axiom:emerald_block",
+          "count": 1
+        }
+      ],
+      "texture": "emerald_block"
+    },
+    {
+      "id": 235,
+      "name": "netherite_block",
+      "display_name": "Block of Netherite",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 50,
+      "blast_resistance": 1200,
+      "tool": "pickaxe",
+      "tool_level": 4,
+      "drops": [
+        {
+          "item": "axiom:netherite_block",
+          "count": 1
+        }
+      ],
+      "texture": "netherite_block"
+    },
+    {
+      "id": 236,
+      "name": "lapis_block",
+      "display_name": "Lapis Lazuli Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 3,
+      "blast_resistance": 3,
+      "tool": "pickaxe",
+      "tool_level": 1,
+      "drops": [
+        {
+          "item": "axiom:lapis_block",
+          "count": 1
+        }
+      ],
+      "texture": "lapis_block"
+    },
+    {
+      "id": 237,
+      "name": "coal_block",
+      "display_name": "Block of Coal",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:coal_block",
+          "count": 1
+        }
+      ],
+      "texture": "coal_block",
+      "flammable": true
+    },
+    {
+      "id": 240,
+      "name": "basalt",
+      "display_name": "Basalt",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.25,
+      "blast_resistance": 4.2,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:basalt",
+          "count": 1
+        }
+      ],
+      "texture": {
+        "top": "basalt_top",
+        "side": "basalt_side"
+      }
+    },
+    {
+      "id": 241,
+      "name": "snow_block",
+      "display_name": "Snow Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 0.2,
+      "blast_resistance": 0.2,
+      "tool": "shovel",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:snowball",
+          "count": 4
+        }
+      ],
+      "texture": "snow_block"
+    },
+    {
+      "id": 242,
+      "name": "orange_terracotta",
+      "display_name": "Orange Terracotta",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.25,
+      "blast_resistance": 4.2,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:orange_terracotta",
+          "count": 1
+        }
+      ],
+      "texture": "orange_terracotta"
+    },
+    {
+      "id": 243,
+      "name": "blackstone",
+      "display_name": "Blackstone",
+      "solid": true,
+      "transparent": false,
+      "light_level": 0,
+      "hardness": 1.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:blackstone",
+          "count": 1
+        }
+      ],
+      "texture": "blackstone"
+    },
+    {
+      "id": 244,
+      "name": "magma_block",
+      "display_name": "Magma Block",
+      "solid": true,
+      "transparent": false,
+      "light_level": 3,
+      "hardness": 0.5,
+      "blast_resistance": 0.5,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:magma_cream",
+          "count": [
+            2,
+            4
+          ]
+        }
+      ],
+      "texture": "magma_block",
+      "tags": [
+        "magma"
+      ]
+    },
+    {
+      "id": 250,
+      "name": "skill_altar_mineur",
+      "display_name": "Autel du Mineur",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 3.0,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "emerald_block",
+      "interactive": true,
+      "tags": [
+        "skill_altar",
+        "class_mineur"
+      ]
+    },
+    {
+      "id": 251,
+      "name": "skill_altar_guerrier",
+      "display_name": "Autel du Guerrier",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 3.0,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "redstone_block",
+      "interactive": true,
+      "tags": [
+        "skill_altar",
+        "class_guerrier"
+      ]
+    },
+    {
+      "id": 252,
+      "name": "skill_altar_ingenieur",
+      "display_name": "Autel de l'Ingenieur",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 3.0,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "copper_block",
+      "interactive": true,
+      "tags": [
+        "skill_altar",
+        "class_ingenieur"
+      ]
+    },
+    {
+      "id": 253,
+      "name": "skill_altar_mage",
+      "display_name": "Autel du Mage",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 3.0,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "lapis_block",
+      "interactive": true,
+      "tags": [
+        "skill_altar",
+        "class_mage"
+      ]
+    },
+    {
+      "id": 254,
+      "name": "skill_altar_fermier",
+      "display_name": "Autel du Fermier",
+      "solid": true,
+      "transparent": false,
+      "light_level": 7,
+      "hardness": 3.0,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "hay_bale",
+      "interactive": true,
+      "tags": [
+        "skill_altar",
+        "class_fermier"
+      ]
+    },
+    {
+      "id": 255,
+      "name": "archives_core",
+      "display_name": "Cœur des Archives",
+      "solid": true,
+      "transparent": false,
+      "light_level": 12,
+      "hardness": -1,
+      "blast_resistance": 3600,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "beacon",
+      "interactive": true,
+      "tags": [
+        "archives",
+        "unbreakable"
+      ]
+    },
+    {
+      "id": 256,
+      "name": "lore_tablet",
+      "display_name": "Tablette de Lore",
+      "solid": true,
+      "transparent": false,
+      "light_level": 4,
+      "hardness": 3.5,
+      "blast_resistance": 6,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "chiseled_stone_bricks",
+      "interactive": true,
+      "tags": [
+        "archives",
+        "lore"
+      ]
+    },
+    {
+      "id": 257,
+      "name": "nexus_portal",
+      "display_name": "Portail du Nexus",
+      "solid": true,
+      "transparent": true,
+      "light_level": 15,
+      "hardness": -1,
+      "blast_resistance": 3600,
+      "tool": "pickaxe",
+      "tool_level": 0,
+      "drops": [],
+      "texture": "end_portal",
+      "interactive": true,
+      "tags": [
+        "archives",
+        "portal",
+        "unbreakable"
+      ]
+    },
+    {
+      "id": 258,
+      "name": "quest_board",
+      "display_name": "Panneau d'Affichage ⚑",
+      "solid": true,
+      "transparent": false,
+      "light_level": 4,
+      "hardness": 2.5,
+      "blast_resistance": 3,
+      "tool": "axe",
+      "tool_level": 0,
+      "drops": [
+        {
+          "item": "axiom:oak_planks",
+          "count": 4
+        }
+      ],
+      "texture": "crafting_table",
+      "interactive": true,
+      "tags": [
+        "village",
+        "quest"
+      ]
+    }
   ]
 }

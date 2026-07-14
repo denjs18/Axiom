@@ -64,6 +64,36 @@ const _LAYOUT: Array = [
 	[0,8,"snow_block"],[1,8,"orange_terracotta"],
 ]
 
+# Minecraft ships grass & foliage textures in grayscale and tints them at
+# runtime with the biome colormap. We bake a pleasant tint at atlas build time.
+const _COL_GRASS   := Color(0.558, 0.725, 0.351)   # #8EB95A
+const _COL_FOLIAGE := Color(0.467, 0.671, 0.184)   # #77AB2F
+const _COL_SPRUCE  := Color(0.380, 0.600, 0.380)   # #619961
+const _COL_BIRCH   := Color(0.502, 0.655, 0.333)   # #80A755
+const _COL_MANGROVE := Color(0.553, 0.694, 0.153)  # #8DB127
+const _COL_LILY    := Color(0.298, 0.620, 0.220)
+
+const _TINTS: Dictionary = {
+	"grass_block_top":         _COL_GRASS,
+	"grass_block_side_overlay": _COL_GRASS,
+	"short_grass":             _COL_GRASS,
+	"tall_grass_top":          _COL_GRASS,
+	"tall_grass_bottom":       _COL_GRASS,
+	"fern":                    _COL_GRASS,
+	"large_fern_top":          _COL_GRASS,
+	"large_fern_bottom":       _COL_GRASS,
+	"sugar_cane":              _COL_GRASS,
+	"lily_pad":                _COL_LILY,
+	"oak_leaves":              _COL_FOLIAGE,
+	"jungle_leaves":           _COL_FOLIAGE,
+	"acacia_leaves":           _COL_FOLIAGE,
+	"dark_oak_leaves":         _COL_FOLIAGE,
+	"mangrove_leaves":         _COL_MANGROVE,
+	"spruce_leaves":           _COL_SPRUCE,
+	"birch_leaves":            _COL_BIRCH,
+	"vine":                    _COL_FOLIAGE,
+}
+
 # Aliases: some texture names used in JSON map to a canonical atlas name
 const _ALIASES: Dictionary = {
 	"grass_block":            "grass_block_top",
@@ -171,7 +201,49 @@ func _load_tile(tex_name: String) -> Image:
 	var img := tex.get_image()
 	if img == null:
 		return null
+	var tile := _normalize_tile(img)
+	if tile == null:
+		return null
+	# Biome tint for grayscale grass/foliage textures
+	if _TINTS.has(tex_name):
+		_tint_tile(tile, _TINTS[tex_name])
+	# The grass block side is dirt + a grayscale grass overlay that needs tinting
+	if tex_name == "grass_block_side":
+		var overlay := _load_raw_tile("grass_block_side_overlay")
+		if overlay != null:
+			_tint_tile(overlay, _COL_GRASS)
+			_composite_over(tile, overlay)
+	return tile
+
+
+func _load_raw_tile(tex_name: String) -> Image:
+	var path := BLOCKS_TEX_DIR + tex_name + ".png"
+	if not ResourceLoader.exists(path):
+		return null
+	var tex := load(path) as Texture2D
+	if tex == null:
+		return null
+	var img := tex.get_image()
+	if img == null:
+		return null
 	return _normalize_tile(img)
+
+
+func _tint_tile(img: Image, tint: Color) -> void:
+	for y in T:
+		for x in T:
+			var c := img.get_pixel(x, y)
+			if c.a <= 0.01:
+				continue
+			img.set_pixel(x, y, Color(c.r * tint.r, c.g * tint.g, c.b * tint.b, c.a))
+
+
+func _composite_over(base: Image, overlay: Image) -> void:
+	for y in T:
+		for x in T:
+			var o := overlay.get_pixel(x, y)
+			if o.a > 0.5:
+				base.set_pixel(x, y, Color(o.r, o.g, o.b, 1.0))
 
 
 ## Convert any source image to a 16×16 RGBA8 tile. Animated strips (taller than
@@ -337,6 +409,11 @@ func _draw_texture(img: Image, rng: RandomNumberGenerator, name: String) -> void
 		# New biome surface blocks
 		"snow_block":              _noise_fill(img, rng, 248, 250, 252, 6, 255)
 		"orange_terracotta":       _noise_fill(img, rng, 196, 112, 58, 14, 255)
+		# Bed (compact half-block)
+		"bed_top":                 _bed_top(img, rng)
+		"bed_side":                _bed_side(img, rng)
+		# End portal surface (dark void with sparkles)
+		"end_portal_block":        _end_portal(img, rng)
 		_:                         _missing(img)
 
 
@@ -888,6 +965,50 @@ func _furnace_side(img: Image, rng: RandomNumberGenerator) -> void:
 		img.set_pixel(i, 15, Color8(70, 70, 70))
 		img.set_pixel(0, i, Color8(70, 70, 70))
 		img.set_pixel(15, i, Color8(70, 70, 70))
+
+
+func _bed_top(img: Image, rng: RandomNumberGenerator) -> void:
+	for y in T:
+		for x in T:
+			var v := rng.randi_range(-8, 8)
+			if y < 5:
+				# White pillow end
+				img.set_pixel(x, y, Color8(clampi(235 + v, 0, 255), clampi(235 + v, 0, 255), clampi(238 + v, 0, 255)))
+			else:
+				# Red blanket
+				img.set_pixel(x, y, Color8(clampi(165 + v, 0, 255), clampi(38 + v / 2, 0, 255), clampi(38 + v / 2, 0, 255)))
+	# Blanket fold line
+	for x in T:
+		img.set_pixel(x, 5, Color8(120, 24, 24))
+	# Pillow shading
+	for x in T:
+		img.set_pixel(x, 0, Color8(205, 205, 210))
+
+
+func _bed_side(img: Image, rng: RandomNumberGenerator) -> void:
+	for y in T:
+		for x in T:
+			var v := rng.randi_range(-8, 8)
+			if y < 6:
+				img.set_pixel(x, y, Color8(clampi(150 + v, 0, 255), clampi(34 + v / 2, 0, 255), clampi(34 + v / 2, 0, 255)))
+			else:
+				# Wooden frame
+				img.set_pixel(x, y, Color8(clampi(140 + v, 0, 255), clampi(102 + v, 0, 255), clampi(60 + v, 0, 255)))
+	for x in T:
+		img.set_pixel(x, 6, Color8(90, 60, 30))
+
+
+func _end_portal(img: Image, rng: RandomNumberGenerator) -> void:
+	for y in T:
+		for x in T:
+			var v := rng.randi_range(0, 14)
+			img.set_pixel(x, y, Color8(4 + v / 3, 6 + v / 2, 12 + v))
+	# Star sparkles
+	for _i in 8:
+		var px := rng.randi_range(0, 15)
+		var py := rng.randi_range(0, 15)
+		var c := [Color8(120, 240, 190), Color8(90, 160, 230), Color8(230, 230, 160)][rng.randi_range(0, 2)]
+		img.set_pixel(px, py, c)
 
 
 func _furnace_top(img: Image, rng: RandomNumberGenerator) -> void:

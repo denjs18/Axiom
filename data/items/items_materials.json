@@ -2,113 +2,683 @@
   "version": "1.0",
   "namespace": "axiom",
   "items": [
-    {"id": "stick", "display_name": "Stick", "max_stack": 64, "texture": "stick"},
-    {"id": "coal", "display_name": "Coal", "max_stack": 64, "texture": "coal", "fuel_time": 1600, "tags": ["fuel"]},
-    {"id": "charcoal", "display_name": "Charcoal", "max_stack": 64, "texture": "charcoal", "fuel_time": 1600, "tags": ["fuel"]},
-    {"id": "raw_iron", "display_name": "Raw Iron", "max_stack": 64, "texture": "raw_iron"},
-    {"id": "iron_ingot", "display_name": "Iron Ingot", "max_stack": 64, "texture": "iron_ingot"},
-    {"id": "iron_nugget", "display_name": "Iron Nugget", "max_stack": 64, "texture": "iron_nugget"},
-    {"id": "raw_gold", "display_name": "Raw Gold", "max_stack": 64, "texture": "raw_gold"},
-    {"id": "gold_ingot", "display_name": "Gold Ingot", "max_stack": 64, "texture": "gold_ingot"},
-    {"id": "gold_nugget", "display_name": "Gold Nugget", "max_stack": 64, "texture": "gold_nugget"},
-    {"id": "raw_copper", "display_name": "Raw Copper", "max_stack": 64, "texture": "raw_copper"},
-    {"id": "copper_ingot", "display_name": "Copper Ingot", "max_stack": 64, "texture": "copper_ingot"},
-    {"id": "netherite_scrap", "display_name": "Netherite Scrap", "max_stack": 64, "texture": "netherite_scrap", "fireproof": true},
-    {"id": "netherite_ingot", "display_name": "Netherite Ingot", "max_stack": 64, "texture": "netherite_ingot", "fireproof": true},
-    {"id": "diamond", "display_name": "Diamond", "max_stack": 64, "texture": "diamond"},
-    {"id": "emerald", "display_name": "Emerald", "max_stack": 64, "texture": "emerald", "tags": ["currency"]},
-    {"id": "lapis_lazuli", "display_name": "Lapis Lazuli", "max_stack": 64, "texture": "lapis_lazuli"},
-    {"id": "redstone", "display_name": "Redstone Dust", "max_stack": 64, "texture": "redstone"},
-    {"id": "quartz", "display_name": "Nether Quartz", "max_stack": 64, "texture": "quartz"},
-    {"id": "amethyst_shard", "display_name": "Amethyst Shard", "max_stack": 64, "texture": "amethyst_shard"},
-    {"id": "prismarine_crystals", "display_name": "Prismarine Crystals", "max_stack": 64, "texture": "prismarine_crystals"},
-    {"id": "prismarine_shard", "display_name": "Prismarine Shard", "max_stack": 64, "texture": "prismarine_shard"},
-
-    {"id": "string", "display_name": "String", "max_stack": 64, "texture": "string"},
-    {"id": "feather", "display_name": "Feather", "max_stack": 64, "texture": "feather"},
-    {"id": "leather", "display_name": "Leather", "max_stack": 64, "texture": "leather"},
-    {"id": "wool", "display_name": "White Wool", "max_stack": 64, "texture": "white_wool"},
-    {"id": "flint", "display_name": "Flint", "max_stack": 64, "texture": "flint"},
-    {"id": "gunpowder", "display_name": "Gunpowder", "max_stack": 64, "texture": "gunpowder"},
-    {"id": "bone", "display_name": "Bone", "max_stack": 64, "texture": "bone"},
-    {"id": "bone_meal", "display_name": "Bone Meal", "max_stack": 64, "texture": "bone_meal", "tags": ["fertilizer"]},
-    {"id": "ink_sac", "display_name": "Ink Sac", "max_stack": 64, "texture": "ink_sac"},
-    {"id": "glow_ink_sac", "display_name": "Glow Ink Sac", "max_stack": 64, "texture": "glow_ink_sac"},
-    {"id": "clay_ball", "display_name": "Clay Ball", "max_stack": 64, "texture": "clay_ball"},
-    {"id": "brick", "display_name": "Brick", "max_stack": 64, "texture": "brick"},
-    {"id": "nether_brick", "display_name": "Nether Brick", "max_stack": 64, "texture": "nether_brick"},
-    {"id": "slimeball", "display_name": "Slimeball", "max_stack": 64, "texture": "slimeball"},
-    {"id": "blaze_rod", "display_name": "Blaze Rod", "max_stack": 64, "texture": "blaze_rod", "fuel_time": 2400, "tags": ["fuel"]},
-    {"id": "blaze_powder", "display_name": "Blaze Powder", "max_stack": 64, "texture": "blaze_powder"},
-    {"id": "magma_cream", "display_name": "Magma Cream", "max_stack": 64, "texture": "magma_cream"},
-    {"id": "ghast_tear", "display_name": "Ghast Tear", "max_stack": 64, "texture": "ghast_tear"},
-    {"id": "ender_pearl", "display_name": "Ender Pearl", "max_stack": 16, "texture": "ender_pearl", "use_action": "throw_ender_pearl"},
-    {"id": "eye_of_ender", "display_name": "Eye of Ender", "max_stack": 64, "texture": "eye_of_ender", "use_action": "throw_eye_of_ender"},
-    {"id": "sugar", "display_name": "Sugar", "max_stack": 64, "texture": "sugar"},
-    {"id": "sugar_cane", "display_name": "Sugar Cane", "max_stack": 64, "texture": "sugar_cane"},
-    {"id": "paper", "display_name": "Paper", "max_stack": 64, "texture": "paper"},
-    {"id": "book", "display_name": "Book", "max_stack": 64, "texture": "book"},
-    {"id": "glass_bottle", "display_name": "Glass Bottle", "max_stack": 64, "texture": "glass_bottle"},
-    {"id": "bucket", "display_name": "Bucket", "max_stack": 16, "texture": "bucket"},
-    {"id": "water_bucket", "display_name": "Water Bucket", "max_stack": 1, "texture": "water_bucket"},
-    {"id": "lava_bucket", "display_name": "Lava Bucket", "max_stack": 1, "texture": "lava_bucket", "fuel_time": 20000},
-    {"id": "milk_bucket", "display_name": "Milk Bucket", "max_stack": 1, "texture": "milk_bucket"},
-    {"id": "glowstone_dust", "display_name": "Glowstone Dust", "max_stack": 64, "texture": "glowstone_dust"},
-    {"id": "nether_wart", "display_name": "Nether Wart", "max_stack": 64, "texture": "nether_wart"},
-    {"id": "fermented_spider_eye", "display_name": "Fermented Spider Eye", "max_stack": 64, "texture": "fermented_spider_eye"},
-    {"id": "dragon_breath", "display_name": "Dragon's Breath", "max_stack": 64, "texture": "dragon_breath"},
-    {"id": "echo_shard", "display_name": "Echo Shard", "max_stack": 64, "texture": "echo_shard"},
-    {"id": "totem_of_undying", "display_name": "Totem of Undying", "max_stack": 1, "texture": "totem_of_undying"},
-    {"id": "nether_star", "display_name": "Nether Star", "max_stack": 64, "texture": "nether_star"},
-    {"id": "wheat", "display_name": "Wheat", "max_stack": 64, "texture": "wheat"},
-    {"id": "wheat_seeds", "display_name": "Wheat Seeds", "max_stack": 64, "texture": "wheat_seeds"},
-    {"id": "pumpkin_seeds", "display_name": "Pumpkin Seeds", "max_stack": 64, "texture": "pumpkin_seeds"},
-    {"id": "melon_seeds", "display_name": "Melon Seeds", "max_stack": 64, "texture": "melon_seeds"},
-    {"id": "beetroot_seeds", "display_name": "Beetroot Seeds", "max_stack": 64, "texture": "beetroot_seeds"},
-    {"id": "egg", "display_name": "Egg", "max_stack": 16, "texture": "egg", "use_action": "throw_egg"},
-    {"id": "name_tag", "display_name": "Name Tag", "max_stack": 64, "texture": "name_tag"},
-    {"id": "lead", "display_name": "Lead", "max_stack": 64, "texture": "lead"},
-    {"id": "saddle", "display_name": "Saddle", "max_stack": 1, "texture": "saddle"},
-    {"id": "compass", "display_name": "Compass", "max_stack": 64, "texture": "compass"},
-    {"id": "clock", "display_name": "Clock", "max_stack": 64, "texture": "clock"},
-    {"id": "map", "display_name": "Empty Map", "max_stack": 64, "texture": "map"},
-
-    {"id": "void_crystal_shard", "display_name": "Void Crystal Shard", "max_stack": 64, "texture": "void_crystal_shard", "tags": ["end_material", "tier_6"]},
-    {"id": "ender_shard", "display_name": "Ender Shard", "max_stack": 64, "texture": "ender_shard", "tags": ["end_material", "tier_6"]},
-    {"id": "nullite_fragment", "display_name": "Nullite Fragment", "max_stack": 64, "texture": "nullite_fragment", "fireproof": true, "tags": ["end_material", "tier_7", "endgame"]},
-    {"id": "void_alloy_ingot", "display_name": "Void Alloy Ingot", "max_stack": 64, "texture": "void_alloy_ingot", "fireproof": true, "tags": ["end_material", "tier_7", "endgame"]},
-    {"id": "ender_alloy_ingot", "display_name": "Ender Alloy Ingot", "max_stack": 64, "texture": "ender_alloy_ingot", "tags": ["end_material", "tier_6"]},
-    {"id": "flux_crystal", "display_name": "Flux Crystal", "max_stack": 64, "texture": "flux_crystal", "tags": ["end_material", "energy"]},
-    {"id": "void_core", "display_name": "Void Core", "max_stack": 1, "texture": "void_core", "tags": ["endgame", "boss_drop"]},
-    {"id": "nexus_core", "display_name": "Nexus Core", "max_stack": 1, "texture": "nexus_core", "tags": ["endgame", "boss_drop", "ultimate"]},
-
-    {"id": "corrupted_fang", "display_name": "Croc Corrompu", "max_stack": 64, "texture": "corrupted_fang", "tags": ["mob_drop", "style_material"]},
-    {"id": "predator_claw", "display_name": "Griffe Prédatrice", "max_stack": 64, "texture": "predator_claw", "tags": ["mob_drop", "style_material"]},
-    {"id": "arcane_feather", "display_name": "Plume Arcane", "max_stack": 64, "texture": "arcane_feather", "tags": ["mob_drop", "style_material"]},
-
-    {"id": "echo_fragment",   "display_name": "Fragment d'Écho",        "max_stack": 16, "texture": "echo_fragment",   "tags": ["boss_drop", "rare"]},
-    {"id": "guardian_core",   "display_name": "Cœur du Gardien",        "max_stack": 16, "texture": "guardian_core",   "tags": ["boss_drop", "rare"]},
-
-    {"id": "soul_fragment_i",  "display_name": "Fragment d'Âme  [I/IV]",  "max_stack": 1, "texture": "soul_fragment", "tags": ["lore", "soul_fragment"],
-     "lore_text": "...nous avons creusé trop profond. L'Écho était là avant nous, avant le feu, avant la pierre. Il n'a pas de corps — il prend la forme de ce que vous craignez le plus. Nous l'avons enfermé. Mais les verrous s'usent.\n— Architecte Varek, note XLIV"},
-
-    {"id": "soul_fragment_ii", "display_name": "Fragment d'Âme [II/IV]", "max_stack": 1, "texture": "soul_fragment", "tags": ["lore", "soul_fragment"],
-     "lore_text": "Le Gardien fut autrefois l'un des nôtres. Nous lui avons confié la garde des Archives. Quand la Rupture est survenue, quelque chose s'est brisé en lui. Il ne reconnaît plus les Architectes. Il ne reconnaît plus personne.\n— Architecte Solen, note XII"},
-
-    {"id": "soul_fragment_iii","display_name": "Fragment d'Âme [III/IV]","max_stack": 1, "texture": "soul_fragment", "tags": ["lore", "soul_fragment"],
-     "lore_text": "La Fin n'est pas un endroit. C'est une blessure dans le tissu du monde. Le Rôdeur du Vide en est le symptôme — il cherche à refermer cette blessure de la seule façon qu'il connaît : en consumant tout ce qui s'en approche.\n— Architecte Varek, note LXI"},
-
-    {"id": "soul_fragment_iv", "display_name": "Fragment d'Âme [IV/IV]", "max_stack": 1, "texture": "soul_fragment", "tags": ["lore", "soul_fragment"],
-     "lore_text": "Si tu lis ceci, tu as vaincu trois de nos gardiens. Le quatrième attend dans la Citadelle du Vide. Mais ce n'est pas lui, la vérité. C'est ce qu'il protège. Quand tu auras les quatre fragments... viens au centre. Tu comprendras pourquoi nous avons tout sacrifié.\n— Architecte Solen, dernière note"},
-
-    {"id": "portable_workbench", "display_name": "Établi Compact", "max_stack": 1, "texture": "portable_workbench", "tags": ["utility"],
-     "description": "Un établi miniaturisé. Permet d'ouvrir le catalogue de craft depuis n'importe où (touche C)."},
-
-    {"id": "architect_map", "display_name": "Carte des Architectes", "max_stack": 1, "texture": "map",
-     "tags": ["lore", "quest"], "description": "Une carte ancienne. Tenue en main, elle indique la direction des Archives des Architectes."},
-
-    {"id": "nexus_fragment", "display_name": "Fragment du Nexus", "max_stack": 1, "texture": "nether_star",
-     "tags": ["lore", "cosmetic"], "description": "Un éclat de ce qui était avant le monde. Émet une lumière douce. Offre une légère résistance aux dégâts du vide.",
-     "passive_bonus": {"void_resist": 0.3}}
+    {
+      "id": "stick",
+      "display_name": "Stick",
+      "max_stack": 64,
+      "texture": "stick"
+    },
+    {
+      "id": "coal",
+      "display_name": "Coal",
+      "max_stack": 64,
+      "texture": "coal",
+      "fuel_time": 1600,
+      "tags": [
+        "fuel"
+      ]
+    },
+    {
+      "id": "charcoal",
+      "display_name": "Charcoal",
+      "max_stack": 64,
+      "texture": "charcoal",
+      "fuel_time": 1600,
+      "tags": [
+        "fuel"
+      ]
+    },
+    {
+      "id": "raw_iron",
+      "display_name": "Raw Iron",
+      "max_stack": 64,
+      "texture": "raw_iron"
+    },
+    {
+      "id": "iron_ingot",
+      "display_name": "Iron Ingot",
+      "max_stack": 64,
+      "texture": "iron_ingot"
+    },
+    {
+      "id": "iron_nugget",
+      "display_name": "Iron Nugget",
+      "max_stack": 64,
+      "texture": "iron_nugget"
+    },
+    {
+      "id": "raw_gold",
+      "display_name": "Raw Gold",
+      "max_stack": 64,
+      "texture": "raw_gold"
+    },
+    {
+      "id": "gold_ingot",
+      "display_name": "Gold Ingot",
+      "max_stack": 64,
+      "texture": "gold_ingot"
+    },
+    {
+      "id": "gold_nugget",
+      "display_name": "Gold Nugget",
+      "max_stack": 64,
+      "texture": "gold_nugget"
+    },
+    {
+      "id": "raw_copper",
+      "display_name": "Raw Copper",
+      "max_stack": 64,
+      "texture": "raw_copper"
+    },
+    {
+      "id": "copper_ingot",
+      "display_name": "Copper Ingot",
+      "max_stack": 64,
+      "texture": "copper_ingot"
+    },
+    {
+      "id": "netherite_scrap",
+      "display_name": "Netherite Scrap",
+      "max_stack": 64,
+      "texture": "netherite_scrap",
+      "fireproof": true
+    },
+    {
+      "id": "netherite_ingot",
+      "display_name": "Netherite Ingot",
+      "max_stack": 64,
+      "texture": "netherite_ingot",
+      "fireproof": true
+    },
+    {
+      "id": "diamond",
+      "display_name": "Diamond",
+      "max_stack": 64,
+      "texture": "diamond"
+    },
+    {
+      "id": "emerald",
+      "display_name": "Emerald",
+      "max_stack": 64,
+      "texture": "emerald",
+      "tags": [
+        "currency"
+      ]
+    },
+    {
+      "id": "lapis_lazuli",
+      "display_name": "Lapis Lazuli",
+      "max_stack": 64,
+      "texture": "lapis_lazuli"
+    },
+    {
+      "id": "redstone",
+      "display_name": "Redstone Dust",
+      "max_stack": 64,
+      "texture": "redstone"
+    },
+    {
+      "id": "quartz",
+      "display_name": "Nether Quartz",
+      "max_stack": 64,
+      "texture": "quartz"
+    },
+    {
+      "id": "amethyst_shard",
+      "display_name": "Amethyst Shard",
+      "max_stack": 64,
+      "texture": "amethyst_shard"
+    },
+    {
+      "id": "prismarine_crystals",
+      "display_name": "Prismarine Crystals",
+      "max_stack": 64,
+      "texture": "prismarine_crystals"
+    },
+    {
+      "id": "prismarine_shard",
+      "display_name": "Prismarine Shard",
+      "max_stack": 64,
+      "texture": "prismarine_shard"
+    },
+    {
+      "id": "string",
+      "display_name": "String",
+      "max_stack": 64,
+      "texture": "string"
+    },
+    {
+      "id": "feather",
+      "display_name": "Feather",
+      "max_stack": 64,
+      "texture": "feather"
+    },
+    {
+      "id": "leather",
+      "display_name": "Leather",
+      "max_stack": 64,
+      "texture": "leather"
+    },
+    {
+      "id": "wool",
+      "display_name": "White Wool",
+      "max_stack": 64,
+      "texture": "white_wool"
+    },
+    {
+      "id": "flint",
+      "display_name": "Flint",
+      "max_stack": 64,
+      "texture": "flint"
+    },
+    {
+      "id": "gunpowder",
+      "display_name": "Gunpowder",
+      "max_stack": 64,
+      "texture": "gunpowder"
+    },
+    {
+      "id": "bone",
+      "display_name": "Bone",
+      "max_stack": 64,
+      "texture": "bone"
+    },
+    {
+      "id": "bone_meal",
+      "display_name": "Bone Meal",
+      "max_stack": 64,
+      "texture": "bone_meal",
+      "tags": [
+        "fertilizer"
+      ]
+    },
+    {
+      "id": "ink_sac",
+      "display_name": "Ink Sac",
+      "max_stack": 64,
+      "texture": "ink_sac"
+    },
+    {
+      "id": "glow_ink_sac",
+      "display_name": "Glow Ink Sac",
+      "max_stack": 64,
+      "texture": "glow_ink_sac"
+    },
+    {
+      "id": "clay_ball",
+      "display_name": "Clay Ball",
+      "max_stack": 64,
+      "texture": "clay_ball"
+    },
+    {
+      "id": "brick",
+      "display_name": "Brick",
+      "max_stack": 64,
+      "texture": "brick"
+    },
+    {
+      "id": "nether_brick",
+      "display_name": "Nether Brick",
+      "max_stack": 64,
+      "texture": "nether_brick"
+    },
+    {
+      "id": "slimeball",
+      "display_name": "Slimeball",
+      "max_stack": 64,
+      "texture": "slimeball"
+    },
+    {
+      "id": "blaze_rod",
+      "display_name": "Blaze Rod",
+      "max_stack": 64,
+      "texture": "blaze_rod",
+      "fuel_time": 2400,
+      "tags": [
+        "fuel"
+      ]
+    },
+    {
+      "id": "blaze_powder",
+      "display_name": "Blaze Powder",
+      "max_stack": 64,
+      "texture": "blaze_powder"
+    },
+    {
+      "id": "magma_cream",
+      "display_name": "Magma Cream",
+      "max_stack": 64,
+      "texture": "magma_cream"
+    },
+    {
+      "id": "ghast_tear",
+      "display_name": "Ghast Tear",
+      "max_stack": 64,
+      "texture": "ghast_tear"
+    },
+    {
+      "id": "ender_pearl",
+      "display_name": "Ender Pearl",
+      "max_stack": 16,
+      "texture": "ender_pearl",
+      "use_action": "throw_ender_pearl"
+    },
+    {
+      "id": "eye_of_ender",
+      "display_name": "Eye of Ender",
+      "max_stack": 64,
+      "texture": "eye_of_ender",
+      "use_action": "throw_eye_of_ender"
+    },
+    {
+      "id": "sugar",
+      "display_name": "Sugar",
+      "max_stack": 64,
+      "texture": "sugar"
+    },
+    {
+      "id": "sugar_cane",
+      "display_name": "Sugar Cane",
+      "max_stack": 64,
+      "texture": "sugar_cane"
+    },
+    {
+      "id": "paper",
+      "display_name": "Paper",
+      "max_stack": 64,
+      "texture": "paper"
+    },
+    {
+      "id": "book",
+      "display_name": "Book",
+      "max_stack": 64,
+      "texture": "book"
+    },
+    {
+      "id": "glass_bottle",
+      "display_name": "Glass Bottle",
+      "max_stack": 64,
+      "texture": "glass_bottle"
+    },
+    {
+      "id": "bucket",
+      "display_name": "Bucket",
+      "max_stack": 16,
+      "texture": "bucket"
+    },
+    {
+      "id": "water_bucket",
+      "display_name": "Water Bucket",
+      "max_stack": 1,
+      "texture": "water_bucket"
+    },
+    {
+      "id": "lava_bucket",
+      "display_name": "Lava Bucket",
+      "max_stack": 1,
+      "texture": "lava_bucket",
+      "fuel_time": 20000
+    },
+    {
+      "id": "milk_bucket",
+      "display_name": "Milk Bucket",
+      "max_stack": 1,
+      "texture": "milk_bucket"
+    },
+    {
+      "id": "glowstone_dust",
+      "display_name": "Glowstone Dust",
+      "max_stack": 64,
+      "texture": "glowstone_dust"
+    },
+    {
+      "id": "nether_wart",
+      "display_name": "Nether Wart",
+      "max_stack": 64,
+      "texture": "nether_wart"
+    },
+    {
+      "id": "fermented_spider_eye",
+      "display_name": "Fermented Spider Eye",
+      "max_stack": 64,
+      "texture": "fermented_spider_eye"
+    },
+    {
+      "id": "dragon_breath",
+      "display_name": "Dragon's Breath",
+      "max_stack": 64,
+      "texture": "dragon_breath"
+    },
+    {
+      "id": "echo_shard",
+      "display_name": "Echo Shard",
+      "max_stack": 64,
+      "texture": "echo_shard"
+    },
+    {
+      "id": "totem_of_undying",
+      "display_name": "Totem of Undying",
+      "max_stack": 1,
+      "texture": "totem_of_undying"
+    },
+    {
+      "id": "nether_star",
+      "display_name": "Nether Star",
+      "max_stack": 64,
+      "texture": "nether_star"
+    },
+    {
+      "id": "wheat",
+      "display_name": "Wheat",
+      "max_stack": 64,
+      "texture": "wheat"
+    },
+    {
+      "id": "wheat_seeds",
+      "display_name": "Wheat Seeds",
+      "max_stack": 64,
+      "texture": "wheat_seeds"
+    },
+    {
+      "id": "pumpkin_seeds",
+      "display_name": "Pumpkin Seeds",
+      "max_stack": 64,
+      "texture": "pumpkin_seeds"
+    },
+    {
+      "id": "melon_seeds",
+      "display_name": "Melon Seeds",
+      "max_stack": 64,
+      "texture": "melon_seeds"
+    },
+    {
+      "id": "beetroot_seeds",
+      "display_name": "Beetroot Seeds",
+      "max_stack": 64,
+      "texture": "beetroot_seeds"
+    },
+    {
+      "id": "egg",
+      "display_name": "Egg",
+      "max_stack": 16,
+      "texture": "egg",
+      "use_action": "throw_egg"
+    },
+    {
+      "id": "name_tag",
+      "display_name": "Name Tag",
+      "max_stack": 64,
+      "texture": "name_tag"
+    },
+    {
+      "id": "lead",
+      "display_name": "Lead",
+      "max_stack": 64,
+      "texture": "lead"
+    },
+    {
+      "id": "saddle",
+      "display_name": "Saddle",
+      "max_stack": 1,
+      "texture": "saddle"
+    },
+    {
+      "id": "compass",
+      "display_name": "Compass",
+      "max_stack": 64,
+      "texture": "compass"
+    },
+    {
+      "id": "clock",
+      "display_name": "Clock",
+      "max_stack": 64,
+      "texture": "clock"
+    },
+    {
+      "id": "map",
+      "display_name": "Empty Map",
+      "max_stack": 64,
+      "texture": "map"
+    },
+    {
+      "id": "void_crystal_shard",
+      "display_name": "Void Crystal Shard",
+      "max_stack": 64,
+      "texture": "void_crystal_shard",
+      "tags": [
+        "end_material",
+        "tier_6"
+      ]
+    },
+    {
+      "id": "ender_shard",
+      "display_name": "Ender Shard",
+      "max_stack": 64,
+      "texture": "ender_shard",
+      "tags": [
+        "end_material",
+        "tier_6"
+      ]
+    },
+    {
+      "id": "nullite_fragment",
+      "display_name": "Nullite Fragment",
+      "max_stack": 64,
+      "texture": "nullite_fragment",
+      "fireproof": true,
+      "tags": [
+        "end_material",
+        "tier_7",
+        "endgame"
+      ]
+    },
+    {
+      "id": "void_alloy_ingot",
+      "display_name": "Void Alloy Ingot",
+      "max_stack": 64,
+      "texture": "void_alloy_ingot",
+      "fireproof": true,
+      "tags": [
+        "end_material",
+        "tier_7",
+        "endgame"
+      ]
+    },
+    {
+      "id": "ender_alloy_ingot",
+      "display_name": "Ender Alloy Ingot",
+      "max_stack": 64,
+      "texture": "ender_alloy_ingot",
+      "tags": [
+        "end_material",
+        "tier_6"
+      ]
+    },
+    {
+      "id": "flux_crystal",
+      "display_name": "Flux Crystal",
+      "max_stack": 64,
+      "texture": "flux_crystal",
+      "tags": [
+        "end_material",
+        "energy"
+      ]
+    },
+    {
+      "id": "void_core",
+      "display_name": "Void Core",
+      "max_stack": 1,
+      "texture": "void_core",
+      "tags": [
+        "endgame",
+        "boss_drop"
+      ]
+    },
+    {
+      "id": "nexus_core",
+      "display_name": "Nexus Core",
+      "max_stack": 1,
+      "texture": "nexus_core",
+      "tags": [
+        "endgame",
+        "boss_drop",
+        "ultimate"
+      ]
+    },
+    {
+      "id": "corrupted_fang",
+      "display_name": "Croc Corrompu",
+      "max_stack": 64,
+      "texture": "corrupted_fang",
+      "tags": [
+        "mob_drop",
+        "style_material"
+      ]
+    },
+    {
+      "id": "predator_claw",
+      "display_name": "Griffe Prédatrice",
+      "max_stack": 64,
+      "texture": "predator_claw",
+      "tags": [
+        "mob_drop",
+        "style_material"
+      ]
+    },
+    {
+      "id": "arcane_feather",
+      "display_name": "Plume Arcane",
+      "max_stack": 64,
+      "texture": "arcane_feather",
+      "tags": [
+        "mob_drop",
+        "style_material"
+      ]
+    },
+    {
+      "id": "echo_fragment",
+      "display_name": "Fragment d'Écho",
+      "max_stack": 16,
+      "texture": "echo_fragment",
+      "tags": [
+        "boss_drop",
+        "rare"
+      ]
+    },
+    {
+      "id": "guardian_core",
+      "display_name": "Cœur du Gardien",
+      "max_stack": 16,
+      "texture": "guardian_core",
+      "tags": [
+        "boss_drop",
+        "rare"
+      ]
+    },
+    {
+      "id": "soul_fragment_i",
+      "display_name": "Fragment d'Âme  [I/IV]",
+      "max_stack": 1,
+      "texture": "soul_fragment",
+      "tags": [
+        "lore",
+        "soul_fragment"
+      ],
+      "lore_text": "...nous avons creusé trop profond. L'Écho était là avant nous, avant le feu, avant la pierre. Il n'a pas de corps — il prend la forme de ce que vous craignez le plus. Nous l'avons enfermé. Mais les verrous s'usent.\n— Architecte Varek, note XLIV"
+    },
+    {
+      "id": "soul_fragment_ii",
+      "display_name": "Fragment d'Âme [II/IV]",
+      "max_stack": 1,
+      "texture": "soul_fragment",
+      "tags": [
+        "lore",
+        "soul_fragment"
+      ],
+      "lore_text": "Le Gardien fut autrefois l'un des nôtres. Nous lui avons confié la garde des Archives. Quand la Rupture est survenue, quelque chose s'est brisé en lui. Il ne reconnaît plus les Architectes. Il ne reconnaît plus personne.\n— Architecte Solen, note XII"
+    },
+    {
+      "id": "soul_fragment_iii",
+      "display_name": "Fragment d'Âme [III/IV]",
+      "max_stack": 1,
+      "texture": "soul_fragment",
+      "tags": [
+        "lore",
+        "soul_fragment"
+      ],
+      "lore_text": "La Fin n'est pas un endroit. C'est une blessure dans le tissu du monde. Le Rôdeur du Vide en est le symptôme — il cherche à refermer cette blessure de la seule façon qu'il connaît : en consumant tout ce qui s'en approche.\n— Architecte Varek, note LXI"
+    },
+    {
+      "id": "soul_fragment_iv",
+      "display_name": "Fragment d'Âme [IV/IV]",
+      "max_stack": 1,
+      "texture": "soul_fragment",
+      "tags": [
+        "lore",
+        "soul_fragment"
+      ],
+      "lore_text": "Si tu lis ceci, tu as vaincu trois de nos gardiens. Le quatrième attend dans la Citadelle du Vide. Mais ce n'est pas lui, la vérité. C'est ce qu'il protège. Quand tu auras les quatre fragments... viens au centre. Tu comprendras pourquoi nous avons tout sacrifié.\n— Architecte Solen, dernière note"
+    },
+    {
+      "id": "portable_workbench",
+      "display_name": "Établi Compact",
+      "max_stack": 1,
+      "texture": "portable_workbench",
+      "tags": [
+        "utility"
+      ],
+      "description": "Un établi miniaturisé. Permet d'ouvrir le catalogue de craft depuis n'importe où (touche C)."
+    },
+    {
+      "id": "architect_map",
+      "display_name": "Carte des Architectes",
+      "max_stack": 1,
+      "texture": "map",
+      "tags": [
+        "lore",
+        "quest"
+      ],
+      "description": "Une carte ancienne. Tenue en main, elle indique la direction des Archives des Architectes."
+    },
+    {
+      "id": "nexus_fragment",
+      "display_name": "Fragment du Nexus",
+      "max_stack": 1,
+      "texture": "nether_star",
+      "tags": [
+        "lore",
+        "cosmetic"
+      ],
+      "description": "Un éclat de ce qui était avant le monde. Émet une lumière douce. Offre une légère résistance aux dégâts du vide.",
+      "passive_bonus": {
+        "void_resist": 0.3
+      }
+    },
+    {
+      "id": "bed",
+      "display_name": "Lit",
+      "max_stack": 1,
+      "texture": "red_bed",
+      "is_block": true,
+      "block_id": 92
+    },
+    {
+      "id": "sulfur",
+      "display_name": "Soufre",
+      "max_stack": 64,
+      "texture": "glowstone_dust"
+    },
+    {
+      "id": "raw_uranium",
+      "display_name": "Uranium brut",
+      "max_stack": 64,
+      "texture": "raw_gold"
+    },
+    {
+      "id": "void_quartz",
+      "display_name": "Quartz du Vide",
+      "max_stack": 64,
+      "texture": "quartz"
+    }
   ]
 }

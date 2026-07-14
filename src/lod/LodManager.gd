@@ -46,6 +46,26 @@ func initialize(wname: String, dim: String, gen: WorldGenerator) -> void:
 	_world_generator = gen
 
 
+## Drop every loaded tile and renderer — used when switching dimension.
+func clear_all() -> void:
+	for key in _lod1_renderers:
+		_lod1_renderers[key].queue_free()
+	for key in _lod2_renderers:
+		_lod2_renderers[key].queue_free()
+	_lod1_renderers.clear()
+	_lod2_renderers.clear()
+	_lod1_tiles.clear()
+	_lod2_tiles.clear()
+	_queued_lod1.clear()
+	_queued_lod2.clear()
+	_lod1_queue.clear()
+	_lod2_queue.clear()
+	_mutex.lock()
+	_pending.clear()
+	_mutex.unlock()
+	_last_player_chunk = Vector2i(-99999, -99999)
+
+
 func update_player_position(world_pos: Vector3) -> void:
 	if not LodSettings.lod_enabled:
 		return

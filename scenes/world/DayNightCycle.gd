@@ -268,11 +268,28 @@ func _update(t: float) -> void:
 		# Blood moon: shift light to deep red
 		_moon.light_color = Color(0.56, 0.66, 0.92).lerp(Color(0.95, 0.10, 0.10), bm)
 
-	# ── Ambient light ──────────────────────────────────────────────────────────
+	# ── Voxel terrain light uniforms (baked light shader) ─────────────────────
+	# The terrain is unshaded: its brightness comes from vertex-baked sky/block
+	# light multiplied by these per-frame uniforms.
+	var moon_glow := moon_brightness * 0.10
+	var sky_e := lerpf(0.055 + moon_glow, 1.0, day_blend) + ss * 0.10
+	var s_tint := Color(1.0, 1.0, 1.0)
+	# Night is cool blue; sunset warms everything up
+	s_tint = s_tint.lerp(Color(0.62, 0.72, 1.0), 1.0 - day_blend)
+	s_tint = s_tint.lerp(Color(1.0, 0.72, 0.48), ss * 0.7)
+	if bm > 0.0:
+		s_tint = s_tint.lerp(Color(1.0, 0.28, 0.28), bm * 0.8)
+	for mat_v in ChunkRenderer.get_shared_materials():
+		var mat := mat_v as ShaderMaterial
+		if mat != null:
+			mat.set_shader_parameter("sky_energy", sky_e)
+			mat.set_shader_parameter("sky_tint", Vector3(s_tint.r, s_tint.g, s_tint.b))
+
+	# ── Ambient light (mobs / items / player hand — still shaded) ─────────────
 	if _env:
 		_env.ambient_light_sky_contribution = lerpf(0.15, 0.90, day_blend)
-		# Extra manual energy so caves aren't pitch black at night
-		_env.ambient_light_energy = lerpf(0.04, 0.28, day_blend) + ss * 0.08
+		# Extra manual energy so entities aren't pitch black at night
+		_env.ambient_light_energy = lerpf(0.05, 0.30, day_blend) + ss * 0.08
 
 		# ── Fog ────────────────────────────────────────────────────────────────
 		# Warm tint at sunrise, neutral blue-white during day, cold at night

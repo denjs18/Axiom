@@ -85,6 +85,10 @@ func _ready() -> void:
 	EventBus.block_interacted.connect(_on_block_interacted)
 	EventBus.mob_died.connect(_on_mob_died)
 	chunk_manager.chunk_loaded.connect(_on_chunk_loaded)
+	EventBus.block_placed.connect(func(pos: Vector3i, _bid: int, _meta: Dictionary) -> void:
+		_relight_around(pos))
+	EventBus.block_broken.connect(func(pos: Vector3i, _bid: int, _p: Node) -> void:
+		_relight_around(pos))
 
 	# Spawn player on surface — force collision build first so they don't fall through
 	var spawn_pos := _find_spawn_surface()
@@ -189,6 +193,33 @@ func _world_tick() -> void:
 	_random_block_tick()
 
 
+## Recompute light for the chunk containing pos (and adjacent chunks when the
+## change is near a border), then queue the affected meshes for rebuild.
+func _relight_around(pos: Vector3i) -> void:
+	if light_engine == null:
+		return
+	light_engine.on_block_changed(pos)
+	var cp    := Chunk.world_to_chunk(pos)
+	var local := Chunk.world_to_local(pos, cp.y)
+	chunk_manager._mark_dirty(cp, true)
+	# Light bleeds across borders — refresh direct neighbours when close to one
+	if local.x <= 1:  _relight_neighbor(cp + Vector3i(-1, 0, 0))
+	if local.x >= 14: _relight_neighbor(cp + Vector3i(1, 0, 0))
+	if local.y <= 1:  _relight_neighbor(cp + Vector3i(0, -1, 0))
+	if local.y >= 14: _relight_neighbor(cp + Vector3i(0, 1, 0))
+	if local.z <= 1:  _relight_neighbor(cp + Vector3i(0, 0, -1))
+	if local.z >= 14: _relight_neighbor(cp + Vector3i(0, 0, 1))
+
+
+func _relight_neighbor(cp: Vector3i) -> void:
+	var chunk := chunk_manager.get_chunk(cp)
+	if chunk == null:
+		return
+	LightEngine.compute_sky_light_for_chunk(chunk)
+	LightEngine.compute_block_light_for_chunk(chunk)
+	chunk_manager._mark_dirty(cp)
+
+
 func _random_block_tick() -> void:
 	const RANDOM_TICKS  := 3
 	const TICK_RADIUS   := 3   # only simulate chunks within this XZ distance of player
@@ -213,6 +244,10 @@ func _random_block_tick() -> void:
 				_try_grass_spread(chunk, lx, ly, lz)
 			elif block.tags.has("crop"):
 				_try_crop_growth(chunk, lx, ly, lz, bid)
+			elif block.tags.has("sapling"):
+				_try_sapling_growth(chunk, lx, ly, lz, block)
+			elif block.tags.has("cane"):
+				_try_cane_growth(chunk, lx, ly, lz)
 
 
 func _try_grass_spread(chunk: Chunk, lx: int, ly: int, lz: int) -> void:
@@ -220,6 +255,39 @@ func _try_grass_spread(chunk: Chunk, lx: int, ly: int, lz: int) -> void:
 		return
 	if chunk.get_block(lx, ly + 1, lz) == 0 and chunk.get_sky_light(lx, ly + 1, lz) >= 9:
 		chunk.set_block(lx, ly, lz, 2)  # grass_block
+
+
+## Saplings grow into full trees after a few successful random ticks.
+func _try_sapling_growth(chunk: Chunk, lx: int, ly: int, lz: int,
+		block: BlockRegistry.BlockDef) -> void:
+	if chunk.get_sky_light(lx, ly, lz) < 8:
+		return
+	var mult := SeasonManager.get_growth_multiplier()
+	if mult <= 0.0:
+		return   # winter: nothing grows
+	var meta := chunk.get_block_meta(lx, ly, lz)
+	var stage: int = meta.get("stage", 0) + 1
+	if stage < 3:
+		meta["stage"] = stage
+		chunk.set_block_meta(lx, ly, lz, meta)
+		return
+	var wpos := chunk.get_world_origin() + Vector3i(lx, ly, lz)
+	var species: String = block.raw.get("sapling_species", "oak")
+	chunk.set_block_meta(lx, ly, lz, {})
+	WorldGenerator.grow_tree_at(chunk_manager, wpos, species)
+
+
+## Sugar cane grows up to 3 blocks tall.
+func _try_cane_growth(chunk: Chunk, lx: int, ly: int, lz: int) -> void:
+	var wpos := chunk.get_world_origin() + Vector3i(lx, ly, lz)
+	# Count cane below
+	var below := 0
+	while chunk_manager.get_block_at(wpos + Vector3i(0, -below - 1, 0)) == 89:
+		below += 1
+	if below >= 2:
+		return
+	if chunk_manager.get_block_at(wpos + Vector3i(0, 1, 0)) == 0:
+		chunk_manager.set_block_at(wpos + Vector3i(0, 1, 0), 89)
 
 
 func _try_crop_growth(chunk: Chunk, lx: int, ly: int, lz: int, bid: int) -> void:
@@ -408,6 +476,8 @@ func _on_block_interacted(bpos: Vector3i, bid: int, interactor: Node) -> void:
 		return
 	var p := interactor as Player
 	match bid:
+		92:
+			_handle_bed(bpos, p)
 		250, 251, 252, 253, 254:
 			_handle_skill_altar(bpos, bid, p)
 		255:
@@ -418,6 +488,16 @@ func _on_block_interacted(bpos: Vector3i, bid: int, interactor: Node) -> void:
 			_handle_nexus_portal(p)
 		258:
 			_handle_quest_board(bpos, p)
+
+
+## Sleeping: skip to dawn (at night) and set the respawn point.
+func _handle_bed(bpos: Vector3i, p: Player) -> void:
+	p.respawn_position = Vector3(bpos.x + 0.5, bpos.y + 1.0, bpos.z + 0.5)
+	if TimeManager.is_day():
+		EventBus.show_message.emit("Point de réapparition défini. Vous ne pouvez dormir que la nuit.", 3.5)
+		return
+	TimeManager.skip_to_dawn()
+	EventBus.show_message.emit("Vous vous réveillez au petit matin, reposé.", 4.0)
 
 
 func _handle_skill_altar(bpos: Vector3i, bid: int, p: Player) -> void:

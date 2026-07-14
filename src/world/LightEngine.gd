@@ -15,24 +15,36 @@ func setup(manager: ChunkManager) -> void:
 	_manager = manager
 
 
-## Top-down sky light scan.  Called on the worker thread during chunk generation.
+## Sky light: full light above the world surface of each column, darkness
+## below it, with a soft falloff just under the surface so cave entrances
+## fade instead of snapping to black.  Runs on worker threads at generation.
 static func compute_sky_light_for_chunk(chunk: Chunk) -> void:
+	const SQ := 256; const S := 16
 	var blocks     := chunk.blocks
 	var light_data := chunk.light_data
 	var flags      := BlockRegistry._block_flags
 	var flags_size := flags.size()
-	const SQ := 256; const S := 16
+	var surface    := chunk.world_surface
+	var wy0        := chunk.chunk_pos.y * S
 
 	for lx in S:
 		for lz in S:
+			var surf_y: int = surface[lz * S + lx]
 			var sky := MAX_LIGHT
 			for ly in range(S - 1, -1, -1):
-				var bid := blocks[ly * SQ + lz * S + lx]
-				# Opaque block (known, not transparent, not fluid) blocks sky light
-				if bid != 0 and bid < flags_size and (flags[bid] & 3) == 0:
-					sky = 0
+				var wy := wy0 + ly
 				var idx := ly * SQ + lz * S + lx
-				# Preserve block-light nibble (low 4 bits), set sky-light nibble (high 4 bits)
+				if wy > surf_y:
+					sky = MAX_LIGHT
+				else:
+					var bid := blocks[idx]
+					# Opaque block (known, not transparent, not fluid) cuts sky light
+					if bid != 0 and bid < flags_size and (flags[bid] & 3) == 0:
+						sky = 0
+					elif sky > 0:
+						# Transparent cell below the surface (cave air / water):
+						# light bleeds a few blocks down before going dark
+						sky = maxi(sky - 3, 0)
 				light_data[idx] = (sky << 4) | (light_data[idx] & 0x0F)
 
 
@@ -51,6 +63,8 @@ static func compute_block_light_for_chunk(chunk: Chunk) -> void:
 	# Seed queue with all light-emitting blocks
 	var queue: Array = []
 	for idx in SZ_CB:
+		# Clear stale block light first (a removed torch must go dark)
+		light_data[idx] = light_data[idx] & 0xF0
 		var bid := blocks[idx]
 		if bid == 0 or bid >= lvls_size:
 			continue

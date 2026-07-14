@@ -47,6 +47,19 @@ const NONVANILLA_TAG_PREFIXES := ["class_", "style_", "module_"]
 ## Tool types that do not exist in vanilla Minecraft.
 const NONVANILLA_TOOLS := ["spear", "dagger", "mace"]
 
+## "Vanilla plus" — the simple Axiom additions that ARE part of the base game
+## even in vanilla mode: the new ores of the Nether/End and their drops.
+## (Seasons, new biomes and the modern UI are always on and not gated here.)
+const VANILLA_PLUS_BLOCKS := [
+	"sulfur_ore", "uranium_ore", "void_quartz_ore",
+	"void_crystal_ore", "ender_shard_ore", "nullite_ore",
+	"crystalline_end_stone",
+]
+const VANILLA_PLUS_ITEMS := [
+	"sulfur", "raw_uranium", "void_quartz",
+	"void_crystal_shard", "ender_shard", "nullite_fragment",
+]
+
 
 ## True if an entire data file should be skipped while in vanilla mode.
 static func is_file_disabled(path: String) -> bool:
@@ -58,6 +71,8 @@ static func is_file_disabled(path: String) -> bool:
 static func is_block_disabled(block_data: Dictionary, file_name: String) -> bool:
 	if not VANILLA_ONLY:
 		return false
+	if str(block_data.get("name", "")) in VANILLA_PLUS_BLOCKS:
+		return false   # explicitly part of the base game
 	var min_id: int = NONVANILLA_BLOCK_MIN_ID.get(file_name, -1)
 	if min_id >= 0 and int(block_data.get("id", 0)) >= min_id:
 		return true
@@ -68,6 +83,8 @@ static func is_block_disabled(block_data: Dictionary, file_name: String) -> bool
 static func is_item_disabled(item_data: Dictionary) -> bool:
 	if not VANILLA_ONLY:
 		return false
+	if str(item_data.get("id", "")) in VANILLA_PLUS_ITEMS:
+		return false   # explicitly part of the base game
 	if str(item_data.get("tool", "")) in NONVANILLA_TOOLS:
 		return true
 	return _tags_non_vanilla(item_data.get("tags", []))

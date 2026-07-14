@@ -17,6 +17,13 @@ var _blocks_by_tag: Dictionary = {}     # "axiom:logs" -> Array[int]
 # Packed lookup tables indexed by block ID — thread-safe (read-only after _ready)
 var _block_flags: PackedByteArray        # bit0=transparent, bit1=fluid
 var _block_light_level: PackedByteArray  # light emission level (0-15)
+var _block_shape: PackedByteArray        # SHAPE_* code per block id
+
+# Shape codes used by the mesher (must stay in sync with ChunkRenderer)
+const SHAPE_CUBE  := 0
+const SHAPE_CROSS := 1   # plants: flowers, saplings, grass tufts, crops
+const SHAPE_TORCH := 2   # small stick with glowing tip
+const SHAPE_SLAB  := 3   # bottom half block (beds, slabs)
 
 # Shared block property constants
 const AIR_ID := 0
@@ -134,6 +141,8 @@ func _build_flag_table() -> void:
 	_block_flags.fill(0)
 	_block_light_level.resize(max_id + 1)
 	_block_light_level.fill(0)
+	_block_shape.resize(max_id + 1)
+	_block_shape.fill(0)
 	for bid in _blocks_by_id:
 		var block: BlockDef = _blocks_by_id[bid]
 		var f: int = 0
@@ -142,6 +151,18 @@ func _build_flag_table() -> void:
 		_block_flags[bid] = f
 		if bid < _block_light_level.size():
 			_block_light_level[bid] = block.light_level
+		var shape_code := SHAPE_CUBE
+		match block.shape:
+			"cross", "crop", "plant": shape_code = SHAPE_CROSS
+			"torch":                  shape_code = SHAPE_TORCH
+			"slab", "bed":            shape_code = SHAPE_SLAB
+		_block_shape[bid] = shape_code
+
+
+func get_shape(id: int) -> int:
+	if id < 0 or id >= _block_shape.size():
+		return SHAPE_CUBE
+	return _block_shape[id]
 
 
 func _load_all_blocks() -> void:

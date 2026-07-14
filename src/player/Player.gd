@@ -131,6 +131,7 @@ func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
 	_tick_eating(delta)
 	_handle_block_interaction()
+	_tick_portal_travel(delta)
 	_tick_hunger(delta)
 	_tick_poison(delta)
 	_tick_damage_cooldown(delta)
@@ -320,6 +321,8 @@ func _handle_block_interaction() -> void:
 			if block != null and block.interactive:
 				if just_interact:
 					EventBus.block_interacted.emit(bpos, bid, self)
+			elif just_interact and _try_use_flint_and_steel(bpos, ray_result):
+				_place_cooldown = 0.4
 			else:
 				var place_pos: Vector3i = bpos + (ray_result.get("normal", Vector3i.ZERO) as Vector3i)
 				_place_block(place_pos)
@@ -428,6 +431,52 @@ func _break_block(bpos: Vector3i, bid: int) -> void:
 	# 3×3 area mining (Mineur T3: Minage en Croix, requires sneaking)
 	if skill_tree != null and skill_tree.is_3x3_enabled() and is_sneaking:
 		_mine_3x3(bpos, held_item, _last_break_normal)
+
+
+# ── Portals ────────────────────────────────────────────────────────────────────
+
+var _portal_stand_timer: float = 0.0
+
+## Flint & steel on obsidian lights a nether portal.
+func _try_use_flint_and_steel(bpos: Vector3i, ray_result: Dictionary) -> bool:
+	var held := _get_held_item()
+	if held.get("id", "") != "axiom:flint_and_steel":
+		return false
+	if _chunk_manager.get_block_at(bpos) != 101:   # obsidian
+		return false
+	var world := GameManager.world_node
+	if world == null:
+		return false
+	var dm = world.get("dim_manager")
+	if dm == null:
+		return false
+	var air_pos: Vector3i = bpos + (ray_result.get("normal", Vector3i.ZERO) as Vector3i)
+	return dm.try_ignite(air_pos)
+
+
+## Standing inside a portal block starts the travel timer.
+func _tick_portal_travel(delta: float) -> void:
+	if _chunk_manager == null:
+		return
+	var feet := Vector3i(floori(global_position.x), floori(global_position.y + 0.2), floori(global_position.z))
+	var bid := _chunk_manager.get_block_at(feet)
+	if bid != 93 and bid != 94:   # nether_portal / end_portal
+		_portal_stand_timer = 0.0
+		return
+	_portal_stand_timer += delta
+	if _portal_stand_timer < 0.9:
+		return
+	_portal_stand_timer = 0.0
+	var world := GameManager.world_node
+	if world == null:
+		return
+	var dm = world.get("dim_manager")
+	if dm == null or not dm.can_travel():
+		return
+	if bid == 93:
+		dm.travel_nether(global_position)
+	else:
+		dm.travel_end(global_position)
 
 
 # ── Eating ─────────────────────────────────────────────────────────────────────
