@@ -358,8 +358,10 @@ func _compute_break_time(block: BlockRegistry.BlockDef, held_item: ItemRegistry.
 			+ _get_armor_bonus("mining_speed") \
 			+ _get_held_artifact_bonus("fast_mining")
 		return maxf(block.hardness * 1.5 / (speed * mining_mult), 0.05)
-	else:
-		return maxf(block.hardness * 5.0, 0.05)
+	# Bare hands / wrong tool: stone-family blocks resist hard, organic
+	# blocks (wood, dirt...) only mildly — keeps the fist-vs-tree start fair.
+	var penalty := 5.0 if block.tool == "pickaxe" else 2.5
+	return maxf(block.hardness * penalty, 0.05)
 
 
 func _continue_block_break(bpos: Vector3i, bid: int) -> void:
@@ -1321,21 +1323,11 @@ func _vein_mine(origin: Vector3i, ore_id: int, held_item: ItemRegistry.ItemDef) 
 func _give_dev_items() -> void:
 	if inventory == null:
 		return
-	# Iron pickaxe with Vein Miner — slot 0
-	inventory.set_slot(0, {"id": "axiom:iron_pickaxe", "count": 1,
-		"enchantments": {"vein_miner": 1}})
-	# Iron sword — slot 1
-	inventory.set_slot(1, {"id": "axiom:iron_sword", "count": 1})
-	# Iron shovel — slot 2
-	inventory.set_slot(2, {"id": "axiom:iron_shovel", "count": 1})
-	# Building blocks — slots 3-4
-	inventory.set_slot(3, {"id": "axiom:cobblestone", "count": 64})
-	inventory.set_slot(4, {"id": "axiom:oak_planks",  "count": 64})
-	# Food — slot 5
-	inventory.set_slot(5, {"id": "axiom:bread", "count": 16})
-	# Dev: give 3 skill points to test the skill tree (K key)
-	if skill_tree != null:
-		skill_tree.available_points = 3
+	# True survival start: empty hands, the world provides.
+	# (Creative worlds get the full item palette on G.)
+	if creative:
+		inventory.set_slot(0, {"id": "axiom:torch", "count": 64})
+		inventory.set_slot(1, {"id": "axiom:oak_planks", "count": 64})
 
 
 func _animate_hand(delta: float) -> void:

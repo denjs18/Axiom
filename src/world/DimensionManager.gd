@@ -153,7 +153,8 @@ func travel_end(player_world_pos: Vector3) -> void:
 		_switch_dimension("overworld", back, false)
 	else:
 		_overworld_anchor = player_world_pos
-		_switch_dimension("the_end", Vector3(8, 66, 8), false)
+		# Land beside the return-portal pool (centred at world 8,8), not on it
+		_switch_dimension("the_end", Vector3(13, 66, 8), false)
 
 
 func _switch_dimension(target_dim: String, target_pos: Vector3, build_return_portal: bool) -> void:
@@ -253,6 +254,9 @@ func _find_safe_y(wx: int, wz: int, dim: String) -> int:
 	for y in range(y_top, y_bot, -1):
 		var ground := _manager.get_block_at(Vector3i(wx, y - 1, wz))
 		if ground == 0 or BlockRegistry.is_fluid(ground):
+			continue
+		# Never stand on (or in) a portal — instant re-teleport loop
+		if ground == NETHER_PORTAL_ID or ground == END_PORTAL_ID:
 			continue
 		if _manager.get_block_at(Vector3i(wx, y, wz)) == 0 \
 				and _manager.get_block_at(Vector3i(wx, y + 1, wz)) == 0:

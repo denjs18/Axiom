@@ -105,14 +105,7 @@ func _build_ui() -> void:
 	panel.offset_top    = -panel_h / 2
 	panel.offset_bottom =  panel_h / 2
 
-	var ps := StyleBoxFlat.new()
-	ps.bg_color = Color(0.14, 0.14, 0.17, 0.97)
-	ps.border_width_left = 1; ps.border_width_right  = 1
-	ps.border_width_top  = 1; ps.border_width_bottom = 1
-	ps.border_color = Color(0.40, 0.40, 0.42)
-	ps.corner_radius_top_left     = 4; ps.corner_radius_top_right    = 4
-	ps.corner_radius_bottom_left  = 4; ps.corner_radius_bottom_right = 4
-	panel.add_theme_stylebox_override("panel", ps)
+	panel.add_theme_stylebox_override("panel", UITheme.card())
 	add_child(panel)
 
 	var vbox := VBoxContainer.new()

@@ -165,6 +165,7 @@ func _ready() -> void:
 	add_child(debug_panel)
 
 	_setup_environment()
+	_setup_clouds()
 	_setup_break_overlay()
 	_setup_weather_particles()
 	EventBus.weather_changed.connect(_on_weather_changed)
@@ -178,6 +179,7 @@ func _process(delta: float) -> void:
 		return
 	chunk_manager.update_player_position(player.global_position)
 	lod_manager.update_player_position(player.global_position)
+	_tick_clouds(delta)
 	_tick_timer += delta
 	if _tick_timer >= TICK_RATE:
 		_tick_timer -= TICK_RATE
@@ -371,6 +373,80 @@ func _setup_environment() -> void:
 	var sun := find_child("DirectionalLight3D") as DirectionalLight3D
 	if sun:
 		sun.shadow_enabled = false
+
+
+# ── Clouds ─────────────────────────────────────────────────────────────────────
+
+var _clouds: MeshInstance3D = null
+var _cloud_mat: StandardMaterial3D = null
+var _cloud_offset: float = 0.0
+
+func _setup_clouds() -> void:
+	if GameManager.current_dimension != "overworld":
+		return
+	# Soft seamless cloud texture: wrap-around blob stamping
+	const CT := 256
+	var accum := PackedFloat32Array()
+	accum.resize(CT * CT)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = GameManager.world_seed + 777
+	for _i in 46:
+		var cx := rng.randf_range(0, CT)
+		var cy := rng.randf_range(0, CT)
+		var r  := rng.randf_range(9.0, 26.0)
+		var strength := rng.randf_range(0.5, 1.0)
+		var ir := int(ceil(r))
+		for dy in range(-ir, ir + 1):
+			for dx in range(-ir, ir + 1):
+				var d := sqrt(float(dx * dx + dy * dy)) / r
+				if d >= 1.0:
+					continue
+				var px := posmod(int(cx) + dx, CT)
+				var py := posmod(int(cy) + dy, CT)
+				accum[py * CT + px] += (1.0 - d * d) * strength
+	var img := Image.create(CT, CT, false, Image.FORMAT_RGBA8)
+	for y in CT:
+		for x in CT:
+			var v := accum[y * CT + x]
+			var alpha := clampf(smoothstep(0.35, 1.0, v), 0.0, 1.0) * 0.60
+			img.set_pixel(x, y, Color(1.0, 1.0, 1.0, alpha))
+	var tex := ImageTexture.create_from_image(img)
+
+	_clouds = MeshInstance3D.new()
+	_clouds.name = "Clouds"
+	var plane := PlaneMesh.new()
+	plane.size = Vector2(3600, 3600)
+	_clouds.mesh = plane
+	_cloud_mat = StandardMaterial3D.new()
+	_cloud_mat.albedo_texture = tex
+	_cloud_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	_cloud_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_cloud_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	_cloud_mat.uv1_scale = Vector3(5.0, 5.0, 1.0)
+	_cloud_mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR
+	_clouds.material_override = _cloud_mat
+	_clouds.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_clouds.position = Vector3(0, 192.0, 0)
+	add_child(_clouds)
+
+
+func _tick_clouds(delta: float) -> void:
+	if _clouds == null or _cloud_mat == null:
+		return
+	# Follow the player horizontally, drift the texture with the wind
+	_clouds.position.x = player.global_position.x
+	_clouds.position.z = player.global_position.z
+	_cloud_offset += delta * 0.0016
+	_cloud_mat.uv1_offset = Vector3(_cloud_offset + player.global_position.x / 18000.0,
+		player.global_position.z / 18000.0, 0.0)
+	# Day/night + weather tint
+	var day := clampf((TimeManager.get_sun_height() + 0.15) / 0.4, 0.0, 1.0)
+	var bright := lerpf(0.10, 1.0, day)
+	var alpha_mult := 1.0
+	if SeasonManager.is_precipitating():
+		bright *= 0.55
+		alpha_mult = 1.35
+	_cloud_mat.albedo_color = Color(bright, bright, minf(bright * 1.06, 1.0), alpha_mult)
 
 
 func _find_spawn_surface() -> Vector3:

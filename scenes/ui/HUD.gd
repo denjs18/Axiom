@@ -62,6 +62,8 @@ var _xp_level_label: Label = null
 
 
 func _ready() -> void:
+	if debug_label:
+		debug_label.visible = false   # F3 to toggle
 	EventBus.player_health_changed.connect(_on_health_changed)
 	EventBus.player_hunger_changed.connect(_on_hunger_changed)
 	EventBus.player_xp_changed.connect(_on_xp_changed)
@@ -172,6 +174,12 @@ func _on_boss_defeated(_bname: String) -> void:
 
 
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if (event as InputEventKey).physical_keycode == KEY_F3 and debug_label:
+			debug_label.visible = not debug_label.visible
+
+
 func _process(delta: float) -> void:
 	if _player == null:
 		return
@@ -201,17 +209,8 @@ func _setup_hotbar() -> void:
 	var bg_panel := Panel.new()
 	bg_panel.name = "HotbarBG"
 	bg_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var bg_style := StyleBoxFlat.new()
-	bg_style.bg_color                    = Color(0.05, 0.05, 0.06, 0.88)
-	bg_style.border_width_left           = 2
-	bg_style.border_width_right          = 2
-	bg_style.border_width_top            = 2
-	bg_style.border_width_bottom         = 2
-	bg_style.border_color                = Color(0.35, 0.35, 0.40, 0.85)
-	bg_style.corner_radius_top_left      = 6
-	bg_style.corner_radius_top_right     = 6
-	bg_style.corner_radius_bottom_left   = 6
-	bg_style.corner_radius_bottom_right  = 6
+	var bg_style := UITheme.flat(Color(0.045, 0.052, 0.075, 0.82), 12,
+		Color(0.30, 0.33, 0.42, 0.45), 1)
 	bg_panel.add_theme_stylebox_override("panel", bg_style)
 	bg_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hotbar_container.get_parent().add_child(bg_panel)
@@ -223,17 +222,8 @@ func _setup_hotbar() -> void:
 		hotbar_slots.append(slot)
 
 	if hotbar_selector:
-		var sel_style := StyleBoxFlat.new()
-		sel_style.bg_color                   = Color(1.0, 1.0, 1.0, 0.07)
-		sel_style.border_width_left          = 3
-		sel_style.border_width_right         = 3
-		sel_style.border_width_top           = 3
-		sel_style.border_width_bottom        = 3
-		sel_style.border_color               = Color(1.0, 1.0, 1.0, 1.0)
-		sel_style.corner_radius_top_left     = 3
-		sel_style.corner_radius_top_right    = 3
-		sel_style.corner_radius_bottom_left  = 3
-		sel_style.corner_radius_bottom_right = 3
+		var sel_style := UITheme.flat(Color(UITheme.ACCENT.r, UITheme.ACCENT.g, UITheme.ACCENT.b, 0.10),
+			9, Color.WHITE, 2)
 		hotbar_selector.add_theme_stylebox_override("panel", sel_style)
 
 
@@ -242,17 +232,8 @@ func _create_hotbar_slot(index: int) -> Panel:
 	panel.custom_minimum_size = Vector2(52, 52)
 	panel.name = "Slot%d" % index
 
-	var bg := StyleBoxFlat.new()
-	bg.bg_color                   = Color(0.10, 0.10, 0.12, 0.92)
-	bg.border_width_left          = 2
-	bg.border_width_right         = 2
-	bg.border_width_top           = 2
-	bg.border_width_bottom        = 2
-	bg.border_color               = Color(0.48, 0.48, 0.52, 1.0)
-	bg.corner_radius_top_left     = 3
-	bg.corner_radius_top_right    = 3
-	bg.corner_radius_bottom_left  = 3
-	bg.corner_radius_bottom_right = 3
+	var bg := UITheme.flat(Color(0.075, 0.082, 0.108, 0.90), 8,
+		Color(0.32, 0.35, 0.44, 0.55), 1)
 	panel.add_theme_stylebox_override("panel", bg)
 
 	# Slot number (1-9, top-left)
@@ -360,39 +341,81 @@ func _on_hunger_changed(player: Player, new_hunger: float, _sat: float) -> void:
 	_update_icon_bar(hunger_bar, new_hunger, 20.0, "hunger")
 
 
+# Icon textures (hearts from assets, hunger shanks generated once)
+static var _heart_tex: Array = []    # [full, half, empty]
+static var _shank_tex: Array = []
+
+func _ensure_icon_textures() -> void:
+	if _heart_tex.is_empty():
+		for n in ["heart_full", "heart_half", "heart_empty"]:
+			var path := "res://assets/textures/ui/%s.png" % n
+			_heart_tex.append(load(path) if ResourceLoader.exists(path) else null)
+	if _shank_tex.is_empty():
+		_shank_tex = [_draw_shank(1.0), _draw_shank(0.5), _draw_shank(0.0)]
+
+
+## 16×16 pixel-art meat shank (Minecraft-style hunger icon).
+func _draw_shank(fill: float) -> ImageTexture:
+	var img := Image.create(16, 16, false, Image.FORMAT_RGBA8)
+	var meat  := Color8(188, 100, 40)
+	var meat2 := Color8(150, 74, 28)
+	var bone  := Color8(228, 224, 210)
+	var dark  := Color8(60, 38, 20)
+	if fill < 0.25:
+		meat = Color8(52, 52, 56); meat2 = Color8(40, 40, 44)
+		bone = Color8(70, 70, 74); dark = Color8(30, 30, 34)
+	elif fill < 0.75:
+		meat = meat.darkened(0.35); meat2 = meat2.darkened(0.35)
+	# Meat blob (top-right)
+	for y in range(2, 9):
+		for x in range(6, 13):
+			var dx := x - 9.0; var dy := y - 5.0
+			if dx * dx + dy * dy <= 11.0:
+				img.set_pixel(x, y, meat if (x + y) % 3 != 0 else meat2)
+	# Outline bottom of meat
+	for x in range(6, 12):
+		img.set_pixel(x, 8, dark)
+	# Bone diagonal (bottom-left)
+	for i in range(0, 6):
+		var bx := 3 + i; var by := 12 - i
+		img.set_pixel(bx, by, bone)
+		if bx + 1 < 16:
+			img.set_pixel(bx + 1, by, bone.darkened(0.15))
+	# Bone knob
+	img.set_pixel(2, 12, bone); img.set_pixel(3, 13, bone)
+	img.set_pixel(2, 13, bone.darkened(0.1))
+	return ImageTexture.create_from_image(img)
+
+
 func _update_icon_bar(container: HBoxContainer, value: float, max_val: float, type: String) -> void:
+	_ensure_icon_textures()
 	var full_icons  := floori(value / 2.0)
 	var half        := (fmod(value, 2.0) >= 1.0)
 	var total_icons := floori(max_val / 2.0)
-	var full_col    := Color(0.85, 0.10, 0.10) if type == "health" else Color(0.85, 0.48, 0.10)
-	var half_col    := Color(full_col.r, full_col.g, full_col.b, 0.50)
-	var empty_col   := Color(0.22, 0.22, 0.22, 0.80)
+	var texs: Array = _heart_tex if type == "health" else _shank_tex
 
 	while container.get_child_count() < total_icons:
-		var p := Panel.new()
-		p.custom_minimum_size = Vector2(16, 16)
-		var s := StyleBoxFlat.new()
-		s.corner_radius_top_left     = 2
-		s.corner_radius_top_right    = 2
-		s.corner_radius_bottom_left  = 2
-		s.corner_radius_bottom_right = 2
-		p.add_theme_stylebox_override("panel", s)
-		p.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		container.add_child(p)
+		var t := TextureRect.new()
+		t.custom_minimum_size = Vector2(20, 20)
+		t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		t.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		t.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		container.add_child(t)
+	while container.get_child_count() > total_icons:
+		var last := container.get_child(container.get_child_count() - 1)
+		container.remove_child(last)
+		last.queue_free()
 
 	for i in total_icons:
-		var p := container.get_child(i) as Panel
-		if p == null:
-			continue
-		var s := p.get_theme_stylebox("panel") as StyleBoxFlat
-		if s == null:
+		var t := container.get_child(i) as TextureRect
+		if t == null:
 			continue
 		if i < full_icons:
-			s.bg_color = full_col
+			t.texture = texs[0]
 		elif i == full_icons and half:
-			s.bg_color = half_col
+			t.texture = texs[1]
 		else:
-			s.bg_color = empty_col
+			t.texture = texs[2]
 
 
 # ── XP bar ─────────────────────────────────────────────────────────────────────

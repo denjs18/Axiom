@@ -31,6 +31,7 @@ const WORLD_SCENE := "res://scenes/world/World.tscn"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	UITheme.apply_to_root(self)   # project-wide modern theme
 	get_tree().root.ready.connect(_on_root_ready)
 
 
