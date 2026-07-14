@@ -10,7 +10,7 @@ func _mob_ready() -> void:
 	can_breed       = true
 	feed_item       = "axiom:wheat"
 	loot_table = [
-		{"item": "axiom:mutton", "count_min": 1, "count_max": 2, "chance": 1.0},
+		{"item": "axiom:raw_mutton", "count_min": 1, "count_max": 2, "chance": 1.0},
 		{"item": "axiom:wool",   "count_min": 1, "count_max": 1, "chance": 1.0},
 	]
 	var wool_col := _random_wool_color()

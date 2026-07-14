@@ -90,6 +90,7 @@ func _ready() -> void:
 	var spawn_pos := _find_spawn_surface()
 	_force_spawn_collision(spawn_pos)
 	player.global_position = spawn_pos
+	player.respawn_position = spawn_pos
 
 	# Inventory UI — must exist before player spawns so EventBus.inventory_opened is connected
 	var inv_ui := preload("res://scenes/ui/InventoryUI.tscn").instantiate()
@@ -121,6 +122,16 @@ func _ready() -> void:
 	# Pause menu
 	var pause_menu := preload("res://scenes/ui/PauseMenu.tscn").instantiate()
 	add_child(pause_menu)
+
+	# Death screen — respawn / back to menu
+	var death_screen := DeathScreen.new()
+	death_screen.name = "DeathScreen"
+	add_child(death_screen)
+
+	# Chest / container UI
+	var chest_ui: Node = load("res://scenes/ui/ChestUI.gd").new()
+	chest_ui.name = "ChestUI"
+	add_child(chest_ui)
 
 	# Mob spawner
 	var mob_spawner := MobSpawner.new()
@@ -863,13 +874,34 @@ func _notification(what: int) -> void:
 		_save_and_quit()
 
 
-func _save_and_quit() -> void:
+func save_world() -> void:
 	chunk_manager.save_all_chunks()
 	# Save block entities
 	var save_path := GameManager.get_world_save_path() + "block_entities.json"
+	DirAccess.make_dir_recursive_absolute(GameManager.get_world_save_path())
 	var file := FileAccess.open(save_path, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(block_entity_manager.serialize()))
 		file.close()
 	print("[World] Saved.")
+
+
+func _save_and_quit() -> void:
+	save_world()
 	get_tree().quit()
+
+
+## Make sure the area around a respawn/teleport target has generated chunks
+## with collision, so the player doesn't fall through the world.
+func prepare_respawn_area(pos: Vector3) -> void:
+	var cp := Vector3i(floori(pos.x / 16.0), floori(pos.y / 16.0), floori(pos.z / 16.0))
+	for dy in range(-1, 2):
+		for dx in range(-1, 2):
+			for dz in range(-1, 2):
+				chunk_manager.ensure_chunk_sync(cp + Vector3i(dx, dy, dz))
+	for dy in range(-1, 2):
+		for dx in range(-1, 2):
+			for dz in range(-1, 2):
+				var key: int = chunk_manager._chunk_key(cp + Vector3i(dx, dy, dz))
+				if chunk_manager._renderers.has(key):
+					(chunk_manager._renderers[key] as ChunkRenderer).force_initial_build()

@@ -98,6 +98,7 @@ func _on_player_spawned(player: Player) -> void:
 	_player.block_targeted.connect(_on_block_targeted)
 	_player.no_block_targeted.connect(_on_no_block_targeted)
 	_player.block_break_progress.connect(_on_break_progress)
+	_player.eating_progress.connect(_on_eating_progress)
 	_update_all()
 
 
@@ -554,8 +555,17 @@ func _setup_break_bar() -> void:
 func _on_break_progress(progress: float) -> void:
 	if _break_bar == null:
 		return
-	_break_bar.value   = progress
-	_break_bar.visible = progress > 0.01
+	_break_bar.modulate = Color.WHITE
+	_break_bar.value    = progress
+	_break_bar.visible  = progress > 0.01
+
+
+func _on_eating_progress(progress: float) -> void:
+	if _break_bar == null:
+		return
+	_break_bar.modulate = Color(1.0, 0.75, 0.35)   # amber while eating
+	_break_bar.value    = progress
+	_break_bar.visible  = progress > 0.01
 
 
 # ── Blood Moon UI ──────────────────────────────────────────────────────────────

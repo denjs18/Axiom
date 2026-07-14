@@ -13,7 +13,7 @@ func _mob_ready() -> void:
 	max_health      = 8.0
 	can_breed       = false   # coyotes don't breed with player interaction
 	loot_table = [
-		{"item": "axiom:beef",          "count_min": 0, "count_max": 1, "chance": 0.80},
+		{"item": "axiom:raw_beef",          "count_min": 0, "count_max": 1, "chance": 0.80},
 		{"item": "axiom:leather",       "count_min": 0, "count_max": 1, "chance": 0.60},
 		{"item": "axiom:predator_claw", "count_min": 1, "count_max": 1, "chance": 0.25},
 	]

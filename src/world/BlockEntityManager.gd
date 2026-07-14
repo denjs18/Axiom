@@ -34,6 +34,8 @@ func create_entity(world_pos: Vector3i, block_id: int) -> BlockEntity:
 
 	match block_id:
 		64:  entity = ChestEntity.new(world_pos)    # chest
+		65:  entity = ChestEntity.new(world_pos)    # trapped_chest
+		67:  entity = ChestEntity.new(world_pos)    # barrel
 		61:  entity = FurnaceEntity.new(world_pos)  # furnace
 		62:  entity = FurnaceEntity.new(world_pos)  # blast_furnace
 		63:  entity = FurnaceEntity.new(world_pos)  # smoker

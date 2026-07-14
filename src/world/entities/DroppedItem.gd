@@ -7,6 +7,7 @@ var item_id: String = ""
 var count: int = 1
 
 var _mesh: MeshInstance3D = null
+var _mesh_sprite: Sprite3D = null
 var _bob_t: float = 0.0
 var _lifetime: float = 300.0   # despawn after 5 minutes
 var _pickup_delay: float = 0.8 # brief grace period so the item doesn't immediately re-collect
@@ -35,6 +36,36 @@ func _spawn_impulse() -> void:
 
 
 func _build_mesh() -> void:
+	# Prefer the real item/block texture as a small billboard sprite
+	var tex: Texture2D = ItemIcon._resolve(item_id)
+	if tex == null:
+		# Blocks: use their top-face texture from the block textures folder
+		var block_id := ItemRegistry.get_block_id_for_item(item_id)
+		if block_id != 0:
+			var block := BlockRegistry.get_block(block_id)
+			if block != null:
+				var tex_name: String = block.get_texture_for_face("top")
+				for path in ["res://assets/textures/blocks/%s.png" % tex_name,
+						"res://assets/textures/blocks/%s.png" % block.name]:
+					if ResourceLoader.exists(path):
+						tex = load(path) as Texture2D
+						if tex != null:
+							break
+
+	if tex != null:
+		var spr := Sprite3D.new()
+		spr.texture        = tex
+		spr.pixel_size     = 0.018
+		spr.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+		spr.billboard      = BaseMaterial3D.BILLBOARD_ENABLED
+		spr.shaded         = true
+		spr.cast_shadow    = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		spr.position.y     = 0.15
+		add_child(spr)
+		_mesh_sprite = spr
+		return
+
+	# Fallback: colored cube
 	_mesh = MeshInstance3D.new()
 	var box := BoxMesh.new()
 	box.size = Vector3(0.25, 0.25, 0.25)
@@ -66,6 +97,8 @@ func _process(delta: float) -> void:
 	if _mesh:
 		_mesh.position.y  = sin(_bob_t) * 0.06
 		_mesh.rotation.y  = fmod(_mesh.rotation.y + delta * 2.0, TAU)
+	elif _mesh_sprite:
+		_mesh_sprite.position.y = 0.15 + sin(_bob_t) * 0.05
 
 	_pickup_delay = maxf(0.0, _pickup_delay - delta)
 	if _pickup_delay > 0.0:

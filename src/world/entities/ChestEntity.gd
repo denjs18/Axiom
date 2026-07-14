@@ -34,7 +34,7 @@ func add_items(item_id: String, count: int) -> int:
 		if remaining <= 0:
 			break
 		var slot: Dictionary = slots[i]
-		if slot.is_empty() or slot.get("item_id") != item_id:
+		if slot.is_empty() or slot.get("id") != item_id:
 			continue
 		var item := ItemRegistry.get_item(item_id)
 		var max_stack: int = item.max_stack if item else 64
@@ -52,7 +52,7 @@ func add_items(item_id: String, count: int) -> int:
 		var item := ItemRegistry.get_item(item_id)
 		var max_stack: int = item.max_stack if item else 64
 		var take := mini(max_stack, remaining)
-		slots[i] = {"item_id": item_id, "count": take, "meta": {}}
+		slots[i] = {"id": item_id, "count": take, "meta": {}}
 		remaining -= take
 	return remaining
 

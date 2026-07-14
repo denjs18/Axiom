@@ -75,6 +75,15 @@ var _combo_count: int     = 0    # sword combo (1→2→3)
 var _combo_timer: float   = 0.0  # window to chain next hit
 const _COMBO_WINDOW       := 2.0
 
+# Eating state
+var _eating_time: float   = 0.0
+var _poison_timer: float  = 0.0
+var _poison_ticks: int    = 0
+const EAT_DURATION := 1.4
+
+# Respawn
+var respawn_position: Vector3 = Vector3(8.5, 80.0, 8.5)
+
 # Signals
 signal health_changed(new_health: float, max_health: float)
 signal hunger_changed(new_hunger: float, saturation: float)
@@ -83,6 +92,7 @@ signal died()
 signal block_targeted(block_pos: Vector3i, block_id: int)
 signal no_block_targeted()
 signal block_break_progress(progress_0_1: float)
+signal eating_progress(progress_0_1: float)
 
 
 func _ready() -> void:
@@ -119,8 +129,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_handle_gravity(delta)
 	_handle_movement(delta)
+	_tick_eating(delta)
 	_handle_block_interaction()
 	_tick_hunger(delta)
+	_tick_poison(delta)
 	_tick_damage_cooldown(delta)
 	_pre_y_vel  = velocity.y
 	_pre_floor  = is_on_floor()
@@ -418,9 +430,87 @@ func _break_block(bpos: Vector3i, bid: int) -> void:
 		_mine_3x3(bpos, held_item, _last_break_normal)
 
 
+# ── Eating ─────────────────────────────────────────────────────────────────────
+
+func _held_food_item() -> ItemRegistry.ItemDef:
+	var held := _get_held_item()
+	if ItemRegistry.is_empty_stack(held):
+		return null
+	var item := ItemRegistry.get_item(held.get("id", ""))
+	if item != null and item.is_food():
+		return item
+	return null
+
+
+func is_eating() -> bool:
+	return _eating_time > 0.0
+
+
+func _tick_eating(delta: float) -> void:
+	var item := _held_food_item()
+	var can_eat := item != null and (hunger < max_hunger - 0.01 or health < max_health)
+	var wants := Input.is_action_pressed("interact") \
+		and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
+	if can_eat and wants and not _targeting_interactive_block():
+		_eating_time += delta
+		eating_progress.emit(_eating_time / EAT_DURATION)
+		if _eating_time >= EAT_DURATION:
+			_finish_eating(item)
+			_eating_time = 0.0
+			eating_progress.emit(0.0)
+	elif _eating_time > 0.0:
+		_eating_time = 0.0
+		eating_progress.emit(0.0)
+
+
+func _targeting_interactive_block() -> bool:
+	if _chunk_manager == null:
+		return false
+	var ray := _chunk_manager.raycast(
+		_camera.global_position, -_camera.global_basis.z, reach_distance)
+	if not ray.get("hit", false):
+		return false
+	var block := BlockRegistry.get_block(ray.get("block_id", 0))
+	return block != null and block.interactive
+
+
+func _finish_eating(item: ItemRegistry.ItemDef) -> void:
+	feed(item.food_value, item.saturation)
+	# Special foods
+	match item.short_id:
+		"golden_apple":
+			heal(4.0)
+		"enchanted_golden_apple":
+			heal(8.0)
+		"milk_bucket":
+			_poison_ticks = 0   # milk cures poison
+	# Negative effects (rotten flesh, raw chicken, poisonous potato...)
+	for eff in item.effects:
+		var eff_name: String = eff.get("effect", "")
+		if eff_name in ["hunger", "poison"] and randf() < eff.get("chance", 1.0):
+			_poison_ticks = 4   # 4 damage ticks over ~6 s
+	_consume_held_item(1)
+	EventBus.show_message.emit("", 0.0)   # clear any lingering message
+
+
+func _tick_poison(delta: float) -> void:
+	if _poison_ticks <= 0:
+		return
+	_poison_timer += delta
+	if _poison_timer >= 1.5:
+		_poison_timer = 0.0
+		_poison_ticks -= 1
+		if health > 1.0:
+			health = maxf(1.0, health - 1.0)
+			EventBus.player_health_changed.emit(self, health, max_health)
+
+
 func _place_block(bpos: Vector3i) -> void:
 	var held := _get_held_item()
 	if ItemRegistry.is_empty_stack(held):
+		return
+	# Food is eaten (handled by _tick_eating), never placed
+	if _held_food_item() != null:
 		return
 	var item_id: String = held.get("id", "")
 	# Soul fragment: read lore text instead of placing
@@ -780,6 +870,31 @@ func _die() -> void:
 	EventBus.player_xp_changed.emit(self, xp_points, xp_level)
 	died.emit()
 	EventBus.player_died.emit(self, "generic")
+
+
+## Hard-set position (used by portals, respawn, debug).
+func teleport(pos: Vector3) -> void:
+	global_position = pos
+	velocity        = Vector3.ZERO
+	_knockback_reset()
+
+
+func _knockback_reset() -> void:
+	_pre_y_vel = 0.0
+	_pre_floor = true
+
+
+## Bring the player back to life at the respawn point. Inventory is kept.
+func respawn() -> void:
+	health          = max_health
+	hunger          = max_hunger
+	saturation      = 5.0
+	_poison_ticks   = 0
+	_damage_cooldown = 2.0
+	teleport(respawn_position + Vector3(0, 0.5, 0))
+	EventBus.player_health_changed.emit(self, health, max_health)
+	EventBus.player_hunger_changed.emit(self, hunger, saturation)
+	EventBus.player_respawned.emit(self)
 
 
 func toggle_creative_fly() -> void:

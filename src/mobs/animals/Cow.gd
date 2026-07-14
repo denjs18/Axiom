@@ -10,7 +10,7 @@ func _mob_ready() -> void:
 	can_breed       = true
 	feed_item       = "axiom:wheat"
 	loot_table = [
-		{"item": "axiom:beef",    "count_min": 1, "count_max": 3, "chance": 1.0},
+		{"item": "axiom:raw_beef",    "count_min": 1, "count_max": 3, "chance": 1.0},
 		{"item": "axiom:leather", "count_min": 0, "count_max": 2, "chance": 1.0},
 	]
 	_build_collision(0.42, 1.2)
