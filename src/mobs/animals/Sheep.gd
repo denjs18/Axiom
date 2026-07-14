@@ -23,6 +23,41 @@ func _mob_ready() -> void:
 	super._mob_ready()
 
 
+var _sheared: bool = false
+var _regrow_timer: float = 0.0
+
+
+## Right-click with shears → wool without the mutton.
+func try_interact(player: Node) -> void:
+	if not _sheared:
+		var held: Dictionary = player.call("_get_held_item")
+		if held.get("id", "") == "axiom:shears":
+			_sheared = true
+			_regrow_timer = 120.0
+			var count := randi_range(1, 3)
+			EventBus.item_dropped.emit({"id": "axiom:wool", "count": count},
+				global_position + Vector3(0, 0.8, 0))
+			_tint_body(Color(0.92, 0.80, 0.72))   # shorn skin tone
+			return
+	super.try_interact(player)
+
+
+func _process(delta: float) -> void:
+	if _sheared:
+		_regrow_timer -= delta
+		if _regrow_timer <= 0.0:
+			_sheared = false
+			_tint_body(Color(0.95, 0.95, 0.95))
+
+
+func _tint_body(col: Color) -> void:
+	for child in _visual_root.get_children() if _visual_root else []:
+		if child is MeshInstance3D:
+			var mat := (child as MeshInstance3D).material_override as StandardMaterial3D
+			if mat != null:
+				mat.albedo_color = col
+
+
 func _random_wool_color() -> Color:
 	var colors := [
 		Color(0.95, 0.95, 0.95), Color(0.85, 0.85, 0.85),

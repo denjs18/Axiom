@@ -29,6 +29,10 @@ func _mob_ready() -> void:
 	pass  # subclasses configure stats here
 
 
+## Set true on species that burn under the open sun (zombies, skeletons).
+var burns_in_daylight: bool = false
+var _burn_timer: float = 0.0
+
 func _physics_process(delta: float) -> void:
 	if _dead:
 		return
@@ -37,6 +41,34 @@ func _physics_process(delta: float) -> void:
 	_ai_timer  = maxf(0.0, _ai_timer  - delta)
 	_run_ai(delta)
 	move_and_slide()
+	animate_walk(delta)
+	if burns_in_daylight:
+		_tick_daylight_burn(delta)
+
+
+func _tick_daylight_burn(delta: float) -> void:
+	if not TimeManager.is_day():
+		return
+	_burn_timer += delta
+	if _burn_timer < 1.2:
+		return
+	_burn_timer = 0.0
+	# Only burn under the open sky
+	var world := GameManager.world_node
+	if world == null:
+		return
+	var cm = world.get("chunk_manager")
+	if cm == null:
+		return
+	var head := Vector3i(floori(global_position.x),
+		floori(global_position.y + body_height), floori(global_position.z))
+	var cp := Chunk.world_to_chunk(head)
+	var chunk = cm.get_chunk(cp)
+	if chunk == null:
+		return
+	var local := Chunk.world_to_local(head, cp.y)
+	if chunk.get_sky_light(local.x, local.y, local.z) >= 13:
+		take_damage(2.0, null)
 
 
 func _run_ai(delta: float) -> void:
@@ -132,28 +164,12 @@ func _build_visual(body_size: Vector3, head_size: Vector3,
 		body_col: Color, head_col: Color) -> void:
 	_visual_root = Node3D.new()
 	add_child(_visual_root)
-	body_height = body_size.y
+	body_height = 0.72 + body_size.y   # legs + torso
 
-	var body := MeshInstance3D.new()
-	var bm   := BoxMesh.new()
-	bm.size  = body_size
-	body.mesh = bm
-	var bmat := StandardMaterial3D.new()
-	bmat.albedo_color = body_col
-	bmat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	body.material_override = bmat
-	body.position.y = body_size.y * 0.5 + 0.05
-	body.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	_visual_root.add_child(body)
-
-	var head := MeshInstance3D.new()
-	var hm   := BoxMesh.new()
-	hm.size  = head_size
-	head.mesh = hm
-	var hmat := StandardMaterial3D.new()
-	hmat.albedo_color = head_col
-	hmat.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	head.material_override = hmat
-	head.position.y = body_size.y + head_size.y * 0.5 + 0.05
-	head.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	_visual_root.add_child(head)
+	build_biped(_visual_root, {
+		"body_size": body_size,
+		"head_size": head_size,
+		"body_col": body_col,
+		"head_col": head_col,
+		"arms_forward": species == "zombie",
+	})

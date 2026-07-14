@@ -82,31 +82,49 @@ func _build_visual(body_size: Vector3, head_size: Vector3,
 	_visual_root = Node3D.new()
 	_visual_root.name = "Visual"
 	add_child(_visual_root)
+	body_height = body_size.y + 0.38   # legs raise the body
 
-	var body_mesh := MeshInstance3D.new()
-	var body_box  := BoxMesh.new()
-	body_box.size = body_size
-	body_mesh.mesh = body_box
-	var bmat := StandardMaterial3D.new()
-	bmat.albedo_color = body_col
-	bmat.roughness    = 0.95
-	body_mesh.material_override = bmat
-	body_mesh.position.y = body_size.y * 0.5
-	body_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-	_visual_root.add_child(body_mesh)
-	body_height = body_size.y
+	var cfg := {
+		"body_size": body_size,
+		"head_size": head_size,
+		"body_col": body_col,
+		"head_col": head_col if head_col.r >= 0.0 else body_col,
+		"leg_h": 0.38,
+	}
+	# Species flair — snouts, ears, tails, antlers, wool
+	match species:
+		"pig":
+			cfg["snout_col"] = Color(0.98, 0.55, 0.55)
+			cfg["leg_h"] = 0.28
+		"cow":
+			cfg["snout_col"] = Color(0.92, 0.85, 0.78)
+			cfg["ears"] = "small"
+		"sheep":
+			cfg["wool"] = true
+			cfg["head_col"] = Color(0.85, 0.78, 0.70)
+			cfg["leg_col"] = Color(0.90, 0.88, 0.85)
+		"chicken":
+			cfg["leg_h"] = 0.30
+			cfg["leg_col"] = Color(0.92, 0.75, 0.30)
+			cfg["snout_col"] = Color(0.95, 0.70, 0.20)   # beak
+		"rabbit":
+			cfg["ears"] = "tall"
+			cfg["leg_h"] = 0.16
+		"wolf", "coyote":
+			cfg["ears"] = "small"
+			cfg["tail"] = true
+			cfg["snout_col"] = (head_col if head_col.r >= 0.0 else body_col).darkened(0.15)
+		"deer":
+			cfg["antlers"] = true
+			cfg["tail"] = true
+			cfg["leg_h"] = 0.52
+	build_quadruped(_visual_root, cfg)
 
-	var head_mesh := MeshInstance3D.new()
-	var head_box  := BoxMesh.new()
-	head_box.size = head_size
-	head_mesh.mesh = head_box
-	var hmat := StandardMaterial3D.new()
-	hmat.albedo_color = head_col if head_col.r >= 0.0 else body_col
-	hmat.roughness    = 0.95
-	head_mesh.material_override = hmat
-	head_mesh.position = Vector3(0.0, body_size.y - head_size.y * 0.1,
-		-body_size.z * 0.5 - head_size.z * 0.4)
-	_visual_root.add_child(head_mesh)
+	# Chickens get 2 legs only — drop the front pair
+	if species == "chicken" and _anim_legs.size() == 4:
+		(_anim_legs[2] as Node3D).queue_free()
+		(_anim_legs[3] as Node3D).queue_free()
+		_anim_legs.resize(2)
 
 
 func _build_collision(radius: float, height: float) -> void:
@@ -188,6 +206,7 @@ func _physics_process(delta: float) -> void:
 	_apply_base_physics(delta)
 	move_and_slide()
 	_check_step_up()
+	animate_walk(delta)
 	_update_taming_bar()
 
 

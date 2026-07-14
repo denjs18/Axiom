@@ -18,6 +18,7 @@ func _mob_ready() -> void:
 	attack_damage  = 2.5
 	attack_cooldown = SHOOT_EVERY
 	forget_range   = 30.0
+	burns_in_daylight = true
 	loot_table     = [
 		{"item": "axiom:bone",           "count_min": 0, "count_max": 2, "chance": 1.0},
 		{"item": "axiom:arrow",          "count_min": 0, "count_max": 2, "chance": 0.5},

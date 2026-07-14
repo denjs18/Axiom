@@ -16,8 +16,8 @@ var _spawn_timer: float = 8.0   # delay before first spawn after world load
 var _total_mobs: int = 0
 var _species_count: Dictionary = {}   # species (lowercase) → count
 
-# Biome-based spawn tables: biome_category → [{class, weight}]
-# category "" = any biome
+# Biome-based ANIMAL tables: biome_category → [{class, weight}]
+# category "" = any biome. Hostiles use the separate night table below.
 const BIOME_TABLES: Dictionary = {
 	"plains":   [
 		{"class": "Cow",      "weight": 28},
@@ -25,57 +25,52 @@ const BIOME_TABLES: Dictionary = {
 		{"class": "Pig",      "weight": 18},
 		{"class": "Chicken",  "weight": 14},
 		{"class": "Deer",     "weight": 10},
-		{"class": "Zombie",   "weight": 5},
-		{"class": "Skeleton", "weight": 3},
 	],
 	"forest":   [
 		{"class": "Deer",     "weight": 28},
-		{"class": "Wolf",     "weight": 18},
+		{"class": "Wolf",     "weight": 16},
 		{"class": "Rabbit",   "weight": 26},
-		{"class": "Chicken",  "weight": 10},
-		{"class": "Pig",      "weight": 8},
-		{"class": "Zombie",   "weight": 7},
-		{"class": "Skeleton", "weight": 3},
+		{"class": "Chicken",  "weight": 12},
+		{"class": "Pig",      "weight": 10},
 	],
 	"taiga":    [
 		{"class": "Wolf",     "weight": 28},
-		{"class": "Deer",     "weight": 28},
-		{"class": "Rabbit",   "weight": 24},
-		{"class": "Sheep",    "weight": 8},
-		{"class": "Zombie",   "weight": 8},
-		{"class": "Skeleton", "weight": 4},
+		{"class": "Deer",     "weight": 30},
+		{"class": "Rabbit",   "weight": 26},
+		{"class": "Sheep",    "weight": 10},
 	],
 	"desert":   [
-		{"class": "Rabbit",   "weight": 36},
-		{"class": "Coyote",   "weight": 30},
-		{"class": "Chicken",  "weight": 18},
-		{"class": "Zombie",   "weight": 10},
-		{"class": "Skeleton", "weight": 6},
+		{"class": "Rabbit",   "weight": 40},
+		{"class": "Coyote",   "weight": 34},
+		{"class": "Chicken",  "weight": 20},
 	],
 	"savanna":  [
-		{"class": "Cow",      "weight": 28},
-		{"class": "Sheep",    "weight": 22},
-		{"class": "Deer",     "weight": 22},
-		{"class": "Coyote",   "weight": 16},
-		{"class": "Zombie",   "weight": 8},
-		{"class": "Skeleton", "weight": 4},
+		{"class": "Cow",      "weight": 30},
+		{"class": "Sheep",    "weight": 24},
+		{"class": "Deer",     "weight": 24},
+		{"class": "Coyote",   "weight": 18},
 	],
 	"swamp":    [
-		{"class": "Pig",      "weight": 32},
-		{"class": "Chicken",  "weight": 28},
-		{"class": "Rabbit",   "weight": 18},
-		{"class": "Zombie",   "weight": 14},
-		{"class": "Skeleton", "weight": 8},
+		{"class": "Pig",      "weight": 36},
+		{"class": "Chicken",  "weight": 32},
+		{"class": "Rabbit",   "weight": 22},
 	],
 	"": [
-		{"class": "Rabbit",   "weight": 18},
-		{"class": "Coyote",   "weight": 7},
-		{"class": "Wolf",     "weight": 8},
-		{"class": "Chicken",  "weight": 13},
-		{"class": "Zombie",   "weight": 10},
-		{"class": "Skeleton", "weight": 6},
+		{"class": "Rabbit",   "weight": 20},
+		{"class": "Coyote",   "weight": 8},
+		{"class": "Wolf",     "weight": 9},
+		{"class": "Chicken",  "weight": 15},
+		{"class": "Sheep",    "weight": 10},
 	],
 }
+
+# Hostiles spawn at night (or during blood moons, or in the Nether).
+const HOSTILE_TABLE: Array = [
+	{"class": "Zombie",   "weight": 36},
+	{"class": "Skeleton", "weight": 24},
+	{"class": "Creeper",  "weight": 22},
+	{"class": "Spider",   "weight": 18},
+]
 
 
 func initialize(chunk_manager: ChunkManager) -> void:
@@ -115,6 +110,18 @@ func _try_spawn_group() -> void:
 	if _total_mobs >= MAX_TOTAL:
 		return
 
+	# Pick the spawn category: hostiles come out at night / blood moon / Nether
+	var blood_moon := TimeManager.is_blood_moon
+	var is_night := not TimeManager.is_day()
+	var in_nether := GameManager.current_dimension == "nether"
+	var hostile_roll: bool
+	if in_nether or blood_moon:
+		hostile_roll = true
+	elif is_night:
+		hostile_roll = randf() < 0.72
+	else:
+		hostile_roll = false
+
 	for _attempt in 8:
 		var angle  := randf() * TAU
 		var dist   := randf_range(MIN_DIST, MAX_DIST)
@@ -122,20 +129,27 @@ func _try_spawn_group() -> void:
 		var surface := _find_surface(try_xz)
 		if surface == Vector3.ZERO:
 			continue
-		var biome_cat := _get_biome_category(surface)
-		var animal_class := _pick_species(biome_cat, _species_count)
-		if animal_class.is_empty():
+
+		var mob_class: String
+		if hostile_roll:
+			mob_class = _pick_from_table(HOSTILE_TABLE, _species_count)
+		else:
+			var biome_cat := _get_biome_category(surface)
+			mob_class = _pick_species(biome_cat, _species_count)
+		if mob_class.is_empty():
 			continue
-		var blood_moon := TimeManager.is_blood_moon
-		var solo := (animal_class == "Wolf" or animal_class == "Coyote")
+
+		var solo := mob_class in ["Wolf", "Coyote", "Creeper", "Spider"]
 		var group: int
 		if blood_moon:
-			group = 1 if solo else randi_range(3, 6)
+			group = randi_range(2, 4) if solo else randi_range(3, 6)
+		elif hostile_roll:
+			group = 1 if solo else randi_range(1, 3)
 		else:
 			group = 1 if solo else randi_range(2, 4)
 		for _i in group:
 			var off := Vector3(randf_range(-2.5, 2.5), 0, randf_range(-2.5, 2.5))
-			var mob := _spawn_animal(animal_class, surface + off)
+			var mob := _spawn_animal(mob_class, surface + off)
 			if mob != null and blood_moon and randf() < 0.30:
 				mob.make_elite()
 		return
@@ -172,6 +186,10 @@ func _get_biome_category(surface_pos: Vector3) -> String:
 func _pick_species(biome_cat: String, species_counts: Dictionary) -> String:
 	# Try biome-specific table first, fall back to generic
 	var table: Array = BIOME_TABLES.get(biome_cat, BIOME_TABLES.get("", []))
+	return _pick_from_table(table, species_counts)
+
+
+func _pick_from_table(table: Array, species_counts: Dictionary) -> String:
 	if table.is_empty():
 		return ""
 	var candidates: Array = []
@@ -206,6 +224,8 @@ func _spawn_animal(mob_class: String, pos: Vector3) -> BaseMob:
 		"Coyote":   mob = Coyote.new()
 		"Zombie":   mob = Zombie.new()
 		"Skeleton": mob = Skeleton.new()
+		"Creeper":  mob = Creeper.new()
+		"Spider":   mob = Spider.new()
 		_: return null
 	get_parent().add_child(mob)
 	mob.global_position = pos
