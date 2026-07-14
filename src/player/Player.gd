@@ -415,6 +415,7 @@ func _break_block(bpos: Vector3i, bid: int) -> void:
 
 	_chunk_manager.set_block_at(bpos, 0)
 	if _block_entity_manager != null:
+		_spill_container_contents(bpos)
 		_block_entity_manager.remove_entity(bpos)
 	EventBus.block_broken.emit(bpos, bid, self)
 	block_break_progress.emit(0.0)
@@ -554,6 +555,23 @@ func _tick_poison(delta: float) -> void:
 		if health > 1.0:
 			health = maxf(1.0, health - 1.0)
 			EventBus.player_health_changed.emit(self, health, max_health)
+
+
+## Breaking a chest/furnace spills its contents on the ground.
+func _spill_container_contents(bpos: Vector3i) -> void:
+	var ent = _block_entity_manager.get_entity(bpos)
+	if ent == null:
+		return
+	var drop_pos := Vector3(bpos.x + 0.5, bpos.y + 0.6, bpos.z + 0.5)
+	var stacks: Array = []
+	if ent is ChestEntity:
+		stacks = (ent as ChestEntity).slots
+	elif ent is FurnaceEntity:
+		var f := ent as FurnaceEntity
+		stacks = [f.input_slot, f.fuel_slot, f.output_slot]
+	for stack in stacks:
+		if stack is Dictionary and not ItemRegistry.is_empty_stack(stack):
+			EventBus.item_dropped.emit(stack.duplicate(), drop_pos)
 
 
 func _place_block(bpos: Vector3i) -> void:

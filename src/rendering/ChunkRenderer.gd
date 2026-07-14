@@ -726,18 +726,24 @@ func force_initial_build() -> void:
 		return
 	_ensure_uv_cache()
 	var blocks_snap := _chunk.blocks.duplicate()
+	var light_snap  := _chunk.light_data.duplicate()
 	var flags_snap  := BlockRegistry._block_flags.duplicate()
 	var shapes_snap := BlockRegistry._block_shape.duplicate()
 	var uvs_snap    := _uv_cache.duplicate()
 	var nb_snaps: Array = []
+	var nb_lights: Array = []
 	if _manager != null:
 		for i in 6:
 			var nb := _manager.get_chunk(_chunk.chunk_pos + FACE_OFFSETS[i])
 			nb_snaps.append(nb.blocks.duplicate() if nb != null else PackedInt32Array())
+			nb_lights.append(nb.light_data.duplicate() if nb != null else PackedByteArray())
 	else:
-		for _i in 6: nb_snaps.append(PackedInt32Array())
+		for _i in 6:
+			nb_snaps.append(PackedInt32Array())
+			nb_lights.append(PackedByteArray())
 
-	var surfaces := _compute_surfaces(blocks_snap, nb_snaps, flags_snap, uvs_snap, shapes_snap)
+	var surfaces := _compute_surfaces(
+		blocks_snap, nb_snaps, flags_snap, uvs_snap, shapes_snap, light_snap, nb_lights)
 	_apply_mesh_data(surfaces)
 	_dirty = false
 

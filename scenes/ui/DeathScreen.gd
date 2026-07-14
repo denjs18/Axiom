@@ -75,6 +75,7 @@ func _on_player_died(player: Node, _cause: String) -> void:
 	_fade_t  = 0.0
 	visible  = true
 	get_tree().paused = true
+	GameManager.current_state = GameManager.GameState.GAME_OVER
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var sub := _root.find_child("SubLabel", true, false) as Label
 	if sub != null and player != null and player.get("xp_level") != null:
@@ -92,6 +93,7 @@ func _on_respawn() -> void:
 	_showing = false
 	visible  = false
 	get_tree().paused = false
+	GameManager.current_state = GameManager.GameState.PLAYING
 	var player := GameManager.local_player
 	if player != null:
 		# Ensure spawn chunks have collision before dropping the player in

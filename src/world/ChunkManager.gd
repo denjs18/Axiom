@@ -172,6 +172,8 @@ func ensure_chunk_sync(cp: Vector3i) -> void:
 		chunk = Chunk.new(cp.x, cp.y, cp.z, dimension)
 		if _world_generator != null:
 			_world_generator.generate_chunk(chunk, world_seed)
+		LightEngine.compute_sky_light_for_chunk(chunk)
+		LightEngine.compute_block_light_for_chunk(chunk)
 		chunk.is_generated = true
 	_finalize_chunk(chunk)
 
