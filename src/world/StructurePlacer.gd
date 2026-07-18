@@ -12,7 +12,8 @@ const HALF_FOOT   := 7     # max half-footprint of any structure (determines cel
 # Boss fortress constants (one per larger cell, rarer)
 const FORT_CELL   := 400   # one fortress every ~400 blocks
 const FORT_ODDS   := 60    # % chance a cell has a fortress
-const FORT_RADIUS := 600   # fortresses within this distance from spawn
+const FORT_RADIUS := 900   # fortresses within this distance from spawn
+const FORT_MIN_RADIUS := 260  # ...but never right on top of the spawn point
 const FORT_HALF   := 8     # half-footprint of fortress
 
 # Biome castle constants
@@ -604,7 +605,8 @@ func _try_place_fortress(chunk: Chunk, wx0: int, wy0: int, wz0: int, cx: int, cz
 	var oz := (h >> 18) % (FORT_CELL - 20) + 10
 	var wx := cx * FORT_CELL + ox
 	var wz := cz * FORT_CELL + oz
-	if wx * wx + wz * wz > FORT_RADIUS * FORT_RADIUS:
+	var d2 := wx * wx + wz * wz
+	if d2 > FORT_RADIUS * FORT_RADIUS or d2 < FORT_MIN_RADIUS * FORT_MIN_RADIUS:
 		return
 	var wy: int = _height_fn.call(float(wx), float(wz))
 	_write_blocks(chunk, wx, wy, wz, wx0, wy0, wz0, _build_stone_fortress())

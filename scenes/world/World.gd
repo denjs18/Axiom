@@ -766,10 +766,12 @@ func _spawn_merchant_at_node(cx: int, cz: int) -> void:
 
 const _FORT_CELL   := 400
 const _FORT_ODDS   := 60
-const _FORT_RADIUS := 600
+const _FORT_RADIUS := 900       # max distance from origin a fortress may spawn
+const _FORT_MIN_RADIUS := 260   # keep the Stone Guardian well away from spawn
 const _ARENA_CELL  := 350
 const _ARENA_ODDS  := 55
-const _ARENA_RADIUS := 400
+const _ARENA_RADIUS := 600
+const _ARENA_MIN_RADIUS := 200  # keep the Echo away from the nether entry point
 
 var _spawned_bosses: Dictionary = {}   # "type:cx,cz" → true
 
@@ -798,7 +800,8 @@ func _try_spawn_guardian(cp: Vector3i) -> void:
 	var oz := (h >> 18) % (_FORT_CELL - 20) + 10
 	var bx := cx * _FORT_CELL + ox
 	var bz := cz * _FORT_CELL + oz
-	if bx * bx + bz * bz > _FORT_RADIUS * _FORT_RADIUS:
+	var d2 := bx * bx + bz * bz
+	if d2 > _FORT_RADIUS * _FORT_RADIUS or d2 < _FORT_MIN_RADIUS * _FORT_MIN_RADIUS:
 		return
 	# Only spawn if this chunk actually contains the fortress center
 	if abs(bx - (wx0 + 8)) > 16 or abs(bz - (wz0 + 8)) > 16:
@@ -825,7 +828,8 @@ func _try_spawn_echo(cp: Vector3i) -> void:
 	var oz := (h >> 17) % (_ARENA_CELL - 20) + 10
 	var bx := cx * _ARENA_CELL + ox
 	var bz := cz * _ARENA_CELL + oz
-	if bx * bx + bz * bz > _ARENA_RADIUS * _ARENA_RADIUS:
+	var d2 := bx * bx + bz * bz
+	if d2 > _ARENA_RADIUS * _ARENA_RADIUS or d2 < _ARENA_MIN_RADIUS * _ARENA_MIN_RADIUS:
 		return
 	if abs(bx - (wx0 + 8)) > 16 or abs(bz - (wz0 + 8)) > 16:
 		return

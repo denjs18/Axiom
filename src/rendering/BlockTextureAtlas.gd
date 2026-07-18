@@ -249,11 +249,11 @@ func _composite_over(base: Image, overlay: Image) -> void:
 ## Convert any source image to a 16×16 RGBA8 tile. Animated strips (taller than
 ## wide, e.g. water/lava) are cropped to their first frame.
 func _normalize_tile(src: Image) -> Image:
-	var img := src.duplicate()
+	var img: Image = src.duplicate()
 	if img.get_format() != Image.FORMAT_RGBA8:
 		img.convert(Image.FORMAT_RGBA8)
-	var w := img.get_width()
-	var h := img.get_height()
+	var w: int = img.get_width()
+	var h: int = img.get_height()
 	if w <= 0 or h <= 0:
 		return null
 	if h > w:
@@ -1007,7 +1007,7 @@ func _end_portal(img: Image, rng: RandomNumberGenerator) -> void:
 	for _i in 8:
 		var px := rng.randi_range(0, 15)
 		var py := rng.randi_range(0, 15)
-		var c := [Color8(120, 240, 190), Color8(90, 160, 230), Color8(230, 230, 160)][rng.randi_range(0, 2)]
+		var c: Color = [Color8(120, 240, 190), Color8(90, 160, 230), Color8(230, 230, 160)][rng.randi_range(0, 2)]
 		img.set_pixel(px, py, c)
 
 

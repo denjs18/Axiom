@@ -346,12 +346,80 @@ static var _heart_tex: Array = []    # [full, half, empty]
 static var _shank_tex: Array = []
 
 func _ensure_icon_textures() -> void:
+	# Icons are generated procedurally: PNG resources fail to load on the web
+	# export (no ResourceImporter → "expected CompressedTexture2D").
 	if _heart_tex.is_empty():
-		for n in ["heart_full", "heart_half", "heart_empty"]:
-			var path := "res://assets/textures/ui/%s.png" % n
-			_heart_tex.append(load(path) if ResourceLoader.exists(path) else null)
+		_heart_tex = [_draw_heart(1.0), _draw_heart(0.5), _draw_heart(0.0)]
 	if _shank_tex.is_empty():
 		_shank_tex = [_draw_shank(1.0), _draw_shank(0.5), _draw_shank(0.0)]
+
+
+## 16×16 pixel-art heart (Minecraft-style health icon). fill: 1=full, .5=half, 0=empty.
+func _draw_heart(fill: float) -> ImageTexture:
+	var img := Image.create(16, 16, false, Image.FORMAT_RGBA8)
+	var red   := Color8(220, 40, 48)
+	var red2  := Color8(178, 26, 36)
+	var shine := Color8(255, 150, 150)
+	var dark  := Color8(70, 12, 16)
+	var empty := Color8(48, 22, 24)
+	var empty2 := Color8(36, 16, 18)
+	# Heart mask: two lobes on top, tapering to a point at the bottom.
+	for y in 16:
+		for x in 16:
+			var inside := _heart_pixel(x, y)
+			if not inside:
+				continue
+			var col: Color
+			if fill <= 0.0:
+				col = empty if (x + y) % 2 == 0 else empty2
+			elif fill < 1.0 and x >= 8:
+				# Right half drained (half heart)
+				col = empty if (x + y) % 2 == 0 else empty2
+			else:
+				col = red if (x + y) % 4 != 0 else red2
+			img.set_pixel(x, y, col)
+	# Outline + highlight only on the lit portion
+	for y in 16:
+		for x in 16:
+			if not _heart_pixel(x, y):
+				continue
+			# Outline where a neighbour is outside the mask
+			if not _heart_pixel(x - 1, y) or not _heart_pixel(x + 1, y) \
+					or not _heart_pixel(x, y - 1) or not _heart_pixel(x, y + 1):
+				img.set_pixel(x, y, dark)
+	# Specular sparkle on the top-left lobe (full / left-half only)
+	if fill > 0.0:
+		img.set_pixel(4, 4, shine)
+		img.set_pixel(5, 4, shine)
+		img.set_pixel(4, 5, shine.darkened(0.15))
+	return ImageTexture.create_from_image(img)
+
+
+## Classic 16×16 heart silhouette test.
+func _heart_pixel(x: int, y: int) -> bool:
+	if x < 0 or x > 15 or y < 0 or y > 15:
+		return false
+	# Per-row spans (inclusive) describing the heart shape.
+	var spans := [
+		[],                # 0
+		[[3, 6], [9, 12]], # 1
+		[[2, 7], [8, 13]], # 2
+		[[2, 13]],         # 3
+		[[2, 13]],         # 4
+		[[2, 13]],         # 5
+		[[2, 13]],         # 6
+		[[3, 12]],         # 7
+		[[3, 12]],         # 8
+		[[4, 11]],         # 9
+		[[5, 10]],         # 10
+		[[6, 9]],          # 11
+		[[7, 8]],          # 12
+		[], [], [],        # 13-15
+	]
+	for span in spans[y]:
+		if x >= span[0] and x <= span[1]:
+			return true
+	return false
 
 
 ## 16×16 pixel-art meat shank (Minecraft-style hunger icon).
