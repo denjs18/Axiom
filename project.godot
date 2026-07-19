@@ -36,6 +36,7 @@ TimeManager="*res://src/core/TimeManager.gd"
 SeasonManager="*res://src/core/SeasonManager.gd"
 SoundManager="*res://src/core/SoundManager.gd"
 QuestManager="*res://src/systems/QuestManager.gd"
+ProgressTracker="*res://src/systems/ProgressTracker.gd"
 R2Engine="*res://src/world/redstone2/R2Engine.gd"
 
 [display]

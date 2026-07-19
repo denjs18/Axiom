@@ -77,6 +77,7 @@ signal nexus_exited()
 
 # HUD notifications
 signal show_message(text: String, duration: float)  # brief centred message on screen
+signal advancement_unlocked(id: String, title: String, description: String)  # → HUD toast
 
 # Season / weather events
 signal season_changed(season: int)    # Season enum index: 0=Spring 1=Summer 2=Autumn 3=Winter

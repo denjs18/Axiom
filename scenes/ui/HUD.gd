@@ -78,6 +78,8 @@ func _ready() -> void:
 	EventBus.quest_accepted.connect(_on_quest_accepted)
 	EventBus.quest_progress_updated.connect(_on_quest_progress_updated)
 	EventBus.quest_completed.connect(_on_quest_completed)
+	EventBus.advancement_unlocked.connect(_on_advancement_unlocked)
+	EventBus.player_died.connect(_on_player_died_marker)
 	_setup_vignette()
 	_setup_hotbar()
 	_setup_xp_bar()
@@ -92,6 +94,9 @@ func _ready() -> void:
 	_setup_artifact_overlay()
 	_setup_quest_tracker()
 	_setup_guide_hint()
+	_setup_toasts()
+	_setup_death_marker()
+	_setup_coords()
 
 
 func _on_player_spawned(player: Player) -> void:
@@ -186,6 +191,9 @@ func _process(delta: float) -> void:
 		return
 	_update_hotbar_selection()
 	_tick_vignette(delta)
+	_tick_toasts(delta)
+	_tick_death_marker()
+	_tick_coords(delta)
 	_tick_blood_moon_label(delta)
 	_tick_message_label(delta)
 	_tick_boss_bar(delta)
@@ -344,6 +352,163 @@ func _on_hunger_changed(player: Player, new_hunger: float, _sat: float) -> void:
 	if player != _player or hunger_bar == null:
 		return
 	_update_icon_bar(hunger_bar, new_hunger, 20.0, "hunger")
+
+
+# ── Advancement toasts ─────────────────────────────────────────────────────────
+
+var _toast_root: PanelContainer = null
+var _toast_title: Label = null
+var _toast_desc: Label  = null
+var _toast_queue: Array = []
+var _toast_t: float = 0.0
+
+const _TOAST_TIME := 3.6
+
+
+func _setup_toasts() -> void:
+	_toast_root = PanelContainer.new()
+	_toast_root.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	_toast_root.offset_left   = -344
+	_toast_root.offset_right  = -16
+	_toast_root.offset_top    = 100
+	_toast_root.add_theme_stylebox_override("panel",
+		UITheme.flat(UITheme.PANEL, 12, UITheme.ACCENT_DEEP))
+	_toast_root.visible = false
+	add_child(_toast_root)
+
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	_toast_root.add_child(row)
+
+	var star := Label.new()
+	star.text = "★"
+	star.add_theme_font_size_override("font_size", 30)
+	star.add_theme_color_override("font_color", UITheme.GOLD)
+	star.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	row.add_child(star)
+
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 1)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(col)
+
+	var head := Label.new()
+	head.text = "PROGRÈS ACCOMPLI"
+	head.add_theme_font_size_override("font_size", 10)
+	head.add_theme_color_override("font_color", UITheme.ACCENT)
+	col.add_child(head)
+
+	_toast_title = Label.new()
+	_toast_title.add_theme_font_size_override("font_size", 17)
+	_toast_title.add_theme_color_override("font_color", UITheme.TEXT)
+	col.add_child(_toast_title)
+
+	_toast_desc = Label.new()
+	_toast_desc.add_theme_font_size_override("font_size", 11)
+	_toast_desc.add_theme_color_override("font_color", UITheme.TEXT_DIM)
+	col.add_child(_toast_desc)
+
+
+func _on_advancement_unlocked(_id: String, title: String, description: String) -> void:
+	_toast_queue.append([title, description])
+
+
+func _tick_toasts(delta: float) -> void:
+	if _toast_root == null:
+		return
+	if _toast_t <= 0.0:
+		if _toast_queue.is_empty():
+			_toast_root.visible = false
+			return
+		var entry: Array = _toast_queue.pop_front()
+		_toast_title.text = str(entry[0])
+		_toast_desc.text  = str(entry[1])
+		_toast_t = _TOAST_TIME
+		_toast_root.visible = true
+		SoundManager.play("chime", -4.0)
+	_toast_t -= delta
+	# Fade in fast, fade out at the tail
+	var a := minf((_TOAST_TIME - _toast_t) / 0.25, minf(_toast_t / 0.35, 1.0))
+	_toast_root.modulate = Color(1, 1, 1, clampf(a, 0.0, 1.0))
+
+
+# ── Death marker + coordinates ─────────────────────────────────────────────────
+
+var _death_pos: Vector3 = Vector3.ZERO
+var _death_dim: String  = ""
+var _death_label: Label = null
+var _coords_label: Label = null
+var _coords_t: float = 0.0
+
+
+func _setup_death_marker() -> void:
+	_death_label = Label.new()
+	_death_label.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	_death_label.offset_top    = 58
+	_death_label.offset_bottom = 80
+	_death_label.offset_left   = -140
+	_death_label.offset_right  = 140
+	_death_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_death_label.add_theme_font_size_override("font_size", 13)
+	_death_label.add_theme_color_override("font_color", Color(0.95, 0.75, 0.72, 0.92))
+	_death_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.8))
+	_death_label.add_theme_constant_override("shadow_offset_y", 1)
+	_death_label.visible = false
+	add_child(_death_label)
+
+
+func _on_player_died_marker(player: Node, _cause: String) -> void:
+	if player is Node3D:
+		_death_pos = (player as Node3D).global_position
+		_death_dim = GameManager.current_dimension
+
+
+func _tick_death_marker() -> void:
+	if _death_label == null or _player == null:
+		return
+	if _death_dim.is_empty() or _death_dim != GameManager.current_dimension \
+			or _player.health <= 0.0:
+		_death_label.visible = false
+		return
+	var d := _player.global_position.distance_to(_death_pos)
+	if d < 6.0:
+		_death_dim = ""   # reached the spot — retire the marker
+		_death_label.visible = false
+		return
+	var delta_pos := _death_pos - _player.global_position
+	_death_label.text = "💀 %d m %s" % [int(d), _wind_dir(delta_pos.x, delta_pos.z)]
+	_death_label.visible = true
+
+
+func _wind_dir(dx: float, dz: float) -> String:
+	var ang := fposmod(rad_to_deg(atan2(dx, -dz)) + 22.5, 360.0)
+	var dirs: Array[String] = ["N", "N-E", "E", "S-E", "S", "S-O", "O", "N-O"]
+	return dirs[int(ang / 45.0) % 8]
+
+
+func _setup_coords() -> void:
+	_coords_label = Label.new()
+	_coords_label.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	_coords_label.offset_left   = 12
+	_coords_label.offset_top    = -114
+	_coords_label.offset_bottom = -94
+	_coords_label.offset_right  = 240
+	_coords_label.add_theme_font_size_override("font_size", 12)
+	_coords_label.add_theme_color_override("font_color", UITheme.TEXT_DIM)
+	_coords_label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.7))
+	_coords_label.add_theme_constant_override("shadow_offset_y", 1)
+	add_child(_coords_label)
+
+
+func _tick_coords(delta: float) -> void:
+	if _coords_label == null or _player == null:
+		return
+	_coords_t += delta
+	if _coords_t < 0.2:
+		return
+	_coords_t = 0.0
+	var p := _player.global_position
+	_coords_label.text = "X %d   Y %d   Z %d" % [floori(p.x), floori(p.y), floori(p.z)]
 
 
 # ── Damage / low-health vignette ───────────────────────────────────────────────
