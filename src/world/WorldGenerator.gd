@@ -376,6 +376,7 @@ func _place_ore_veins(chunk: Chunk, wx0: int, wy0: int, wz0: int) -> void:
 
 func _place_surface_features(chunk: Chunk, wx0: int, wy0: int, wz0: int,
 		heights: PackedInt32Array, biomes: Array) -> void:
+	_place_trees(chunk, wx0, wy0, wz0, heights, biomes)
 	var rng := RandomNumberGenerator.new()
 	var sz := Chunk.SIZE
 	var sq := Chunk.SIZE_SQ
@@ -391,11 +392,68 @@ func _place_surface_features(chunk: Chunk, wx0: int, wy0: int, wz0: int,
 				continue
 			rng.seed = hash(Vector3i(wx0 + lx, world_height, wz0 + lz)) ^ _seed
 			var biome_id: String = biomes[lx * sz + lz]
-			if surface_ly + 8 < sz:
-				_try_place_tree(chunk, lx, surface_ly, lz, biome_id, rng)
 			_try_place_vegetation(chunk, lx, surface_ly, lz, biome_id, surface_bid,
 				world_height, wx0, wz0, rng)
 			_try_place_biome_feature(chunk, lx, surface_ly, lz, biome_id, surface_bid, rng)
+
+
+const _TREE_XZ_MARGIN := 3    # widest canopy radius that can reach across a border
+const _TREE_MAX_RISE  := 14   # tallest tree span above its base
+
+
+## World-deterministic tree pass. Every chunk rolls the SAME trees for every
+## column in its neighbourhood (per-column seeded RNG) and writes only the
+## blocks that land inside itself — so trunks and canopies cross chunk borders
+## seamlessly. The old per-chunk pass required the whole tree to fit inside
+## one 16³ chunk, which silently made half the terrain (whole height bands)
+## treeless and clipped canopies at every border.
+func _place_trees(chunk: Chunk, wx0: int, wy0: int, wz0: int,
+		heights: PackedInt32Array, biomes: Array) -> void:
+	var sz := Chunk.SIZE
+	var sq := Chunk.SIZE_SQ
+	var rng := RandomNumberGenerator.new()
+	for gx in range(-_TREE_XZ_MARGIN, sz + _TREE_XZ_MARGIN):
+		for gz in range(-_TREE_XZ_MARGIN, sz + _TREE_XZ_MARGIN):
+			var wx := wx0 + gx
+			var wz := wz0 + gz
+			var inside := gx >= 0 and gx < sz and gz >= 0 and gz < sz
+			var h: int
+			var biome_id: String
+			if inside:
+				h = heights[gx * sz + gz]
+				biome_id = biomes[gx * sz + gz]
+			else:
+				h = _compute_height(float(wx), float(wz))
+				biome_id = _sample_biome(float(wx), float(wz))
+			if h < SEA_LEVEL:
+				continue
+			# Does this tree's vertical span intersect this chunk at all?
+			if h + 1 + _TREE_MAX_RISE < wy0 or h + 1 > wy0 + sz - 1:
+				continue
+			var species := tree_species_for_biome(biome_id)
+			if species.is_empty():
+				continue
+			# Salted differently from the vegetation seed so the rolls stay
+			# independent; identical in every chunk that sees this column.
+			rng.seed = (hash(Vector3i(wx, h, wz)) ^ _seed) + 0x7EE5
+			if rng.randf() > _tree_density(biome_id):
+				continue
+			var blocks := build_tree(species, rng)
+			var base_ly := h + 1 - wy0
+			for b: Array in blocks:
+				var nlx: int = gx + b[0]
+				var nly: int = base_ly + b[1]
+				var nlz: int = gz + b[2]
+				if nlx < 0 or nlx >= sz or nly < 0 or nly >= sz or nlz < 0 or nlz >= sz:
+					continue
+				var idx := nly * sq + nlz * sz + nlx
+				# Logs always overwrite; leaves only fill air
+				var bid: int = b[3]
+				if _is_leaf(bid):
+					if chunk.blocks[idx] == 0:
+						chunk.blocks[idx] = bid
+				else:
+					chunk.blocks[idx] = bid
 
 
 ## Ground cover: flowers, grass tufts, mushrooms, dead bushes, cane, pumpkins.
@@ -543,37 +601,11 @@ static func _tree_density(biome_id: String) -> float:
 		"twilight_hollow":                return 0.050
 		"savanna":                        return 0.012
 		"swamp", "mangrove_swamp":        return 0.030
-		"meadow":                         return 0.004
-		"plains":                         return 0.006
-		"windswept_hills":                return 0.010
+		"meadow":                         return 0.006
+		"plains":                         return 0.010
+		"windswept_hills":                return 0.014
 		"oasis":                          return 0.0     # palms handled separately
 		_:                                return 0.0
-
-
-func _try_place_tree(chunk: Chunk, lx: int, surface_ly: int, lz: int,
-		biome_id: String, rng: RandomNumberGenerator) -> void:
-	var species := tree_species_for_biome(biome_id)
-	if species.is_empty():
-		return
-	if rng.randf() > _tree_density(biome_id):
-		return
-	var blocks := build_tree(species, rng)
-	var sz := CHUNK_SIZE
-	var sq := sz * sz
-	for b: Array in blocks:
-		var nlx: int = lx + b[0]
-		var nly: int = surface_ly + 1 + b[1]
-		var nlz: int = lz + b[2]
-		if nlx < 0 or nlx >= sz or nly < 0 or nly >= sz or nlz < 0 or nlz >= sz:
-			continue
-		var idx := nly * sq + nlz * sz + nlx
-		# Logs always overwrite; leaves only fill air
-		var bid: int = b[3]
-		if _is_leaf(bid):
-			if chunk.blocks[idx] == 0:
-				chunk.blocks[idx] = bid
-		else:
-			chunk.blocks[idx] = bid
 
 
 static func _is_leaf(bid: int) -> bool:
