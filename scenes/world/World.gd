@@ -206,7 +206,9 @@ func _relight_around(pos: Vector3i) -> void:
 	light_engine.on_block_changed(pos)
 	var cp    := Chunk.world_to_chunk(pos)
 	var local := Chunk.world_to_local(pos, cp.y)
-	chunk_manager._mark_dirty(cp, true)
+	# Same-frame rebuild — coalesces with the one queued by set_block_at, so
+	# the edit shows up instantly with correct lighting.
+	chunk_manager._rebuild_now(cp, true)
 	# Light bleeds across borders — refresh direct neighbours when close to one
 	if local.x <= 1:  _relight_neighbor(cp + Vector3i(-1, 0, 0))
 	if local.x >= 14: _relight_neighbor(cp + Vector3i(1, 0, 0))
@@ -222,7 +224,7 @@ func _relight_neighbor(cp: Vector3i) -> void:
 		return
 	LightEngine.compute_sky_light_for_chunk(chunk)
 	LightEngine.compute_block_light_for_chunk(chunk)
-	chunk_manager._mark_dirty(cp)
+	chunk_manager._rebuild_now(cp)
 
 
 func _random_block_tick() -> void:

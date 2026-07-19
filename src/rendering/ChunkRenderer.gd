@@ -734,6 +734,48 @@ func _apply_collision_shape(shape: ConcavePolygonShape3D) -> void:
 	_col_applied = true
 
 
+# ── Synchronous rebuild for player edits ──────────────────────────────────────
+# On the web the async WorkerThreadPool queue is saturated by chunk/LOD
+# generation, so an edited chunk could keep showing a ghost block for seconds.
+# Player edits instead trigger a same-frame rebuild, coalesced per renderer so
+# an explosion or a growing tree costs one rebuild per touched chunk.
+
+var _sync_queued: bool = false
+
+
+func rebuild_now(with_collision: bool = true) -> void:
+	if with_collision:
+		_col_dirty = true
+	if _sync_queued:
+		return
+	_sync_queued = true
+	_do_sync_rebuild.call_deferred()
+
+
+func _do_sync_rebuild() -> void:
+	_sync_queued = false
+	if _chunk == null:
+		return
+	if _chunk.is_all_air:
+		mesh = null
+		_col_faces_snapshot = PackedVector3Array()
+		_mesh_applied = true
+		_dirty        = false
+		_col_dirty    = false
+		_clear_collision_body()
+		return
+	force_initial_build()
+	if _col_faces_snapshot.is_empty():
+		_clear_collision_body()
+
+
+func _clear_collision_body() -> void:
+	for child in get_children():
+		if child is StaticBody3D:
+			child.queue_free()
+	_col_applied = false
+
+
 func force_initial_build() -> void:
 	if _chunk == null or _chunk.is_all_air:
 		return

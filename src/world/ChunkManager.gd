@@ -292,14 +292,22 @@ func set_block_at(world_pos: Vector3i, block_id: int, meta: Dictionary = {}) -> 
 	chunk.set_block(local.x, local.y, local.z, block_id)
 	if not meta.is_empty():
 		chunk.set_block_meta(local.x, local.y, local.z, meta)
-	_mark_dirty(cp, true)   # own chunk: rebuild collision too
+	# Player edits rebuild same-frame — the async queue can lag seconds behind
+	# on web and a ghost block feels broken.
+	_rebuild_now(cp, true)   # own chunk: rebuild collision too
 	# Neighbours: visual only
-	if local.x == 0:  _mark_dirty(cp + Vector3i(-1, 0, 0))
-	elif local.x == 15: _mark_dirty(cp + Vector3i(1, 0, 0))
-	if local.z == 0:  _mark_dirty(cp + Vector3i(0, 0, -1))
-	elif local.z == 15: _mark_dirty(cp + Vector3i(0, 0, 1))
-	if local.y == 0:  _mark_dirty(cp + Vector3i(0, -1, 0))
-	elif local.y == 15: _mark_dirty(cp + Vector3i(0, 1, 0))
+	if local.x == 0:  _rebuild_now(cp + Vector3i(-1, 0, 0))
+	elif local.x == 15: _rebuild_now(cp + Vector3i(1, 0, 0))
+	if local.z == 0:  _rebuild_now(cp + Vector3i(0, 0, -1))
+	elif local.z == 15: _rebuild_now(cp + Vector3i(0, 0, 1))
+	if local.y == 0:  _rebuild_now(cp + Vector3i(0, -1, 0))
+	elif local.y == 15: _rebuild_now(cp + Vector3i(0, 1, 0))
+
+
+func _rebuild_now(cp: Vector3i, with_collision: bool = false) -> void:
+	var key := _chunk_key(cp)
+	if _renderers.has(key):
+		(_renderers[key] as ChunkRenderer).rebuild_now(with_collision)
 
 
 func get_chunk(cp: Vector3i) -> Chunk:
