@@ -96,6 +96,44 @@ const _TINTS: Dictionary = {
 	"vine":                    _COL_FOLIAGE,
 }
 
+# ── Visible seasons ────────────────────────────────────────────────────────────
+# Untinted source tiles are kept at build time; on season change the affected
+# tiles are re-tinted and blitted back into the atlas (texture.update) — every
+# loaded chunk shifts color instantly, no mesh rebuild needed.
+# Index: 0=Spring 1=Summer 2=Autumn 3=Winter. Summer = the base palette above.
+const _SEASONS_GRASS: Array[Color] = [
+	Color(0.478, 0.753, 0.331),   # spring — vivid fresh green
+	_COL_GRASS,                   # summer — baseline
+	Color(0.660, 0.628, 0.290),   # autumn — dry yellowed grass
+	Color(0.565, 0.615, 0.505),   # winter — frosty pale sage
+]
+const _SEASONS_FOLIAGE: Array[Color] = [
+	Color(0.400, 0.710, 0.220),   # spring
+	_COL_FOLIAGE,                 # summer
+	Color(0.780, 0.420, 0.150),   # autumn — orange fire
+	Color(0.390, 0.480, 0.365),   # winter — dull cold green
+]
+const _SEASONS_BIRCH: Array[Color] = [
+	Color(0.480, 0.690, 0.320),   # spring
+	_COL_BIRCH,                   # summer
+	Color(0.800, 0.650, 0.180),   # autumn — golden birch
+	Color(0.460, 0.530, 0.410),   # winter
+]
+
+# Which seasonal palette each tinted tile follows. Spruce is evergreen and
+# keeps its base tint all year (absent from this table).
+const _TINT_ROLE: Dictionary = {
+	"grass_block_top": "grass", "grass_block_side_overlay": "grass",
+	"short_grass": "grass", "tall_grass_top": "grass", "tall_grass_bottom": "grass",
+	"fern": "grass", "large_fern_top": "grass", "large_fern_bottom": "grass",
+	"sugar_cane": "grass", "lily_pad": "grass",
+	"oak_leaves": "foliage", "jungle_leaves": "foliage", "acacia_leaves": "foliage",
+	"dark_oak_leaves": "foliage", "mangrove_leaves": "foliage", "vine": "foliage",
+	"birch_leaves": "birch",
+}
+
+var _season_src: Dictionary = {}   # tex_name → untinted Image (16×16 RGBA8)
+
 # Aliases: some texture names used in JSON map to a canonical atlas name
 const _ALIASES: Dictionary = {
 	"grass_block":            "grass_block_top",
@@ -121,6 +159,62 @@ const _ALIASES: Dictionary = {
 
 func _ready() -> void:
 	_build()
+	# SeasonManager loads after this autoload — defer the wiring one frame
+	_connect_season_tints.call_deferred()
+
+
+func _connect_season_tints() -> void:
+	EventBus.season_changed.connect(apply_season_tints)
+	if SeasonManager.current_season != SeasonManager.Season.SUMMER:
+		apply_season_tints(SeasonManager.current_season)
+
+
+## Re-tint every seasonal tile in place and push the atlas to the GPU.
+## Called on season_changed; every loaded chunk updates instantly.
+func apply_season_tints(season: int) -> void:
+	if atlas_image == null or _season_src.is_empty():
+		return
+	for key in _season_src:
+		var tex_name: String = key
+		if tex_name.ends_with("__base") or tex_name == "grass_block_side_overlay":
+			continue   # composite parts, handled below
+		var tile: Image = (_season_src[tex_name] as Image).duplicate()
+		_tint_tile(tile, _tint_for(tex_name, season))
+		_blit_tile(tex_name, tile)
+	# grass_block_side = base texture + seasonally tinted grass overlay
+	if _season_src.has("grass_block_side__base") and _season_src.has("grass_block_side_overlay"):
+		var base: Image = (_season_src["grass_block_side__base"] as Image).duplicate()
+		var ov: Image   = (_season_src["grass_block_side_overlay"] as Image).duplicate()
+		_tint_tile(ov, _tint_for("grass_block_side_overlay", season))
+		_composite_over(base, ov)
+		_blit_tile("grass_block_side", base)
+	# The standalone overlay tile also lives in the atlas — keep it in sync
+	if _season_src.has("grass_block_side_overlay"):
+		var ov2: Image = (_season_src["grass_block_side_overlay"] as Image).duplicate()
+		_tint_tile(ov2, _tint_for("grass_block_side_overlay", season))
+		_blit_tile("grass_block_side_overlay", ov2)
+	texture.update(atlas_image)
+	_avg_color_cache.clear()
+
+
+func _tint_for(tex_name: String, season: int) -> Color:
+	var s := clampi(season, 0, 3)
+	var role: String = _TINT_ROLE.get(tex_name, "")
+	match role:
+		"grass":   return _SEASONS_GRASS[s]
+		"foliage": return _SEASONS_FOLIAGE[s]
+		"birch":   return _SEASONS_BIRCH[s]
+	var base: Color = _TINTS.get(tex_name, Color.WHITE)
+	return base
+
+
+func _blit_tile(tex_name: String, tile: Image) -> void:
+	if not _uv.has(tex_name):
+		return
+	var uv: Vector2 = _uv[tex_name]
+	var x := int(round(uv.x * float(_grid_cols))) * T
+	var y := int(round(uv.y * float(_grid_cols))) * T
+	atlas_image.blit_rect(tile, Rect2i(0, 0, T, T), Vector2i(x, y))
 
 
 func get_face_uv(tex_name: String) -> Vector2:
@@ -234,13 +328,17 @@ func _load_tile(tex_name: String) -> Image:
 	var tile := _normalize_tile(img)
 	if tile == null:
 		return null
-	# Biome tint for grayscale grass/foliage textures
+	# Biome tint for grayscale grass/foliage textures (untinted copy kept
+	# so seasons can re-tint the atlas later)
 	if _TINTS.has(tex_name):
+		_season_src[tex_name] = tile.duplicate()
 		_tint_tile(tile, _TINTS[tex_name])
 	# The grass block side is dirt + a grayscale grass overlay that needs tinting
 	if tex_name == "grass_block_side":
+		_season_src["grass_block_side__base"] = tile.duplicate()
 		var overlay := _load_raw_tile("grass_block_side_overlay")
 		if overlay != null:
+			_season_src["grass_block_side_overlay"] = overlay.duplicate()
 			_tint_tile(overlay, _COL_GRASS)
 			_composite_over(tile, overlay)
 	return tile
