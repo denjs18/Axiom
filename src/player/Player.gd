@@ -140,6 +140,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Hold physics while the terrain under our feet has no collision yet —
+	# web builds chunks asynchronously and without this you can fall through
+	# freshly loaded ground (especially right after spawn).
+	if _should_hold_for_terrain():
+		velocity = Vector3.ZERO
+		return
+	_tick_void_rescue()
 	_handle_gravity(delta)
 	_handle_movement(delta)
 	_tick_eating(delta)
@@ -909,6 +916,38 @@ func _tick_lava_damage(delta: float) -> void:
 			take_damage(4.0, "lava")
 	else:
 		_lava_timer = 0.0
+
+
+## True while the chunk at (or just below) the feet has no collision yet.
+func _should_hold_for_terrain() -> bool:
+	if creative or is_flying or _chunk_manager == null:
+		return false
+	if not _chunk_manager.has_method("has_collision_at"):
+		return false
+	var feet := global_position + Vector3(0, -0.3, 0)
+	if not _chunk_manager.has_collision_at(feet):
+		return true
+	if velocity.y < -0.1 and not _chunk_manager.has_collision_at(feet + Vector3(0, -2.0, 0)):
+		return true
+	return false
+
+
+## Safety net: if we somehow end up far below the world floor, teleport back
+## to a safe surface instead of falling forever.
+func _tick_void_rescue() -> void:
+	var cy_min: int = ChunkManager.DIM_Y_MIN.get(GameManager.current_dimension, -8)
+	if global_position.y >= float(cy_min * 16) - 24.0:
+		return
+	var world := GameManager.world_node
+	var target := respawn_position
+	if world != null and world.has_method("find_spawn_surface"):
+		target = world.find_spawn_surface()
+	if world != null and world.has_method("prepare_respawn_area"):
+		world.prepare_respawn_area(target)
+	global_position = target + Vector3(0, 1.5, 0)
+	velocity = Vector3.ZERO
+	take_damage(2.0, "void")
+	EventBus.show_message.emit("Le vide vous a recraché…", 2.5)
 
 
 ## Distance-based footsteps + landing thump, using the block under the feet.

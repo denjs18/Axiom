@@ -84,7 +84,7 @@ func _on_block_broken(_pos: Vector3i, block_id: int, player: Node) -> void:
 func _on_dimension_changed(_player: Node, _from: String, to: String) -> void:
 	if to == "nether":
 		unlock("nether")
-	elif to == "end":
+	elif to == "the_end":
 		unlock("the_end")
 
 

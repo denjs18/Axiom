@@ -186,7 +186,7 @@ func _update_ambient_targets(delta: float) -> void:
 	if dim == "nether":
 		_amb_target["nether"] = -14.0
 		return
-	if dim == "end":
+	if dim == "the_end":
 		_amb_target["wind"] = -16.0
 		return
 	# Overworld: weather first, then day/night ambience

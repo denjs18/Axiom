@@ -327,6 +327,10 @@ func animate_walk(delta: float) -> void:
 func _apply_base_physics(delta: float) -> void:
 	_invincible_timer = maxf(0.0, _invincible_timer - delta)
 	_stun_timer       = maxf(0.0, _stun_timer       - delta)
+	# Fell through an unready chunk into the void → silently despawn
+	if global_position.y < -160.0:
+		queue_free()
+		return
 	if _stun_timer > 0.0:
 		velocity.x = move_toward(velocity.x, 0.0, 20.0 * delta)
 		velocity.z = move_toward(velocity.z, 0.0, 20.0 * delta)

@@ -58,6 +58,16 @@ var _col_mutex:         Mutex = Mutex.new()
 var _col_shape_ready:   ConcavePolygonShape3D = null
 var _col_building:      bool = false
 var _col_faces_snapshot: PackedVector3Array = PackedVector3Array()
+var _col_applied:       bool = false   # a StaticBody3D has been attached
+var _mesh_applied:      bool = false   # mesh built at least once (even if empty)
+
+
+## True when this chunk can safely support the player: a collision body exists,
+## or the built mesh produced no solid faces (nothing to stand on anyway).
+func has_collision_ready() -> bool:
+	if _col_applied:
+		return true
+	return _mesh_applied and _col_faces_snapshot.is_empty()
 
 # Per-frame budgets
 static var _rebuilds_this_frame:  int = 0
@@ -168,6 +178,7 @@ func _rebuild_mesh() -> void:
 		_col_dirty           = false
 		_col_faces_snapshot  = PackedVector3Array()
 		_dirty               = false
+		_mesh_applied        = true
 		return
 
 	_ensure_uv_cache()
@@ -230,6 +241,7 @@ func _apply_mesh_data(surfaces: Array) -> void:
 		mesh = arr_mesh
 		_col_faces_snapshot = col_faces
 		_col_dirty          = true
+	_mesh_applied = true
 	set_process(true)
 
 
@@ -719,6 +731,7 @@ func _apply_collision_shape(shape: ConcavePolygonShape3D) -> void:
 	col.shape = shape
 	sb.add_child(col)
 	add_child(sb)
+	_col_applied = true
 
 
 func force_initial_build() -> void:

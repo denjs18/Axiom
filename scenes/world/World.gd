@@ -452,6 +452,11 @@ func _tick_clouds(delta: float) -> void:
 	_cloud_mat.albedo_color = Color(bright, bright, minf(bright * 1.06, 1.0), alpha_mult)
 
 
+## Public wrapper used by the player's void-rescue safety net.
+func find_spawn_surface() -> Vector3:
+	return _find_spawn_surface()
+
+
 func _find_spawn_surface() -> Vector3:
 	var cy_min: int = ChunkManager.DIM_Y_MIN.get(GameManager.current_dimension, -8)
 	var cy_max: int = ChunkManager.DIM_Y_MAX.get(GameManager.current_dimension, 19)
@@ -486,7 +491,11 @@ func _force_spawn_collision(spawn_pos: Vector3) -> void:
 	for dy in range(-1, 3):   # one below, spawn chunk, two above
 		for dx in range(-1, 2):
 			for dz in range(-1, 2):
-				var key := chunk_manager._chunk_key(Vector3i(dx, spawn_cy + dy, dz))
+				var cp := Vector3i(dx, spawn_cy + dy, dz)
+				# Neighbour columns may not exist yet — generate them so the
+				# renderer is there to force-build (async was too late on web).
+				chunk_manager.ensure_chunk_sync(cp)
+				var key := chunk_manager._chunk_key(cp)
 				if chunk_manager._renderers.has(key):
 					(chunk_manager._renderers[key] as ChunkRenderer).force_initial_build()
 

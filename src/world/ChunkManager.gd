@@ -161,6 +161,28 @@ func _finalize_pending_chunks() -> void:
 		_finalize_chunk(chunk)
 
 
+## True when the chunk containing world_pos can support the player: it is
+## generated AND its collision has been applied (or it genuinely contains
+## nothing solid). Chunks outside the dimension's vertical range count as
+## ready — there is nothing there to load.
+func has_collision_at(world_pos: Vector3) -> bool:
+	var cp := Vector3i(
+		floori(world_pos.x / 16.0), floori(world_pos.y / 16.0), floori(world_pos.z / 16.0))
+	var cy_min: int = DIM_Y_MIN.get(dimension, -8)
+	var cy_max: int = DIM_Y_MAX.get(dimension, 19)
+	if cp.y < cy_min or cp.y > cy_max:
+		return true
+	var chunk := get_chunk(cp)
+	if chunk == null:
+		return false
+	if chunk.is_all_air:
+		return true
+	var key := _chunk_key(cp)
+	if not _renderers.has(key):
+		return false
+	return (_renderers[key] as ChunkRenderer).has_collision_ready()
+
+
 ## Generate (or load) a chunk synchronously on the main thread.
 ## Used only for spawn-point detection — prefer async path for normal gameplay.
 func ensure_chunk_sync(cp: Vector3i) -> void:
