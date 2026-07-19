@@ -78,6 +78,7 @@ func _ready() -> void:
 	EventBus.quest_accepted.connect(_on_quest_accepted)
 	EventBus.quest_progress_updated.connect(_on_quest_progress_updated)
 	EventBus.quest_completed.connect(_on_quest_completed)
+	_setup_vignette()
 	_setup_hotbar()
 	_setup_xp_bar()
 	_setup_crosshair()
@@ -184,6 +185,7 @@ func _process(delta: float) -> void:
 	if _player == null:
 		return
 	_update_hotbar_selection()
+	_tick_vignette(delta)
 	_tick_blood_moon_label(delta)
 	_tick_message_label(delta)
 	_tick_boss_bar(delta)
@@ -332,6 +334,9 @@ func _update_all() -> void:
 func _on_health_changed(player: Player, new_health: float, max_health: float) -> void:
 	if player != _player or health_bar == null:
 		return
+	if _last_health >= 0.0 and new_health < _last_health - 0.01:
+		_vignette_flash = 0.5   # red screen flash on damage taken
+	_last_health = new_health
 	_update_icon_bar(health_bar, new_health, max_health, "health")
 
 
@@ -339,6 +344,46 @@ func _on_hunger_changed(player: Player, new_hunger: float, _sat: float) -> void:
 	if player != _player or hunger_bar == null:
 		return
 	_update_icon_bar(hunger_bar, new_hunger, 20.0, "hunger")
+
+
+# ── Damage / low-health vignette ───────────────────────────────────────────────
+
+var _vignette: TextureRect  = null
+var _vignette_flash: float  = 0.0
+var _last_health: float     = -1.0
+
+
+func _setup_vignette() -> void:
+	var grad := Gradient.new()
+	grad.set_color(0, Color(0.80, 0.02, 0.02, 0.0))
+	grad.set_color(1, Color(0.72, 0.02, 0.02, 0.85))
+	grad.offsets = PackedFloat32Array([0.45, 1.0])
+	var gt := GradientTexture2D.new()
+	gt.gradient  = grad
+	gt.fill      = GradientTexture2D.FILL_RADIAL
+	gt.fill_from = Vector2(0.5, 0.5)
+	gt.fill_to   = Vector2(0.5, 0.0)
+	gt.width  = 256
+	gt.height = 256
+	_vignette = TextureRect.new()
+	_vignette.texture      = gt
+	_vignette.stretch_mode = TextureRect.STRETCH_SCALE
+	_vignette.expand_mode  = TextureRect.EXPAND_IGNORE_SIZE
+	_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_vignette.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_vignette.modulate     = Color(1, 1, 1, 0)
+	add_child(_vignette)
+	move_child(_vignette, 0)   # draw under every other HUD element
+
+
+func _tick_vignette(delta: float) -> void:
+	if _vignette == null:
+		return
+	# Persistent pulse when health is critical (< 3 hearts)
+	var low := clampf((6.0 - _player.health) / 6.0, 0.0, 1.0)
+	var low_a := low * (0.30 + 0.10 * sin(Time.get_ticks_msec() / 240.0))
+	_vignette.modulate.a = maxf(_vignette_flash, low_a)
+	_vignette_flash = maxf(_vignette_flash - delta * 2.2, 0.0)
 
 
 # Icon textures (hearts from assets, hunger shanks generated once)

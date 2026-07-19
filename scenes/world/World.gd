@@ -58,6 +58,9 @@ func _ready() -> void:
 	block_entity_manager = BlockEntityManager.new()
 	add_child(block_entity_manager)
 
+	# Mining cracks + break particles
+	add_child(BreakEffects.new())
+
 	# Connect player
 	player._chunk_manager = chunk_manager
 	player._block_entity_manager = block_entity_manager

@@ -93,6 +93,17 @@ signal block_targeted(block_pos: Vector3i, block_id: int)
 signal no_block_targeted()
 signal block_break_progress(progress_0_1: float)
 signal eating_progress(progress_0_1: float)
+signal block_breaking_at(block_pos: Vector3i, progress_0_1: float)  # crack overlay
+
+# Game-feel state (footsteps, view bob, damage kick)
+var _step_accum: float   = 0.0
+var _dig_sound_t: float  = 0.0
+var _munch_t: float      = 0.0
+var _bob_t: float        = 0.0
+var _cam_kick: float     = 0.0
+var _base_cam_pos: Vector3 = Vector3.ZERO
+var _base_fov: float     = 75.0
+var _was_swimming: bool  = false
 
 
 func _ready() -> void:
@@ -118,6 +129,8 @@ func _ready() -> void:
 		inventory.armor_changed.connect(_on_armor_changed)
 
 	_setup_hand()
+	_base_cam_pos = _camera.position
+	_base_fov     = _camera.fov
 	_give_dev_items()
 	_apply_permanent_skill_bonuses()
 	GameManager.set_player(self)
@@ -144,6 +157,7 @@ func _physics_process(delta: float) -> void:
 		_coyote_time = 0.15
 	_handle_fall_damage(_pre_y_vel, _pre_floor)
 	_tick_lava_damage(delta)
+	_tick_footsteps()
 
 
 func _process(delta: float) -> void:
@@ -160,6 +174,7 @@ func _process(delta: float) -> void:
 	_check_underwater()
 	_update_hand()
 	_animate_hand(delta)
+	_update_camera_feel(delta)
 
 
 func _input(event: InputEvent) -> void:
@@ -368,6 +383,7 @@ func _continue_block_break(bpos: Vector3i, bid: int) -> void:
 	if bpos != _breaking_block_pos:
 		_breaking_block_pos = bpos
 		_breaking_progress = 0.0
+		_dig_sound_t = 0.0
 		var block := BlockRegistry.get_block(bid)
 		if block == null:
 			return
@@ -377,7 +393,13 @@ func _continue_block_break(bpos: Vector3i, bid: int) -> void:
 		var held_item: ItemRegistry.ItemDef = ItemRegistry.get_item(held.get("id", "")) if not ItemRegistry.is_empty_stack(held) else null
 		_breaking_time = _compute_break_time(block, held_item)
 	_breaking_progress += get_physics_process_delta_time()
-	block_break_progress.emit(_breaking_progress / _breaking_time if _breaking_time > 0.0 else 0.0)
+	var ratio := _breaking_progress / _breaking_time if _breaking_time > 0.0 else 0.0
+	block_break_progress.emit(ratio)
+	block_breaking_at.emit(bpos, ratio)
+	_dig_sound_t -= get_physics_process_delta_time()
+	if _dig_sound_t <= 0.0:
+		_dig_sound_t = 0.22
+		SoundManager.dig_block(bid, Vector3(bpos) + Vector3(0.5, 0.5, 0.5))
 	if _breaking_progress >= _breaking_time:
 		_break_block(bpos, bid)
 
@@ -385,6 +407,7 @@ func _continue_block_break(bpos: Vector3i, bid: int) -> void:
 func _reset_block_break() -> void:
 	if _breaking_progress > 0.0:
 		block_break_progress.emit(0.0)
+		block_breaking_at.emit(_breaking_block_pos, 0.0)
 	_breaking_block_pos = Vector3i(-9999, -9999, -9999)
 	_breaking_progress = 0.0
 
@@ -419,6 +442,7 @@ func _break_block(bpos: Vector3i, bid: int) -> void:
 		_block_entity_manager.remove_entity(bpos)
 	EventBus.block_broken.emit(bpos, bid, self)
 	block_break_progress.emit(0.0)
+	block_breaking_at.emit(bpos, 0.0)
 	_breaking_block_pos = Vector3i(-9999, -9999, -9999)
 	_breaking_progress = 0.0
 
@@ -506,12 +530,17 @@ func _tick_eating(delta: float) -> void:
 	if can_eat and wants and not _targeting_interactive_block():
 		_eating_time += delta
 		eating_progress.emit(_eating_time / EAT_DURATION)
+		_munch_t -= delta
+		if _munch_t <= 0.0:
+			_munch_t = 0.42
+			SoundManager.play("eat", -10.0, 1.0 + randf_range(-0.1, 0.1))
 		if _eating_time >= EAT_DURATION:
 			_finish_eating(item)
 			_eating_time = 0.0
 			eating_progress.emit(0.0)
 	elif _eating_time > 0.0:
 		_eating_time = 0.0
+		_munch_t = 0.0
 		eating_progress.emit(0.0)
 
 
@@ -542,6 +571,7 @@ func _finish_eating(item: ItemRegistry.ItemDef) -> void:
 		if eff_name in ["hunger", "poison"] and randf() < eff.get("chance", 1.0):
 			_poison_ticks = 4   # 4 damage ticks over ~6 s
 	_consume_held_item(1)
+	SoundManager.play("gulp", -8.0)
 	EventBus.show_message.emit("", 0.0)   # clear any lingering message
 
 
@@ -809,6 +839,9 @@ func _check_underwater() -> void:
 		floori(global_position.z)
 	)
 	is_swimming = BlockRegistry.is_fluid(_chunk_manager.get_block_at(feet_pos))
+	if is_swimming and not _was_swimming and velocity.y < -3.0:
+		SoundManager.play_at("splash", global_position, -4.0)
+	_was_swimming = is_swimming
 
 
 func _tick_hunger(delta: float) -> void:
@@ -878,6 +911,62 @@ func _tick_lava_damage(delta: float) -> void:
 		_lava_timer = 0.0
 
 
+## Distance-based footsteps + landing thump, using the block under the feet.
+func _tick_footsteps() -> void:
+	if is_on_ground and not _pre_floor and _pre_y_vel < -7.0:
+		_play_step_under_feet(-3.0)   # landing thump
+		_step_accum = 0.0
+		return
+	if not is_on_ground or is_swimming or is_flying:
+		return
+	var hvel := Vector2(velocity.x, velocity.z).length()
+	if hvel < 1.0:
+		return
+	_step_accum += hvel * get_physics_process_delta_time()
+	if _step_accum >= 2.1:
+		_step_accum = 0.0
+		_play_step_under_feet(-9.0)
+
+
+func _play_step_under_feet(vol_db: float) -> void:
+	if _chunk_manager == null:
+		return
+	var below := Vector3i(floori(global_position.x), floori(global_position.y - 0.4), floori(global_position.z))
+	var bid: int = _chunk_manager.get_block_at(below)
+	if bid == 0:
+		below.y -= 1
+		bid = _chunk_manager.get_block_at(below)
+	if bid != 0:
+		SoundManager.step_on(bid, global_position, vol_db)
+
+
+## View bobbing, sprint FOV kick and damage camera roll — all subtle.
+func _update_camera_feel(delta: float) -> void:
+	if _camera == null:
+		return
+	var hvel := Vector2(velocity.x, velocity.z).length()
+	if is_on_ground and hvel > 0.8 and not is_swimming:
+		_bob_t += delta * hvel * 1.6
+		var amp := 0.042 if is_sprinting else 0.028
+		var off := Vector3(cos(_bob_t * 0.5) * amp * 0.8, sin(_bob_t) * amp, 0.0)
+		_camera.position = _camera.position.lerp(_base_cam_pos + off, minf(delta * 12.0, 1.0))
+	else:
+		_camera.position = _camera.position.lerp(_base_cam_pos, minf(delta * 6.0, 1.0))
+
+	var target_fov := _base_fov
+	if is_gliding:
+		target_fov = _base_fov * 1.20
+	elif is_sprinting and hvel > 1.0:
+		target_fov = _base_fov * 1.13
+	_camera.fov = lerpf(_camera.fov, target_fov, minf(delta * 8.0, 1.0))
+
+	if absf(_cam_kick) > 0.0005:
+		_camera.rotation.z = _cam_kick
+		_cam_kick = lerpf(_cam_kick, 0.0, minf(delta * 10.0, 1.0))
+	elif _camera.rotation.z != 0.0:
+		_camera.rotation.z = 0.0
+
+
 # --- Public API ---
 
 func take_damage(amount: float, source: String = "generic") -> void:
@@ -892,6 +981,9 @@ func take_damage(amount: float, source: String = "generic") -> void:
 	health = maxf(0.0, health - effective)
 	_damage_cooldown = 0.5
 	EventBus.player_health_changed.emit(self, health, max_health)
+	# Feel: hurt grunt + a quick camera roll kick
+	SoundManager.play("hurt", -6.0, 1.0 + randf_range(-0.06, 0.06))
+	_cam_kick = clampf(0.03 + effective * 0.02, 0.03, 0.09) * (1.0 if randf() < 0.5 else -1.0)
 	if health <= 0:
 		_die()
 

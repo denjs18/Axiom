@@ -10,6 +10,8 @@ const T := 16  # tile size in pixels (vanilla Minecraft texture size)
 const BLOCKS_TEX_DIR := "res://assets/textures/blocks/"
 
 var texture:      ImageTexture
+var atlas_image:  Image = null    # kept for color sampling + season re-tinting
+var _avg_color_cache: Dictionary = {}
 var tile_uv_size: float = 0.0625  # = 1 / grid_cols, set in _build()
 var _grid_cols:   int   = 16      # atlas is _grid_cols × _grid_cols tiles
 
@@ -163,8 +165,36 @@ func _build() -> void:
 		_uv[name] = Vector2(float(col) / float(cols), float(row) / float(cols))
 
 	texture = ImageTexture.create_from_image(atlas)
+	atlas_image = atlas
 	print("[BlockTextureAtlas] Atlas built (%d×%d, %d tiles, %d from imported PNGs)." % [
 		cols * T, cols * T, count, real_count])
+
+
+## Average opaque color of a tile — used to color block break particles.
+func get_avg_tile_color(tex_name: String) -> Color:
+	if _avg_color_cache.has(tex_name):
+		return _avg_color_cache[tex_name]
+	var col := Color(0.6, 0.6, 0.6)
+	if atlas_image != null:
+		var uv := get_face_uv(tex_name)
+		var x0 := int(uv.x * float(atlas_image.get_width()))
+		var y0 := int(uv.y * float(atlas_image.get_height()))
+		var r := 0.0
+		var g := 0.0
+		var b := 0.0
+		var n := 0
+		for dy in range(0, T, 3):
+			for dx in range(0, T, 3):
+				var c := atlas_image.get_pixel(x0 + dx, y0 + dy)
+				if c.a > 0.5:
+					r += c.r
+					g += c.g
+					b += c.b
+					n += 1
+		if n > 0:
+			col = Color(r / float(n), g / float(n), b / float(n))
+	_avg_color_cache[tex_name] = col
+	return col
 
 
 ## Gather every texture name referenced by registered blocks (plus the

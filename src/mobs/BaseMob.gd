@@ -43,6 +43,7 @@ func take_damage(amount: float, source: Node3D = null) -> void:
 	health = maxf(0.0, health - effective)
 	amount = effective
 	_invincible_timer = 0.5
+	_flash_damage()
 	EventBus.mob_damaged.emit(self, amount, source)
 	if source:
 		var dir := (global_position - source.global_position)
@@ -112,6 +113,43 @@ func get_hp_ratio() -> float:
 	if max_health <= 0.0:
 		return 1.0
 	return health / max_health
+
+
+# ── Hit flash (brief red tint on every mesh when damaged) ─────────────────────
+
+var _flash_restore: Array = []      # [[mesh, original material], ...]
+var _flash_active: bool = false
+
+
+func _flash_damage() -> void:
+	if _flash_active or not is_inside_tree():
+		return
+	_flash_active = true
+	_flash_restore.clear()
+	_collect_flash(self)
+	get_tree().create_timer(0.13).timeout.connect(_end_flash)
+
+
+func _collect_flash(node: Node) -> void:
+	for child in node.get_children():
+		if child is MeshInstance3D:
+			var mi := child as MeshInstance3D
+			if mi.material_override is StandardMaterial3D:
+				var original: StandardMaterial3D = mi.material_override
+				_flash_restore.append([mi, original])
+				var m: StandardMaterial3D = original.duplicate()
+				m.albedo_color = m.albedo_color.lerp(Color(1.0, 0.12, 0.12), 0.72)
+				mi.material_override = m
+		_collect_flash(child)
+
+
+func _end_flash() -> void:
+	_flash_active = false
+	for entry in _flash_restore:
+		var mi: MeshInstance3D = entry[0]
+		if is_instance_valid(mi):
+			mi.material_override = entry[1]
+	_flash_restore.clear()
 
 
 # ── Shared blocky body builder + walk animation ────────────────────────────────

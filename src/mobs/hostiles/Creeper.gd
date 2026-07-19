@@ -49,6 +49,7 @@ func _run_ai(delta: float) -> void:
 			_fusing = true
 			_fuse_t = 0.0
 			EventBus.show_message.emit("Tsss...", 0.9)
+			SoundManager.play_at("fuse", global_position, -4.0, 0.0)
 
 
 func _tick_fuse(delta: float) -> void:
@@ -96,6 +97,7 @@ func _flash_rec(node: Node, amount: float) -> void:
 
 func _explode() -> void:
 	var origin := global_position
+	SoundManager.play_at("explosion", origin, 2.0, 0.05)
 	var world := GameManager.world_node
 	var cm = world.get("chunk_manager") if world != null else null
 
