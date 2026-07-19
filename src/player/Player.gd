@@ -144,8 +144,13 @@ func _physics_process(delta: float) -> void:
 	# web builds chunks asynchronously and without this you can fall through
 	# freshly loaded ground (especially right after spawn).
 	if _should_hold_for_terrain():
-		velocity = Vector3.ZERO
-		return
+		# Emergency: build the ground under us synchronously (one small hitch
+		# beats being frozen for seconds while the async queue catches up).
+		if _chunk_manager.has_method("make_solid_now"):
+			_chunk_manager.make_solid_now(global_position + Vector3(0, -0.3, 0))
+		if _should_hold_for_terrain():
+			velocity = Vector3.ZERO
+			return
 	_tick_void_rescue()
 	_handle_gravity(delta)
 	_handle_movement(delta)

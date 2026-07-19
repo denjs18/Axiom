@@ -180,7 +180,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if GameManager.current_state != GameManager.GameState.PLAYING:
 		return
-	chunk_manager.update_player_position(player.global_position)
+	chunk_manager.update_player_position(player.global_position, player.velocity)
 	lod_manager.update_player_position(player.global_position)
 	_tick_clouds(delta)
 	_tick_timer += delta

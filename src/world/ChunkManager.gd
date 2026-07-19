@@ -57,7 +57,7 @@ func _process(_delta: float) -> void:
 	_process_gen_queue()
 
 
-func update_player_position(world_pos: Vector3) -> void:
+func update_player_position(world_pos: Vector3, velocity: Vector3 = Vector3.ZERO) -> void:
 	var new_chunk := Vector3i(
 		floori(world_pos.x / CHUNK_SIZE),
 		floori(world_pos.y / CHUNK_SIZE),
@@ -67,6 +67,15 @@ func update_player_position(world_pos: Vector3) -> void:
 		return
 	_last_player_chunk = new_chunk
 	_player_chunk = new_chunk
+	# Prioritize chunks AHEAD of the player's movement: sort around a point
+	# shifted 2 chunks in the direction of travel, so sprinting streams the
+	# terrain you are about to reach first.
+	var hvel := Vector3(velocity.x, 0.0, velocity.z)
+	if hvel.length() > 2.0:
+		var dir := hvel.normalized()
+		_sort_center = _player_chunk + Vector3i(roundi(dir.x * 2.0), 0, roundi(dir.z * 2.0))
+	else:
+		_sort_center = _player_chunk
 	_schedule_load_unload()
 	_request_collision_for_near_chunks()
 
@@ -101,15 +110,17 @@ func _schedule_load_unload() -> void:
 
 # Sort farthest-first so pop_back() gives the nearest chunk in O(1).
 # pop_front() on a GDScript Array is O(n) — on 100+ entries this wastes time every frame.
+var _sort_center: Vector3i = Vector3i.ZERO
+
 func _sort_by_dist_desc(a: Vector3i, b: Vector3i) -> bool:
-	return a.distance_squared_to(_player_chunk) > b.distance_squared_to(_player_chunk)
+	return a.distance_squared_to(_sort_center) > b.distance_squared_to(_sort_center)
 
 
 # ── Generation queue — submit to worker threads ────────────────────────────────
 
 func _process_gen_queue() -> void:
 	# Limit in-flight tasks so we don't flood the thread pool
-	var max_submit := 4
+	var max_submit := 6
 	while not _gen_queue.is_empty() and max_submit > 0:
 		var cp: Vector3i = _gen_queue.pop_back()   # O(1) — queue is sorted farthest-first
 		var key          := _chunk_key(cp)
@@ -163,6 +174,24 @@ func _finalize_pending_chunks() -> void:
 		pending.resize(MAX_FINALIZATIONS_PER_FRAME)
 	for chunk: Chunk in pending:
 		_finalize_chunk(chunk)
+
+
+## Emergency path when the player outruns async streaming: generate, mesh and
+## build collision for the chunk at world_pos (and the one below) RIGHT NOW.
+## One ~50 ms hitch beats seconds of frozen player.
+func make_solid_now(world_pos: Vector3) -> void:
+	var cp := Vector3i(
+		floori(world_pos.x / 16.0), floori(world_pos.y / 16.0), floori(world_pos.z / 16.0))
+	var cy_min: int = DIM_Y_MIN.get(dimension, -8)
+	var cy_max: int = DIM_Y_MAX.get(dimension, 19)
+	for dy in [0, -1]:
+		var p := Vector3i(cp.x, clampi(cp.y + dy, cy_min, cy_max), cp.z)
+		ensure_chunk_sync(p)
+		var key := _chunk_key(p)
+		if _renderers.has(key):
+			var r := _renderers[key] as ChunkRenderer
+			if not r.has_collision_ready():
+				r.force_initial_build()
 
 
 ## True when the chunk containing world_pos can support the player: it is
