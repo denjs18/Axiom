@@ -46,6 +46,10 @@ func initialize(wname: String, wseed: int, dim: String = "overworld") -> void:
 	world_name = wname
 	world_seed = wseed
 	dimension  = dim
+	# Single source of truth: the full-voxel radius comes from the LOD preset.
+	# (A mismatch here used to leave a permanent ring of sky between the last
+	# real chunk and the first LOD tile.)
+	render_distance = LodSettings.render_distance
 
 
 func _process(_delta: float) -> void:

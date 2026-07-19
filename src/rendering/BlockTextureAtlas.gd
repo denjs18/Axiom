@@ -264,6 +264,22 @@ func _build() -> void:
 		cols * T, cols * T, count, real_count])
 
 
+## Average color of a block's TOP texture — used by the LOD far-terrain tint.
+func get_block_top_color(block_id: int) -> Color:
+	var b := BlockRegistry.get_block(block_id)
+	if b == null:
+		return Color(0.5, 0.5, 0.5)
+	var tex_name := ""
+	if b.texture is String:
+		tex_name = b.texture
+	elif b.texture is Dictionary:
+		var d: Dictionary = b.texture
+		tex_name = str(d.get("top", d.get("all", d.get("side", ""))))
+	if tex_name.is_empty():
+		tex_name = b.name
+	return get_avg_tile_color(tex_name)
+
+
 ## Average opaque color of a tile — used to color block break particles.
 func get_avg_tile_color(tex_name: String) -> Color:
 	if _avg_color_cache.has(tex_name):

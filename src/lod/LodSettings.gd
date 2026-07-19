@@ -26,7 +26,13 @@ const PRESETS: Array = [
 
 
 func _ready() -> void:
-	apply_preset(Preset.HIGH)
+	# The web export generates chunks much slower (WorkerThreadPool contention)
+	# — a smaller full-voxel radius fills in far faster, and the LOD + fog
+	# cover the distance.
+	if OS.has_feature("web"):
+		apply_preset(Preset.BALANCED)
+	else:
+		apply_preset(Preset.HIGH)
 
 
 func apply_preset(p: int) -> void:

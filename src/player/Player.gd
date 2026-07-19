@@ -1172,15 +1172,19 @@ func _update_hand() -> void:
 
 
 func _build_fist_visual() -> void:
+	# Small forearm poking in from the bottom-right corner (MC-style),
+	# not a giant cube in the middle of the view.
 	var mesh := MeshInstance3D.new()
 	var box  := BoxMesh.new()
-	box.size = Vector3(0.20, 0.25, 0.18)
+	box.size = Vector3(0.10, 0.10, 0.30)
 	mesh.mesh = box
 	var mat := StandardMaterial3D.new()
 	mat.albedo_color = Color(0.85, 0.70, 0.55)
 	mat.roughness    = 0.9
 	mesh.material_override = mat
 	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	mesh.position = Vector3(0.12, -0.10, 0.02)
+	mesh.rotation_degrees = Vector3(-20, 14, 10)
 	_hand_pivot.add_child(mesh)
 	_hand_visual = mesh
 
@@ -1193,10 +1197,11 @@ func _build_item_visual(item_id: String) -> void:
 		spr.texture        = tex
 		spr.pixel_size     = 0.015          # 16px × 0.015 ≈ 0.24 units wide
 		spr.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-		spr.shaded         = true
+		spr.shaded         = false
 		spr.no_depth_test  = false
-		# Tilt like Minecraft's item-in-hand
-		spr.rotation_degrees = Vector3(-10, -35, -15)
+		# Gentle tilt — a strong yaw showed the flat sprite edge-on
+		spr.rotation_degrees = Vector3(-6, -24, -10)
+		spr.position = Vector3(0.10, -0.06, 0.02)
 		spr.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		_hand_pivot.add_child(spr)
 		_hand_visual = spr
@@ -1238,9 +1243,12 @@ func _build_block_visual(block_id: int) -> void:
 		spr.texture        = tex
 		spr.pixel_size     = 0.015
 		spr.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-		spr.shaded         = true
+		# Unshaded + almost facing the camera: with a strong yaw the sprite was
+		# seen edge-on and showed up as a dark diagonal streak.
+		spr.shaded         = false
 		spr.no_depth_test  = false
-		spr.rotation_degrees = Vector3(20, 45, 15)   # isometric block tilt
+		spr.rotation_degrees = Vector3(0, 22, 8)
+		spr.position = Vector3(0.10, -0.06, 0.02)
 		spr.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		_hand_pivot.add_child(spr)
 		_hand_visual = spr

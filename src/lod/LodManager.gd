@@ -44,6 +44,17 @@ func initialize(wname: String, dim: String, gen: WorldGenerator) -> void:
 	_world_name      = wname
 	_dimension       = dim
 	_world_generator = gen
+	# Build the id→color table on the main thread before any worker task reads
+	# it, and rebuild it when the seasons re-tint the atlas.
+	LodTileGenerator.build_color_table()
+	if not EventBus.season_changed.is_connected(_on_season_changed):
+		EventBus.season_changed.connect(_on_season_changed)
+
+
+func _on_season_changed(_season: int) -> void:
+	# Deferred: BlockTextureAtlas re-tints its tiles on the same signal and we
+	# must sample the atlas AFTER it has been updated.
+	LodTileGenerator.build_color_table.call_deferred()
 
 
 ## Drop every loaded tile and renderer — used when switching dimension.
@@ -98,7 +109,11 @@ func _schedule_lod1() -> void:
 	for dx in range(-ld1, ld1 + 1):
 		for dz in range(-ld1, ld1 + 1):
 			var dist := maxi(absi(dx), absi(dz))
-			if dist <= rd or dist > ld1:
+			# Overlap two rings UNDER the real-chunk zone: LOD tops sit a hair
+			# below block level, so real chunks cover them once meshed — but
+			# while chunks are still streaming in, the LOD fills the gap
+			# instead of showing a ring of sky.
+			if dist <= maxi(rd - 2, 1) or dist > ld1:
 				continue
 			var tx  := _player_chunk.x + dx
 			var tz  := _player_chunk.y + dz
@@ -343,8 +358,10 @@ func _unload_far_tiles() -> void:
 	for key in _lod1_tiles:
 		var pos := _lod1_pos(key)
 		var dist := maxi(absi(pos.x - pc.x), absi(pos.y - pc.y))
-		# Remove if inside render_distance (real chunks cover it) or beyond LOD1 range
-		if dist <= rd or dist > ld1 + 2:
+		# Remove tiles deep inside the real-chunk zone or beyond LOD1 range.
+		# The two overlap rings (rd-1..rd) are kept — they fill streaming gaps
+		# and sit just under the real surface once chunks are meshed.
+		if dist <= maxi(rd - 2, 1) or dist > ld1 + 2:
 			to_remove.append(key)
 	for key in to_remove:
 		_lod1_tiles.erase(key)

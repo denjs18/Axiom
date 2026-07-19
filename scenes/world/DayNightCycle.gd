@@ -127,8 +127,10 @@ func _build_scene() -> void:
 	_env.fog_aerial_perspective = 0.0
 	_env.fog_sun_scatter        = 0.3
 	_env.fog_light_energy       = 0.5
-	var lod_dist := float(LodSettings.lod2_distance)
-	_base_fog_density = clampf(0.04 / lod_dist, 0.0001, 0.0006)
+	# Real distance haze: far LOD melts into the sky instead of ending in a
+	# hard silhouette (~55% visibility at 300 m, ~10% at 1 km). Weather
+	# multiplies this at runtime.
+	_base_fog_density = 0.002
 
 	# Tonemapping ───────────────────────────────────────────────────────────────
 	_env.tonemap_mode     = Environment.TONE_MAPPER_ACES

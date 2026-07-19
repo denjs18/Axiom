@@ -46,26 +46,32 @@ static func generate_lod2(tx: int, tz: int, gen: WorldGenerator) -> LodTile:
 	return tile
 
 
+# id → average top-texture color, built ON THE MAIN THREAD before any worker
+# task runs (build_color_table), then read-only from threads. This replaces the
+# old hardcoded id table that no longer matched real block ids (snow/terracotta
+# surfaces rendered as random hash colors — the red/cream walls on the horizon).
+static var _color_table: PackedColorArray = PackedColorArray()
+
+
+static func build_color_table() -> void:
+	var n: int = BlockRegistry._block_flags.size()
+	if n <= 0:
+		return
+	var table := PackedColorArray()
+	table.resize(n)
+	for id in n:
+		if id == 0:
+			table[id] = Color(0.5, 0.5, 0.5)
+			continue
+		var c: Color = BlockTextureAtlas.get_block_top_color(id)
+		# Slightly muted so far terrain sits back instead of popping
+		table[id] = Color(c.r * 0.92, c.g * 0.92, c.b * 0.92)
+	# Water reads better as the classic deep blue than as its texture average
+	table[90] = Color(0.16, 0.34, 0.72)
+	_color_table = table
+
+
 static func _block_color(block_id: int) -> Color:
-	match block_id:
-		2:    return Color(0.18, 0.40, 0.10)   # grass — muted, natural
-		3:    return Color(0.50, 0.33, 0.20)   # dirt
-		1:    return Color(0.52, 0.52, 0.52)   # stone
-		50:   return Color(0.28, 0.28, 0.32)   # deepslate
-		8:    return Color(0.86, 0.80, 0.52)   # sand
-		9:    return Color(0.50, 0.48, 0.46)   # gravel
-		10, 11, 12, 13, 14, 15, 16, 17:
-			return Color(0.42, 0.32, 0.18)   # wood logs
-		90:   return Color(0.16, 0.34, 0.72)   # water — deeper blue
-		91:   return Color(0.95, 0.36, 0.00)   # lava
-		100:  return Color(0.18, 0.18, 0.18)   # bedrock
-		197:  return Color(0.60, 0.45, 0.28)   # mycelium
-		1000: return Color(0.60, 0.08, 0.08)   # netherrack
-		2000: return Color(0.86, 0.84, 0.55)   # end_stone
-		_:
-			var h := block_id
-			return Color(
-				0.22 + (h & 0xFF) / 640.0,
-				0.22 + ((h >> 8) & 0xFF) / 640.0,
-				0.22 + ((h >> 16) & 0xFF) / 640.0
-			)
+	if block_id >= 0 and block_id < _color_table.size():
+		return _color_table[block_id]
+	return Color(0.5, 0.5, 0.5)

@@ -108,7 +108,7 @@ static func _build_top(heights: PackedInt32Array, colors: PackedColorArray, col_
 	for z in cols:
 		for x in cols:
 			var i   := z * cols + x
-			var h   := float(heights[i]) + 1.004
+			var h   := float(heights[i]) + 0.996
 			var col := colors[i]
 			_hq(v, c, n, idx, float(x)*cw, h, float(z)*cw, cw, col, up)
 	return {"v": v, "c": c, "n": n, "i": idx, "water": false}
@@ -123,13 +123,13 @@ static func _build_sides(heights: PackedInt32Array, colors: PackedColorArray, co
 	for z in cols:
 		for x in cols:
 			var i  := z * cols + x
-			var hA := float(heights[i]) + 1.004
+			var hA := float(heights[i]) + 0.996
 			var cA := colors[i]
 
 			# East edge
 			if x + 1 < cols:
 				var j  := z * cols + (x + 1)
-				var hB := float(heights[j]) + 1.004
+				var hB := float(heights[j]) + 0.996
 				var dh := hA - hB
 				if absf(dh) > 0.1:
 					var ht := maxf(hA, hB)
@@ -147,7 +147,7 @@ static func _build_sides(heights: PackedInt32Array, colors: PackedColorArray, co
 			# South edge
 			if z + 1 < cols:
 				var j  := (z + 1) * cols + x
-				var hB := float(heights[j]) + 1.004
+				var hB := float(heights[j]) + 0.996
 				var dh := hA - hB
 				if absf(dh) > 0.1:
 					var ht := maxf(hA, hB)
@@ -180,25 +180,25 @@ static func _build_skirts(
 
 		if not (skip & 1):   # west
 			var i := k * cols + 0
-			var h := float(heights[i]) + 1.004
+			var h := float(heights[i]) + 0.996
 			var sc := Color(colors[i].r*SHADE_EW, colors[i].g*SHADE_EW, colors[i].b*SHADE_EW)
 			_vq(v,c,n,idx, Vector3(0,h,z1),Vector3(0,h,z0),Vector3(0,h-SKIRT_DEPTH,z0),Vector3(0,h-SKIRT_DEPTH,z1), Vector3(-1,0,0),sc)
 
 		if not (skip & 2):   # east
 			var i := k * cols + (cols - 1)
-			var h := float(heights[i]) + 1.004
+			var h := float(heights[i]) + 0.996
 			var sc := Color(colors[i].r*SHADE_EW, colors[i].g*SHADE_EW, colors[i].b*SHADE_EW)
 			_vq(v,c,n,idx, Vector3(tw,h,z0),Vector3(tw,h,z1),Vector3(tw,h-SKIRT_DEPTH,z1),Vector3(tw,h-SKIRT_DEPTH,z0), Vector3(1,0,0),sc)
 
 		if not (skip & 4):   # north
 			var i := 0 * cols + k
-			var h := float(heights[i]) + 1.004
+			var h := float(heights[i]) + 0.996
 			var sc := Color(colors[i].r*SHADE_NS, colors[i].g*SHADE_NS, colors[i].b*SHADE_NS)
 			_vq(v,c,n,idx, Vector3(x0,h,0),Vector3(x1,h,0),Vector3(x1,h-SKIRT_DEPTH,0),Vector3(x0,h-SKIRT_DEPTH,0), Vector3(0,0,-1),sc)
 
 		if not (skip & 8):   # south
 			var i := (cols - 1) * cols + k
-			var h := float(heights[i]) + 1.004
+			var h := float(heights[i]) + 0.996
 			var sc := Color(colors[i].r*SHADE_NS, colors[i].g*SHADE_NS, colors[i].b*SHADE_NS)
 			_vq(v,c,n,idx, Vector3(x1,h,tw),Vector3(x0,h,tw),Vector3(x0,h-SKIRT_DEPTH,tw),Vector3(x1,h-SKIRT_DEPTH,tw), Vector3(0,0,1),sc)
 
@@ -217,7 +217,7 @@ static func _build_water(water: PackedByteArray, col_w: int) -> Dictionary:
 			var i := z * cols + x
 			if water[i] == 0:
 				continue
-			_hq(v, c, n, idx, float(x)*cw, SEA_LEVEL, float(z)*cw, cw, wc, up)
+			_hq(v, c, n, idx, float(x)*cw, SEA_LEVEL - 0.12, float(z)*cw, cw, wc, up)
 	return {"v": v, "c": c, "n": n, "i": idx, "water": true}
 
 
